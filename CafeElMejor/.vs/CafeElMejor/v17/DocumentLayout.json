@@ -3,32 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{138DCD27-BBB0-474E-B5D1-B37A1DFD7E4D}|Infrastructure\\Infrastructure.csproj|c:\\users\\lauta\\onedrive\\documentos\\facultad\\ingsoft\\cafeelmejor\\infrastructure\\migrations\\20250521175347_agregarcategoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{138DCD27-BBB0-474E-B5D1-B37A1DFD7E4D}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\migrations\\20250521175347_agregarcategoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{138DCD27-BBB0-474E-B5D1-B37A1DFD7E4D}|Infrastructure\\Infrastructure.csproj|c:\\users\\lauta\\onedrive\\documentos\\facultad\\ingsoft\\cafeelmejor\\infrastructure\\migrations\\20250521181134_nuevamigracion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{138DCD27-BBB0-474E-B5D1-B37A1DFD7E4D}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\migrations\\20250521181134_nuevamigracion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{26E9C445-26F6-43FD-AF17-400A07E94F17}|CafeElMejor\\CafeElMejor.csproj|c:\\users\\lauta\\onedrive\\documentos\\facultad\\ingsoft\\cafeelmejor\\cafeelmejor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26E9C445-26F6-43FD-AF17-400A07E94F17}|CafeElMejor\\CafeElMejor.csproj|solutionrelative:cafeelmejor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{26E9C445-26F6-43FD-AF17-400A07E94F17}|CafeElMejor\\CafeElMejor.csproj|c:\\users\\lauta\\onedrive\\documentos\\facultad\\ingsoft\\cafeelmejor\\cafeelmejor\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{26E9C445-26F6-43FD-AF17-400A07E94F17}|CafeElMejor\\CafeElMejor.csproj|solutionrelative:cafeelmejor\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{138DCD27-BBB0-474E-B5D1-B37A1DFD7E4D}|Infrastructure\\Infrastructure.csproj|c:\\users\\lauta\\onedrive\\documentos\\facultad\\ingsoft\\cafeelmejor\\infrastructure\\data\\cafedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{138DCD27-BBB0-474E-B5D1-B37A1DFD7E4D}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\cafedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D283BD56-93F4-4728-AD5D-5B6D609D16A7}|Aplication\\Aplication.csproj|c:\\users\\lauta\\onedrive\\documentos\\facultad\\ingsoft\\cafeelmejor\\aplication\\mapping\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D283BD56-93F4-4728-AD5D-5B6D609D16A7}|Aplication\\Aplication.csproj|solutionrelative:aplication\\mapping\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D283BD56-93F4-4728-AD5D-5B6D609D16A7}|Aplication\\Aplication.csproj|c:\\users\\lauta\\onedrive\\documentos\\facultad\\ingsoft\\cafeelmejor\\aplication\\dto\\proveedordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D283BD56-93F4-4728-AD5D-5B6D609D16A7}|Aplication\\Aplication.csproj|solutionrelative:aplication\\dto\\proveedordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C96E7E8A-3CE4-413D-A3B8-EBC36BE01749}|Domain\\Domain.csproj|c:\\users\\lauta\\onedrive\\documentos\\facultad\\ingsoft\\cafeelmejor\\domain\\entities\\proveedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C96E7E8A-3CE4-413D-A3B8-EBC36BE01749}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\proveedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D283BD56-93F4-4728-AD5D-5B6D609D16A7}|Aplication\\Aplication.csproj|c:\\users\\lauta\\onedrive\\documentos\\facultad\\ingsoft\\cafeelmejor\\aplication\\dto\\clientedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D283BD56-93F4-4728-AD5D-5B6D609D16A7}|Aplication\\Aplication.csproj|solutionrelative:aplication\\dto\\clientedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C96E7E8A-3CE4-413D-A3B8-EBC36BE01749}|Domain\\Domain.csproj|c:\\users\\lauta\\onedrive\\documentos\\facultad\\ingsoft\\cafeelmejor\\domain\\entities\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D283BD56-93F4-4728-AD5D-5B6D609D16A7}|Aplication\\Aplication.csproj|c:\\users\\lauta\\onedrive\\documentos\\facultad\\ingsoft\\cafeelmejor\\aplication\\aplication.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{D283BD56-93F4-4728-AD5D-5B6D609D16A7}|Aplication\\Aplication.csproj|solutionrelative:aplication\\aplication.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{138DCD27-BBB0-474E-B5D1-B37A1DFD7E4D}|Infrastructure\\Infrastructure.csproj|c:\\users\\lauta\\onedrive\\documentos\\facultad\\ingsoft\\cafeelmejor\\infrastructure\\data\\cafedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{138DCD27-BBB0-474E-B5D1-B37A1DFD7E4D}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\cafedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{138DCD27-BBB0-474E-B5D1-B37A1DFD7E4D}|Infrastructure\\Infrastructure.csproj|c:\\users\\lauta\\onedrive\\documentos\\facultad\\ingsoft\\cafeelmejor\\infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -54,34 +38,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20250521175347_AgregarCategoria.cs",
-              "DocumentMoniker": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Infrastructure\\Migrations\\20250521175347_AgregarCategoria.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250521175347_AgregarCategoria.cs",
-              "ToolTip": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Infrastructure\\Migrations\\20250521175347_AgregarCategoria.cs",
-              "RelativeToolTip": "Infrastructure\\Migrations\\20250521175347_AgregarCategoria.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T17:53:47.729Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\CafeElMejor\\appsettings.json",
-              "RelativeDocumentMoniker": "CafeElMejor\\appsettings.json",
-              "ToolTip": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\CafeElMejor\\appsettings.json",
-              "RelativeToolTip": "CafeElMejor\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-21T17:51:07.398Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -92,46 +50,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProveedorDTO.cs",
-              "DocumentMoniker": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Aplication\\DTO\\ProveedorDTO.cs",
-              "RelativeDocumentMoniker": "Aplication\\DTO\\ProveedorDTO.cs",
-              "ToolTip": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Aplication\\DTO\\ProveedorDTO.cs",
-              "RelativeToolTip": "Aplication\\DTO\\ProveedorDTO.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAowBQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "20250521181134_NuevaMigracion.cs",
+              "DocumentMoniker": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Infrastructure\\Migrations\\20250521181134_NuevaMigracion.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250521181134_NuevaMigracion.cs",
+              "ToolTip": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Infrastructure\\Migrations\\20250521181134_NuevaMigracion.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20250521181134_NuevaMigracion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T17:34:30.456Z",
+              "WhenOpened": "2025-05-21T18:11:35.572Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\CafeElMejor\\Program.cs",
-              "RelativeDocumentMoniker": "CafeElMejor\\Program.cs",
-              "ToolTip": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\CafeElMejor\\Program.cs",
-              "RelativeToolTip": "CafeElMejor\\Program.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAQwCkAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T14:29:51.148Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ClienteDTO.cs",
-              "DocumentMoniker": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Aplication\\DTO\\ClienteDTO.cs",
-              "RelativeDocumentMoniker": "Aplication\\DTO\\ClienteDTO.cs",
-              "ToolTip": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Aplication\\DTO\\ClienteDTO.cs",
-              "RelativeToolTip": "Aplication\\DTO\\ClienteDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T17:33:53.836Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "AutoMapperProfile.cs",
               "DocumentMoniker": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Aplication\\Mapping\\AutoMapperProfile.cs",
               "RelativeDocumentMoniker": "Aplication\\Mapping\\AutoMapperProfile.cs",
@@ -144,58 +76,58 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Aplication",
+              "DocumentIndex": 5,
+              "Title": "Aplication.csproj",
               "DocumentMoniker": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Aplication\\Aplication.csproj",
               "RelativeDocumentMoniker": "Aplication\\Aplication.csproj",
               "ToolTip": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Aplication\\Aplication.csproj",
               "RelativeToolTip": "Aplication\\Aplication.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-21T17:33:37.589Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-21T17:33:37.589Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Proveedor.cs",
               "DocumentMoniker": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Domain\\Entities\\Proveedor.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Proveedor.cs",
               "ToolTip": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Domain\\Entities\\Proveedor.cs",
               "RelativeToolTip": "Domain\\Entities\\Proveedor.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAowB4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAowBcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-21T16:07:31.075Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Cliente.cs",
               "DocumentMoniker": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Domain\\Entities\\Cliente.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Cliente.cs",
               "ToolTip": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Domain\\Entities\\Cliente.cs",
               "RelativeToolTip": "Domain\\Entities\\Cliente.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBgAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBUAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-21T15:55:01.753Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
               "Title": "CafeDbContext.cs",
               "DocumentMoniker": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Infrastructure\\Data\\CafeDbContext.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Data\\CafeDbContext.cs",
               "ToolTip": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Infrastructure\\Data\\CafeDbContext.cs",
               "RelativeToolTip": "Infrastructure\\Data\\CafeDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAYwBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T14:56:51.753Z"
+              "WhenOpened": "2025-05-21T14:56:51.753Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 6,
               "Title": "Infrastructure.csproj",
               "DocumentMoniker": "C:\\Users\\lauta\\OneDrive\\Documentos\\Facultad\\IngSoft\\CafeElMejor\\Infrastructure\\Infrastructure.csproj",
               "RelativeDocumentMoniker": "Infrastructure\\Infrastructure.csproj",

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,15 @@ namespace Infrastructure.Data
         
         }
 
+        //Cliente
+        public DbSet<Cliente> Clientes { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
+        }
+
+        //Proveedor
+        public DbSet<Proveedor> Proveedores { get; set; }
     }
 }

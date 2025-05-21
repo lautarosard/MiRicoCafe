@@ -21,7 +21,7 @@ namespace Domain.Entities
         public Proveedor() { }
 
         //atributos
-        public int IdProveedor { get; set; }
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public string Email { get; set; }
         public int Telefono { get; set; }

@@ -19,7 +19,7 @@ namespace Domain.Entities
         public Cliente() { }
 
         //atributos
-        public int IdCliente { get; set; }
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public string Email { get; set; }
         public int Dni {  get; set; }
