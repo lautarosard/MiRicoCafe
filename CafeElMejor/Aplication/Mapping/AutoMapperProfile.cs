@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Aplication.DTO;
 using AutoMapper;
+using Domain.Entities;
 
 namespace Aplication.Mapping
 {
@@ -11,7 +13,11 @@ namespace Aplication.Mapping
     {
         public AutoMapperProfile() 
         {
-        
+            //Cliente
+            CreateMap<Cliente, ClienteDTO>();
+
+            //Proveedor
+            CreateMap<Proveedor, ProveedorDTO>();
         }
     }
 }

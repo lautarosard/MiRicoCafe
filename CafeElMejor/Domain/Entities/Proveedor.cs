@@ -8,6 +8,19 @@ namespace Domain.Entities
 {
     public class Proveedor
     {
+        //Constructores
+        public Proveedor(string nombre, string email, int telefono, string provincia, string localidad, int cuit) 
+        {
+            Nombre = nombre;
+            Email = email;
+            Telefono = telefono;
+            Provincia = provincia;
+            Localidad = localidad;
+            Cuit = cuit;
+        }
+        public Proveedor() { }
+
+        //atributos
         public int IdProveedor { get; set; }
         public string Nombre { get; set; }
         public string Email { get; set; }

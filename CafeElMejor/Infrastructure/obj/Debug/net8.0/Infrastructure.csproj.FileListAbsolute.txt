@@ -39,3 +39,4 @@ C:\Users\lauta\OneDrive\Documentos\Facultad\IngSoft\CafeElMejor\Infrastructure\b
 C:\Users\lauta\OneDrive\Documentos\Facultad\IngSoft\CafeElMejor\Infrastructure\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 C:\Users\lauta\OneDrive\Documentos\Facultad\IngSoft\CafeElMejor\Infrastructure\bin\Debug\net8.0\MySqlConnector.dll
 C:\Users\lauta\OneDrive\Documentos\Facultad\IngSoft\CafeElMejor\Infrastructure\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\lauta\OneDrive\Documentos\Facultad\IngSoft\CafeElMejor\Infrastructure\bin\Debug\net8.0\AutoMapper.dll

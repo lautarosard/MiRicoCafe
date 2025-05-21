@@ -583,7 +583,9 @@
       "System.Threading.Channels/6.0.0": {},
       "Aplication/1.0.0": {
         "dependencies": {
-          "Domain": "1.0.0"
+          "AutoMapper": "14.0.0",
+          "Domain": "1.0.0",
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.3"
         },
         "runtime": {
           "Aplication.dll": {
