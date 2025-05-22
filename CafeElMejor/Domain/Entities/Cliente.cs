@@ -8,20 +8,13 @@ namespace Domain.Entities
 {
     public class Cliente
     {
-        //Constructor
-        public Cliente(string nombre, string email, int dni) 
-        {
-            Nombre = nombre;
-            Email = email;
-            Dni = dni;
-            
-        }
-        public Cliente() { }
-
         //atributos
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Email { get; set; }
         public int Dni {  get; set; }
+
+        //Fk -Factura 1-x
+        public ICollection<Factura> Facturas { get; set; }
     }
 }
