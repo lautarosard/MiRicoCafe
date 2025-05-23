@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Aplication.Interfaces.IProveedor
 {
-    public interface iProveedorQuery
+    public interface IProveedorQuery
     {
         List<Proveedor> GetProveedoresQuery();
         Task<Proveedor> GetById(int id);

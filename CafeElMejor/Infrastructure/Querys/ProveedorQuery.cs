@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Querys
 {
-    public class ProveedorQuery : iProveedorQuery
+    public class ProveedorQuery : IProveedorQuery
     {
 
         private readonly CafeDbContext _context;

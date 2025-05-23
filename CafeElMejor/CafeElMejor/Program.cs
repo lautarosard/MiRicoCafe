@@ -4,6 +4,8 @@ using Infrastructure;
 using Infrastructure.Data;
 using Aplication.Interfaces.IProveedor;
 using Infrastructure.Command;
+using Aplication.Service;
+using Infrastructure.Querys;
 
 namespace CafeElMejor
 {
@@ -37,6 +39,12 @@ namespace CafeElMejor
             //INYECCIONES
             //builder Proveedor
             builder.Services.AddScoped<IProveedorCommand, ProveedorCommand>();
+            builder.Services.AddScoped<IProveedorQuery, ProveedorQuery>();
+            builder.Services.AddScoped<IProveedorService, ProveedorService>(); 
+
+
+            //Automapper
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
             // Configura el pipeline
