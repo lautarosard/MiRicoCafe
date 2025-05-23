@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Infrastructure;
 using Infrastructure.Data;
+using Aplication.Interfaces.IProveedor;
+using Infrastructure.Command;
 
 namespace CafeElMejor
 {
@@ -32,6 +34,11 @@ namespace CafeElMejor
            
             var app = builder.Build();
 
+            //INYECCIONES
+            //builder Proveedor
+            builder.Services.AddScoped<IProveedorCommand, ProveedorCommand>();
+
+
             // Configura el pipeline
             if (app.Environment.IsDevelopment())
             {
@@ -42,6 +49,8 @@ namespace CafeElMejor
                     c.RoutePrefix = "swagger"; // Esto fuerza a que Swagger sea la página inicial
                 });
             }
+
+
 
             // Configure the HTTP request pipeline.
 
