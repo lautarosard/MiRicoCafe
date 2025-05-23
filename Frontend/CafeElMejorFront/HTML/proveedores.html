@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proveedores - Gestion cafe el mejor </title>
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/proveedores.css">
+</head>
+
+<body>
+    <header class="sitio-header">
+    <div class="conetenedor-navegacion">
+        <a href="index.html" class="logo">
+            <img src="/img/logo-png.png" alt="[Logo]" class="logo-png" width="350" height="200">
+        </a>
+        <nav class="menu-principal">
+            <ul>
+                <li><a href="proveedores.html">Proveedores</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li class="tiene-submenu"> <a href="nueva_orden.html">Compras</a>
+                    <ul class="submenu"> <li><a href="nueva_orden.html">Nueva orden de compra</a></li>
+                        <li><a href="listado_orden.html">Listado orden de compra</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    </header>
+
+    <div class="contenedor-proveedores">
+        <div class="cabecera-seccion">
+        <div class="titulo-proveedores">
+            <h2>Lista de proveedores</h2>
+        </div>
+        <div>
+            <button class="boton-nuevo">Nuevo proveedor</button>
+        </div>
+        </div>
+        
+        <hr class="linea-divisoria" />
+
+        <div class="opciones-proveedores">
+        <input type="search" id="buscar" name="buscar" placeholder="Buscar productos..." list="opciones">
+        <select id="cantidad">
+            <option>Proveedor 1</option>
+            <option>Proveedor 2</option>
+            <option>Proveedor 3</option>
+            <option>Proveedor 4</option>
+        </select>
+        </div>
+
+        <table class="tabla-proveedores">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Cuit</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>Proveedor 1</td>
+                    <td>proveedor@gmail.com</td>
+                    <td>1234-5678</td>
+                    <td>21-234353564645-8</td>    
+                    <td class="acciones-botones">
+                        <button class="boton-editar">Editar</button>
+                        <button class="boton-eliminar">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

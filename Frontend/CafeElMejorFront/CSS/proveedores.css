@@ -1,0 +1,205 @@
+:root {
+    --color-fondo-principal: #fff4bb;
+    --color-secundario: #8d6c45;
+    --color-texto-sobre-secundario: #ffffff;
+    --color-texto-principal: #4d3a2a;
+    --color-borde-suave: #d1ba9a;
+    --color-fondo-input: #fffdf0;
+    --color-cabecera-tabla: #f8edd1; /* Para fondos de cabecera de tabla */
+    --color-fila-alterna-tabla: #fefaf0; /* Para filas pares en tablas */
+    --color-hover-tabla: #fdf2d0;
+    /* Colores para botones de acción */
+    --color-boton-nuevo: #70a05f;         /* Verde para "Nuevo" */
+    --color-boton-nuevo-hover: #5a834b;
+    --color-boton-editar: #3b82f6;        /* Azul para "Editar" */
+    --color-boton-editar-hover: #2563eb;
+    --color-boton-eliminar: #ef4444;      /* Rojo para "Eliminar" */
+    --color-boton-eliminar-hover: #dc2626;
+    --color-texto-boton-accion: #ffffff;
+}
+
+/* --- Estilos Generales para la Página de Lista de Productos --- */
+body { /* Asumiendo que estos estilos aplican a la página completa */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-principal);
+    line-height: 1.6;
+}
+/* Estilos para el contenedor principal de la sección de proveedores */
+.contenedor-proveedores {
+    width: 90%;
+    max-width: 1200px; /* Ajusta según necesites */
+    margin: 30px auto;
+    padding: 25px 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Estilos para el encabezado de la sección (el título H1) */
+.cabecera-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.titulo-proveedores h2 {
+    margin: 0;
+    font-size: 1.8em;
+    color: var(--color-secundario);
+    font-weight: 600;
+}
+/* Estilos para el área del botón "Nuevo Proveedor" */
+button.boton-nuevo {
+    background-color: var(--color-boton-nuevo);
+    color: var(--color-texto-boton-accion);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+button.boton-nuevo:hover {
+    background-color: var(--color-boton-nuevo-hover);
+}
+
+hr.linea-divisoria{
+    border: none;
+    height: 1px;
+    background-color: var(--color-borde-suave);
+    margin-top: 15px;
+    margin-bottom: 25px
+}
+
+.opciones-proveedores {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    color: var(--color-texto-principal);
+}
+
+.opciones-proveedores label{
+    font-weight: 500;
+}
+
+.opciones-proveedores select#cantidad {
+    padding: 8px 12px;
+    border: 1px solid var(--color-borde-suave);
+    border-radius: 5px;
+    background-color: var(--color-fondo-input);
+    font-size: 1em;
+    color: var(--color-texto-principal);
+    min-width: 120px; 
+    box-sizing: border-box;
+}
+.opciones-proveedores input[type="search"]#buscar {
+    padding: 8px 12px;
+    font-size: 1em;
+    color: var(--color-texto-principal);
+    background-color: #ffffff; /* Fondo blanco para el buscador */
+    border: 1px solid #cccccc; /* Borde gris claro para el buscador */
+    border-radius: 4px;
+    box-sizing: border-box;
+    flex-grow: 1; /* Para que ocupe el espacio disponible */
+    min-width: 200px;
+}
+.opciones-proveedores input[type="search"]#buscar::-webkit-search-decoration,
+.opciones-proveedores input[type="search"]#buscar::-webkit-search-cancel-button,
+.opciones-proveedores input[type="search"]#buscar::-webkit-search-results-button,
+.opciones-proveedre input[type="search"]#buscar::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+}
+
+
+.opciones-proveedores input[type="search"]#buscar::placeholder {
+    color: #757575; /* Placeholder gris */
+    opacity: 1;
+}
+
+.opciones-proveedores input[type="search"]#buscar:focus {
+    border-color: #3b82f6; /* Borde azul al enfocar */
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+}
+
+.tabla-proveedores {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+.tabla-proveedores th {
+    background-color: var(--color-cabecera-tabla);
+    color: var(--color-secundario);
+    font-weight: 600;
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 2px solid var(--color-borde-suave);
+}
+
+.tabla-proveedores td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--color-borde-suave);
+    vertical-align: middle;
+    text-align: center; /* Alineación izquierda por defecto para datos */
+}
+
+.tabla-proveedores tbody td img {
+    max-width: 60px;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+}
+
+.tabla-proveedores td:first-child { /* Asumiendo que la primera celda puede ser para imagen */
+    min-width: 70px;
+    text-align: center; /* Centrar imagen si está en la primera celda */
+}
+
+.tabla-proveedores tr:nth-child(even) {
+    background-color: var(--color-fila-alterna-tabla);
+}
+
+.tabla-proveedores tr:hover {
+    background-color: var(--color-hover-tabla);
+}
+
+/* --- Botones de Acción en la Tabla --- */
+.acciones-botones td {
+    display: flex;
+    gap: 8px;
+}
+
+.tabla-proveedores button.boton-editar,
+.tabla-proveedores button.boton-eliminar {
+    border: none;
+    padding: 7px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-weight: 500;
+    color: var(--color-texto-boton-accion);
+    transition: background-color 0.2s ease;
+}
+
+
+table button.boton-editar {
+    background-color: var(--color-boton-editar);
+}
+table button.boton-editar:hover {
+    background-color: var(--color-boton-editar-hover);
+}
+
+table button.boton-eliminar {
+    background-color: var(--color-boton-eliminar);
+}
+table button.boton-eliminar:hover {
+    background-color: var(--color-boton-eliminar-hover);
+}

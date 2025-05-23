@@ -1,0 +1,231 @@
+/* Variables root de productos.css */
+:root {
+    --color-fondo-principal: #fff4bb;
+    --color-secundario: #8d6c45;
+    --color-texto-sobre-secundario: #ffffff;
+    --color-texto-principal: #4d3a2a;
+    --color-borde-suave: #d1ba9a;
+    --color-fondo-input: #fffdf0;
+    --color-cabecera-tabla: #f8edd1;
+    --color-fila-alterna-tabla: #fefaf0;
+    --color-hover-tabla: #fdf2d0;
+    --color-boton-nuevo: #70a05f; /* Este se usará para el botón de búsqueda */
+    --color-boton-nuevo-hover: #5a834b;
+    --color-boton-editar: #3b82f6;
+    --color-boton-editar-hover: #2563eb;
+    --color-boton-eliminar: #ef4444;
+    --color-boton-eliminar-hover: #dc2626;
+    --color-texto-boton-accion: #ffffff;
+
+    /* Variable adicional para la barra de cabecera azul si es diferente de --color-secundario */
+    --color-barra-cabecera-fondo: #1a3c5e; /* Azul de ejemplo, ajusta según sea necesario */
+    --color-barra-cabecera-texto: #ffffff;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-principal);
+    line-height: 1.6;
+}
+
+/* Barra de cabecera para "Lista de Ordenes de Compra" */
+.barra-cabecera {
+    color: #8d6c45;
+    padding: auto; /* Coincide con el padding horizontal de .contenedor-principal */
+    margin: auto;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+    font-weight: 600;
+
+}
+
+/* Contenedor principal de contenido, estilizado como .contenedor de productos.css */
+.contenedor-principal {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0; /* El padding estará en las secciones internas si es necesario para coincidir con la imagen */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    overflow: hidden; /* Para contener el border-radius con elementos internos */
+}
+
+.seccion-filtros {
+    padding: 25px 30px;
+    border-bottom: 1px solid var(--color-borde-suave); /* Línea entre el filtro y la cabecera de la tabla */
+}
+
+.controles-filtros {
+    display: flex;
+    align-items: flex-end; /* Alinea los ítems al final para una altura de botón consistente */
+    gap: 20px; /* Espaciado entre grupos de filtro */
+    flex-wrap: wrap; /* Permite el ajuste en pantallas más pequeñas */
+    font-size: 0.9em; /* Coincide con .opciones-producto */
+    color: var(--color-texto-principal);
+}
+
+.grupo-filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Espacio entre la etiqueta y el input */
+    flex: 1 1 auto; /* Permite que los grupos crezcan y se encojan pero comiencen desde auto */
+    min-width: 180px; /* Ancho mínimo para los grupos de filtro */
+}
+
+.grupo-filtro label {
+    font-weight: 500; /* Coincide con la etiqueta de .opciones-producto */
+    color: var(--color-texto-principal);
+    font-size: 0.95em;
+}
+
+.grupo-filtro select,
+.grupo-filtro input[type="text"],
+.grupo-filtro input[type="date"] { /* Added input[type="date"] here */
+    padding: 8px 12px;
+    border: 1px solid var(--color-borde-suave);
+    border-radius: 5px;
+    background-color: var(--color-fondo-input);
+    font-size: 1em;
+    color: var(--color-texto-principal);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.grupo-filtro select:focus,
+.grupo-filtro input[type="text"]:focus {
+    border-color: var(--color-secundario);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(141, 108, 69, 0.25);
+}
+
+/* Alineación específica para el grupo del botón si es necesario */
+.grupo-filtro-boton {
+    flex-grow: 0; /* No deja que el grupo del botón crezca tanto */
+    min-width: auto; /* Restablece el min-width */
+}
+
+.boton-buscar {
+    background-color: var(--color-boton-nuevo); /* Usando estilos del botón "nuevo" */
+    color: var(--color-texto-boton-accion);
+    border: none;
+    padding: 10px 20px; /* Padding ajustado para mejor apariencia */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre el icono y el texto */
+    height: 38px; /* Coincide con la altura del input (dependiente del padding) */
+    white-space: nowrap;
+}
+
+.boton-buscar:hover {
+    background-color: var(--color-boton-nuevo-hover);
+}
+
+.boton-buscar svg {
+    width: 1em;
+    height: 1em;
+}
+
+/* Estilos de la Cabecera de la Tabla */
+.contenedor-tabla {
+    padding: 0; /* Sin padding para el contenedor en sí, la fila de cabecera lo tendrá */
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    /* Es importante que 'display: table;' sea el comportamiento por defecto.
+       Si alguna otra regla lo cambia, la tabla se romperá. */
+}
+
+thead th {
+    background-color: var(--color-cabecera-tabla);
+    color: var(--color-secundario);
+    font-weight: 600;
+    padding: 12px 15px;
+    margin: 0;
+    text-align: center;
+    border-bottom: 2px solid var(--color-borde-suave);
+}
+
+tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--color-borde-suave);
+    vertical-align: middle;
+    text-align: center; /* Alineación izquierda por defecto para datos */
+}
+
+tbody td img {
+    max-width: 60px;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+}
+
+tbody td:first-child { /* Asumiendo que la primera celda puede ser para imagen */
+    min-width: 70px;
+    text-align: center; /* Centrar imagen si está en la primera celda */
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--color-fila-alterna-tabla);
+}
+
+tbody tr:hover {
+    background-color: var(--color-hover-tabla);
+}
+
+
+
+/* Ajustes Responsivos Básicos (inspirados en productos.css) */
+@media (max-width: 768px) {
+    .barra-cabecera {
+        font-size: 1.2em;
+        padding: 10px 15px;
+    }
+
+    .contenedor-principal {
+        width: 95%;
+        margin: 15px auto;
+    }
+
+    .seccion-filtros {
+        padding: 15px;
+    }
+    
+    .controles-filtros {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .grupo-filtro {
+        min-width: 100%; /* Ancho completo para los grupos de filtro */
+    }
+
+    .boton-buscar {
+        width: 100%;
+        justify-content: center; /* Centra el contenido (icono y texto) */
+        padding: 12px;
+    }
+
+    .fila-cabecera-tabla {
+        font-size: 0.8em;
+    }
+    .fila-cabecera-tabla > div {
+        padding: 10px 8px;
+    }
+
+
+
+
+}

@@ -1,0 +1,273 @@
+/* Variables CSS */
+:root {
+    --color-fondo-principal:#fff4bb; /* Cornsilk - Beige claro */
+    --color-barra-lateral: #8d6c45;  /* Marrón medio para la barra lateral (ahora encabezado) */
+    --color-texto-barra-lateral: #fff4bb; /* Blanco para texto en barra lateral */
+    --color-titulo-principal: #704214; /* Marrón oscuro para el título grande */
+    --color-texto-sobre-secundario: #ffffff; /* Blanco para buen contraste sobre marrón */
+    --color-texto-principal: #4d3a2a; /* Un marrón más oscuro para texto general, legible sobre blanco/amarillo pálido */
+    --color-borde-suave: #d1ba9a; /* Un derivado más claro del marrón para bordes sutiles */
+    --color-fondo-input: #fffdf0; /* Un amarillo muy, muy pálido para inputs, casi blanco */
+    --color-cabecera-tabla: #f8edd1; /* Un tono beige/amarillo claro para la cabecera de la tabla */
+    --color-fila-alterna-tabla: #fefaf0; /* Tono muy pálido para filas alternas */
+    --color-hover-tabla: #fdf2d0;     /* Hover para filas de tabla */
+    --color-accion-positiva: #70a05f; /* Un verde que armoniza con la paleta marrón/amarillo */
+    --color-accion-positiva-hover: #5a834b; /* Hover para el botón de acción */
+    /* Colores para botones de acción */
+    --color-boton-nuevo: #70a05f;         /* Verde para "Nuevo" */
+    --color-boton-nuevo-hover: #5a834b;
+    --color-boton-editar: #3b82f6;        /* Azul para "Editar" */
+    --color-boton-editar-hover: #2563eb;
+    --color-boton-eliminar: #ef4444;      /* Rojo para "Eliminar" */
+    --color-boton-eliminar-hover: #dc2626;
+    --color-texto-boton-accion: #ffffff;
+}
+
+/* Reset básico y estilos generales del body */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--color-fondo-principal);
+    font-size: 17px;
+    color: #333; /* Color de texto por defecto */
+    line-height: 1.65; /* Ligeramente más interlineado para legibilidad */
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura */
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para que el encabezado sea horizontal */
+    min-height: 100vh;
+}
+
+/* Encabezado del sitio (sitio-header) - Ahora horizontal */
+.sitio-header {
+    background-color: var(--color-barra-lateral); /* Marrón oscuro */
+    padding: 15px 30px; /* Relleno del encabezado */
+    color: var(--color-texto-barra-lateral); /* Texto blanco */
+    display: flex;
+    flex-direction: row;
+    justify-content: left; /* Centra el contenido horizontalmente */
+    align-items: left; /* Centra el contenido verticalmente */
+    width: 100%; /* Ancho completo */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra sutil para el encabezado */
+}
+
+.conetenedor-navegacion { /* Renombrado de 'conetenedor-navegacion' a 'conetenedor-header' para mayor claridad */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Ancho máximo para el contenido dentro del encabezado */
+}
+
+.sitio-header .logo {
+    display: block;
+    margin: 0; /* Elimina márgenes antiguos */
+}
+.logo-png{
+    margin: 10px;
+    margin-right: 100px;
+}
+
+.sitio-header .logo-png {
+    max-width: 150px; /* Ajusta el tamaño del logo para la barra horizontal */
+    height: auto;
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+}
+
+.menu-principal {
+    width: auto; /* Ancho automático para el menú */
+}
+
+.menu-principal ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Hace que los elementos del menú sean horizontales */
+    flex-direction: row;
+    gap: 30px; /* Espacio entre los elementos del menú */
+}
+
+.menu-principal a {
+    color: var(--color-texto-barra-lateral);
+    text-decoration: none;
+    font-size: 1.1em; /* Tamaño de fuente ajustado para el menú horizontal */
+    font-weight: bold;
+    padding: 8px 0; /* Ajusta el relleno */
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.menu-principal a:hover {
+    color: var(--color-fondo-principal); /* Color más claro al pasar el cursor */
+}
+
+.iconos-usuario {
+    display: flex;
+    gap: 25px; /* Espacio entre los iconos */
+}
+
+.iconos-usuario a {
+    color: var(--color-texto-barra-lateral);
+    font-size: 1.5em; /* Tamaño del icono */
+    transition: color 0.3s ease;
+}
+
+.iconos-usuario a:hover {
+    color: var(--color-fondo-principal); /* Color más claro al pasar el cursor */
+}
+
+/* Contenido principal (main) */
+main {
+    flex-grow: 1; /* Permite que el contenido principal ocupe el espacio restante */
+    padding: 40px;
+    background-color: var(--color-fondo-principal); /* Beige claro/amarillo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Estilos del submenú (no visible en la imagen, pero mantenidos por si se necesitan) */
+.menu-principal > ul > li {
+    position: relative;
+    font-size: 1.5em;
+}
+
+.submenu {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    background-color: var(--color-fondo-principal);
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    left: 100%; /* Posicionado a la derecha del elemento de menú padre (para .menu-principal) */
+    top: 0; /* Para .menu-principal */
+    min-width: 200px;
+    z-index: 100;
+}
+
+.menu-principal li.tiene-submenu:hover > .submenu {
+    display: block;
+}
+
+.submenu li {
+    margin-bottom: 8px;
+}
+
+.submenu li:last-child {
+    margin-bottom: 0;
+}
+
+.submenu a {
+    color: var(--color-titulo-principal);
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 1 em; /* Fuente más pequeña para el submenú */
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.submenu a:hover {
+    background-color: rgba(123, 94, 87, 0.1);
+    color: var(--color-titulo-principal);
+}
+.banner {
+    height: 600px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-content: center;
+}
+
+.acciones_user {
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75em 0;
+    margin-left: auto;
+    color: var(--color-texto-boton-accion); 
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s;
+    display: block; /* Para asegurar que el 'a' tome el tamaño del icono */
+}
+
+.icon:hover {
+    transform: scale(1.5);
+}
+
+/* === INICIO: Estilos para el submenú del ícono de usuario === */
+.dropdown-usuario {
+    position: relative; /* Contexto para el submenú */
+    display: inline-block; /* Para que se comporte bien en el flex container */
+}
+
+.dropdown-usuario .user-icon-trigger { /* El enlace que contiene el ícono */
+    display: inline-block; /* Asegura que el 'a' envuelva bien al ícono */
+    text-decoration: none;
+}
+
+/* Estilos específicos para el submenú del usuario */
+.dropdown-usuario .submenu {
+    /* Sobrescribir/ajustar propiedades del .submenu genérico */
+    left: auto; /* Anula el left: 100% del .submenu genérico */
+    right: 0; /* Alinea el submenú a la derecha de su contenedor (.dropdown-usuario) */
+    top: 100%; /* Posiciona el submenú justo debajo del contenedor (.dropdown-usuario) */
+    margin-top: 8px; /* Espacio entre el ícono y el submenú */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    border: 1px solid var(--color-borde-suave); /* Borde sutil para definirlo mejor */
+
+    /* Propiedades que puede heredar o que son iguales al .submenu genérico: */
+    /* display: none; ya está en .submenu */
+    /* position: absolute; ya está en .submenu */
+    /* background-color: var(--color-fondo-principal); ya está en .submenu */
+    /* border-radius: 8px; ya está en .submenu */
+    /* box-shadow: 0 4px 8px rgba(0,0,0,0.15); ya está en .submenu */
+    /* min-width: 200px; ya está en .submenu */
+    /* list-style: none; ya está en .submenu */
+    /* padding: 10px; ya está en .submenu */
+}
+
+/* Mostrar el submenú del usuario al pasar el cursor o al hacer foco */
+.dropdown-usuario:hover .submenu,
+.dropdown-usuario .user-icon-trigger:focus + .submenu, /* Para cuando el link del icono tiene foco */
+.dropdown-usuario:focus-within .submenu { /* Para mantener visible si el foco está dentro del submenú */
+    display: block;
+}
+
+/* Ajustes opcionales para los items del submenú de usuario si es necesario */
+.dropdown-usuario .submenu a {
+    font-size: 1.1em; /* Un poco más pequeño para el submenú de usuario */
+    font-weight: bold; /* Menos énfasis que el .submenu a genérico */
+    /* text-transform: none; /* Opcional: quitar mayúsculas si se prefiere */
+}
+
+.dropdown-usuario .submenu a:hover {
+    background-color: var(--color-hover-tabla); /* Un color de hover de la paleta */
+    color: var(--color-texto-principal);
+}
+/* === FIN: Estilos para el submenú del ícono de usuario === */
+
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Gestion cafe el mejor</title>
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/productos.css">
+
+</head>
+
+<body>
+    <header class="sitio-header">
+    <div class="conetenedor-navegacion">
+        <a href="index.html" class="logo">
+            <img src="/img/logo-png.png" alt="[Logo]" class="logo-png" width="350" height="200">
+        </a>
+        <nav class="menu-principal">
+            <ul>
+                <li><a href="proveedores.html">Proveedores</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li class="tiene-submenu"> <a href="nueva_orden.html">Compras</a>
+                    <ul class="submenu"> <li><a href="nueva_orden.html">Nueva orden de compra</a></li>
+                        <li><a href="listado_orden.html">Listado orden de compra</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    </header>
+
+    <div class="contenedor">
+        <div class="cabecera-seccion">
+        <div class="titulo">
+            <h2>Lista de productos</h2>
+        </div>
+        <div>
+            <button class="nuevo">Nuevo Producto</button>
+        </div>
+        </div>
+
+    <hr class="linea-divisoria" />
+    
+    <div class="opciones-producto">
+    <input type="search" id="buscar" name="buscar" placeholder="Buscar productos..." list="opciones">
+    
+    <select id="opciones">
+        <option value="10">Leche Entera</option>
+        <option value="25">Leche Descremada</option>
+        <option value="50">Cafe en Grano</option>
+        <option value="100">Cafe en Saquito</option>
+    </select>
+    </div>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Código</th>
+                    <th>Marca</th>
+                    <th>Descripción</th>
+                    <th>Proveedor</th>
+                    <th>Stock</th>
+                    <th>Fecha de Vencimiento</th>
+                    <th>Precio de Compra</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>000006</td>
+                    <td>Cafe Royal</td>
+                    <td>Café en grano 1Kg</td>
+                    <td>Cafe Royal</td>
+                    <td>20</td>
+                    <td>26/10/2024</td>
+                    <td>3000.00</td>
+                    <td>
+                        <button class="boton-editar">Editar</button>
+                        <button class="boton-eliminar">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
