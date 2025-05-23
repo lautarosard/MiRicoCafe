@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Aplication.Models.Request;
 using Aplication.Models.Response;
 
-namespace Aplication.Interfaces.IProveedor
+namespace Aplication.Interfaces.IProducto
 {
-    public interface IProveedorService
+    public interface IProductoService
     {
+        /*
         //Listar
         Task<List<ProveedorResponse>> GetAll();
 
@@ -22,5 +23,6 @@ namespace Aplication.Interfaces.IProveedor
         //Update proveedor (a verificar)
         Task<ProveedorResponse> UpdateProveedor(int id);
 
+        */
     }
 }

@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Aplication.Models.Request;
-using Aplication.Models.Response;
 
-namespace Aplication.Interfaces.IProveedor
+namespace Aplication.Interfaces.IOC
 {
-    public interface IProveedorService
-    {
+    public interface IOCService
+    {/*
         //Listar
         Task<List<ProveedorResponse>> GetAll();
 
@@ -22,5 +20,6 @@ namespace Aplication.Interfaces.IProveedor
         //Update proveedor (a verificar)
         Task<ProveedorResponse> UpdateProveedor(int id);
 
+        */
     }
 }

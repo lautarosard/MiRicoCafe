@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Factura
+    public class CobranzaFactura
     {
         public int Id { get; set; }
         public DateTime FechaEmision { get; set; }

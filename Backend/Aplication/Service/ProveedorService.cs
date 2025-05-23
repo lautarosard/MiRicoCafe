@@ -27,7 +27,7 @@ namespace Aplication.Service
 
         public async Task<ProveedorResponse> CreateProveedor(ProveedorRequest request)
         {
-
+            // recordar hacer una clase para las excepciones 
             /*
             if (string.IsNullOrEmpty(request.Nombre))
             {
