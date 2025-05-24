@@ -11,6 +11,6 @@ namespace Aplication.Interfaces.INC
     {
         Task InsertNotaDeCredito(NotaDeCredito notaDeCredito);
         Task RemoveNotaDeCredito(NotaDeCredito notaDeCredito);
-        //Task UpdateNotaDeCredito(NotaDeCredito notaDeCredito);
+        Task UpdateNotaDeCredito(NotaDeCredito notaDeCredito);
     }
 }

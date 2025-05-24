@@ -1,4 +1,5 @@
-﻿using Aplication.Interfaces.IProveedor;
+﻿using Aplication.Exceptions;
+using Aplication.Interfaces.IProveedor;
 using Aplication.Models.Request;
 using Aplication.Models.Response;
 using AutoMapper;
@@ -28,7 +29,7 @@ namespace Aplication.Service
         public async Task<ProveedorResponse> CreateProveedor(ProveedorRequest request)
         {
             // recordar hacer una clase para las excepciones 
-            /*
+           
             if (string.IsNullOrEmpty(request.Nombre))
             {
 
@@ -60,7 +61,17 @@ namespace Aplication.Service
 
                 throw new RequieredParameterException("Error! requiered Localidad");
             }
-            */
+            if (string.IsNullOrEmpty(request.Direccion))
+            {
+
+                throw new RequieredParameterException("Error! requiered Direccion");
+            }
+            if (request.Cuit == 0)
+            {
+
+                throw new RequieredParameterException("Error! requiered Cuit");
+            }
+
 
             var proveedor = _mapper.Map<Proveedor>(request);
             /*    new Domain.Entities.Proveedor()
@@ -111,18 +122,27 @@ namespace Aplication.Service
 
             ).ToList();
             */
-
-            // Eliminar 
-            Task<ProveedorResponse> EliminarProveedor(ProveedorRequest request)
-            {
-
-            }
-            // Consultar
-            Task<ProveedorResponse> ConsultarProveedor(ProveedorRequest request)
-            {
-
-            }
-
         }
+        // Eliminar 
+            public async Task<ProveedorResponse> EliminarProveedor(ProveedorRequest request)
+            {
+                throw new NotImplementedException();
+            }
+        // Consultar
+            public async Task<ProveedorResponse> ConsultarProveedor(ProveedorRequest request)
+            {
+                throw new NotImplementedException();
+            }
+        
+
+            public async Task<ProveedorResponse> UpdateProveedor(int id)
+            {
+                throw new NotImplementedException();
+             }
+
+
     }
+    
 }
+
+

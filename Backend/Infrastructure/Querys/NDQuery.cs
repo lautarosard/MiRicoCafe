@@ -18,14 +18,14 @@ namespace Infrastructure.Querys
             _context = context;
         }
 
-        public List<OrdenDeCompra> GetOrdenDeCompraQuery()
+        public List<NotaDeDebito> GetNotaDeDebitoQuery()
         {
-            return _context.ordenDeCompras.ToList();
+            return _context.notaDeDebitos.ToList();
         }
 
-        public async Task<OrdenDeCompra> GetById(int id)
+        public async Task<NotaDeDebito> GetById(int id)
         {
-            return await _context.ordenDeCompras.FindAsync(id);
+            return await _context.notaDeDebitos.FindAsync(id);
         }
     }
 }

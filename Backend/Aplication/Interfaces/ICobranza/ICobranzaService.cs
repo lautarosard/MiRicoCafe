@@ -3,24 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Aplication.Models.Request;
+using Aplication.Models.Response;
 
 namespace Aplication.Interfaces.ICobranza
 {
     public interface ICobranzaService
     {
-        /*
+        
       //Listar
-      Task<List<ProveedorResponse>> GetAll();
+      Task<List<CobranzaResponse>> GetAll();
 
       //Crear
-      Task<ProveedorResponse> CreateProveedor(ProveedorRequest request);
+      Task<CobranzaResponse> CreateCobranza(CobranzaRequest request);
       // Eliminar 
-      Task<ProveedorResponse> EliminarProveedor(ProveedorRequest request);
+      Task<CobranzaResponse> EliminarCobranza(CobranzaRequest request);
       // Consultar
-      Task<ProveedorResponse> ConsultarProveedor(ProveedorRequest request);
-      //Update proveedor (a verificar)
-      Task<ProveedorResponse> UpdateProveedor(int id);
+      Task<CobranzaResponse> ConsultarCobranza(CobranzaRequest request);
+      //Update Cobranza (a verificar)
+      Task<CobranzaResponse> UpdateCobranza(int id);
 
-      */
+    
     }
 }

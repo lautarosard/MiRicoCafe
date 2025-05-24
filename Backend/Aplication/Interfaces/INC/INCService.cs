@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Aplication.Models.Request;
+using Aplication.Models.Response;
 
 namespace Aplication.Interfaces.INC
 {
     public interface INCService
     {
-        /*
+      
       //Listar
-      Task<List<ProveedorResponse>> GetAll();
+      Task<List<NCResponse>> GetAll();
 
       //Crear
-      Task<ProveedorResponse> CreateProveedor(ProveedorRequest request);
-      // Eliminar 
-      Task<ProveedorResponse> EliminarProveedor(ProveedorRequest request);
+      Task<NCResponse> CreateNotaDeCredito(NCRequest request);
+      
       // Consultar
-      Task<ProveedorResponse> ConsultarProveedor(ProveedorRequest request);
-      //Update proveedor (a verificar)
-      Task<ProveedorResponse> UpdateProveedor(int id);
-
-      */
+      Task<NCResponse> ConsultarNotaDeCredito(NCRequest request);
+      
+      //Update NC (a verificar)
+      Task<NCResponse> UpdateNotaDeCredito(int id);
+      
     }
 }

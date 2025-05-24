@@ -9,7 +9,7 @@ namespace Aplication.Interfaces.IND
 {
     public interface INDQuery
     {
-        List<NotaDeDebito> GetOrdenDeCompraQuery();
+        List<NotaDeDebito> GetNotaDeDebitoQuery();
         Task<NotaDeDebito> GetById(int id);
     }
 }

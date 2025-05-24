@@ -9,7 +9,7 @@ namespace Aplication.Interfaces.ICobranza
 {
     public interface ICobranzaQuery
     {
-        List<Cobranza> GetOrdenDeCompraQuery();
+        List<Cobranza> GetCobranzaQuery();
         Task<Cobranza> GetById(int id);
     }
 }

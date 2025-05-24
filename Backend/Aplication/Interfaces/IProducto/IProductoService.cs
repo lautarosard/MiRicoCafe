@@ -10,19 +10,18 @@ namespace Aplication.Interfaces.IProducto
 {
     public interface IProductoService
     {
-        /*
+        
         //Listar
-        Task<List<ProveedorResponse>> GetAll();
+        Task<List<ProductoResponse>> GetAll();
 
         //Crear
-        Task<ProveedorResponse> CreateProveedor(ProveedorRequest request);
+        Task<ProductoResponse> CreateProducto(ProductoRequest request);
         // Eliminar 
-        Task<ProveedorResponse> EliminarProveedor(ProveedorRequest request);
+        Task<ProductoResponse> EliminarProducto(ProductoRequest request);
         // Consultar
-        Task<ProveedorResponse> ConsultarProveedor(ProveedorRequest request);
+        Task<ProductoResponse> ConsultarProducto(ProductoRequest request);
         //Update proveedor (a verificar)
-        Task<ProveedorResponse> UpdateProveedor(int id);
+        Task<ProductoResponse> UpdateProducto(int id);
 
-        */
     }
 }

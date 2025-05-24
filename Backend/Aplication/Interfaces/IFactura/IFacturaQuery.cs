@@ -9,7 +9,7 @@ namespace Aplication.Interfaces.IFactura
 {
     public interface IFacturaQuery
     {
-        List<Factura> GetOrdenDeCompraQuery();
+        List<Factura> GetFacturaQuery();
         Task<Factura> GetById(int id);
     }
 }

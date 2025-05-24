@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Aplication.Models.Request;
+using Aplication.Models.Response;
 
 namespace Aplication.Interfaces.IOC
 {
     public interface IOCService
-    {/*
+    {
         //Listar
-        Task<List<ProveedorResponse>> GetAll();
+        Task<List<OCResponse>> GetAll();
 
         //Crear
-        Task<ProveedorResponse> CreateProveedor(ProveedorRequest request);
+        Task<OCResponse> CreateOrdenDeCompra(OCRequest request);
         // Eliminar 
-        Task<ProveedorResponse> EliminarProveedor(ProveedorRequest request);
+        Task<OCResponse> EliminarOrdenDeCompra(OCRequest request);
         // Consultar
-        Task<ProveedorResponse> ConsultarProveedor(ProveedorRequest request);
-        //Update proveedor (a verificar)
-        Task<ProveedorResponse> UpdateProveedor(int id);
-
-        */
+        Task<OCResponse> ConsultarOrdenDeCompra(OCRequest request);
+        //Update OC (a verificar)
+        Task<OCResponse> UpdateOrdenDeCompra(int id);
+     
     }
 }

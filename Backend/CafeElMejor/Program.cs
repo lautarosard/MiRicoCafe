@@ -6,6 +6,13 @@ using Aplication.Interfaces.IProveedor;
 using Infrastructure.Command;
 using Aplication.Service;
 using Infrastructure.Querys;
+using Aplication.Interfaces.IProducto;
+using Aplication.Interfaces.IOC;
+using Aplication.Interfaces.IND;
+using Aplication.Interfaces.INC;
+using Aplication.Interfaces.IFactura;
+using Aplication.Interfaces.ICobranza;
+using Aplication.Interfaces.ICliente;
 
 namespace CafeElMejor
 {
@@ -41,7 +48,41 @@ namespace CafeElMejor
             builder.Services.AddScoped<IProveedorCommand, ProveedorCommand>();
             builder.Services.AddScoped<IProveedorQuery, ProveedorQuery>();
             builder.Services.AddScoped<IProveedorService, ProveedorService>(); 
+            
+            //builder Cliente
+            builder.Services.AddScoped<IClienteCommand, ClienteCommand>();
+            builder.Services.AddScoped<IClienteQuery, ClienteQuery>();
+            builder.Services.AddScoped<IClienteService, ClienteService>(); 
 
+            //builder Cobranza
+            builder.Services.AddScoped<ICobranzaCommand, CobranzaCommand>();
+            builder.Services.AddScoped<ICobranzaQuery, CobranzaQuery>();
+            builder.Services.AddScoped<ICobranzaService, CobranzaService>(); 
+            
+            //builder Factura
+            builder.Services.AddScoped<IFacturaCommand, FacturaCommand>();
+            builder.Services.AddScoped<IFacturaQuery, FacturaQuery>();
+            builder.Services.AddScoped<IFacturaService, FacturaService>(); 
+
+            //builder NC
+            builder.Services.AddScoped<INCCommand, NCCommand>();
+            builder.Services.AddScoped<INCQuery, NCQuery>();
+            builder.Services.AddScoped<INCService, NCService>(); 
+
+            //builder ND
+            builder.Services.AddScoped<INDCommand, NDCommand>();
+            builder.Services.AddScoped<INDQuery, NDQuery>();
+            builder.Services.AddScoped<INDService, NDService>(); 
+
+            //builder OC
+            builder.Services.AddScoped<IOCCommand, OCCommand>();
+            builder.Services.AddScoped<IOCQuery, OCQuery>();
+            builder.Services.AddScoped<IOCService, OCService>(); 
+
+            //builder Producto
+            builder.Services.AddScoped<IProductoCommand, ProductoCommand>();
+            builder.Services.AddScoped<IProductoQuery, ProductoQuery>();
+            builder.Services.AddScoped<IProductoService, ProductoService>(); 
 
             //Automapper
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
