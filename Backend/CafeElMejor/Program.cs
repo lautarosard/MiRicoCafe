@@ -37,57 +37,58 @@ namespace CafeElMejor
             });
 
             // 2. Configuración de base de datos
-           builder.Services.AddDbContext<CafeDbContext>(options =>
+            builder.Services.AddDbContext<CafeDbContext>(options =>
             options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
             ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
-           
-            var app = builder.Build();
-
+            
             //INYECCIONES
             //builder Proveedor
             builder.Services.AddScoped<IProveedorCommand, ProveedorCommand>();
             builder.Services.AddScoped<IProveedorQuery, ProveedorQuery>();
-            builder.Services.AddScoped<IProveedorService, ProveedorService>(); 
-            
+            builder.Services.AddScoped<IProveedorService, ProveedorService>();
+
             //builder Cliente
             builder.Services.AddScoped<IClienteCommand, ClienteCommand>();
             builder.Services.AddScoped<IClienteQuery, ClienteQuery>();
-            builder.Services.AddScoped<IClienteService, ClienteService>(); 
+            builder.Services.AddScoped<IClienteService, ClienteService>();
 
             //builder Cobranza
             builder.Services.AddScoped<ICobranzaCommand, CobranzaCommand>();
             builder.Services.AddScoped<ICobranzaQuery, CobranzaQuery>();
-            builder.Services.AddScoped<ICobranzaService, CobranzaService>(); 
-            
+            builder.Services.AddScoped<ICobranzaService, CobranzaService>();
+
             //builder Factura
             builder.Services.AddScoped<IFacturaCommand, FacturaCommand>();
             builder.Services.AddScoped<IFacturaQuery, FacturaQuery>();
-            builder.Services.AddScoped<IFacturaService, FacturaService>(); 
+            builder.Services.AddScoped<IFacturaService, FacturaService>();
 
             //builder NC
             builder.Services.AddScoped<INCCommand, NCCommand>();
             builder.Services.AddScoped<INCQuery, NCQuery>();
-            builder.Services.AddScoped<INCService, NCService>(); 
+            builder.Services.AddScoped<INCService, NCService>();
 
             //builder ND
             builder.Services.AddScoped<INDCommand, NDCommand>();
             builder.Services.AddScoped<INDQuery, NDQuery>();
-            builder.Services.AddScoped<INDService, NDService>(); 
+            builder.Services.AddScoped<INDService, NDService>();
 
             //builder OC
             builder.Services.AddScoped<IOCCommand, OCCommand>();
             builder.Services.AddScoped<IOCQuery, OCQuery>();
-            builder.Services.AddScoped<IOCService, OCService>(); 
+            builder.Services.AddScoped<IOCService, OCService>();
 
             //builder Producto
             builder.Services.AddScoped<IProductoCommand, ProductoCommand>();
             builder.Services.AddScoped<IProductoQuery, ProductoQuery>();
-            builder.Services.AddScoped<IProductoService, ProductoService>(); 
+            builder.Services.AddScoped<IProductoService, ProductoService>();
 
             //Automapper
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            //
+            var app = builder.Build();
 
+           
             // Configura el pipeline
             if (app.Environment.IsDevelopment())
             {

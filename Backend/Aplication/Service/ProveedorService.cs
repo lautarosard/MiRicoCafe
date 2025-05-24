@@ -73,30 +73,34 @@ namespace Aplication.Service
             }
 
 
-            var proveedor = _mapper.Map<Proveedor>(request);
-            /*    new Domain.Entities.Proveedor()
+            var proveedor = new Domain.Entities.Proveedor()
             {
 
-                Name = request.name,
-                Email = request.email,
-                Phone = request.phone,
-                Company = request.company,
-                Address = request.address,
-                CreateDate = DateTime.Now,
-            };*/
+                Nombre = request.Nombre,
+                Email = request.Email,
+                Telefono = request.Telefono,
+                Provincia = request.Provincia,
+                Localidad = request.Localidad,
+                Direccion = request.Direccion,
+                CUIT = request.Cuit
+
+            };
+            //_mapper.Map<Proveedor>(request);
+
             await _command.InsertProveedores(proveedor);
-            return _mapper.Map<ProveedorResponse>(request);
-            /*{
+            return new ProveedorResponse
+            {
+                IdProveedor = proveedor.Id,
+                Nombre = proveedor.Nombre,
+                Email = proveedor.Email,
+                Telefono = proveedor.Telefono,
+                Provincia = proveedor.Provincia,
+                Localidad = proveedor.Localidad,
+                Direccion = proveedor.Direccion,
+                Cuit = proveedor.CUIT
 
-                id = clients.ClientsID,
-                Name = clients.Name,
-                Email = clients.Email,
-                Company = clients.Company,
-                Phone = clients.Phone,
-                Address = clients.Address,
 
-
-            };*/
+            };
 
 
         }
