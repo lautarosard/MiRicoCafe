@@ -13,6 +13,7 @@ using Aplication.Interfaces.INC;
 using Aplication.Interfaces.IFactura;
 using Aplication.Interfaces.ICobranza;
 using Aplication.Interfaces.ICliente;
+using Aplication.Interfaces.IQR;
 
 namespace CafeElMejor
 {
@@ -81,6 +82,10 @@ namespace CafeElMejor
             builder.Services.AddScoped<IProductoCommand, ProductoCommand>();
             builder.Services.AddScoped<IProductoQuery, ProductoQuery>();
             builder.Services.AddScoped<IProductoService, ProductoService>();
+
+            //builder QR
+            builder.Services.AddScoped<IGenerarQrService, QRService>();
+
 
             //Automapper
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
