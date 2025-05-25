@@ -40,7 +40,7 @@ namespace Aplication.Service
             throw new NotImplementedException();
         }
 
-        public Task<NDResponse> UpdateNotaDeDebito(int id)
+        public Task<NDResponse> UpdateNotaDeDebito(int id, NDRequest request)
         {
             throw new NotImplementedException();
         }

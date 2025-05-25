@@ -40,7 +40,7 @@ namespace Aplication.Service
             throw new NotImplementedException();
         }
 
-        public Task<NCResponse> UpdateNotaDeCredito(int id)
+        public Task<NCResponse> UpdateNotaDeCredito(int id, NCRequest request)
         {
             throw new NotImplementedException();
         }

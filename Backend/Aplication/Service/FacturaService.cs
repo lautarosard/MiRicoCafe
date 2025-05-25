@@ -27,7 +27,7 @@ namespace Aplication.Service
             _mapper = mapper;
         }
 
-        public async Task<FacturaResponse> ConsultarFactura(FacturaRequest request)
+        public async Task<FacturaResponse> ConsultarFactura(int id)
         {
             throw new NotImplementedException();
         }
