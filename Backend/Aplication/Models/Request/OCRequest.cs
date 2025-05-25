@@ -14,5 +14,6 @@ namespace Aplication.Models.Request
         public float PUnitario { get; set; }
         public float Importe { get; set; }
         public float Total { get; set; }
+        public int IdProveedor { get; set; }
     }
 }

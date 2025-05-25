@@ -1,4 +1,5 @@
-﻿using Aplication.Interfaces.IProducto;
+﻿using Aplication.Exceptions;
+using Aplication.Interfaces.IProducto;
 using Aplication.Models.Request;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

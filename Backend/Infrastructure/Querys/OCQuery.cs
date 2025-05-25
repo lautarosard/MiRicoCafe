@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Aplication.Interfaces.IOC;
 using Domain.Entities;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Querys
 {
@@ -25,7 +26,13 @@ namespace Infrastructure.Querys
 
         public async Task<OrdenDeCompra> GetById(int id)
         {
-            return await _context.ordenDeCompras.FindAsync(id);
+            var ordenDeCompra = await _context.Set<OrdenDeCompra>()
+               .Include(p => p.Proveedor)
+               .Include(p => p.Productos)
+
+               .FirstOrDefaultAsync(p => p.Id == id);
+
+            return ordenDeCompra;
         }
     }
 }

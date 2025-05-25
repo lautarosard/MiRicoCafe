@@ -18,11 +18,9 @@ namespace Aplication.Interfaces.IND
       Task<NDResponse> CreateNotaDeDebito(NDRequest request);
       
       // Consultar
-      Task<NDResponse> ConsultarNotaDeDebito(NDRequest request);
+      Task<NDResponse> ConsultarNotaDeDebito(int id);
       
-      //Update ND (a verificar)
-      Task<NDResponse> UpdateNotaDeDebito(int id, NDRequest request);
-
+ 
      
     }
 }

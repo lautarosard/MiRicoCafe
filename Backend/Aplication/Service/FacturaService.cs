@@ -10,6 +10,7 @@ using Aplication.Interfaces.INC;
 using Aplication.Models.Request;
 using Aplication.Models.Response;
 using AutoMapper;
+using Domain.Entities;
 
 namespace Aplication.Service
 {
@@ -29,7 +30,31 @@ namespace Aplication.Service
 
         public async Task<FacturaResponse> ConsultarFactura(int id)
         {
-            throw new NotImplementedException();
+            var factura = await _query.GetById(id);
+            if (factura == null)
+            {
+
+                throw new RequieredParameterException("Error!proveedor does not exist ");
+
+            }
+
+
+            return new FacturaResponse
+            {
+                FechaEmision = factura.FechaEmision,
+                DireccionCliente = factura.DireccionCliente,
+                TelefonoEmpresa = factura.TelefonoEmpresa,
+                CUIT = factura.CUIT,
+                CUILCliente = factura.CUILCliente,
+                NombreCliente = factura.NombreCliente,
+                LocalidadCliente = factura.LocalidadCliente,
+                IVA = factura.IVA,
+                Importe = factura.Importe,
+                Total = factura.Total,
+                FechaVencimiento = factura.FechaVencimiento,
+
+
+            };
         }
 
         public async Task<FacturaResponse> CreateFactura(FacturaRequest request)
@@ -105,36 +130,45 @@ namespace Aplication.Service
                 Importe = factura.Importe,
                 Total = factura.Total,
                 FechaVencimiento = factura.FechaVencimiento,
+                DireccionEmpresa = factura.DireccionEmpresa,
+                
 
 
             };
 
-            throw new NotImplementedException();
+          
         }
 
-        public Task<FacturaResponse> EliminarFactura(FacturaRequest request)
+
+       
+        public async Task<List<FacturaResponse>> GetAll()
         {
-            throw new NotImplementedException();
+            var factura =_query.GetFacturaQuery();
+
+            //return _mapper.Map<List<ProveedorResponse>>(proveedores);
+
+            return factura.Select(factura => new FacturaResponse
+            {
+
+                FechaEmision = factura.FechaEmision,
+                DireccionCliente = factura.DireccionCliente,
+                TelefonoEmpresa = factura.TelefonoEmpresa,
+                CUIT = factura.CUIT,
+                CUILCliente = factura.CUILCliente,
+                NombreCliente = factura.NombreCliente,
+                LocalidadCliente = factura.LocalidadCliente,
+                IVA = factura.IVA,
+                Importe = factura.Importe,
+                Total = factura.Total,
+                FechaVencimiento = factura.FechaVencimiento,
+                DireccionEmpresa = factura.DireccionEmpresa,
+
+            }
+
+
+            ).ToList();
         }
 
-        public Task<FacturaResponse> EliminarFactura(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<FacturaResponse>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<FacturaResponse> UpdateFactura(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<FacturaResponse> UpdateFactura(int id, FacturaRequest request)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

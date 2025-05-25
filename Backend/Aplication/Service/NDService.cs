@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Aplication.Exceptions;
 using Aplication.Interfaces.IND;
 using Aplication.Interfaces.IOC;
 using Aplication.Models.Request;
@@ -25,29 +26,141 @@ namespace Aplication.Service
             _mapper = mapper;
         }
 
-        public Task<NDResponse> ConsultarNotaDeDebito(NDRequest request)
+        public async Task<NDResponse> ConsultarNotaDeDebito(int id)
         {
-            throw new NotImplementedException();
+            var NotaDeDebito = await _query.GetById(id);
+            if (NotaDeDebito == null)
+            {
+
+                throw new RequieredParameterException("Error!proveedor does not exist ");
+
+            }
+
+
+            return new NDResponse
+            {
+                FechaEmision = NotaDeDebito.FechaEmision,
+                DireccionCliente = NotaDeDebito.DireccionCliente,
+                TelefonoEmpresa = NotaDeDebito.TelefonoEmpresa,
+                CUIT = NotaDeDebito.CUIT,
+                CUILCliente = NotaDeDebito.CUILCliente,
+                NombreCliente = NotaDeDebito.NombreCliente,
+                LocalidadCliente = NotaDeDebito.LocalidadCliente,
+                IVA = NotaDeDebito.IVA,
+                Importe = NotaDeDebito.Importe,
+                Total = NotaDeDebito.Total,
+                FechaVencimiento = NotaDeDebito.FechaVencimiento,
+
+
+            };
         }
 
-        public Task<NDResponse> CreateNotaDeDebito(NDRequest request)
+        public async Task<NDResponse> CreateNotaDeDebito(NDRequest request)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(request.NombreCliente))
+            {
+
+                throw new RequieredParameterException("Error! requiered NombreCliente");
+            }
+            if (string.IsNullOrEmpty(request.LocalidadCliente))
+            {
+
+                throw new RequieredParameterException("Error! requiered mail");
+            }
+            if (string.IsNullOrEmpty(request.DireccionCliente))
+            {
+
+                throw new InvalidateParameterException("Error! email Invalidate");
+            }
+            if (request.TelefonoEmpresa == 0)
+            {
+
+                throw new RequieredParameterException("Error! requiered Phone");
+            }
+
+            if (request.CUILCliente == 0)
+            {
+
+                throw new RequieredParameterException("Error! requiered Phone");
+            }
+            if (request.CUIT == 0)
+            {
+
+                throw new RequieredParameterException("Error! requiered Phone");
+            }
+
+            if (request.FechaVencimiento > request.FechaEmision)
+            {
+
+                throw new RequieredParameterException("Error! requiered Phone");
+            }
+            var NotaDeDebito = new Domain.Entities.NotaDeDebito()
+            {
+                FechaEmision = request.FechaEmision,
+                DireccionCliente = request.DireccionCliente,
+                TelefonoEmpresa = request.TelefonoEmpresa,
+                CUIT = request.CUIT,
+                CUILCliente = request.CUILCliente,
+                NombreCliente = request.NombreCliente,
+                LocalidadCliente = request.LocalidadCliente,
+                IVA = request.IVA,
+                Importe = request.Importe,
+                Total = request.Total,
+                FechaVencimiento = request.FechaVencimiento,
+
+
+            };
+            await _command.InsertNotaDeDebito(NotaDeDebito);
+            return new NDResponse
+            {
+
+                FechaEmision = NotaDeDebito.FechaEmision,
+                DireccionCliente = NotaDeDebito.DireccionCliente,
+                TelefonoEmpresa = NotaDeDebito.TelefonoEmpresa,
+                CUIT = NotaDeDebito.CUIT,
+                CUILCliente = NotaDeDebito.CUILCliente,
+                NombreCliente = NotaDeDebito.NombreCliente,
+                LocalidadCliente = NotaDeDebito.LocalidadCliente,
+                IVA = NotaDeDebito.IVA,
+                Importe = NotaDeDebito.Importe,
+                Total = NotaDeDebito.Total,
+                FechaVencimiento = NotaDeDebito.FechaVencimiento,
+                DireccionEmpresa = NotaDeDebito.DireccionEmpresa,
+
+
+
+            };
+
         }
 
-        public Task<List<NDResponse>> GetAll()
+        public async Task<List<NDResponse>> GetAll()
         {
-            throw new NotImplementedException();
+            var NotaDeDebito = _query.GetNotaDeDebitoQuery();
+
+            //return _mapper.Map<List<ProveedorResponse>>(proveedores);
+
+            return NotaDeDebito.Select(NotaDeDebito => new NDResponse
+            {
+
+                FechaEmision = NotaDeDebito.FechaEmision,
+                DireccionCliente = NotaDeDebito.DireccionCliente,
+                TelefonoEmpresa = NotaDeDebito.TelefonoEmpresa,
+                CUIT = NotaDeDebito.CUIT,
+                CUILCliente = NotaDeDebito.CUILCliente,
+                NombreCliente = NotaDeDebito.NombreCliente,
+                LocalidadCliente = NotaDeDebito.LocalidadCliente,
+                IVA = NotaDeDebito.IVA,
+                Importe = NotaDeDebito.Importe,
+                Total = NotaDeDebito.Total,
+                FechaVencimiento = NotaDeDebito.FechaVencimiento,
+                DireccionEmpresa = NotaDeDebito.DireccionEmpresa,
+
+            }
+
+
+            ).ToList();
         }
 
-        public Task<NDResponse> UpdateNotaDeDebito(int id, NDRequest request)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<NDResponse> UpdateNotaDeDebito(int id, NDRequest request)
-        {
-            throw new NotImplementedException();
-        }
+     
     }
 }

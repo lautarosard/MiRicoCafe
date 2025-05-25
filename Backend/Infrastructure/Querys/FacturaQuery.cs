@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Aplication.Interfaces.IFactura;
 using Domain.Entities;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Querys
 {
@@ -25,6 +26,10 @@ namespace Infrastructure.Querys
 
         public async Task<Factura> GetById(int id)
         {
+            //var project = await _context.Set<Factura>()
+            //   .Include(p => p.)
+
+
             return await _context.facturas.FindAsync(id);
         }
     }
