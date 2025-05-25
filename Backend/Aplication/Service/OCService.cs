@@ -40,7 +40,17 @@ namespace Aplication.Service
             throw new NotImplementedException();
         }
 
+        public Task<OCResponse> EliminarOrdenDeCompra(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<OCResponse>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OCResponse> UpdateOrdenDeCompra(int id, OCRequest request)
         {
             throw new NotImplementedException();
         }
