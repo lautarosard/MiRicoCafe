@@ -11,6 +11,7 @@ namespace Aplication.Interfaces.IProveedor
     {
         List<Proveedor> GetProveedoresQuery();
         Task<Proveedor> GetById(int id);
+        Task<Proveedor> GetByCuit(int id);
 
 
 

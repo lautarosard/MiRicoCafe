@@ -16,11 +16,13 @@ namespace Aplication.Interfaces.IProveedor
         //Crear
         Task<ProveedorResponse> CreateProveedor(ProveedorRequest request);
         // Eliminar 
-        Task<ProveedorResponse> EliminarProveedor(ProveedorRequest request);
+        Task<ProveedorResponse> EliminarProveedor(int id);
         // Consultar
-        Task<ProveedorResponse> ConsultarProveedor(ProveedorRequest request);
+        Task<ProveedorResponse> ConsultarProveedor(int id);
+        // Consultar por cuit
+        //Task<ProveedorResponse> ConsultarProveedorPorcuit(int cuit);
         //Update proveedor (a verificar)
-        Task<ProveedorResponse> UpdateProveedor(int id);
+        Task<ProveedorResponse> UpdateProveedor(int id, ProveedorRequest proveedorRequest);
 
     }
 }

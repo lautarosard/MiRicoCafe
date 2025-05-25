@@ -17,11 +17,11 @@ namespace Aplication.Interfaces.IFactura
       //Crear
       Task<FacturaResponse> CreateFactura(FacturaRequest request);
       // Eliminar 
-      Task<FacturaResponse> EliminarFactura(FacturaRequest request);
+      Task<FacturaResponse> EliminarFactura(int id);
       // Consultar
       Task<FacturaResponse> ConsultarFactura(FacturaRequest request);
       //Update Factura (a verificar)
-      Task<FacturaResponse> UpdateFactura(int id);
+      Task<FacturaResponse> UpdateFactura(int id, FacturaRequest request);
 
       
     }

@@ -40,12 +40,22 @@ namespace Aplication.Service
             throw new NotImplementedException();
         }
 
+        public Task<CobranzaResponse> EliminarCobranza(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<CobranzaResponse>> GetAll()
         {
             throw new NotImplementedException();
         }
 
         public Task<CobranzaResponse> UpdateCobranza(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<CobranzaResponse> UpdateCobranza(int id, CobranzaRequest request)
         {
             throw new NotImplementedException();
         }

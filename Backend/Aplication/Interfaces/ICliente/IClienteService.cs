@@ -17,11 +17,14 @@ namespace Aplication.Interfaces.ICliente
        //Crear
        Task<ClienteResponse> CreateCliente(ClienteRequest request);
        // Eliminar 
-       Task<ClienteResponse> EliminarCliente(ClienteRequest request);
+       Task<ClienteResponse> EliminarCliente(int id);
        // Consultar
-       Task<ClienteResponse> ConsultarCliente(ClienteRequest request);
-       //Update Cliente (a verificar)
-       Task<ClienteResponse> UpdateCliente(int id);
+       Task<ClienteResponse> ConsultarCliente(int id);
+        // Consultar por dni
+        //Task<ClienteResponse> ConsultarClientePorDNI(int DNI);
+
+        //Update Cliente (a verificar)
+        Task<ClienteResponse> UpdateCliente(int id, ClienteRequest request);
        
     }
 }

@@ -27,5 +27,12 @@ namespace Infrastructure.Querys
         {
             return await _context.clientes.FindAsync(id);
         }
+
+        public async Task<Cliente> GetByDNI(int id)
+        {
+            return await _context.clientes.FindAsync(id);
+        }
+
+
     }
 }

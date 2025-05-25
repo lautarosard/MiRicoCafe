@@ -43,5 +43,93 @@ namespace CafeElMejor.Controllers
             
 
         }
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetAll()
+        {
+
+            var result = await _service.GetAll();
+            return new JsonResult(result);
+        }
+        [HttpGet("Proveedor/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetByProveedorId(int id)
+        {
+
+
+            try
+            {
+                var result = await _service.ConsultarProveedor(id);
+                return new JsonResult(result);
+            }
+            catch (Aplication.Exceptions.InvalidateParameterException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (RequieredParameterException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "A mistake has occurred." });
+            }
+        }
+
+        [HttpPut("proveedorupdate/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> UpdataProveedor(int id, [FromBody] ProveedorRequest requests)
+        {
+
+            try
+            {
+
+                var result = await _service.UpdateProveedor(id, requests);
+
+                return new JsonResult(result);
+            }
+            catch (Aplication.Exceptions.InvalidateParameterException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (RequieredParameterException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "A mistake has occurred." });
+            }
+        }
+       
+        [HttpDelete("Proveedordelete/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> DeleteProveedorId(int id)
+        {
+
+
+            try
+            {
+                var result = await _service.EliminarProveedor(id);
+                return new JsonResult(result);
+            }
+            catch (Aplication.Exceptions.InvalidateParameterException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (RequieredParameterException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "A mistake has occurred." });
+            }
+        }
+
     }
 }

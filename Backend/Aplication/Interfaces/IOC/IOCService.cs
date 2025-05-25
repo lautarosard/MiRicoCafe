@@ -16,11 +16,11 @@ namespace Aplication.Interfaces.IOC
         //Crear
         Task<OCResponse> CreateOrdenDeCompra(OCRequest request);
         // Eliminar 
-        Task<OCResponse> EliminarOrdenDeCompra(OCRequest request);
+        Task<OCResponse> EliminarOrdenDeCompra(int id);
         // Consultar
         Task<OCResponse> ConsultarOrdenDeCompra(OCRequest request);
         //Update OC (a verificar)
-        Task<OCResponse> UpdateOrdenDeCompra(int id);
+        Task<OCResponse> UpdateOrdenDeCompra(int id, OCRequest request);
      
     }
 }

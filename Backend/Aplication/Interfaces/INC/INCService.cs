@@ -21,7 +21,7 @@ namespace Aplication.Interfaces.INC
       Task<NCResponse> ConsultarNotaDeCredito(NCRequest request);
       
       //Update NC (a verificar)
-      Task<NCResponse> UpdateNotaDeCredito(int id);
+      Task<NCResponse> UpdateNotaDeCredito(int id, NCRequest request);
       
     }
 }
