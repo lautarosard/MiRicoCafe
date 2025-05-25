@@ -29,5 +29,14 @@ namespace Infrastructure.Querys
             return await _context.proveedores.FindAsync(id);
         }
 
+        public Task<Proveedor> GetByCuit(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public async Task<Proveedor> GetByCuit(int id)
+        //{
+        //    return await _context.proveedores.FindAsync();
+        //}
     }
 }

@@ -11,5 +11,7 @@ namespace Aplication.Interfaces.ICliente
     {
         List<Cliente> GetClienteQuery();
         Task<Cliente> GetById(int id);
+
+        Task<Cliente> GetByDNI(int id);
     }
 }

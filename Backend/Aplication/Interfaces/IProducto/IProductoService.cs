@@ -17,11 +17,11 @@ namespace Aplication.Interfaces.IProducto
         //Crear
         Task<ProductoResponse> CreateProducto(ProductoRequest request);
         // Eliminar 
-        Task<ProductoResponse> EliminarProducto(ProductoRequest request);
+        Task<ProductoResponse> EliminarProducto(int id);
         // Consultar
-        Task<ProductoResponse> ConsultarProducto(ProductoRequest request);
+        Task<ProductoResponse> ConsultarProducto(int id);
         //Update proveedor (a verificar)
-        Task<ProductoResponse> UpdateProducto(int id);
+        Task<ProductoResponse> UpdateProducto(int id, ProductoRequest request);
 
     }
 }
