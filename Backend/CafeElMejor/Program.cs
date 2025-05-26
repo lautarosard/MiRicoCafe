@@ -14,6 +14,9 @@ using Aplication.Interfaces.IFactura;
 using Aplication.Interfaces.ICobranza;
 using Aplication.Interfaces.ICliente;
 using Aplication.Interfaces.IQR;
+using Aplication.Interfaces.IAuth;
+using Aplication.Interfaces.IUsuario;
+using Aplication.Interfaces.IJwtGenerator;
 
 namespace CafeElMejor
 {
@@ -82,6 +85,16 @@ namespace CafeElMejor
             builder.Services.AddScoped<IProductoCommand, ProductoCommand>();
             builder.Services.AddScoped<IProductoQuery, ProductoQuery>();
             builder.Services.AddScoped<IProductoService, ProductoService>();
+
+            //builder Usuario
+            builder.Services.AddScoped<IUsuarioCommand, UsuarioCommand>();
+            builder.Services.AddScoped<IUsuarioQuery, UsuarioQuery>();
+            builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+
+            //Auth y JwtGeneratorService
+            builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IJwtGeneratorService, JwtGeneratorService>();
+
 
             //builder QR
             builder.Services.AddScoped<IGenerarQrService, QRService>();

@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Cliente
+    public class Administrador
     {
         //atributos
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Email { get; set; }
-        public int Dni {  get; set; }
+        public int Dni { get; set; }
 
-        //Fk -Factura 1-x
-        public ICollection<Factura> Facturas { get; set; }
-
-        //FK - Usuario 1-1
+        //FK - Usuario
         public Usuario Usuario { get; set; }
     }
 }

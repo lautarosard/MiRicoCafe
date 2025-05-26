@@ -24,6 +24,7 @@ namespace Infrastructure.Data
         public DbSet<OrdenDeCompra> ordenDeCompras { get; set; }
         public DbSet<Producto> productos { get; set; }
         public DbSet<Proveedor> proveedores { get; set; }
+        public DbSet<Usuario> usuarios { get; set; }
 
         //Cliente
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -126,6 +127,15 @@ namespace Infrastructure.Data
                 new Proveedor { Id = 5, Email = "carlitos@gmail.com", CUIT = 12314, Direccion = "Siempreviva123", Localidad = "Sprinfild", Nombre = "MaggieCafe", OrdenDeCompra = null, Provincia = "CAlifornia", Telefono = 1234 };
             });
 
+            modelBuilder.Entity<Usuario>(entity =>
+            {
+                entity.HasKey(x => x.Id);
+                entity.Property(n => n.Id).ValueGeneratedOnAdd();
+                entity.Property(n => n.Username).HasMaxLength(255).IsRequired();
+                entity.Property(e => e.PasswordHash).HasMaxLength(255).IsRequired();
+
+            });
+
             //Relacion 1-X Cliente-Factura
             modelBuilder.Entity<Factura>()
             .HasOne<Cliente>(s => s.Cliente)
@@ -167,6 +177,12 @@ namespace Infrastructure.Data
             .HasOne<NotaDeDebito>(s => s.NotaDebito)
             .WithOne(ad => ad.Factura)
             .HasForeignKey<NotaDeDebito>(ad => ad.IdFactura);
+
+            //Relacion 1-1 Cliente-Usuario
+            modelBuilder.Entity<Cliente>()
+            .HasOne<Usuario>(s => s.Usuario)
+            .WithOne(ad => ad.Cliente)
+            .HasForeignKey<Usuario>(ad => ad.ClienteId);
         }
 
     }
