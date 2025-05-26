@@ -25,7 +25,7 @@ namespace Aplication.Service
             _mapper = mapper;
         }
 
-        public Task<CobranzaResponse> ConsultarCobranza(CobranzaRequest request)
+        public Task<CobranzaResponse> ConsultarCobranza(int id)
         {
             throw new NotImplementedException();
         }
@@ -35,22 +35,13 @@ namespace Aplication.Service
             throw new NotImplementedException();
         }
 
-        public Task<CobranzaResponse> EliminarCobranza(CobranzaRequest request)
-        {
-            throw new NotImplementedException();
-        }
-
+      
         public Task<CobranzaResponse> EliminarCobranza(int id)
         {
             throw new NotImplementedException();
         }
 
         public Task<List<CobranzaResponse>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<CobranzaResponse> UpdateCobranza(int id)
         {
             throw new NotImplementedException();
         }

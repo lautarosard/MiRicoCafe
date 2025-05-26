@@ -18,7 +18,7 @@ namespace Aplication.Interfaces.IOC
         // Eliminar 
         Task<OCResponse> EliminarOrdenDeCompra(int id);
         // Consultar
-        Task<OCResponse> ConsultarOrdenDeCompra(OCRequest request);
+        Task<OCResponse> ConsultarOrdenDeCompra(int id);
         //Update OC (a verificar)
         Task<OCResponse> UpdateOrdenDeCompra(int id, OCRequest request);
      

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Entities;
 
 namespace Aplication.Models.Response
 {
@@ -15,6 +16,8 @@ namespace Aplication.Models.Response
         public float PUnitario { get; set; }
         public float Importe { get; set; }
         public float Total { get; set; }
+        public Proveedor Proveedor { get; set; }
+        public ICollection<Producto> Productos { get; set; }
 
     }
 }

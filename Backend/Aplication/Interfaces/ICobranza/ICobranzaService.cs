@@ -19,7 +19,7 @@ namespace Aplication.Interfaces.ICobranza
       // Eliminar 
       Task<CobranzaResponse> EliminarCobranza(int id);
       // Consultar
-      Task<CobranzaResponse> ConsultarCobranza(CobranzaRequest request);
+      Task<CobranzaResponse> ConsultarCobranza(int id);
       //Update Cobranza (a verificar)
       Task<CobranzaResponse> UpdateCobranza(int id, CobranzaRequest request);
 
