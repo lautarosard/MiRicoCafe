@@ -145,8 +145,6 @@ namespace Aplication.Service
         {
             var factura =_query.GetFacturaQuery();
 
-            //return _mapper.Map<List<ProveedorResponse>>(proveedores);
-
             return factura.Select(factura => new FacturaResponse
             {
 

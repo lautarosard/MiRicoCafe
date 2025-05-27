@@ -16,8 +16,8 @@ namespace Aplication.Models.Response
         public float PUnitario { get; set; }
         public float Importe { get; set; }
         public float Total { get; set; }
-        public Proveedor Proveedor { get; set; }
-        public ICollection<Producto> Productos { get; set; }
+        public ProveedorResponse Proveedor { get; set; }
+        public ICollection<ProductoResponse> Productos { get; set; }
 
     }
 }

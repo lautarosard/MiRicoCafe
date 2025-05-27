@@ -91,6 +91,11 @@ namespace CafeElMejor
             builder.Services.AddScoped<IUsuarioQuery, UsuarioQuery>();
             builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
+            //builder ItemCarrito
+            builder.Services.AddScoped<IItemCarritoCommand, ItemCarritoCommand>();
+            builder.Services.AddScoped<IItemCarritoQuery, ItemCarritoQuery>();
+            builder.Services.AddScoped<ICarritoService, CarritoService>();
+
             //Auth y JwtGeneratorService
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IJwtGeneratorService, JwtGeneratorService>();

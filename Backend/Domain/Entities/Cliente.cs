@@ -14,6 +14,8 @@ namespace Domain.Entities
         public string Email { get; set; }
         public int Dni {  get; set; }
 
+        public ICollection<ItemCarrito> Carrito { get; set; } = new List<ItemCarrito>();
+
         //Fk -Factura 1-x
         public ICollection<Factura> Facturas { get; set; }
 

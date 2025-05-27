@@ -21,6 +21,8 @@ namespace Aplication.Interfaces.IOC
         Task<OCResponse> ConsultarOrdenDeCompra(int id);
         //Update OC (a verificar)
         Task<OCResponse> UpdateOrdenDeCompra(int id, OCRequest request);
-     
+
+        Task<OCResponse> UpdateProductoINOC(int id, int IdProducto, int Cantidad);
+        Task<OCResponse> RemoveProductoINOC(int id, int IdProducto);
     }
 }

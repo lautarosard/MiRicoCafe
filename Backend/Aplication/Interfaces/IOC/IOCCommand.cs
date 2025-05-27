@@ -12,5 +12,7 @@ namespace Aplication.Interfaces.IOC
         Task InsertOrdenDeCompra(OrdenDeCompra ordenDeCompra);
         Task RemoveOrdenDeCompra(OrdenDeCompra ordenDeCompra);
         Task UpdateOrdenDeCompra(OrdenDeCompra ordenDeCompra);
+
+        Task CargarProducto(OrdenDeCompra ordenDeCompra);
     }
 }
