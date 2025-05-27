@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\CafeElMejor\\CafeElMejor.csproj": {}
+    "E:\\preproyec\\Backend\\CafeElMejor\\CafeElMejor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Aplication\\Aplication.csproj": {
+    "E:\\preproyec\\Backend\\Aplication\\Aplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Aplication\\Aplication.csproj",
+        "projectUniqueName": "E:\\preproyec\\Backend\\Aplication\\Aplication.csproj",
         "projectName": "Aplication",
-        "projectPath": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Aplication\\Aplication.csproj",
+        "projectPath": "E:\\preproyec\\Backend\\Aplication\\Aplication.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Aplication\\obj\\",
+        "outputPath": "E:\\preproyec\\Backend\\Aplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\Visual Herramientas\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Domain\\Domain.csproj"
+              "E:\\preproyec\\Backend\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\preproyec\\Backend\\Domain\\Domain.csproj"
               }
             }
           }
@@ -99,17 +99,17 @@
         }
       }
     },
-    "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\CafeElMejor\\CafeElMejor.csproj": {
+    "E:\\preproyec\\Backend\\CafeElMejor\\CafeElMejor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\CafeElMejor\\CafeElMejor.csproj",
+        "projectUniqueName": "E:\\preproyec\\Backend\\CafeElMejor\\CafeElMejor.csproj",
         "projectName": "CafeElMejor",
-        "projectPath": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\CafeElMejor\\CafeElMejor.csproj",
+        "projectPath": "E:\\preproyec\\Backend\\CafeElMejor\\CafeElMejor.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\CafeElMejor\\obj\\",
+        "outputPath": "E:\\preproyec\\Backend\\CafeElMejor\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\Visual Herramientas\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -127,11 +127,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Aplication\\Aplication.csproj": {
-                "projectPath": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Aplication\\Aplication.csproj"
+              "E:\\preproyec\\Backend\\Aplication\\Aplication.csproj": {
+                "projectPath": "E:\\preproyec\\Backend\\Aplication\\Aplication.csproj"
               },
-              "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Infrastructure\\Infrastructure.csproj"
+              "E:\\preproyec\\Backend\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "E:\\preproyec\\Backend\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -220,17 +220,17 @@
         }
       }
     },
-    "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Domain\\Domain.csproj": {
+    "E:\\preproyec\\Backend\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Domain\\Domain.csproj",
+        "projectUniqueName": "E:\\preproyec\\Backend\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Domain\\Domain.csproj",
+        "projectPath": "E:\\preproyec\\Backend\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Domain\\obj\\",
+        "outputPath": "E:\\preproyec\\Backend\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\Visual Herramientas\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -285,17 +285,17 @@
         }
       }
     },
-    "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Infrastructure\\Infrastructure.csproj": {
+    "E:\\preproyec\\Backend\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "E:\\preproyec\\Backend\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "E:\\preproyec\\Backend\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Infrastructure\\obj\\",
+        "outputPath": "E:\\preproyec\\Backend\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\Visual Herramientas\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -313,8 +313,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Aplication\\Aplication.csproj": {
-                "projectPath": "C:\\Users\\lucas\\Desktop\\Proyecto\\Backend\\Aplication\\Aplication.csproj"
+              "E:\\preproyec\\Backend\\Aplication\\Aplication.csproj": {
+                "projectPath": "E:\\preproyec\\Backend\\Aplication\\Aplication.csproj"
               }
             }
           }

@@ -103,11 +103,19 @@ namespace Infrastructure.Data
                 entity.Property(e => e.Categoria).IsRequired();
                 entity.Property(e => e.Descripcion).HasMaxLength(255);
                 entity.Property(e => e.Stock).IsRequired();
-                new Producto { Id = 1, Categoria = "comida", Descripcion = "Ricas", Nombre = "medialunas", Precio = 100, Stock = 10, Factura = null, IdFactura = 0,IdOrdenDeCompra=0,OrdenDeCompra=null };
-                new Producto { Id = 2, Categoria = "comida", Descripcion = "Ricas", Nombre = "tortitaNegra", Precio = 100, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-                new Producto { Id = 3, Categoria = "comida", Descripcion = "Ricas", Nombre = "vigilante", Precio = 100, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-                new Producto { Id = 4, Categoria = "comida", Descripcion = "Ricas", Nombre = "medialunasConDulceDeLeche", Precio = 100, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-
+                new Producto { Id = 1, Categoria = "Cafe Molido", Descripcion = "Rico", Nombre = "Café Suave", Precio = 1000, Stock = 10, Factura = null, IdFactura = 0,IdOrdenDeCompra=0,OrdenDeCompra=null };
+                new Producto { Id = 2, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Tostado Intenso", Precio = 1500, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
+                new Producto { Id = 3, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Molido Tradicional", Precio = 1100, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
+                new Producto { Id = 4, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Italaiano", Precio = 2000, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
+                new Producto { Id = 5, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Macchiato", Precio = 1300, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
+                new Producto { Id = 6, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Gourmet", Precio = 2500, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
+                new Producto { Id = 7, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café", Precio = 900, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
+                new Producto { Id = 8, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Molido Extra Intenso", Precio = 1300, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
+                new Producto { Id = 9, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Molido Intenso", Precio = 1500, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
+                new Producto { Id = 10, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Latte", Precio = 2000, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
+                new Producto { Id = 11, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Molido Fuerte", Precio = 1700, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
+                new Producto { Id = 12, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Seleccion Especial", Precio = 3000, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
+                
             });
 
             modelBuilder.Entity<Proveedor>(entity =>
@@ -120,7 +128,7 @@ namespace Infrastructure.Data
                 entity.Property(e => e.Provincia).HasMaxLength(50).IsRequired();
                 entity.Property(e => e.Localidad).HasMaxLength(255).IsRequired();
                 entity.Property(e => e.Direccion).HasMaxLength(255).IsRequired();
-                new Proveedor { Id = 1, Email = "carlitos@gmail.com", CUIT = 12314, Direccion = "Siempreviva123", Localidad = "Sprinfild", Nombre = "KrustyCafe", OrdenDeCompra = null, Provincia = "CAlifornia", Telefono = 1234 };
+                new Proveedor { Id = 1, Email = "granoscafe@gmail.com", CUIT = 12314, Direccion = "Av. Calchaquí 6200", Localidad = "Florencio Varela", Nombre = "Coffe Club", OrdenDeCompra = null, Provincia = "Provincia de Buenos Aires", Telefono = 1234 };
                 new Proveedor { Id = 2, Email = "carlitos@gmail.com", CUIT = 12314, Direccion = "Siempreviva123", Localidad = "Sprinfild", Nombre = "homeroCafe", OrdenDeCompra = null, Provincia = "CAlifornia", Telefono = 1234 };
                 new Proveedor { Id = 3, Email = "carlitos@gmail.com", CUIT = 12314, Direccion = "Siempreviva123", Localidad = "Sprinfild", Nombre = "bartCafe", OrdenDeCompra = null, Provincia = "CAlifornia", Telefono = 1234 };
                 new Proveedor { Id = 4, Email = "carlitos@gmail.com", CUIT = 12314, Direccion = "Siempreviva123", Localidad = "Sprinfild", Nombre = "lisaCafe", OrdenDeCompra = null, Provincia = "CAlifornia", Telefono = 1234 };

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Entities;
 
 namespace Aplication.Models.Response
 {
@@ -21,5 +22,8 @@ namespace Aplication.Models.Response
         public float Importe { get; set; }
         public float Total { get; set; }
         public DateTime FechaVencimiento { get; set; }
+
+        public Cliente Cliente { get; set; }
+        public Cobranza Cobranza { get; set; }
     }
 }

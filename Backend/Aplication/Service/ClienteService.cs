@@ -122,7 +122,6 @@ namespace Aplication.Service
         {
             var clientes = _query.GetClienteQuery();
 
-            //return _mapper.Map<List<ProveedorResponse>>(proveedores);
 
             return clientes.Select(clientes => new ClienteResponse
             {

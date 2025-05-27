@@ -20,5 +20,9 @@ namespace Aplication.Models.Request
         public float Importe { get; set; }
         public float Total { get; set; }
         public DateTime FechaVencimiento { get; set; }
+
+        public int IdCobranza { get; set; }
+
+        public int IdCliente { get; set; }
     }
 }

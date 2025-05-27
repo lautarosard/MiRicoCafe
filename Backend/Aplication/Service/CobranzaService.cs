@@ -30,6 +30,8 @@ namespace Aplication.Service
             throw new NotImplementedException();
         }
 
+      
+
         public Task<CobranzaResponse> CreateCobranza(CobranzaRequest request)
         {
             throw new NotImplementedException();

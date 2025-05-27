@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Aplication.Exceptions;
+using Aplication.Interfaces.ICliente;
 using Aplication.Interfaces.ICobranza;
 using Aplication.Interfaces.IFactura;
 using Aplication.Interfaces.INC;
@@ -18,29 +19,37 @@ namespace Aplication.Service
     {
         private readonly IFacturaQuery _query;
         private readonly IFacturaCommand _command;
-        private readonly IMapper _mapper;
+        private readonly IClienteQuery clienteQuery;
+        private readonly ICobranzaQuery cobranzaQuery;
 
-        public FacturaService(IFacturaQuery query, IFacturaCommand command, IMapper mapper)
+        public FacturaService(IFacturaQuery query, IFacturaCommand command, IClienteQuery clienteQuery, ICobranzaQuery cobranzaQuery)
         {
-
             _query = query;
             _command = command;
-            _mapper = mapper;
+            this.clienteQuery = clienteQuery;
+            this.cobranzaQuery = cobranzaQuery;
         }
 
         public async Task<FacturaResponse> ConsultarFactura(int id)
         {
+            // Valores 
             var factura = await _query.GetById(id);
+          
+
+            //Validacion
             if (factura == null)
             {
 
                 throw new RequieredParameterException("Error!proveedor does not exist ");
 
             }
+     
+
 
 
             return new FacturaResponse
             {
+                IdFactura = id,
                 FechaEmision = factura.FechaEmision,
                 DireccionCliente = factura.DireccionCliente,
                 TelefonoEmpresa = factura.TelefonoEmpresa,
@@ -51,7 +60,10 @@ namespace Aplication.Service
                 IVA = factura.IVA,
                 Importe = factura.Importe,
                 Total = factura.Total,
+                DireccionEmpresa = factura.DireccionEmpresa,
                 FechaVencimiento = factura.FechaVencimiento,
+                
+             
 
 
             };
