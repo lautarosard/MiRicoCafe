@@ -359,7 +359,7 @@ namespace Aplication.Service
 
             OrdenDeCompra.Productos.Add(producto);
 
-            OrdenDeCompra.Total += producto.Precio * Cantidad;
+            OrdenDeCompra.Total += (float)producto.Precio * Cantidad;
 
             await _command.UpdateOrdenDeCompra(OrdenDeCompra);
 
@@ -441,7 +441,7 @@ namespace Aplication.Service
 
                 if (producto1.Id == IdProducto)
                 {
-                    OrdenDeCompra.Total -= producto1.Precio * producto1.Stock;
+                    OrdenDeCompra.Total -= (float)producto1.Precio * producto1.Stock;
 
                     OrdenDeCompra.Productos.Remove(producto1);
 

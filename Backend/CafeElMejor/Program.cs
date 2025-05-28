@@ -17,6 +17,8 @@ using Aplication.Interfaces.IQR;
 using Aplication.Interfaces.IAuth;
 using Aplication.Interfaces.IUsuario;
 using Aplication.Interfaces.IJwtGenerator;
+using Aplication.Interfaces.IAdministrador;
+using Aplication.Interfaces.IItemCarrito;
 
 namespace CafeElMejor
 {
@@ -94,7 +96,7 @@ namespace CafeElMejor
             //builder ItemCarrito
             builder.Services.AddScoped<IItemCarritoCommand, ItemCarritoCommand>();
             builder.Services.AddScoped<IItemCarritoQuery, ItemCarritoQuery>();
-            builder.Services.AddScoped<ICarritoService, CarritoService>();
+            builder.Services.AddScoped<IItemCarritoService, ItemCarritoService>();
 
             //Auth y JwtGeneratorService
             builder.Services.AddScoped<IAuthService, AuthService>();

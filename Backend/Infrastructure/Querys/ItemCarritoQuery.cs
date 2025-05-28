@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Aplication.Interfaces.IItemCarrito;
 using Domain.Entities;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Querys
 {
@@ -18,17 +19,17 @@ namespace Infrastructure.Querys
             _context = context;
         }
 
-        Task<List<ItemCarrito?>> ObtenerItemsDelCarrito(int clienteId)
+        public async Task<List<ItemCarrito?>> ObtenerItemsDelCarrito(int clienteId)
         {
-            return await _context.Clientes
+            return await _context.clientes
             .Where(c => c.Id == clienteId)
             .SelectMany(c => c.Carrito)
             .Include(i => i.Producto)
             .ToListAsync();
         }
-        Task<ItemCarrito?> ObtenerItemEspecifico(int clienteId, int productoId)
+        public async Task<ItemCarrito?> ObtenerItemEspecifico(int clienteId, int productoId)
         {
-            var item = await _context.Clientes
+            var item = await _context.clientes
             .Where(c => c.Id == clienteId)
             .SelectMany(c => c.Carrito)
             .Include(i => i.Producto)
@@ -40,12 +41,12 @@ namespace Infrastructure.Querys
             }
             return item;
         }
-        Task<decimal> CalcularTotalCarrito(int clienteId)
+        public async Task<decimal> CalcularTotalCarrito(int clienteId)
         {
             var items = await ObtenerItemsDelCarrito(clienteId);
-            return items.Sum(i => i.Producto.Precio * i.Cantidad);
+            return items.Sum(i => (Decimal)i.Producto.Precio * i.Cantidad);
         }
-        Task<int> ObtenerCantidadDeItems(int clienteId)
+        public async Task<int> ObtenerCantidadDeItems(int clienteId)
         {
             return await _context.clientes
             .Where(c => c.Id == clienteId)

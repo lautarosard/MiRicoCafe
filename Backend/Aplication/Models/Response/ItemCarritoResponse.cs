@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Aplication.Models.Request
 {
-    public class CarritoResponse
+    public class ItemCarritoResponse
     {
+        public int Id { get; set; }
         public int ProductoId { get; set; }
         public string Nombre { get; set; }
         public decimal Precio { get; set; }

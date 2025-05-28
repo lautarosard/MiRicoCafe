@@ -19,6 +19,11 @@ namespace Infrastructure.Command
             _context = context;
         }
 
+        public Task CargarProducto(OrdenDeCompra ordenDeCompra)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task InsertOrdenDeCompra(OrdenDeCompra occ)
         {
             _context.Add(occ);

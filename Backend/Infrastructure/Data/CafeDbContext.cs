@@ -25,6 +25,7 @@ namespace Infrastructure.Data
         public DbSet<Producto> productos { get; set; }
         public DbSet<Proveedor> proveedores { get; set; }
         public DbSet<Usuario> usuarios { get; set; }
+        public DbSet<ItemCarrito> itemCarritos { get; set; }
 
         //Cliente
         protected override void OnModelCreating(ModelBuilder modelBuilder)

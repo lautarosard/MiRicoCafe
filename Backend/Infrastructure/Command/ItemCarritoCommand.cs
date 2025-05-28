@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Aplication.Interfaces.IItemCarrito;
 using Domain.Entities;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Command
 {
@@ -19,20 +20,20 @@ namespace Infrastructure.Command
         }
 
 
-        Task AgregarItemAsync(int clienteId, int productoId, int cantidad)
+        public async Task AgregarItemAsync(int clienteId, int productoId, int cantidad)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
 
             try
             {
-                 var cliente = await _context.Clientes
+                 var cliente = await _context.clientes
                      .Include(c => c.Carrito)
                      .FirstOrDefaultAsync(c => c.Id == clienteId);
 
                  if (cliente == null)
                      throw new KeyNotFoundException("Cliente no existe");
 
-                 var producto = await _context.Productos.FindAsync(productoId);
+                 var producto = await _context.productos.FindAsync(productoId);
                  if (producto == null)
                      throw new KeyNotFoundException("Producto no existe");
 
@@ -51,7 +52,7 @@ namespace Infrastructure.Command
                      {
                          ProductoId = productoId,
                          Cantidad = cantidad,
-                         FechaAgregado = DateTime.UtcNow
+                         Producto = producto
                      });
                  }
 
@@ -67,7 +68,7 @@ namespace Infrastructure.Command
 
         }
 
-        Task ActualizarCantidad(int clienteId, int productoId, int nuevaCantidad)
+        public async Task ActualizarCantidad(int clienteId, int productoId, int nuevaCantidad)
         {
             if (nuevaCantidad <= 0)
             {
@@ -78,7 +79,7 @@ namespace Infrastructure.Command
     
             try
             {
-                var item = await _context.ItemsCarrito
+                var item = await _context.itemCarritos
                     .Include(i => i.Producto)
                     .FirstOrDefaultAsync(i => 
                         i.ClienteId == clienteId && 
@@ -110,13 +111,13 @@ namespace Infrastructure.Command
             }
         }
 
-        Task EliminarItemDelCarrito(int clienteId, int productoId)
+        public async Task EliminarItemDelCarrito(int clienteId, int productoId)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
     
             try
             {
-                var item = await _context.ItemsCarrito
+                var item = await _context.itemCarritos
                     .Include(i => i.Producto)
                     .FirstOrDefaultAsync(i => 
                         i.ClienteId == clienteId && 
@@ -128,7 +129,7 @@ namespace Infrastructure.Command
                 item.Producto.Stock += item.Cantidad;
 
                 // Eliminar ítem
-                _context.ItemsCarrito.Remove(item);
+                _context.itemCarritos.Remove(item);
 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
@@ -142,13 +143,13 @@ namespace Infrastructure.Command
 
         }
 
-        Task VaciarCarrito(int clienteId)
+        public async Task VaciarCarrito(int clienteId)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
     
             try
             {
-                var items = await _context.ItemsCarrito
+                var items = await _context.itemCarritos
                     .Include(i => i.Producto)
                     .Where(i => i.ClienteId == clienteId)
                     .ToListAsync();
@@ -163,7 +164,7 @@ namespace Infrastructure.Command
                 }
 
                 // Eliminar todos los items
-                _context.ItemsCarrito.RemoveRange(items);
+                _context.itemCarritos.RemoveRange(items);
 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();

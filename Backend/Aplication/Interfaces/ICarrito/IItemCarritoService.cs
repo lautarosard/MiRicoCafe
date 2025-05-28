@@ -8,23 +8,12 @@ using Aplication.Models.Response;
 
 namespace Aplication.Interfaces.IAdministrador
 {
-    public interface IAdministradorService
+    public interface IItemCarritoService
     {
-        
-       //Listar
-       Task<List<AdministradorResponse>> GetAll();
-
-       //Crear
-       Task<AdministradorResponse> CreateAdministrador(AdministradorRequest request);
-       // Eliminar 
-       Task<AdministradorResponse> EliminarAdministrador(int id);
-       // Consultar
-       Task<AdministradorResponse> ConsultarAdministrador(int id);
-        // Consultar por dni
-        //Task<AdministradorResponse> ConsultarAdministradorPorDNI(int DNI);
-
-        //Update Administrador (a verificar)
-        Task<AdministradorResponse> UpdateAdministrador(int id, AdministradorRequest request);
-       
+        Task<CarritoResponse> ObtenerCarrito(int clienteId);
+        Task AgregarItem(int clienteId, ItemCarritoRequest request);
+        Task ActualizarCantidad(int clienteId, int productoId, int cantidad);
+        Task EliminarItem(int clienteId, int productoId);
+        Task VaciarCarrito(int clienteId);
     }
 }

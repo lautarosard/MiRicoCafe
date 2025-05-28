@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\preproyec\\Backend\\Aplication\\Aplication.csproj": {}
+    "F:\\Facu\\ingInfo\\RicoCafe\\Backend\\Aplication\\Aplication.csproj": {}
   },
   "projects": {
-    "E:\\preproyec\\Backend\\Aplication\\Aplication.csproj": {
+    "F:\\Facu\\ingInfo\\RicoCafe\\Backend\\Aplication\\Aplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\preproyec\\Backend\\Aplication\\Aplication.csproj",
+        "projectUniqueName": "F:\\Facu\\ingInfo\\RicoCafe\\Backend\\Aplication\\Aplication.csproj",
         "projectName": "Aplication",
-        "projectPath": "E:\\preproyec\\Backend\\Aplication\\Aplication.csproj",
-        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "E:\\preproyec\\Backend\\Aplication\\obj\\",
+        "projectPath": "F:\\Facu\\ingInfo\\RicoCafe\\Backend\\Aplication\\Aplication.csproj",
+        "packagesPath": "C:\\Users\\lauta\\.nuget\\packages\\",
+        "outputPath": "F:\\Facu\\ingInfo\\RicoCafe\\Backend\\Aplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Visual Herramientas\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lauta\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,14 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://www.nuget.org/api/v2/": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\preproyec\\Backend\\Domain\\Domain.csproj": {
-                "projectPath": "E:\\preproyec\\Backend\\Domain\\Domain.csproj"
+              "F:\\Facu\\ingInfo\\RicoCafe\\Backend\\Domain\\Domain.csproj": {
+                "projectPath": "F:\\Facu\\ingInfo\\RicoCafe\\Backend\\Domain\\Domain.csproj"
               }
             }
           }
@@ -95,24 +95,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\preproyec\\Backend\\Domain\\Domain.csproj": {
+    "F:\\Facu\\ingInfo\\RicoCafe\\Backend\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\preproyec\\Backend\\Domain\\Domain.csproj",
+        "projectUniqueName": "F:\\Facu\\ingInfo\\RicoCafe\\Backend\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "E:\\preproyec\\Backend\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "E:\\preproyec\\Backend\\Domain\\obj\\",
+        "projectPath": "F:\\Facu\\ingInfo\\RicoCafe\\Backend\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\lauta\\.nuget\\packages\\",
+        "outputPath": "F:\\Facu\\ingInfo\\RicoCafe\\Backend\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Visual Herramientas\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lauta\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -121,7 +121,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://www.nuget.org/api/v2/": {}
         },
         "frameworks": {
           "net8.0": {
@@ -160,7 +160,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
