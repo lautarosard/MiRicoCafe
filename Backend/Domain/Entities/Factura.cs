@@ -22,9 +22,7 @@ namespace Domain.Entities
         public float Total { get; set; }
         public DateTime FechaVencimiento { get; set; }
 
-        //Fk - Productos 1-X
-        public ICollection<Producto> Productos { get; set; }
-
+        
         //Fk - Cobranza 1-1
         public int IdCobranza { get; set; }
         public Cobranza Cobranza { get; set; }

@@ -136,6 +136,32 @@ namespace Infrastructure.Migrations
                     b.ToTable("facturas");
                 });
 
+            modelBuilder.Entity("Domain.Entities.ItemCarrito", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("ProductoId");
+
+                    b.ToTable("itemCarritos");
+                });
+
             modelBuilder.Entity("Domain.Entities.NotaDeCredito", b =>
                 {
                     b.Property<int>("Id")
@@ -316,26 +342,18 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 
-                    b.Property<int>("IdFactura")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdOrdenDeCompra")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 
-                    b.Property<float>("Precio")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Precio")
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<int>("Stock")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IdFactura");
 
                     b.ToTable("productos");
                 });
@@ -432,6 +450,25 @@ namespace Infrastructure.Migrations
                     b.Navigation("Cobranza");
                 });
 
+            modelBuilder.Entity("Domain.Entities.ItemCarrito", b =>
+                {
+                    b.HasOne("Domain.Entities.Cliente", "Cliente")
+                        .WithMany("Carrito")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Producto", "Producto")
+                        .WithMany("ItemsEnCarrito")
+                        .HasForeignKey("ProductoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Producto");
+                });
+
             modelBuilder.Entity("Domain.Entities.NotaDeCredito", b =>
                 {
                     b.HasOne("Domain.Entities.Factura", "Factura")
@@ -465,25 +502,6 @@ namespace Infrastructure.Migrations
                     b.Navigation("Proveedor");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Producto", b =>
-                {
-                    b.HasOne("Domain.Entities.Factura", "Factura")
-                        .WithMany("Productos")
-                        .HasForeignKey("IdFactura")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.OrdenDeCompra", "OrdenDeCompra")
-                        .WithMany("Productos")
-                        .HasForeignKey("IdFactura")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Factura");
-
-                    b.Navigation("OrdenDeCompra");
-                });
-
             modelBuilder.Entity("Domain.Entities.Usuario", b =>
                 {
                     b.HasOne("Domain.Entities.Cliente", "Cliente")
@@ -495,6 +513,8 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Cliente", b =>
                 {
+                    b.Navigation("Carrito");
+
                     b.Navigation("Facturas");
 
                     b.Navigation("Usuario")
@@ -514,13 +534,11 @@ namespace Infrastructure.Migrations
 
                     b.Navigation("NotaDebito")
                         .IsRequired();
-
-                    b.Navigation("Productos");
                 });
 
-            modelBuilder.Entity("Domain.Entities.OrdenDeCompra", b =>
+            modelBuilder.Entity("Domain.Entities.Producto", b =>
                 {
-                    b.Navigation("Productos");
+                    b.Navigation("ItemsEnCarrito");
                 });
 
             modelBuilder.Entity("Domain.Entities.Proveedor", b =>

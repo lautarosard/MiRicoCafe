@@ -27,7 +27,7 @@ namespace Infrastructure.Data
         public DbSet<Usuario> usuarios { get; set; }
         public DbSet<ItemCarrito> itemCarritos { get; set; }
 
-        //Cliente
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Cliente
@@ -38,7 +38,7 @@ namespace Infrastructure.Data
                 entity.Property(e => e.Email).HasMaxLength(255).IsRequired();
                 
             });
-
+            //Cobranza
             modelBuilder.Entity<Cobranza>(entity =>
             {
                 entity.HasKey(s => s.Id);
@@ -46,6 +46,7 @@ namespace Infrastructure.Data
                 entity.Property(e => e.Fecha).IsRequired();
 
             });
+            //Factura
             modelBuilder.Entity<Factura>(entity =>
             {
                 entity.HasKey(s => s.Id);
@@ -57,7 +58,7 @@ namespace Infrastructure.Data
                 entity.Property(e => e.FechaVencimiento).IsRequired();
 
             });
-
+            //NotaDeCredito
             modelBuilder.Entity<NotaDeCredito>(entity =>
             {
                 entity.HasKey(s => s.Id);
@@ -70,7 +71,7 @@ namespace Infrastructure.Data
                 entity.Property(e => e.ValorModificacion).IsRequired();
 
             });
-
+            //NotaDeDebito
             modelBuilder.Entity<NotaDeDebito>(entity =>
             {
                 entity.HasKey(s => s.Id);
@@ -83,7 +84,7 @@ namespace Infrastructure.Data
                 entity.Property(e => e.ValorModificacion).IsRequired();
 
             });
-
+            //OrdenDeCompra
             modelBuilder.Entity<OrdenDeCompra>(entity =>
             {
                 entity.HasKey(s => s.Id);
@@ -94,7 +95,7 @@ namespace Infrastructure.Data
                 entity.Property(e => e.Total).IsRequired();
 
             });
-
+            //Producto
             modelBuilder.Entity<Producto>(entity =>
             {
                 entity.HasKey(s => s.Id);
@@ -104,21 +105,13 @@ namespace Infrastructure.Data
                 entity.Property(e => e.Categoria).IsRequired();
                 entity.Property(e => e.Descripcion).HasMaxLength(255);
                 entity.Property(e => e.Stock).IsRequired();
-                new Producto { Id = 1, Categoria = "Cafe Molido", Descripcion = "Rico", Nombre = "Café Suave", Precio = 1000, Stock = 10, Factura = null, IdFactura = 0,IdOrdenDeCompra=0,OrdenDeCompra=null };
-                new Producto { Id = 2, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Tostado Intenso", Precio = 1500, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-                new Producto { Id = 3, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Molido Tradicional", Precio = 1100, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-                new Producto { Id = 4, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Italaiano", Precio = 2000, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-                new Producto { Id = 5, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Macchiato", Precio = 1300, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-                new Producto { Id = 6, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Gourmet", Precio = 2500, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-                new Producto { Id = 7, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café", Precio = 900, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-                new Producto { Id = 8, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Molido Extra Intenso", Precio = 1300, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-                new Producto { Id = 9, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Molido Intenso", Precio = 1500, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-                new Producto { Id = 10, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Latte", Precio = 2000, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-                new Producto { Id = 11, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Molido Fuerte", Precio = 1700, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-                new Producto { Id = 12, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Seleccion Especial", Precio = 3000, Stock = 10, Factura = null, IdFactura = 0, IdOrdenDeCompra = 0, OrdenDeCompra = null };
-                
+               /* new Producto { Id = 1, Categoria = "Cafe Molido", Descripcion = "Rico", Nombre = "Café Suave", Precio = 1000, Stock = 10 };
+                new Producto { Id = 2, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Tostado Intenso", Precio = 1500, Stock = 10};
+                new Producto { Id = 3, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Molido Tradicional", Precio = 1100};
+                new Producto { Id = 4, Categoria = "Cafe Molido", Descripcion = "Ricas", Nombre = "Café Italaiano", Precio = 2000, Stock = 10};
+                */
             });
-
+            //Proveedor
             modelBuilder.Entity<Proveedor>(entity =>
             {
                 entity.HasKey(s => s.Id);
@@ -135,7 +128,7 @@ namespace Infrastructure.Data
                 new Proveedor { Id = 4, Email = "carlitos@gmail.com", CUIT = 12314, Direccion = "Siempreviva123", Localidad = "Sprinfild", Nombre = "lisaCafe", OrdenDeCompra = null, Provincia = "CAlifornia", Telefono = 1234 };
                 new Proveedor { Id = 5, Email = "carlitos@gmail.com", CUIT = 12314, Direccion = "Siempreviva123", Localidad = "Sprinfild", Nombre = "MaggieCafe", OrdenDeCompra = null, Provincia = "CAlifornia", Telefono = 1234 };
             });
-
+            //Usuario
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(x => x.Id);
@@ -144,6 +137,12 @@ namespace Infrastructure.Data
                 entity.Property(e => e.PasswordHash).HasMaxLength(255).IsRequired();
 
             });
+            //ItemCarrito
+            modelBuilder.Entity<ItemCarrito>(entity =>
+            {
+                entity.HasKey(x => x.Id);
+                entity.Property(n => n.Id).ValueGeneratedOnAdd();
+            });
 
             //Relacion 1-X Cliente-Factura
             modelBuilder.Entity<Factura>()
@@ -151,17 +150,18 @@ namespace Infrastructure.Data
             .WithMany(g => g.Facturas)
             .HasForeignKey(s => s.IdCliente);
             
-            //Relacion 1-X OrdenDeCompra-Producto
+            /*Relacion 1-X OrdenDeCompra-Producto
             modelBuilder.Entity<Producto>()
             .HasOne<OrdenDeCompra>(s => s.OrdenDeCompra)
             .WithMany(g => g.Productos)
-            .HasForeignKey(s => s.IdFactura);
+            .HasForeignKey(s => s.IdOrdenDeCompra);
 
-            //Relacion 1-X Producto-Factura
+            Relacion 1-X Producto-Factura.. No es necesaria con la existencia del carrito
             modelBuilder.Entity<Producto>()
             .HasOne<Factura>(s => s.Factura)
             .WithMany(g => g.Productos)
             .HasForeignKey(s => s.IdFactura);
+            */
 
             //Relacion 1-1 OrdenDeCompra-Proveedor
             modelBuilder.Entity<Proveedor>()
@@ -192,6 +192,26 @@ namespace Infrastructure.Data
             .HasOne<Usuario>(s => s.Usuario)
             .WithOne(ad => ad.Cliente)
             .HasForeignKey<Usuario>(ad => ad.ClienteId);
+
+            //Relacion 1-1 Cliente-Usuario
+            modelBuilder.Entity<Cliente>()
+            .HasOne<Usuario>(s => s.Usuario)
+            .WithOne(ad => ad.Cliente)
+            .HasForeignKey<Usuario>(ad => ad.ClienteId);
+
+            //Relacion 1-x Cliente- Carrito
+            modelBuilder.Entity<ItemCarrito>()
+            .HasOne(ic => ic.Cliente)
+            .WithMany(c => c.Carrito)
+            .HasForeignKey(ic => ic.ClienteId);
+
+            //Relacion 1-x Producto-Carrito
+            modelBuilder.Entity<ItemCarrito>()
+            .HasOne(ic => ic.Producto)
+            .WithMany(p => p.ItemsEnCarrito)
+            .HasForeignKey(ic => ic.ProductoId);
+    
+
         }
 
     }

@@ -18,7 +18,8 @@ namespace Aplication.Models.Response
         public float Total { get; set; }
         //public int IdProveedor { get; set; } 
         public ProveedorResponse Proveedor { get; set; }
-        public ICollection<ProductoResponse> Productos { get; set; }
+
+        //public ICollection<ProductoResponse> Productos { get; set; }
 
     }
 }

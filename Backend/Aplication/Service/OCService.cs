@@ -48,7 +48,7 @@ namespace Aplication.Service
                 throw new RequieredParameterException("Error!OrdenDeCompra does not exist ");
 
             }
-            var ListProductos = OrdenDeCompra.Productos != null ? OrdenDeCompra.Productos.Select(ListProductos => new ProductoResponse
+            /*var ListProductos = OrdenDeCompra.Productos != null ? OrdenDeCompra.Productos.Select(ListProductos => new ProductoResponse
             {
                 
                 Categoria= ListProductos.Categoria,
@@ -58,7 +58,7 @@ namespace Aplication.Service
                 Stock= ListProductos.Stock,
 
             }).ToList() : new List<ProductoResponse>();
-
+            */
             return new OCResponse
             {
                 IdOrdenDeCompra = OrdenDeCompra.Id,
@@ -68,7 +68,7 @@ namespace Aplication.Service
                 Importe = OrdenDeCompra.Importe,
                 PUnitario = OrdenDeCompra.PUnitario,
                 Total = OrdenDeCompra.Total,
-                Productos = ListProductos,
+                //Productos = ListProductos,
 
                 Proveedor = OrdenDeCompra.Proveedor != null ? new ProveedorResponse 
                 {
@@ -114,7 +114,7 @@ namespace Aplication.Service
                 Detalle= request.Detalle,
                 Fecha= request.Fecha,
                 Importe= request.Importe,
-                Productos=new List<Producto>(),
+                //Productos=new List<Producto>(),
                 IdProveedor= request.IdProveedor,
                 Proveedor= proveedor,
                 PUnitario= request.PUnitario,
@@ -160,6 +160,7 @@ namespace Aplication.Service
             }
             await _command.RemoveOrdenDeCompra(OrdenDeCompra);
 
+            /*
             var ListProductos = OrdenDeCompra.Productos != null ? OrdenDeCompra.Productos.Select(ListProductos => new ProductoResponse
             {
 
@@ -170,7 +171,7 @@ namespace Aplication.Service
                 Stock = ListProductos.Stock,
             }).ToList() : new List<ProductoResponse>();
 
-
+            */
 
             return new OCResponse
             {
@@ -178,7 +179,7 @@ namespace Aplication.Service
                 Detalle = OrdenDeCompra.Detalle,
                 Fecha = OrdenDeCompra.Fecha,
                 Importe = OrdenDeCompra.Importe,
-                Productos= ListProductos,
+                //Productos= ListProductos,
                 PUnitario = OrdenDeCompra.PUnitario,
                 Total = OrdenDeCompra.Total,
                 IdOrdenDeCompra= OrdenDeCompra.Id,
@@ -214,7 +215,7 @@ namespace Aplication.Service
                 PUnitario = OrdenDeCompra.PUnitario,
                 Total = OrdenDeCompra.Total,
                 IdOrdenDeCompra = OrdenDeCompra.Id,
-
+                /*
                 Productos = OrdenDeCompra.Productos != null ? OrdenDeCompra.Productos.Select(ListProductos => new ProductoResponse
                     {
                     Categoria = ListProductos.Categoria,
@@ -223,7 +224,7 @@ namespace Aplication.Service
                     Precio = ListProductos.Precio,
                     Stock = ListProductos.Stock,
                     }).ToList() : new List<ProductoResponse>(),
-
+                */
                 Proveedor= OrdenDeCompra.Proveedor != null ? new ProveedorResponse
                 {
                     IdProveedor = OrdenDeCompra.Proveedor.Id,
@@ -281,7 +282,7 @@ namespace Aplication.Service
             
 
             await _command.UpdateOrdenDeCompra(OrdenDeCompra);
-
+            /*
             var ListProductos = OrdenDeCompra.Productos != null ? OrdenDeCompra.Productos.Select(ListProductos => new ProductoResponse
             {
 
@@ -292,7 +293,7 @@ namespace Aplication.Service
                 Stock = ListProductos.Stock,
             }).ToList() : new List<ProductoResponse>();
 
-
+            */
 
             return new OCResponse
             {
@@ -302,7 +303,7 @@ namespace Aplication.Service
                 Importe = OrdenDeCompra.Importe,
                 PUnitario = OrdenDeCompra.PUnitario,
                 Total = OrdenDeCompra.Total,
-                Productos= ListProductos,
+                //Productos= ListProductos,
                 Proveedor = OrdenDeCompra.Proveedor != null ? new ProveedorResponse
                 {
                     IdProveedor = OrdenDeCompra.Proveedor.Id,
@@ -357,7 +358,7 @@ namespace Aplication.Service
             //Modifica
             producto.Stock = Cantidad;
 
-            OrdenDeCompra.Productos.Add(producto);
+            //OrdenDeCompra.Productos.Add(producto);
 
             OrdenDeCompra.Total += (float)producto.Precio * Cantidad;
 
@@ -365,7 +366,7 @@ namespace Aplication.Service
 
 
             //Lista de productos response 
-
+            /*
             var ListProductos = OrdenDeCompra.Productos != null ? OrdenDeCompra.Productos.Select(ListProductos => new ProductoResponse
             {
 
@@ -376,7 +377,7 @@ namespace Aplication.Service
                 Stock = ListProductos.Stock,
             }).ToList() : new List<ProductoResponse>();
 
-
+            */
           
 
             return new OCResponse
@@ -386,7 +387,7 @@ namespace Aplication.Service
                 Fecha = OrdenDeCompra.Fecha,
                 IdOrdenDeCompra = OrdenDeCompra.Id,
                 Importe = OrdenDeCompra.Importe,
-                Productos = ListProductos,
+                //Productos = ListProductos,
                 Total = OrdenDeCompra.Total,
                 PUnitario = OrdenDeCompra.PUnitario,
                 Proveedor = OrdenDeCompra.Proveedor != null ? new ProveedorResponse
@@ -434,7 +435,7 @@ namespace Aplication.Service
                 throw new NotImplementedException("Project not found");
             }
 
-
+            /*
             //Buscar Dentro de la lista
             foreach (var producto1 in OrdenDeCompra.Productos)
             {
@@ -452,12 +453,12 @@ namespace Aplication.Service
                 }
             
             }
-            
+            */
             await _command.UpdateOrdenDeCompra(OrdenDeCompra);
 
 
             //Lista de productos response 
-
+            /*
             var ListProductos = OrdenDeCompra.Productos != null ? OrdenDeCompra.Productos.Select(ListProductos => new ProductoResponse
             {
 
@@ -468,7 +469,7 @@ namespace Aplication.Service
                 Stock = ListProductos.Stock,
             }).ToList() : new List<ProductoResponse>();
 
-
+            */
 
 
             return new OCResponse
@@ -478,7 +479,7 @@ namespace Aplication.Service
                 Fecha = OrdenDeCompra.Fecha,
                 IdOrdenDeCompra = OrdenDeCompra.Id,
                 Importe = OrdenDeCompra.Importe,
-                Productos = ListProductos,
+                //Productos = ListProductos,
                 Total = OrdenDeCompra.Total,
                 PUnitario = OrdenDeCompra.PUnitario,
                 Proveedor = OrdenDeCompra.Proveedor != null ? new ProveedorResponse

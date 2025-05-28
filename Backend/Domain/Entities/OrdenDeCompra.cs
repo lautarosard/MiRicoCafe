@@ -20,8 +20,8 @@ namespace Domain.Entities
         public Proveedor Proveedor { get; set; }
         public int IdProveedor { get; set; }
 
-        //productos 1- X
+        /*productos 1- X
         public ICollection<Producto> Productos { get; set; }
-
+        */
     }
 }

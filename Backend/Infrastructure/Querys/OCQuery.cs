@@ -28,7 +28,7 @@ namespace Infrastructure.Querys
         {
             var ordenDeCompra = await _context.Set<OrdenDeCompra>()
                .Include(p => p.Proveedor)
-               .Include(p => p.Productos)
+               //.Include(p => p.Productos)
 
                .FirstOrDefaultAsync(p => p.Id == id);
 
