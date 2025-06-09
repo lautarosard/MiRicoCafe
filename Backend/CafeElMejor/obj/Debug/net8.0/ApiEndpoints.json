@@ -542,6 +542,22 @@
     ]
   },
   {
+    "ContainingType": "MercadoPagoController",
+    "Method": "CrearPreferencia",
+    "RelativePath": "api/MercadoPago/crear-preferencia",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Aplication.Models.Request.PagoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CafeElMejor.Controllers.NCController",
     "Method": "CreateNotaDeCredito",
     "RelativePath": "api/NC",

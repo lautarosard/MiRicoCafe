@@ -832,6 +832,37 @@
         }
       }
     },
+    "/api/MercadoPago/crear-preferencia": {
+      "post": {
+        "tags": [
+          "MercadoPago"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PagoRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PagoRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PagoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/NC": {
       "post": {
         "tags": [
@@ -2103,6 +2134,28 @@
           "idProveedor": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PagoRequest": {
+        "type": "object",
+        "properties": {
+          "tituloProducto": {
+            "type": "string",
+            "nullable": true
+          },
+          "precio": {
+            "type": "number",
+            "format": "double"
+          },
+          "cantidad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "moneda": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

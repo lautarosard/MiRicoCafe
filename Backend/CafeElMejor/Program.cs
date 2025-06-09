@@ -19,6 +19,7 @@ using Aplication.Interfaces.IUsuario;
 using Aplication.Interfaces.IJwtGenerator;
 using Aplication.Interfaces.IAdministrador;
 using Aplication.Interfaces.IItemCarrito;
+using Aplication.Interfaces.IMercadoPago;
 
 namespace CafeElMejor
 {
@@ -102,6 +103,8 @@ namespace CafeElMejor
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IJwtGeneratorService, JwtGeneratorService>();
 
+            //Mercado Pago
+            builder.Services.AddHttpClient<IMercadoPagoService, MercadoPagoService>();
 
             //builder QR
             builder.Services.AddScoped<IGenerarQrService, QRService>();
@@ -118,11 +121,15 @@ namespace CafeElMejor
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
+                
+                app.UseStaticFiles();
+
                 app.UseSwaggerUI(c =>
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cafe API v1");
                     c.RoutePrefix = "swagger"; // Esto fuerza a que Swagger sea la página inicial
                 });
+                app.UseRouting();
             }
 
 
