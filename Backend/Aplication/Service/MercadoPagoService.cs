@@ -1,5 +1,8 @@
 ﻿using Aplication.Interfaces.IMercadoPago;
 using Aplication.Models.Request;
+using MercadoPago.Client.Preference;
+using MercadoPago.Config;
+using MercadoPago.Resource.Preference;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -13,56 +16,43 @@ namespace Aplication.Service
 {
     public class MercadoPagoService : IMercadoPagoService
     {
-        private readonly HttpClient _httpClient;
         private readonly IConfiguration _config;
-        public MercadoPagoService(HttpClient httpClient, IConfiguration config) 
+
+        public MercadoPagoService(IConfiguration config)
         {
             _config = config;
-            _httpClient = httpClient;
         }
 
         public async Task<string> CrearPreferenciaAsync(PagoRequest request)
         {
-            var accessToken = _config["MercadoPago:AccessToken"]; // guardalo en appsettings
+            // Inicializar el SDK una vez (idealmente debería estar en el startup o constructor de un singleton)
+            MercadoPagoConfig.AccessToken = _config["MercadoPago:AccessToken"];
 
-            _httpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", accessToken);
-
-            var body = new
+            // Mapear tus productos (si es uno solo, usás uno; si hay varios, cambiás esto)
+            var items = request.MPProductos.Select(p => new PreferenceItemRequest
             {
-                items = new[]
+                Title = p.Titulo,
+                Quantity = p.Cantidad,
+                CurrencyId = p.Moneda,
+                UnitPrice = p.Precio
+            }).ToList();
+
+            var preferenciaRequest = new PreferenceRequest
+            {
+                Items = items,
+                BackUrls = new PreferenceBackUrlsRequest
                 {
-                new
-                {
-                    title = request.TituloProducto,
-                    quantity = request.Cantidad,
-                    currency_id = request.Moneda,
-                    unit_price = request.Precio
-                }
-            },
-                back_urls = new
-                {
-                    success = "https://localhost:7069/pago/exito",
-                    failure = "https://localhost:7069/pago/fallo",
-                    pending = "https://localhost:7069/pago/pendiente"
+                    Success = "https://localhost:7069/pago/exito",
+                    Failure = "https://localhost:7069/pago/fallo",
+                    Pending = "https://localhost:7069/pago/pendiente"
                 },
-                auto_return = "approved"
+                AutoReturn = "approved"
             };
-            var content = new StringContent(JsonSerializer.Serialize(body), Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync("https://api.mercadopago.com/checkout/preferences", content);
+            var client = new PreferenceClient();
+            Preference preference = await client.CreateAsync(preferenciaRequest);
 
-            if (!response.IsSuccessStatusCode)
-            {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al crear preferencia: {error}");
-            }
-
-            var json = await response.Content.ReadAsStringAsync();
-            using var doc = JsonDocument.Parse(json);
-            var initPoint = doc.RootElement.GetProperty("init_point").GetString();
-
-            return initPoint!;
+            return preference.InitPoint; // URL del checkout de Mercado Pago
         }
 
     }

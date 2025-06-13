@@ -104,7 +104,8 @@ namespace CafeElMejor
             builder.Services.AddScoped<IJwtGeneratorService, JwtGeneratorService>();
 
             //Mercado Pago
-            builder.Services.AddHttpClient<IMercadoPagoService, MercadoPagoService>();
+            builder.Services.AddScoped<IMercadoPagoService, MercadoPagoService>();
+
 
             //builder QR
             builder.Services.AddScoped<IGenerarQrService, QRService>();

@@ -136,3 +136,16 @@ F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\obj\Debug\net8.0\refint\CafeElMejor
 F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\obj\Debug\net8.0\CafeElMejor.pdb
 F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\obj\Debug\net8.0\CafeElMejor.genruntimeconfig.cache
 F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\obj\Debug\net8.0\ref\CafeElMejor.dll
+F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\bin\Debug\net8.0\MercadoPago.dll
+F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\bin\Debug\net8.0\Newtonsoft.Json.dll
+F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\bin\Debug\net8.0\System.Drawing.Common.dll
+F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\bin\Debug\net8.0\System.Security.Permissions.dll
+F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\bin\Debug\net8.0\System.Windows.Extensions.dll
+F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+F:\Facu\ingInfo\RicoCafe\Backend\CafeElMejor\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll

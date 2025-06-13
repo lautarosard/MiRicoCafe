@@ -19,3 +19,16 @@ F:\Facu\ingInfo\RicoCafe\Backend\Domain\obj\Debug\net8.0\refint\Domain.dll
 F:\Facu\ingInfo\RicoCafe\Backend\Domain\obj\Debug\net8.0\Domain.pdb
 F:\Facu\ingInfo\RicoCafe\Backend\Domain\obj\Debug\net8.0\Domain.genruntimeconfig.cache
 F:\Facu\ingInfo\RicoCafe\Backend\Domain\obj\Debug\net8.0\ref\Domain.dll
+F:\Facu\ingInfo\RicoCafe\Backend\Domain\bin\Debug\net8.0\MercadoPago.dll
+F:\Facu\ingInfo\RicoCafe\Backend\Domain\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+F:\Facu\ingInfo\RicoCafe\Backend\Domain\bin\Debug\net8.0\Newtonsoft.Json.dll
+F:\Facu\ingInfo\RicoCafe\Backend\Domain\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+F:\Facu\ingInfo\RicoCafe\Backend\Domain\bin\Debug\net8.0\System.Drawing.Common.dll
+F:\Facu\ingInfo\RicoCafe\Backend\Domain\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+F:\Facu\ingInfo\RicoCafe\Backend\Domain\bin\Debug\net8.0\System.Security.Permissions.dll
+F:\Facu\ingInfo\RicoCafe\Backend\Domain\bin\Debug\net8.0\System.Windows.Extensions.dll
+F:\Facu\ingInfo\RicoCafe\Backend\Domain\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+F:\Facu\ingInfo\RicoCafe\Backend\Domain\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+F:\Facu\ingInfo\RicoCafe\Backend\Domain\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+F:\Facu\ingInfo\RicoCafe\Backend\Domain\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+F:\Facu\ingInfo\RicoCafe\Backend\Domain\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll

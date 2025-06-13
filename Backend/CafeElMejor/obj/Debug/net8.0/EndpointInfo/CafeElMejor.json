@@ -2141,20 +2141,11 @@
       "PagoRequest": {
         "type": "object",
         "properties": {
-          "tituloProducto": {
-            "type": "string",
-            "nullable": true
-          },
-          "precio": {
-            "type": "number",
-            "format": "double"
-          },
-          "cantidad": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "moneda": {
-            "type": "string",
+          "mpProductos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductoMPRequest"
+            },
             "nullable": true
           }
         },
@@ -2186,6 +2177,28 @@
           }
         },
         "additionalProperties": { }
+      },
+      "ProductoMPRequest": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string",
+            "nullable": true
+          },
+          "precio": {
+            "type": "number",
+            "format": "double"
+          },
+          "cantidad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "moneda": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
       },
       "ProductoRequest": {
         "type": "object",
