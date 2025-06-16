@@ -28,8 +28,8 @@ namespace CafeElMejor.Controllers
 
             try
             {
-                var token = await _service.LoginAsync(request.Usuario, request.Password);
-                return Ok(new { Token = token });
+                var response = await _service.LoginAsync(request.Usuario, request.Password);
+                return Ok(response);
             }
             catch (Exception ex)
             {

@@ -57,7 +57,7 @@ namespace Aplication.Service
             await _usuarioCommand.InsertUsuario(usuario);
         }
 
-        public async Task<string> LoginAsync(string username, string password)
+        public async Task<LoginResponse> LoginAsync(string username, string password)
         {
             var usuario = await _usuarioQuery.GetByUsuario(username);
             if (usuario == null || !BCrypt.Net.BCrypt.Verify(password, usuario.PasswordHash))
@@ -65,7 +65,14 @@ namespace Aplication.Service
                 throw new Exception("Usuario o contraseña inválidos");
             }
 
-            return _jwtGenerator.GenerateToken(usuario);
+            var token = _jwtGenerator.GenerateToken(usuario);
+
+            return new LoginResponse
+            {
+                Token = token,
+                ClienteId = usuario.ClienteId,
+                Username = usuario.Username
+            };
         }
 
         public Task RegistrarUsuarioAsync(string username, string password, string rol)

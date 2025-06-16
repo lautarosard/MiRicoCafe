@@ -68,7 +68,7 @@ namespace Aplication.Service
                 FechaEmision = factura.FechaEmision,
                 TelefonoEmpresa = factura.TelefonoEmpresa,
                 CUIT = factura.CUIT,
-                Importe = factura.Importe,
+                //Importe = factura.Importe,
                 Total = factura.Total,
                 Detalles=DetallesProductos ,
                 DireccionEmpresa = factura.DireccionEmpresa,
@@ -87,34 +87,23 @@ namespace Aplication.Service
             };
         }
 
-        public async Task<FacturaResponse> CreateFactura(FacturaRequest request, List<FacturaItemRequest> FacturaItems)
+        public async Task<FacturaResponse> CreateFactura(PagoRequest dto)
         {
 
-            var cliente= await clienteQuery.GetById(request.IdCliente);
+            var cliente= await clienteQuery.GetById(dto.ClienteId);
             List<FacturaItem> ItemsDentroDeFacturas = new List<FacturaItem>();
             float TotalDeFactura = 0;
 
-            if (request.TelefonoEmpresa == 0)
-            {
-
-                throw new RequieredParameterException("Error! requiered Phone");
-            }
+            
 
 
-            if (request.CUIT == 0)
-            {
-
-                throw new RequieredParameterException("Error! requiered Phone");
-
-            }
-
-
-            foreach (FacturaItemRequest item in FacturaItems) {
+            foreach (ProductoMPRequest item in dto.MPProductos) {
                 //Creamo un factura item y buscamo el producto que le pusimos
                 FacturaItem facturaItemDentroDeLista = new FacturaItem();
-                Producto producto= await productoQuery.GetById(item.ProductoId); 
-                
+                Producto producto= await productoQuery.GetById(item.ProductoId);
+
                 //Mapeamos
+                facturaItemDentroDeLista.Id = item.ProductoId;
                 facturaItemDentroDeLista.Cantidad = item.Cantidad;
                 facturaItemDentroDeLista.ProductoId = item.ProductoId;
                 facturaItemDentroDeLista.Producto = producto;
@@ -141,9 +130,8 @@ namespace Aplication.Service
                 CUIT = 2041002466,
                 DireccionEmpresa = "Calle Falsa 123",
                 Detalles= ItemsDentroDeFacturas,                
-                Importe = request.Importe,
                 Total = TotalDeFactura,
-                IdCliente = request.IdCliente,
+                IdCliente = cliente.Id,
                 Cliente = cliente,
 
 
@@ -159,7 +147,7 @@ namespace Aplication.Service
                 FechaEmision = factura.FechaEmision,
                 TelefonoEmpresa = factura.TelefonoEmpresa,
                 CUIT = factura.CUIT,
-                Importe = factura.Importe,
+                //Importe = factura.Importe,
                 Total = factura.Total,
                 DireccionEmpresa = factura.DireccionEmpresa,
                 Estado = factura.Estado,
@@ -204,7 +192,7 @@ namespace Aplication.Service
                 FechaEmision = factura.FechaEmision,
                 TelefonoEmpresa = factura.TelefonoEmpresa,
                 CUIT = factura.CUIT,
-                Importe = factura.Importe,
+                //Importe = factura.Importe,
                 Total = factura.Total,
                 DireccionEmpresa = factura.DireccionEmpresa,
                 Estado = factura.Estado,

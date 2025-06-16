@@ -9,7 +9,7 @@ namespace Aplication.Interfaces.IAuth
 {
     public interface IAuthService
     {
-        Task<string> LoginAsync(string username, string password);
+        Task<LoginResponse> LoginAsync(string username, string password);
         Task RegistrarUsuarioAsync(RegistroClienteRequest request);
 
     }

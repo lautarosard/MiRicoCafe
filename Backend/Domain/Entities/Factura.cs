@@ -14,7 +14,7 @@ namespace Domain.Entities
         public int TelefonoEmpresa { get; set; }
         public int CUIT { get; set; }
         public bool Estado { get; set; }
-        public float Importe { get; set; }
+        //public float Importe { get; set; }
         public float Total { get; set; }
 
 

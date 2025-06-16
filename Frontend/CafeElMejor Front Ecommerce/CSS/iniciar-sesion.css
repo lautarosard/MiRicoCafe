@@ -1,0 +1,124 @@
+/* Contenedor principal del formulario */
+.contenedor-iniciarsesion {
+    background-image: url('/Inicio/img/fondo-patron.jpg'); /* Ruta a tu imagen de patrón */
+    background-repeat: repeat;
+    border-radius: 25px;
+    padding: 50px; /* Espaciado si es un contenedor de página */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    font-family: Arial, sans-serif; /* Una fuente base común */
+}
+
+/* Estilo del recuadro/tarjeta del formulario */
+.formulario-iniciarsesion {
+    background-color: #fffacd; /* Color amarillo pálido del ejemplo original */
+    border-radius: 20px;
+    padding: 35px 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px; /* Ancho máximo del formulario */
+    box-sizing: border-box;
+}
+
+/* Estilo para el título "INICIAR SESION" */
+h2 {
+    color: #8d6c45;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 0; /* Quitar margen superior si está dentro del padding de .formulario-iniciarsesion */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Grupo de etiqueta e input */
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Etiqueta del campo (DNI) */
+.form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 16px;
+}
+
+/* Campo de entrada (DNI) */
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #F8F8DC; /* Color crema para el input */
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input::placeholder {
+    color: #999;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #4d3a2a; /* Color marrón oscuro al enfocar */
+    box-shadow: 0 0 0 3px rgba(77, 58, 42, 0.2); /* Sombra sutil al enfocar */
+}
+
+/* ==== ESTILOS PARA BOTONES DEL FORMULARIO ==== */
+
+/* Estilos base comunes para los botones del formulario */
+.boton-cancelar,      /* Botón/enlace "CANCELAR" */
+.boton-iniciarsesion {   /* Botón "CONFIRMAR" */
+    display: inline-block;
+    padding: 12px 20px; /* Ajustado para un mejor balance */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #4d3a2a; /* Color base marrón oscuro */
+    text-decoration: none;   /* Importante para el <a> de "CANCELAR" */
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    min-width: 120px; /* Ancho mínimo para que no se vean muy pequeños */
+}
+
+/* Efecto hover para los botones del formulario */
+.boton-cancelar:hover,
+.boton-iniciarsesion:hover {
+    background-color: #604a38;   /* Tono marrón ligeramente más claro */
+    transform: translateY(-2px); /* Sutil efecto de elevación */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Estilos para el contenedor de los botones ("CONFIRMAR", "CANCELAR") */
+.acciones-forms {
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio */
+    gap: 15px; /* Espacio entre los botones si space-between no es suficiente o si se usa center */
+    margin-top: 30px; /* Espacio superior antes del grupo de botones */
+}
+
+/* Ajustes para los botones dentro de .acciones-forms para que crezcan y se espacien */
+.acciones-forms .boton-cancelar,
+.acciones-forms .boton-iniciarsesion {
+    flex-grow: 1;       /* Permite que cada botón crezca para ocupar el espacio disponible */
+    /* margin: 0 5px; */ /* Se puede usar gap en el contenedor flex en lugar de márgenes en los ítems */
+}
+
+.boton-cancelar {
+    background-color: #ef4444; /* Un gris para cancelar, por ejemplo */
+    color: white;
+}
+
+.boton-cancelar:hover {
+    background-color: #ee5353;
+}

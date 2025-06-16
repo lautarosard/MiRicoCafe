@@ -15,7 +15,7 @@ namespace Aplication.Interfaces.IFactura
       Task<List<FacturaResponse>> GetAll();
 
       //Crear
-      Task<FacturaResponse> CreateFactura(FacturaRequest request, List<FacturaItemRequest> FacturaItems);
+      Task<FacturaResponse> CreateFactura(PagoRequest dto);
     //Consultar
       Task<FacturaResponse> ConsultarFactura(int id);
  

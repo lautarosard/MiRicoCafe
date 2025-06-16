@@ -8,6 +8,7 @@ namespace Aplication.Models.Request
 {
     public class PagoRequest
     {
+        public int ClienteId { get; set; }
         public List<ProductoMPRequest> MPProductos { get; set; } = new();
     }
 }
