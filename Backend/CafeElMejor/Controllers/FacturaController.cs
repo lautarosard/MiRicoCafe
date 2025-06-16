@@ -21,7 +21,7 @@ namespace CafeElMejor.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-        public async Task<IActionResult> CreateFactura(FacturaRequest request)
+        public async Task<IActionResult> CreateFactura(PagoRequest request)
         {
 
             try
