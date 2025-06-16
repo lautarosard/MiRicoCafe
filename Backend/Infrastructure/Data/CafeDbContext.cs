@@ -53,7 +53,7 @@ namespace Infrastructure.Data
                 entity.Property(n => n.Id).ValueGeneratedOnAdd();
                 entity.Property(n => n.FechaEmision).IsRequired();
                 entity.Property(e => e.Total).IsRequired();
-                entity.Property(e => e.Importe).IsRequired();
+                //entity.Property(e => e.Importe).IsRequired();
                 //entity.Property(e => e.IVA).IsRequired();
                 //entity.Property(e => e.FechaVencimiento).IsRequired();
 

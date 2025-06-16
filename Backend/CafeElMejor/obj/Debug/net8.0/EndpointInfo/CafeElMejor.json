@@ -717,17 +717,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/FacturaRequest"
+                "$ref": "#/components/schemas/PagoRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/FacturaRequest"
+                "$ref": "#/components/schemas/PagoRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/FacturaRequest"
+                "$ref": "#/components/schemas/PagoRequest"
               }
             }
           }
@@ -2000,68 +2000,6 @@
         },
         "additionalProperties": false
       },
-      "FacturaRequest": {
-        "type": "object",
-        "properties": {
-          "fechaEmision": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "direccionEmpresa": {
-            "type": "string",
-            "nullable": true
-          },
-          "telefonoEmpresa": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "cuit": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "cuilCliente": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "nombreCliente": {
-            "type": "string",
-            "nullable": true
-          },
-          "localidadCliente": {
-            "type": "string",
-            "nullable": true
-          },
-          "direccionCliente": {
-            "type": "string",
-            "nullable": true
-          },
-          "iva": {
-            "type": "number",
-            "format": "float"
-          },
-          "importe": {
-            "type": "number",
-            "format": "float"
-          },
-          "total": {
-            "type": "number",
-            "format": "float"
-          },
-          "fechaVencimiento": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "idCobranza": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "idCliente": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
       "ItemCarritoResponse": {
         "type": "object",
         "properties": {
@@ -2259,6 +2197,10 @@
       "PagoRequest": {
         "type": "object",
         "properties": {
+          "clienteId": {
+            "type": "integer",
+            "format": "int32"
+          },
           "mpProductos": {
             "type": "array",
             "items": {
@@ -2299,6 +2241,10 @@
       "ProductoMPRequest": {
         "type": "object",
         "properties": {
+          "productoId": {
+            "type": "integer",
+            "format": "int32"
+          },
           "titulo": {
             "type": "string",
             "nullable": true

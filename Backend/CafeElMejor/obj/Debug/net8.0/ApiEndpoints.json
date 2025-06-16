@@ -464,7 +464,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Aplication.Models.Request.FacturaRequest",
+        "Type": "Aplication.Models.Request.PagoRequest",
         "IsRequired": true
       }
     ],
