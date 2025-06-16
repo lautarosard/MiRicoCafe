@@ -1,6 +1,10 @@
-﻿using Aplication.Interfaces.IAdministrador;
+﻿using Aplication.Exceptions;
+using Aplication.Interfaces.IAdministrador;
+using Aplication.Interfaces.ICliente;
 using Aplication.Interfaces.IItemCarrito;
+using Aplication.Interfaces.IProducto;
 using Aplication.Models.Request;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +17,15 @@ namespace Aplication.Service
     {
         private readonly IItemCarritoCommand _command;
         private readonly IItemCarritoQuery _query;
+        private readonly IClienteQuery _clienteQuery;
+        private readonly IProductoQuery _productoQuery;
 
-        public ItemCarritoService(IItemCarritoCommand command, IItemCarritoQuery query)
+        public ItemCarritoService(IItemCarritoCommand command, IItemCarritoQuery query, IClienteQuery clienteQuery, IProductoQuery productoQuery)
         {
             _command = command;
             _query = query;
+            _clienteQuery = clienteQuery;
+            _productoQuery = productoQuery;
         }
 
         public async Task<CarritoResponse> ObtenerCarrito(int clienteId)
@@ -63,6 +71,65 @@ namespace Aplication.Service
         {
             await _command.VaciarCarrito(clienteId);
         }
+
+
+        public async Task CobrarCarrito(int clienteId)
+        {
+            //Busca el Cliente 
+            var cliente = await _clienteQuery.GetById(clienteId);
+
+            //Verificamos 
+            if (cliente == null)
+            {
+
+                throw new RequieredParameterException("Error! requiered Phone");
+            }
+
+            if (clienteId <= 0)
+            {
+
+                throw new RequieredParameterException("Error! requiered Phone");
+            }
+
+            //generamos las listas donde se van a guardar los request 
+            List<FacturaItemRequest> ListaDeFacturaItemRequest= new List<FacturaItemRequest>();
+            List<ProductoMPRequest> ListaDeProductoMPRequest = new List<ProductoMPRequest>();
+
+
+            //tiramos los mapeamos todo 
+            foreach (ItemCarrito item in cliente.Carrito)
+            {
+                //Creamo un factura item y buscamo el producto que le pusimos
+                FacturaItemRequest FacturaItemDentroDeLista = new FacturaItemRequest();
+                ProductoMPRequest ProductoMPRequestDeLista = new ProductoMPRequest();
+                var Producto = await _productoQuery.GetById(item.ProductoId);
+
+                //Mapeamos
+                FacturaItemDentroDeLista.Cantidad = item.Cantidad;
+                FacturaItemDentroDeLista.ProductoId = item.ProductoId;
+                FacturaItemDentroDeLista.PrecioUnitario = Producto.Precio;
+
+                ProductoMPRequestDeLista.Titulo=Producto.Nombre;
+                ProductoMPRequestDeLista.Cantidad=item.Cantidad;
+                ProductoMPRequestDeLista.Precio=Producto.Precio;
+                //Agregamos a la lista
+                ListaDeFacturaItemRequest.Add(FacturaItemDentroDeLista);
+                ListaDeProductoMPRequest.Add(ProductoMPRequestDeLista);
+            }
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
 
     }
 }

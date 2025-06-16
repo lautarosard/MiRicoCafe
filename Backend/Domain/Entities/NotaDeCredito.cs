@@ -25,7 +25,7 @@ namespace Domain.Entities
 
         //Fk - Factura 1-1
 
-        public int IdFactura { get; set; }
-        public Factura Factura { get; set; }
+        //public int IdFactura { get; set; }
+        //public Factura Factura { get; set; }
     }
 }

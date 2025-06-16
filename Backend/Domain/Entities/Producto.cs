@@ -12,15 +12,14 @@ namespace Domain.Entities
         public string Nombre { get; set; }
         public decimal Precio { get; set; }
         public string Categoria { get; set; }
-        public string Descripcion {  get; set; }
+        public string Descripcion { get; set; }
         public int Stock { get; set; }
 
-        /*
-        //FK -Orden de compra
-        public int IdOrdenDeCompra {  get; set; }
-        
-        public OrdenDeCompra OrdenDeCompra { get; set; }
-        */
+
+        //FK -FacturaItem 1-1
+        public FacturaItem facturaItem { get; set; }
+
+
         //Fk -carrito
         public ICollection<ItemCarrito> ItemsEnCarrito { get; set; }
 

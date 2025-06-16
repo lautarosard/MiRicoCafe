@@ -8,10 +8,12 @@ using Aplication.Interfaces.ICliente;
 using Aplication.Interfaces.ICobranza;
 using Aplication.Interfaces.IFactura;
 using Aplication.Interfaces.INC;
+using Aplication.Interfaces.IProducto;
 using Aplication.Models.Request;
 using Aplication.Models.Response;
 using AutoMapper;
 using Domain.Entities;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace Aplication.Service
 {
@@ -21,29 +23,42 @@ namespace Aplication.Service
         private readonly IFacturaCommand _command;
         private readonly IClienteQuery clienteQuery;
         private readonly ICobranzaQuery cobranzaQuery;
+        private readonly IProductoQuery productoQuery;
 
-        public FacturaService(IFacturaQuery query, IFacturaCommand command, IClienteQuery clienteQuery, ICobranzaQuery cobranzaQuery)
+        public FacturaService(IFacturaQuery query, IFacturaCommand command, IClienteQuery clienteQuery, ICobranzaQuery cobranzaQuery, IProductoQuery productoQuery)
         {
             _query = query;
             _command = command;
             this.clienteQuery = clienteQuery;
             this.cobranzaQuery = cobranzaQuery;
+            this.productoQuery = productoQuery;
         }
 
         public async Task<FacturaResponse> ConsultarFactura(int id)
         {
             // Valores 
             var factura = await _query.GetById(id);
-          
+           
+
 
             //Validacion
             if (factura == null)
             {
-
-                throw new RequieredParameterException("Error!proveedor does not exist ");
-
+                throw new RequieredParameterException("Error!Factura does not exist ");
             }
-     
+          
+            //Esto es para que traiga la lista de detalles
+
+            var DetallesProductos = factura.Detalles != null ? factura.Detalles.Select(FacturaItem => new FacturaItemResponse
+            {Id = FacturaItem.Id,
+            Cantidad= FacturaItem.Cantidad,
+            FacturaId= factura.Id,
+            PrecioUnitario= FacturaItem.PrecioUnitario,
+            ProductoId= FacturaItem.ProductoId,
+            
+
+            }).ToList() : new List<FacturaItemResponse>();
+
 
 
 
@@ -51,127 +66,168 @@ namespace Aplication.Service
             {
                 IdFactura = id,
                 FechaEmision = factura.FechaEmision,
-                DireccionCliente = factura.DireccionCliente,
                 TelefonoEmpresa = factura.TelefonoEmpresa,
                 CUIT = factura.CUIT,
-                CUILCliente = factura.CUILCliente,
-                NombreCliente = factura.NombreCliente,
-                LocalidadCliente = factura.LocalidadCliente,
-                IVA = factura.IVA,
                 Importe = factura.Importe,
                 Total = factura.Total,
+                Detalles=DetallesProductos ,
                 DireccionEmpresa = factura.DireccionEmpresa,
-                FechaVencimiento = factura.FechaVencimiento,
+                Estado = factura.Estado,
+                Cliente = factura.Cliente != null ? new ClienteResponse
+                {
+                   IdCliente= factura.Cliente.Id,
+                   Dni= factura.Cliente.Dni,
+                   Email=factura.Cliente.Email,
+                   Nombre= factura.Cliente.Nombre
+                } : null,
                 
-             
+               
 
 
             };
         }
 
-        public async Task<FacturaResponse> CreateFactura(FacturaRequest request)
+        public async Task<FacturaResponse> CreateFactura(FacturaRequest request, List<FacturaItemRequest> FacturaItems)
         {
 
-            //Esta a medio hacer
-            if (string.IsNullOrEmpty(request.NombreCliente))
-            {
+            var cliente= await clienteQuery.GetById(request.IdCliente);
+            List<FacturaItem> ItemsDentroDeFacturas = new List<FacturaItem>();
+            float TotalDeFactura = 0;
 
-                throw new RequieredParameterException("Error! requiered NombreCliente");
-            }
-            if (string.IsNullOrEmpty(request.LocalidadCliente))
-            {
-
-                throw new RequieredParameterException("Error! requiered mail");
-            }
-            if (string.IsNullOrEmpty(request.DireccionCliente))
-            {
-
-                throw new InvalidateParameterException("Error! email Invalidate");
-            }
             if (request.TelefonoEmpresa == 0)
             {
 
                 throw new RequieredParameterException("Error! requiered Phone");
             }
 
-            if (request.CUILCliente == 0)
-            {
 
-                throw new RequieredParameterException("Error! requiered Phone");
-            }
             if (request.CUIT == 0)
             {
 
                 throw new RequieredParameterException("Error! requiered Phone");
+
             }
 
-            if (request.FechaVencimiento > request.FechaEmision)
+
+            foreach (FacturaItemRequest item in FacturaItems) {
+                //Creamo un factura item y buscamo el producto que le pusimos
+                FacturaItem facturaItemDentroDeLista = new FacturaItem();
+                Producto producto= await productoQuery.GetById(item.ProductoId); 
+                
+                //Mapeamos
+                facturaItemDentroDeLista.Cantidad = item.Cantidad;
+                facturaItemDentroDeLista.ProductoId = item.ProductoId;
+                facturaItemDentroDeLista.Producto = producto;
+                
+                //Hacemos la cuenta para el total de la factura 
+                float subtotal = (float)(facturaItemDentroDeLista.Cantidad * facturaItemDentroDeLista.PrecioUnitario);
+                TotalDeFactura = TotalDeFactura + subtotal;
+
+                //
+                ItemsDentroDeFacturas.Add(facturaItemDentroDeLista);
+
+            }
+             //a revisar 
+            if (TotalDeFactura >= 0)
             {
 
                 throw new RequieredParameterException("Error! requiered Phone");
             }
+
             var factura = new Domain.Entities.Factura()
             {
-                FechaEmision = request.FechaEmision,
-                DireccionCliente = request.DireccionCliente,
-                TelefonoEmpresa = request.TelefonoEmpresa,
-                CUIT = request.CUIT,
-                CUILCliente = request.CUILCliente,
-                NombreCliente = request.NombreCliente,
-                LocalidadCliente = request.LocalidadCliente,
-                IVA = request.IVA,
+                FechaEmision = DateTime.Now,
+                TelefonoEmpresa = 1131313232,
+                CUIT = 2041002466,
+                DireccionEmpresa = "Calle Falsa 123",
+                Detalles= ItemsDentroDeFacturas,                
                 Importe = request.Importe,
-                Total = request.Total,
-                FechaVencimiento = request.FechaVencimiento,
-                
-               
+                Total = TotalDeFactura,
+                IdCliente = request.IdCliente,
+                Cliente = cliente,
+
+
+
             };
+
 
             await _command.InsertFactura(factura);
             return new FacturaResponse
             {
-                
+
+
                 FechaEmision = factura.FechaEmision,
-                DireccionCliente = factura.DireccionCliente,
                 TelefonoEmpresa = factura.TelefonoEmpresa,
                 CUIT = factura.CUIT,
-                CUILCliente = factura.CUILCliente,
-                NombreCliente = factura.NombreCliente,
-                LocalidadCliente = factura.LocalidadCliente,
-                IVA = factura.IVA,
                 Importe = factura.Importe,
                 Total = factura.Total,
-                FechaVencimiento = factura.FechaVencimiento,
                 DireccionEmpresa = factura.DireccionEmpresa,
-                
+                Estado = factura.Estado,
+                Detalles= factura.Detalles != null ? factura.Detalles.Select(FacturaItem => new FacturaItemResponse
+                {
+                    Id = FacturaItem.Id,
+                    Cantidad = FacturaItem.Cantidad,
+                    FacturaId = factura.Id,
+                    PrecioUnitario = FacturaItem.PrecioUnitario,
+                    ProductoId = FacturaItem.ProductoId,
+
+
+                }).ToList() : new List<FacturaItemResponse>(),
+
+                Cliente = factura.Cliente != null ? new ClienteResponse
+                {
+                    IdCliente = factura.Cliente.Id,
+                    Dni = factura.Cliente.Dni,
+                    Email = factura.Cliente.Email,
+                    Nombre = factura.Cliente.Nombre
+                } : null,
+
+
 
 
             };
 
-          
+
         }
 
 
-       
         public async Task<List<FacturaResponse>> GetAll()
         {
-            var factura =_query.GetFacturaQuery();
+            var factura = _query.GetFacturaQuery();
+
+            
 
             return factura.Select(factura => new FacturaResponse
             {
 
+                IdFactura = factura.Id,
                 FechaEmision = factura.FechaEmision,
-                DireccionCliente = factura.DireccionCliente,
                 TelefonoEmpresa = factura.TelefonoEmpresa,
                 CUIT = factura.CUIT,
-                CUILCliente = factura.CUILCliente,
-                NombreCliente = factura.NombreCliente,
-                LocalidadCliente = factura.LocalidadCliente,
-                IVA = factura.IVA,
                 Importe = factura.Importe,
                 Total = factura.Total,
-                FechaVencimiento = factura.FechaVencimiento,
                 DireccionEmpresa = factura.DireccionEmpresa,
+                Estado = factura.Estado,
+
+                Detalles = factura.Detalles != null ? factura.Detalles.Select(FacturaItem => new FacturaItemResponse
+                {
+                    Id = FacturaItem.Id,
+                    Cantidad = FacturaItem.Cantidad,
+                    FacturaId = factura.Id,
+                    PrecioUnitario = FacturaItem.PrecioUnitario,
+                    ProductoId = FacturaItem.ProductoId,
+
+
+                }).ToList() : new List<FacturaItemResponse>(),
+
+                Cliente = factura.Cliente != null ? new ClienteResponse
+                {
+                    IdCliente = factura.Cliente.Id,
+                    Dni = factura.Cliente.Dni,
+                    Email = factura.Cliente.Email,
+                    Nombre = factura.Cliente.Nombre
+                } : null
+
 
             }
 
@@ -179,6 +235,6 @@ namespace Aplication.Service
             ).ToList();
         }
 
-       
+
     }
 }

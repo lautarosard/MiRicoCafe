@@ -110,7 +110,7 @@ namespace Aplication.Service
         {
             var proveedores = _query.GetProveedoresQuery();
 
-            //return _mapper.Map<List<ProveedorResponse>>(proveedores);
+         
             
             return proveedores.Select(proveedores => new ProveedorResponse
             {
@@ -257,31 +257,7 @@ namespace Aplication.Service
 
         }
 
-        //public Task<ProveedorResponse> ConsultarProveedorPorcuit(int cuit)
-        //{
-        //    var proveedor = await _query.GetByCuit(cuit);
-        //    if (proveedor == null)
-        //    {
-
-        //        throw new RequieredParameterException("Error!proveedor does not exist ");
-
-        //    }
-
-
-        //    return new ProveedorResponse
-        //    {
-        //        IdProveedor = proveedor.Id,
-        //        Nombre = proveedor.Nombre,
-        //        Email = proveedor.Email,
-        //        Telefono = proveedor.Telefono,
-        //        Provincia = proveedor.Provincia,
-        //        Localidad = proveedor.Localidad,
-        //        Direccion = proveedor.Direccion,
-        //        Cuit = proveedor.CUIT
-
-
-        //    };
-        //}
+       
     }
     
 }

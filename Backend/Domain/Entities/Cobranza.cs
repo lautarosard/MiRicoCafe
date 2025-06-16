@@ -14,7 +14,7 @@ namespace Domain.Entities
         public DateTime Fecha { get; set; }
 
         //Fk - Factura 1-1
-        public Factura Factura { get; set; }
+        //public Factura Factura { get; set; }
 
     }
 }

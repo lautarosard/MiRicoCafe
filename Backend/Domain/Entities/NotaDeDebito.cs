@@ -24,7 +24,7 @@ namespace Domain.Entities
         public float ValorModificacion { get; set; }
 
         //Fk - Factura 1-1
-        public int IdFactura { get; set; }
-        public Factura Factura { get; set; }
+        //public int IdFactura { get; set; }
+        //public Factura Factura { get; set; }
     }
 }

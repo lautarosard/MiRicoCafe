@@ -13,29 +13,28 @@ namespace Domain.Entities
         public string DireccionEmpresa { get; set; }
         public int TelefonoEmpresa { get; set; }
         public int CUIT { get; set; }
-        public int CUILCliente { get; set; }
-        public string NombreCliente { get; set; }
-        public string LocalidadCliente { get; set; }
-        public string DireccionCliente { get; set; }
-        public float IVA { get; set; }
+        public bool Estado { get; set; }
         public float Importe { get; set; }
         public float Total { get; set; }
-        public DateTime FechaVencimiento { get; set; }
 
-        
+
+
         //Fk - Cobranza 1-1
-        public int IdCobranza { get; set; }
-        public Cobranza Cobranza { get; set; }
+        //public int IdCobranza { get; set; }
+        //public Cobranza Cobranza { get; set; }
 
         //Fk - Cliente 1-X
         public int IdCliente { get; set; }
         public Cliente Cliente { get; set; }
 
         //Fk - NotaDeCredito 1-1
-        public NotaDeCredito NotaDeCredito { get; set; }
+        //public NotaDeCredito NotaDeCredito { get; set; }
 
         //Fk - NotaDeDebito 1-1
-        public NotaDeDebito NotaDebito { get; set; }
+        //public NotaDeDebito NotaDebito { get; set; }
+
+        //Fk - FacturaItem 1-X
+        public List<FacturaItem> Detalles { get; set; } = new();
 
     }
 }

@@ -54,8 +54,8 @@ namespace Infrastructure.Data
                 entity.Property(n => n.FechaEmision).IsRequired();
                 entity.Property(e => e.Total).IsRequired();
                 entity.Property(e => e.Importe).IsRequired();
-                entity.Property(e => e.IVA).IsRequired();
-                entity.Property(e => e.FechaVencimiento).IsRequired();
+                //entity.Property(e => e.IVA).IsRequired();
+                //entity.Property(e => e.FechaVencimiento).IsRequired();
 
             });
             //NotaDeCredito
@@ -170,22 +170,23 @@ namespace Infrastructure.Data
             .HasForeignKey<OrdenDeCompra>(ad => ad.IdProveedor);
 
             //Relacion 1-1 Factura-Cobranza
-            modelBuilder.Entity<Cobranza>()
-            .HasOne<Factura>(s => s.Factura)
-            .WithOne(ad => ad.Cobranza)
-            .HasForeignKey<Factura>(ad => ad.IdCobranza);
+            //modelBuilder.Entity<Cobranza>()
+            //.HasOne<Factura>(s => s.Factura)
+            //.WithOne(ad => ad.Cobranza)
+            //.HasForeignKey<Factura>(ad => ad.IdCobranza);
 
-            //Relacion 1-1 NotaDeCredito-Factura
-            modelBuilder.Entity<Factura>()
-            .HasOne<NotaDeCredito>(s => s.NotaDeCredito)
-            .WithOne(ad => ad.Factura)
-            .HasForeignKey<NotaDeCredito>(ad => ad.IdFactura);
 
-            //Relacion 1-1 NotaDeDebito-Factura
-            modelBuilder.Entity<Factura>()
-            .HasOne<NotaDeDebito>(s => s.NotaDebito)
-            .WithOne(ad => ad.Factura)
-            .HasForeignKey<NotaDeDebito>(ad => ad.IdFactura);
+            ////Relacion 1-1 NotaDeCredito-Factura  No se implementa por falta de tiempo
+            //modelBuilder.Entity<Factura>()
+            //.HasOne<NotaDeCredito>(s => s.NotaDeCredito)
+            //.WithOne(ad => ad.Factura)
+            //.HasForeignKey<NotaDeCredito>(ad => ad.IdFactura);
+
+            ////Relacion 1-1 NotaDeDebito-Factura
+            //modelBuilder.Entity<Factura>()
+            //.HasOne<NotaDeDebito>(s => s.NotaDebito)
+            //.WithOne(ad => ad.Factura)
+            //.HasForeignKey<NotaDeDebito>(ad => ad.IdFactura);
 
             //Relacion 1-1 Cliente-Usuario
             modelBuilder.Entity<Cliente>()
@@ -210,7 +211,18 @@ namespace Infrastructure.Data
             .HasOne(ic => ic.Producto)
             .WithMany(p => p.ItemsEnCarrito)
             .HasForeignKey(ic => ic.ProductoId);
-    
+
+            //Relacion 1-1 Produc-FacturaItem
+            modelBuilder.Entity<Producto>()
+            .HasOne<FacturaItem>(s => s.facturaItem)
+            .WithOne(ad => ad.Producto)
+            .HasForeignKey<FacturaItem>(ad => ad.ProductoId);
+
+            //Relacion 1-x Producto-FacturaItem
+            modelBuilder.Entity<FacturaItem>()
+            .HasOne(ic => ic.Factura)
+            .WithMany(p => p.Detalles)
+            .HasForeignKey(ic => ic.Id); //Revisar si esta bien 
 
         }
 
