@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Lista de Proveedores</title>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script type="module" src="../Javascript/main.js"></script>
-  <style>
-    .tarjeta-proveedor {
-      border: 1px solid #ccc;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Lista de Proveedores</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="../Javascript/main.js"></script>
+    <style>
+        .tarjeta-proveedor {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Proveedores</h1>
-  <div id="contenedor-proveedores"></div>
+
+    <!-- proveedor.html -->
+    <form id="form-proveedor">
+    <input type="text" id="nombre" placeholder="Nombre" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <button type="submit">Crear Proveedor</button>
+    </form>
+
+    <div id="mensaje"></div>
+
+
+    <h1>Proveedores</h1>
+    <div id="contenedor-proveedores"></div>
 </body>
 </html>

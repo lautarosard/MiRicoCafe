@@ -67,7 +67,7 @@ namespace Aplication.Service
 
                 throw new RequieredParameterException("Error! requiered Direccion");
             }
-            if (request.Cuit == 0)
+            if (request.Cuit == "")
             {
 
                 throw new RequieredParameterException("Error! requiered Cuit");
@@ -223,7 +223,7 @@ namespace Aplication.Service
 
                 throw new RequieredParameterException("Error! requiered Direccion");
             }
-            if (proveedorRequest.Cuit == 0)
+            if (proveedorRequest.Cuit == "")
             {
 
                 throw new RequieredParameterException("Error! requiered Cuit");

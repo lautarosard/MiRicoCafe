@@ -12,7 +12,7 @@ namespace Domain.Entities
         public DateTime FechaEmision { get; set; }
         public string DireccionEmpresa { get; set; }
         public int TelefonoEmpresa { get; set; }
-        public int CUIT { get; set; }
+        public string CUIT { get; set; }
         public bool Estado { get; set; }
         //public float Importe { get; set; }
         public float Total { get; set; }
