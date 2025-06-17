@@ -1,4 +1,4 @@
-import configurarDialogs from '/CafeElMejor Front/Javascript/dialogRender.js'
-import configurarFormularioEditar from '/CafeElMejor Front/Javascript/editProduct.js'
+import configurarDialogs from '/CafeElMejorFrontGestion/Javascript/dialogRender.js'
+import configurarFormularioEditar from '/CafeElMejorFrontGestion/Javascript/editProduct.js'
 configurarDialogs();
 configurarFormularioEditar();
