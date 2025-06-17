@@ -114,10 +114,26 @@ namespace CafeElMejor
             //Automapper
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+
+            // 1.Configurá la política de CORS
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend",
+                    policy => policy
+                        .WithOrigins("http://127.0.0.1:5500") // dirección del frontend
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                );
+            });
+
+
             //
             var app = builder.Build();
 
-           
+            // 2. Activá la política
+            app.UseCors("AllowFrontend");
+
+
             // Configura el pipeline
             if (app.Environment.IsDevelopment())
             {
