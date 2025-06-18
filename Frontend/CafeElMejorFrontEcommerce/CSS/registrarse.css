@@ -1,5 +1,5 @@
 .contenedor {
-    background-image: url('/Inicio/img/fondo-patron.jpg'); /* Ruta a tu imagen de patrón */
+    background-image: url('/MiRicoCafe/Frontend/Inicio/img/fondo-patron.jpg'); /* Ruta a tu imagen de patrón */
     background-repeat: repeat;
     border-radius: 25px;
     padding: 40px;
