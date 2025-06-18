@@ -17,7 +17,7 @@ namespace Domain.Entities
         public string Provincia { get; set; }
         public string Localidad { get; set; }
         public string Direccion {  get; set; }
-        public int CUIT {  get; set; }
+        public string CUIT {  get; set; }
 
         //FK - Orden de compra 1-1
         public OrdenDeCompra OrdenDeCompra { get; set; }

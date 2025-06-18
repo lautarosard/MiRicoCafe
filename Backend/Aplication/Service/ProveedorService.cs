@@ -46,12 +46,12 @@ namespace Aplication.Service
 
                 throw new InvalidateParameterException("Error! email Invalidate");
             }
-            if (request.Telefono == 0)
+            /*if (request.Telefono == 0)
             {
 
                 throw new RequieredParameterException("Error! requiered Phone");
             }
-
+            */
             if (string.IsNullOrEmpty(request.Provincia))
             {
 
@@ -67,7 +67,7 @@ namespace Aplication.Service
 
                 throw new RequieredParameterException("Error! requiered Direccion");
             }
-            if (request.Cuit == 0)
+            if (request.Cuit == "")
             {
 
                 throw new RequieredParameterException("Error! requiered Cuit");
@@ -223,7 +223,7 @@ namespace Aplication.Service
 
                 throw new RequieredParameterException("Error! requiered Direccion");
             }
-            if (proveedorRequest.Cuit == 0)
+            if (proveedorRequest.Cuit == "")
             {
 
                 throw new RequieredParameterException("Error! requiered Cuit");

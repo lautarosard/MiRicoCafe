@@ -11,7 +11,7 @@ namespace Aplication.Models.Request
         public DateTime FechaEmision { get; set; }
         public string DireccionEmpresa { get; set; }
         public int TelefonoEmpresa { get; set; }
-        public int CUIT { get; set; }
+        public string CUIT { get; set; }
         public int CUILCliente { get; set; }
         public string NombreCliente { get; set; }
         public string LocalidadCliente { get; set; }
