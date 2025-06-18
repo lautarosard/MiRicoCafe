@@ -1,5 +1,4 @@
 //CONEXIÓN CON EL ENDPOINT DE PROVEEDORES
-
 const API_BASE = "https://localhost:7069/api/Proveedor";
 
 //Obtiene todos los proveedores
@@ -18,6 +17,7 @@ export async function GetAll(){
         return [];
     }
 }
+
 //Obtiene un proveedor por id
 export async function GetByProveedorId(id){
     try{
@@ -28,6 +28,7 @@ export async function GetByProveedorId(id){
             throw error;
         }
 }
+
 //Crea un proveedor
 export async function CreateProveedor(proveedor) {
     try {

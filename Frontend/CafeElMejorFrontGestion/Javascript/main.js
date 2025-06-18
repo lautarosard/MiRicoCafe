@@ -1,73 +1,72 @@
-// js/main.js
-
-import { GetAll } from './APIs/ProveedorApi.js';
-import { crearTarjetaProveedor } from './Components/renderProveedor.js';
-import { CreateProveedor } from './APIs/ProveedorApi.js';
+import { GetAll, CreateProveedor } from './APIs/ProveedorApi.js';
+import { crearFilaProveedor } from './Components/renderProveedor.js';
 import { configurarFormularioEditar } from './Handlers/EditarProveedorHandler.js';
 
-// Cargar todos los proveedores y renderizarlos
 async function cargarProveedores() {
     try {
-        const contenedor = document.getElementById('contenedor-proveedores');
-        contenedor.innerHTML = ''; // Limpiar antes de agregar
+        const cuerpoTabla = document.querySelector('.tabla-proveedores tbody');
+        cuerpoTabla.innerHTML = ''; // Limpiar tabla
 
         const proveedores = await GetAll();
 
         if (proveedores.length === 0) {
-            contenedor.innerHTML = '<p class="mensaje-vacio">No hay proveedores disponibles</p>';
+            const filaVacia = document.createElement('tr');
+            filaVacia.innerHTML = '<td colspan="6">No hay proveedores disponibles</td>';
+            cuerpoTabla.appendChild(filaVacia);
             return;
         }
 
         const fragment = document.createDocumentFragment();
         proveedores.forEach(proveedor => {
-            const tarjeta = crearTarjetaProveedor(proveedor);
-            fragment.appendChild(tarjeta);
+            const fila = crearFilaProveedor(proveedor);
+            fragment.appendChild(fila);
         });
 
-        contenedor.appendChild(fragment);
+        cuerpoTabla.appendChild(fragment);
 
     } catch (error) {
         console.error('Error en cargarProveedores:', error);
-        const contenedor = document.getElementById('contenedor-proveedores');
-        contenedor.innerHTML = '<p class="mensaje-error">Error al cargar los proveedores</p>';
+
+        const cuerpoTabla = document.querySelector('.tabla-proveedores tbody');
+        const filaError = document.createElement('tr');
+        filaError.innerHTML = '<td colspan="6">Error al cargar los proveedores</td>';
+        cuerpoTabla.appendChild(filaError);
     }
 }
 
-// Cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', () => {
-    // POST Proveedor
+function configurarFormularioCreacion() {
     const form = document.getElementById('form-proveedor');
     const mensaje = document.getElementById('mensaje');
 
-    if (form) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
+    if (!form) return;
 
-            const proveedor = {
-                nombre: document.getElementById('nombre').value,
-                email: document.getElementById('email').value,
-                tel: document.getElementById('telefono').value,
-                provincia: document.getElementById('provincia').value,
-                localidad: document.getElementById('localidad').value,
-                direccion: document.getElementById('direccion').value,
-                cuit: document.getElementById('cuit').value
-            };
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-            try {
-                const creado = await CreateProveedor(proveedor);
-                mensaje.textContent = `Proveedor creado con ID: ${creado.idProveedor}`;
-                form.reset();
-                cargarProveedores(); // recargar lista
-            } catch (error) {
-                mensaje.textContent = "Error al crear proveedor.";
-                console.error(error);
-            }
-        });
-    }
+        const proveedor = {
+            nombre: document.getElementById('nombre').value,
+            email: document.getElementById('email').value,
+            telefono: document.getElementById('telefono').value,
+            provincia: document.getElementById('provincia').value,
+            localidad: document.getElementById('localidad').value,
+            direccion: document.getElementById('direccion').value,
+            cuit: document.getElementById('cuit').value
+        };
 
-    // Editar
+        try {
+            const creado = await CreateProveedor(proveedor);
+            mensaje.textContent = `Proveedor creado con ID: ${creado.idProveedor}`;
+            form.reset();
+            cargarProveedores(); // recargar lista
+        } catch (error) {
+            mensaje.textContent = "Error al crear proveedor.";
+            console.error(error);
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
     configurarFormularioEditar();
-
-    // Inicialmente cargar todos los proveedores
+    configurarFormularioCreacion();
     cargarProveedores();
-});
+})
