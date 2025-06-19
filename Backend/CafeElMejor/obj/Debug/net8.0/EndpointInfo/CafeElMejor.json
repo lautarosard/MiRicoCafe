@@ -1650,7 +1650,7 @@
         }
       }
     },
-    "/api/Proveedor/Proveedor/{id}": {
+    "/api/Proveedor/{id}": {
       "get": {
         "tags": [
           "Proveedor"
@@ -1691,9 +1691,7 @@
             }
           }
         }
-      }
-    },
-    "/api/Proveedor/proveedorupdate/{id}": {
+      },
       "put": {
         "tags": [
           "Proveedor"
@@ -1753,9 +1751,7 @@
             }
           }
         }
-      }
-    },
-    "/api/Proveedor/Proveedordelete/{id}": {
+      },
       "delete": {
         "tags": [
           "Proveedor"
@@ -2060,8 +2056,8 @@
             "format": "int32"
           },
           "cuit": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           },
           "cuilCliente": {
             "type": "integer",
@@ -2118,8 +2114,8 @@
             "format": "int32"
           },
           "cuit": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           },
           "cuilCliente": {
             "type": "integer",
@@ -2318,8 +2314,8 @@
             "nullable": true
           },
           "cuit": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

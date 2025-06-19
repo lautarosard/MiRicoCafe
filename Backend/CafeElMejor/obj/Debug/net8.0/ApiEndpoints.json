@@ -1098,7 +1098,7 @@
   {
     "ContainingType": "CafeElMejor.Controllers.ProveedorController",
     "Method": "GetByProveedorId",
-    "RelativePath": "api/Proveedor/Proveedor/{id}",
+    "RelativePath": "api/Proveedor/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1128,15 +1128,20 @@
   },
   {
     "ContainingType": "CafeElMejor.Controllers.ProveedorController",
-    "Method": "DeleteProveedorId",
-    "RelativePath": "api/Proveedor/Proveedordelete/{id}",
-    "HttpMethod": "DELETE",
+    "Method": "UpdateProveedor",
+    "RelativePath": "api/Proveedor/{id}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "requests",
+        "Type": "Aplication.Models.Request.ProveedorRequest",
         "IsRequired": true
       }
     ],
@@ -1159,20 +1164,15 @@
   },
   {
     "ContainingType": "CafeElMejor.Controllers.ProveedorController",
-    "Method": "UpdataProveedor",
-    "RelativePath": "api/Proveedor/proveedorupdate/{id}",
-    "HttpMethod": "PUT",
+    "Method": "DeleteProveedorId",
+    "RelativePath": "api/Proveedor/{id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "requests",
-        "Type": "Aplication.Models.Request.ProveedorRequest",
         "IsRequired": true
       }
     ],

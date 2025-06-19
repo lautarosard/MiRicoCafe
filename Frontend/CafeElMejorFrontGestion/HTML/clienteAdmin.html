@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clienteAdmin - Gestion cafe el mejor </title>
+    <link rel="stylesheet" href="/CafeElMejorFrontGestion/CSS/styles.css">
+    <link rel="stylesheet" href="/CafeElMejorFrontGestion/CSS/clienteAdmin.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/CafeElMejorFrontGestion/Javascript/clienteAdmin.js"></script>
+</head>
+
+<body>
+    <header class="sitio-header">
+        <div class="conetenedor-navegacion">
+            <a href="index.html" class="logo">
+                <img src="/CafeElMejorFrontGestion/img/logo-png.png" alt="[Logo]" class="logo-png" width="350" height="200">
+            </a>
+            <nav class="menu-principal">
+                <ul>
+                    <li><a href="proveedores.html">Proveedores</a></li>
+                    <li><a href="clienteAdmin.html">Clientes</a></li> <!-- Cambiar en los demas las filas para crear un proveedor -->
+                    <li><a href="productos.html">Productos</a></li>
+                    <li class="tiene-submenu"> <a href="nueva_orden.html">Compras</a>
+                        <ul class="submenu">
+                            <li><a href="nueva_orden.html">Nueva orden de compra</a></li>
+                            <li><a href="listado_orden.html">Listado orden de compra</a></li>
+                        </ul>
+                    </li>
+                    <li class="boton-elegir-modo">
+                        <a href="/Inicio/index.html" class="boton">Salir del modo Admin</a>
+                    </li> </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="contenedor-clienteAdmin">
+        <div class="cabecera-seccion">
+            <div class="titulo-clienteAdmin">
+                <h2>Lista de clientes</h2>
+            </div>
+            <div>
+                <button class="boton-nuevo">Nuevo cliente</button>
+            </div>
+        </div>
+        
+        <hr class="linea-divisoria" />
+
+        <div class="opciones-clienteAdmin">
+            <input type="search" id="buscar" name="buscar" placeholder="Ingrese nombre del cliente..." list="opciones">
+            <button class="boton-nuevo">Buscar</button>
+            </div>
+
+        <table class="tabla-clienteAdmin">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>DNI</th>
+                    <th>Acciones</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>Ludir</td>
+                    <td>Lucas</td>
+                    <td>cliente@gmail.com</td>
+                    <td>421131212</td>    
+                    <td class="acciones-botones">
+                        <button class="boton-editar">Editar</button>
+                        <button class="boton-eliminar">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="modalEditar" class="modal" style="display: none;"> <div class="modal-contenido">
+            <h3>Editar cliente</h3>
+            <form id="formEditar">
+                <label for="editId">ID</label>
+                <input type="text" id="editId" name="editId" readonly>
+
+                <label for="editNombre">Nombre</label>
+                <input type="text" id="editNombre" name="editNombre" required>
+
+                <label for="editEmail">Email</label>
+                <input type="email" id="editEmail" name="editEmail" required>
+                
+                <label for="editDNI">DNI</label>
+                <input type="DNI" id="editDNI" name="editDNI" required>
+              
+                <div class="botones-modal">
+                    <button type="submit">Guardar</button>
+                    <button type="button" onclick="cerrarModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalConfirmarEliminar" class="modal" style="display: none;">
+    <div class="modal-contenido">
+        <h3 id="tituloModalEliminar">Confirmar Eliminación</h3>
+        <p id="mensajeConfirmacionEliminar">
+            ¿Realmente deseas eliminar al cliente: <strong id="nombreProveedorEliminar">[Nombre del Cliente]</strong>?
+        </p>
+        <div class="botones-modal">
+            <button type="button" id="botonConfirmarSi" class="boton-peligro">Sí, eliminar</button>
+            <button type="button" id="botonConfirmarCancelar" class="boton-secundario">Cancelar</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
