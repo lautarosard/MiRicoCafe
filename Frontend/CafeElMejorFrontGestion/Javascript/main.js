@@ -1,6 +1,6 @@
 import { GetAll, CreateProveedor } from './APIs/ProveedorApi.js';
-import { crearFilaProveedor } from './Components/renderProveedor.js';
-import { configurarFormularioEditar } from './Handlers/EditarProveedorHandler.js';
+import { crearFilaProveedor } from './Components/ProveedorComponents/renderTablaProveedores.js';
+import { configurarFormularioEditar } from './Handlers/ProveedorHandler/EditarProveedorHandler.js';
 
 async function cargarProveedores() {
     try {
@@ -8,7 +8,7 @@ async function cargarProveedores() {
         cuerpoTabla.innerHTML = ''; // Limpiar tabla
 
         const proveedores = await GetAll();
-
+        console.log("Proveedores:", proveedores);
         if (proveedores.length === 0) {
             const filaVacia = document.createElement('tr');
             filaVacia.innerHTML = '<td colspan="6">No hay proveedores disponibles</td>';
