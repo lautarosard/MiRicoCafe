@@ -10,7 +10,7 @@ export function configurarModalEliminar(fila, proveedor) {
     if (!modal || !nombreSpan || !botonSi || !botonCancelar) return;
 
     nombreSpan.textContent = proveedor.nombre;
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
 
     botonSi.onclick = async () => {
         try {

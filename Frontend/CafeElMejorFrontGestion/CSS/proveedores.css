@@ -5,31 +5,29 @@
     --color-texto-principal: #4d3a2a;
     --color-borde-suave: #d1ba9a;
     --color-fondo-input: #fffdf0;
-    --color-cabecera-tabla: #f8edd1; /* Para fondos de cabecera de tabla */
-    --color-fila-alterna-tabla: #fefaf0; /* Para filas pares en tablas */
+    --color-cabecera-tabla: #f8edd1;
+    --color-fila-alterna-tabla: #fefaf0;
     --color-hover-tabla: #fdf2d0;
-    /* Colores para botones de acción */
-    --color-boton-nuevo: #70a05f;         /* Verde para "Nuevo" */
+    --color-boton-nuevo: #70a05f;
     --color-boton-nuevo-hover: #5a834b;
-    --color-boton-editar: #3b82f6;        /* Azul para "Editar" */
+    --color-boton-editar: #3b82f6;
     --color-boton-editar-hover: #2563eb;
-    --color-boton-eliminar: #ef4444;      /* Rojo para "Eliminar" */
+    --color-boton-eliminar: #ef4444;
     --color-boton-eliminar-hover: #dc2626;
     --color-texto-boton-accion: #ffffff;
 }
 
-/* --- Estilos Generales para la Página de Lista de Productos --- */
-body { /* Asumiendo que estos estilos aplican a la página completa */
+/* --- Estilos Generales --- */
+body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     margin: 0;
     background-color: var(--color-fondo-principal);
     color: var(--color-texto-principal);
     line-height: 1.6;
 }
-/* Estilos para el contenedor principal de la sección de proveedores */
 .contenedor-proveedores {
     width: 90%;
-    max-width: 1200px; /* Ajusta según necesites */
+    max-width: 1200px;
     margin: 30px auto;
     padding: 25px 30px;
     background-color: #ffffff;
@@ -37,21 +35,19 @@ body { /* Asumiendo que estos estilos aplican a la página completa */
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
-/* Estilos para el encabezado de la sección (el título H1) */
+/* --- Cabecera y Opciones --- */
 .cabecera-seccion {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
-
 .titulo-proveedores h2 {
     margin: 0;
     font-size: 1.8em;
     color: var(--color-secundario);
     font-weight: 600;
 }
-/* Estilos para el área del botón "Nuevo Proveedor" */
 button.boton-nuevo {
     background-color: var(--color-boton-nuevo);
     color: var(--color-texto-boton-accion);
@@ -63,11 +59,9 @@ button.boton-nuevo {
     font-weight: 500;
     transition: background-color 0.2s ease;
 }
-
 button.boton-nuevo:hover {
     background-color: var(--color-boton-nuevo-hover);
 }
-
 hr.linea-divisoria{
     border: none;
     height: 1px;
@@ -75,7 +69,6 @@ hr.linea-divisoria{
     margin-top: 15px;
     margin-bottom: 25px
 }
-
 .opciones-proveedores {
     display: flex;
     align-items: center;
@@ -84,57 +77,29 @@ hr.linea-divisoria{
     font-size: 0.9em;
     color: var(--color-texto-principal);
 }
-
 .opciones-proveedores label{
     font-weight: 500;
 }
-
 .opciones-proveedores select#cantidad {
     padding: 8px 12px;
     border: 1px solid var(--color-borde-suave);
     border-radius: 5px;
     background-color: var(--color-fondo-input);
-    font-size: 1em;
-    color: var(--color-texto-principal);
-    min-width: 120px; 
-    box-sizing: border-box;
 }
 .opciones-proveedores input[type="search"]#buscar {
     padding: 8px 12px;
-    font-size: 1em;
-    color: var(--color-texto-principal);
-    background-color: #ffffff; /* Fondo blanco para el buscador */
-    border: 1px solid #cccccc; /* Borde gris claro para el buscador */
+    border: 1px solid #cccccc;
     border-radius: 4px;
-    box-sizing: border-box;
-    flex-grow: 1; /* Para que ocupe el espacio disponible */
+    flex-grow: 1;
     min-width: 200px;
 }
-.opciones-proveedores input[type="search"]#buscar::-webkit-search-decoration,
-.opciones-proveedores input[type="search"]#buscar::-webkit-search-cancel-button,
-.opciones-proveedores input[type="search"]#buscar::-webkit-search-results-button,
-.opciones-proveedre input[type="search"]#buscar::-webkit-search-results-decoration {
-    -webkit-appearance: none;
-}
 
-
-.opciones-proveedores input[type="search"]#buscar::placeholder {
-    color: #757575; /* Placeholder gris */
-    opacity: 1;
-}
-
-.opciones-proveedores input[type="search"]#buscar:focus {
-    border-color: #3b82f6; /* Borde azul al enfocar */
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
-}
-
+/* --- Tabla de Proveedores --- */
 .tabla-proveedores {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.9em;
 }
-
 .tabla-proveedores th {
     background-color: var(--color-cabecera-tabla);
     color: var(--color-secundario);
@@ -143,40 +108,20 @@ hr.linea-divisoria{
     text-align: center;
     border-bottom: 2px solid var(--color-borde-suave);
 }
-
 .tabla-proveedores td {
     padding: 12px 15px;
     border-bottom: 1px solid var(--color-borde-suave);
     vertical-align: middle;
-    text-align: center; /* Alineación izquierda por defecto para datos */
+    text-align: center;
 }
-
-.tabla-proveedores tbody td img {
-    max-width: 60px;
-    height: auto;
-    border-radius: 4px;
-    display: block;
-}
-
-.tabla-proveedores td:first-child { /* Asumiendo que la primera celda puede ser para imagen */
-    min-width: 70px;
-    text-align: center; /* Centrar imagen si está en la primera celda */
-}
-
 .tabla-proveedores tr:nth-child(even) {
     background-color: var(--color-fila-alterna-tabla);
 }
-
 .tabla-proveedores tr:hover {
     background-color: var(--color-hover-tabla);
 }
 
 /* --- Botones de Acción en la Tabla --- */
-.acciones-botones td {
-    display: flex;
-    gap: 8px;
-}
-
 .tabla-proveedores button.boton-editar,
 .tabla-proveedores button.boton-eliminar {
     border: none;
@@ -186,52 +131,65 @@ hr.linea-divisoria{
     font-size: 0.85em;
     font-weight: 500;
     color: var(--color-texto-boton-accion);
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
-
-
 table button.boton-editar {
     background-color: var(--color-boton-editar);
 }
 table button.boton-editar:hover {
     background-color: var(--color-boton-editar-hover);
 }
-
 table button.boton-eliminar {
     background-color: var(--color-boton-eliminar);
 }
 table button.boton-eliminar:hover {
     background-color: var(--color-boton-eliminar-hover);
 }
+.tabla-proveedores button.boton-eliminar:active,
+.boton-peligro:active {
+    background-color: #b91c1c;
+    transform: translateY(1px) scale(0.98);
+}
 
 
-/* Fondo oscuro semi-transparente */
-#modalEditar {
-    display: none;
+/*
+|--------------------------------------------------------------------------
+| ESTILOS DEL MODAL (CORREGIDOS)
+|--------------------------------------------------------------------------
+*/
+
+/* --- CAMBIO 1: Superposición de fondo para TODOS los modales --- */
+/* Esta regla se aplicará a #modalEditar y #modalConfirmarEliminar */
+#modalEditar, #modalConfirmarEliminar {
+    display: none; /* Inicia oculto */
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.5); /* Fondo gris oscuro semi-transparente */
+    background-color: rgba(0,0,0,0.6); /* Un poco más oscuro */
+
+    /* La magia del centrado perfecto con Flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Contenedor del contenido del modal */
+/* --- CAMBIO 2: Contenido del Modal --- */
+/* Ya no necesita margen para centrarse, Flexbox lo hace por él */
 .modal-contenido {
     background-color: #fff;
-    margin: 5% auto;
     padding: 30px;
-    border: 1px solid #888;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+    position: relative;
     width: 90%;
     max-width: 500px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    position: relative;
+    text-align: left; /* Generalmente el texto de un modal se ve mejor a la izquierda */
 }
 
-/* Botón de cierre */
+/* Botón de cierre (sin cambios) */
 .cerrar-modal {
     color: #aaa;
     position: absolute;
@@ -241,19 +199,17 @@ table button.boton-eliminar:hover {
     font-weight: bold;
     cursor: pointer;
 }
-
 .cerrar-modal:hover,
 .cerrar-modal:focus {
     color: black;
 }
 
-/* Estilos del formulario dentro del modal */
+/* Estilos del formulario de edición (sin cambios) */
 #formEditar label {
     display: block;
     margin-top: 15px;
     font-weight: bold;
 }
-
 #formEditar input[type="text"],
 #formEditar input[type="email"],
 #formEditar input[type="tel"] {
@@ -262,64 +218,43 @@ table button.boton-eliminar:hover {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-sizing: border-box;
 }
-
 #formEditar button {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #006241; /* color café oscuro */
+    background-color: #006241;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
-
 #formEditar button:hover {
     background-color: #004d33;
 }
 
-/* Estilos existentes para el botón Eliminar (como referencia) */
-.tabla-proveedores button.boton-eliminar {
-    background-color: var(--color-boton-eliminar); /* #ef4444 */
-    /* ... otros estilos como padding, color de texto, etc. ... */
-    border: none; /* Asegúrate que no haya bordes que interfieran con el efecto de presionado */
-    /* ... (otros estilos que ya tenías: padding, border-radius, color, etc.) ... */
-    transition: background-color 0.2s ease, transform 0.1s ease; /* Añadimos transform a la transición */
+/* --- Estilos para el Modal de Confirmación de Eliminación --- */
+#modalConfirmarEliminar .modal-contenido {
+    text-align: center; /* En este modal sí queremos el texto centrado */
 }
-
-.tabla-proveedores button.boton-eliminar:hover {
-    background-color: var(--color-boton-eliminar-hover); /* #dc2626 */
-}
-
-/* --- NUEVO ESTILO PARA CUANDO SE PRESIONA EL BOTÓN --- */
-.tabla-proveedores button.boton-eliminar:active {
-    background-color: #b91c1c; /* Un rojo aún más oscuro que el hover. Puedes usar la variable --color-boton-eliminar-active si la definiste */
-    transform: translateY(1px) scale(0.98); /* Mueve el botón ligeramente hacia abajo y lo achica un poco para dar efecto de presionado */
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2); /* Opcional: añade una sombra interior para más efecto de "hundido" */
-}
-
-
-
-
-
-/* Estilos para el mensaje de confirmación específico */
 #modalConfirmarEliminar .modal-contenido h3 {
     margin-top: 0;
-    color: var(--color-secundario); /* O el color que prefieras para el título */
+    color: var(--color-secundario);
 }
-
 #mensajeConfirmacionEliminar {
     font-size: 1.1em;
     margin-bottom: 25px;
     line-height: 1.6;
 }
-
 #nombreProveedorEliminar {
-    color: var(--color-boton-eliminar); /* Destaca el nombre del proveedor en rojo */
+    color: var(--color-boton-eliminar);
     font-weight: bold;
 }
-
-/* Estilo general para botones dentro del modal (si no lo tienes ya) */
+#modalConfirmarEliminar .botones-modal {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
 #modalConfirmarEliminar .botones-modal button {
     padding: 10px 20px;
     border: none;
@@ -332,29 +267,21 @@ table button.boton-eliminar:hover {
 
 /* Botón de Peligro (Sí, eliminar) */
 .boton-peligro {
-    background-color: var(--color-boton-eliminar); /* Rojo */
-    color: var(--color-texto-boton-accion); /* Texto blanco */
+    background-color: var(--color-boton-eliminar);
+    color: var(--color-texto-boton-accion);
 }
-
 .boton-peligro:hover {
-    background-color: var(--color-boton-eliminar-hover); /* Rojo más oscuro */
-}
-
-.boton-peligro:active {
-    background-color: #b91c1c; /* Rojo aún más oscuro */
-    transform: translateY(1px);
+    background-color: var(--color-boton-eliminar-hover);
 }
 
 /* Botón Secundario (Cancelar) */
 .boton-secundario {
-    background-color: #6c757d; /* Gris */
+    background-color: #6c757d;
     color: white;
 }
-
 .boton-secundario:hover {
-    background-color: #5a6268; /* Gris más oscuro */
+    background-color: #5a6268;
 }
-
 .boton-secundario:active {
     background-color: #495057;
     transform: translateY(1px);

@@ -47,7 +47,7 @@ export function abrirModalEditarProveedor(proveedor) {
     document.getElementById('editDireccion').value = proveedor.direccion;
     document.getElementById('editCUIT').value = proveedor.cuit;
 
-    document.getElementById('modalEditar').style.display = 'block';
+    document.getElementById('modalEditar').style.display = 'flex';
 }
 // Funcion para cerrar el modal
 export function configurarBotonCancelarEditar() {
