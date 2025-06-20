@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - Café El Mejor</title>
+    <link rel="stylesheet" href="/MiRicoCafe/Frontend/CafeElMejorFrontEcommerce/CSS/styles.css">
+    <script src="/MiRicoCafe/Frontend/CafeElMejorFrontEcommerce/JavaScript/sesion.js" defer></script>
+    <script src="/MiRicoCafe/Frontend/CafeElMejorFrontEcommerce/JavaScript/perfil.js" defer></script>
+</head>
+<body>
+    <header class="sitio-header">
+        <div class="conetenedor-navegacion">
+            <a href="index.html" class="logo">
+                <img src="/MiRicoCafe/Frontend/CafeElMejorFrontEcommerce/img/logo-png.png" alt="[Logo]" class="logo-png" width="350" height="200">
+            </a>
+            <nav class="menu-principal">
+                <ul>
+                    <li><a href="historia.html">Nuestra historia</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="#miFooter">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="grupo-acciones-usuario">
+            <!--<div class="contenedor-salir-cliente">
+                <li class="boton-elegir-modo">
+                    <a href="/Inicio/index.html" class="boton">SALIR DEL MODO CLIENTE</a>
+                </li>
+            </div>-->
+            <div class="acciones_user">
+                <div class="dropdown-usuario">
+                    <a href="#" class="user-icon-trigger">
+                        <img src="/MiRicoCafe/Frontend/CafeElMejorFrontEcommerce/img/persona.png" alt="Persona" class="icon">
+                    </a>
+                    <ul class="submenu"></ul>
+                </div>
+                <a href="#"><img src="/MiRicoCafe/Frontend/CafeElMejorFrontEcommerce/img/carrito.png" alt="Carrito" class="icon"></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="contenedor-iniciarsesion">
+            <div class="formulario-iniciarsesion">
+                <h1>MI PERFIL</h1>
+                <form id="form-perfil">
+                    <div class="grupo">
+                        <label for="nombre">USUARIO</label>
+                        <input type="text" id="nombre" name="nombre" readonly>
+                    </div>
+
+                    <div class="grupo">
+                        <label for="email">EMAIL</label>
+                        <input type="email" id="email" name="email" placeholder="Ingrese su email">
+                    </div>
+
+                    <div class="grupo">
+                        <label for="telefono">TELÉFONO</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ingrese su teléfono">
+                    </div>
+
+                    <div class="acciones-forms">
+                        <button type="submit" class="boton-iniciarsesion">GUARDAR CAMBIOS</button>
+                        <a href="index.html" class="boton-cancelar">CANCELAR</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="sitio-footer" id="miFooter">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h4>Sobre "El Mejor"</h4>
+                <p>En "El Mejor", nos dedicamos a ofrecerte café de la más alta calidad.</p>
+                <p><a href="productos.html">Nuestro Menú</a> | <a href="historia.html">Conócenos</a></p>
+            </div>
+            <div class="footer-section contact">
+                <h4>Contacto</h4>
+                <p>Dirección: Brandsen 805, Buenos Aires.</p>
+                <p>Teléfono: +54 11 1234-5678</p>
+                <p>Email: info@elmejorcafe.com</p>
+                <p>Horario: Lunes a Sábado - 8:00 AM a 8:00 PM</p>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/home.php">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/">Instagram</a></li>
+                    <li><a href="https://x.com/?logout=1748370185033">Twitter</a></li>
+                    <li><a href="https://www.tiktok.com/es/">Tiktok</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Café "El Mejor". Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
