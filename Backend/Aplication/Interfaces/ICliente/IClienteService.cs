@@ -20,10 +20,8 @@ namespace Aplication.Interfaces.ICliente
        Task<ClienteResponse> EliminarCliente(int id);
        // Consultar
        Task<ClienteResponse> ConsultarCliente(int id);
-        // Consultar por dni
-        //Task<ClienteResponse> ConsultarClientePorDNI(int DNI);
-
-        //Update Cliente (a verificar)
+       Task<ClienteResponse> ConsultarClienteDni(int dni);
+     
         Task<ClienteResponse> UpdateCliente(int id, ClienteRequest request);
        
     }

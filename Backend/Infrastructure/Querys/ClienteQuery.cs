@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Aplication.Interfaces.ICliente;
+using Domain.Entities;
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Aplication.Interfaces.ICliente;
-using Domain.Entities;
-using Infrastructure.Data;
 
 namespace Infrastructure.Querys
 {
@@ -33,6 +34,11 @@ namespace Infrastructure.Querys
             return await _context.clientes.FindAsync(id);
         }
 
-
+        public async Task<Cliente> GetByClienteDni(int dni)
+        {
+            
+            return await _context.clientes.FirstOrDefaultAsync(c => c.Dni == dni);
+        }
+        
     }
 }
