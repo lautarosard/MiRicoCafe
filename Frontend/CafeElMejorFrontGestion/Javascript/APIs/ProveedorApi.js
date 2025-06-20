@@ -28,7 +28,16 @@ export async function GetByProveedorId(id){
             throw error;
         }
 }
-
+//Obtiene un proveedor por cuit
+export async function GetByProveedorCuit(id){
+    try{
+        const response = await axios.get(`${API_BASE}/${id}`);
+        return response.data;
+        } catch (error){
+            console.error('Error al obtener proveedores: ', error);
+            throw error;
+        }
+}
 //Crea un proveedor
 export async function CreateProveedor(proveedor) {
     try {

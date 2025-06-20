@@ -1,3 +1,18 @@
+# Carpetas generadas por compilación
+bin/
+obj/
+
+# Visual Studio
 .vs/
 *.user
+*.suo
 *.cache
+
+# Archivos de configuración temporales
+*.dbmdl
+*.log
+
+# Archivos de publicación y otros
+*.Publish.xml
+*.pubxml
+*.pdb
