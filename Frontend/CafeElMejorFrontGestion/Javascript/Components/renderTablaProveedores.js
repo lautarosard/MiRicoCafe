@@ -1,6 +1,6 @@
 // crearFilaProveedor.js
-import { abrirModalEditarProveedor } from '../Handlers/EditarProveedorHandler.js';
-import { configurarModalEliminar } from '../Handlers/EliminarProveedorHandler.js';
+import { abrirModalEditarProveedor } from '../../Handlers/ProveedorHandler/EditarProveedorHandler.js';
+import { configurarModalEliminar } from '../../Handlers/ProveedorHandler/EliminarProveedorHandler.js';
 
 export function crearFilaProveedor(proveedor) {
     const fila = document.createElement('tr');

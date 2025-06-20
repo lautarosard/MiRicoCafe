@@ -1,6 +1,6 @@
 // crearFilaCliente.js
-import { abrirModalEditarCliente } from '../Handlers/ClienteHandler/EditarClienteHandler.js';
-import { configurarModalEliminar } from '../Handlers/ClienteHandler/EliminarClienteHandler.js';
+import { abrirModalEditarCliente } from '../../Handlers/ClienteHandler/EditarClienteHandler.js';
+import { configurarModalEliminar } from '../../Handlers/ClienteHandler/EliminarClienteHandler.js';
 
 export function crearFilaCliente(Cliente) {
     const fila = document.createElement('tr');
@@ -9,7 +9,7 @@ export function crearFilaCliente(Cliente) {
         <td>${Cliente.idCliente}</td>
         <td>${Cliente.nombre}</td>
         <td>${Cliente.email}</td>
-        <td>${Cliente.Dni}</td>
+        <td>${Cliente.dni}</td>
         <td class="acciones-botones">
             <button class="boton-editar">Editar</button>
             <button class="boton-eliminar">Eliminar</button>

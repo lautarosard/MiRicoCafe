@@ -1,4 +1,4 @@
-import { DeleteClienteId, GetByClienteId, UpdateCliente } from '../APIs/ClienteApi.js';
+import { DeleteClienteId, GetByClienteId, UpdateCliente } from '../../APIs/ClienteApi.js';
 
 export function crearTarjetaCliente(Cliente){
     const card = document.createElement('div');
@@ -6,8 +6,7 @@ export function crearTarjetaCliente(Cliente){
 
     card.innerHTML = 
     `
-    <p>ID: ${Cliente.idCliente}</p>
-    <h3>${Cliente.nombre}</h3>
+    <p>ID: ${Cliente.nombre}</p>
     <p>Email: ${Cliente.email}</p>
     <p>cuit: ${Cliente.Dni}</p>
     <button class="boton-eliminar">Eliminar</button>

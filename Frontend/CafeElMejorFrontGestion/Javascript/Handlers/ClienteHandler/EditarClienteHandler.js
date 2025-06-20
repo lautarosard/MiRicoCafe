@@ -1,6 +1,6 @@
-import { UpdateCliente } from '../APIs/ClienteApi.js';
+import { UpdateCliente } from '../../APIs/ClienteApi.js';
 
-export function configurarFormularioEditar() {
+export function configurarFormularioEditarCliente() {
     const formEditar = document.getElementById("formEditar");
 
     if (!formEditar) {
@@ -15,13 +15,13 @@ export function configurarFormularioEditar() {
         const ClienteActualizado = {
             nombre: document.getElementById('editNombre').value,
             email: document.getElementById('editEmail').value,
-            Dni: document.getElementById('editDNI').value,
+            dni: document.getElementById('editDNI').value,
         };
 
         try {
             await UpdateCliente(id, ClienteActualizado);
             alert("Cliente actualizado con éxito");
-            document.getElementById("modalEditar").style.display = "none";
+            document.getElementById("modalEditarCliente").style.display = "none";
             location.reload();
         } catch (error) {
             alert("Error al actualizar Cliente");
@@ -34,7 +34,7 @@ export function abrirModalEditarCliente(Cliente) {
     document.getElementById('editId').value = Cliente.idCliente;
     document.getElementById('editNombre').value = Cliente.nombre;
     document.getElementById('editEmail').value = Cliente.email;
-    document.getElementById('editDNI').value = Cliente.Dni;
+    document.getElementById('editDNI').value = Cliente.dni;
 
     document.getElementById('modalEditarCliente').style.display = 'block';
 }

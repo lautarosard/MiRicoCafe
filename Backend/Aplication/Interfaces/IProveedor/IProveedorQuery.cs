@@ -13,6 +13,7 @@ namespace Aplication.Interfaces.IProveedor
         Task<Proveedor> GetById(int id);
         Task<Proveedor> GetByCuit(int id);
 
+        Task<Proveedor> GetByProveedorCuit(string cuit);
 
 
     }

@@ -1,3 +1,5 @@
+ 
+ document.addEventListener('DOMContentLoaded', function() {
  // --- ELEMENTOS DEL DOM ---
     // Modal de Edición
     const modalEditar = document.getElementById("modalEditar");
@@ -44,11 +46,10 @@
             if (fila) {
                 const celdas = fila.querySelectorAll("td");
                 if (formEditar && celdas.length >= 5) {
-                    // formEditar.elements['editId'].value = celdas[0].textContent.trim();
+                    formEditar.elements['editId'].value = celdas[0].textContent.trim();
                     formEditar.elements['editNombre'].value = celdas[1].textContent.trim();
-                    formEditar.elements['editEmail'].value = celdas[2].textContent.trim();
-                    // formEditar.elements['editTelefono'].value = celdas[3].textContent.trim();
-                    formEditar.elements['editDNI'].value = celdas[4].textContent.trim();
+                    formEditar.elements['editEmail'].value = celdas[2].textContent.trim();       
+                    formEditar.elements['editDNI'].value = celdas[3].textContent.trim();
                 }
                 abrirModalEditar();
             }
@@ -181,4 +182,5 @@
         });
     }
 
-    ;
+
+});

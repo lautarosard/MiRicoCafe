@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="/CafeElMejorFrontGestion/CSS/styles.css">
     <link rel="stylesheet" href="/CafeElMejorFrontGestion/CSS/clienteAdmin.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/CafeElMejorFrontGestion/Javascript/clienteAdmin.js"></script>
+    <!-- <script src="/CafeElMejorFrontGestion/Javascript/clienteAdmin.js"></script> -->
+    <script type="module" src="/CafeElMejorFrontGestion/Javascript/main.js"></script>
+    
 </head>
 
 <body>
     <header class="sitio-header">
         <div class="conetenedor-navegacion">
             <a href="index.html" class="logo">
-                <img src="/CafeElMejorFrontGestion/img/logo-png.png" alt="[Logo]" class="logo-png" width="350" height="200">
+                <img src="/CafeElMejorFrontGestion/img/logo.png" alt="[Logo]" class="logo-png" width="350" height="200">
             </a>
             <nav class="menu-principal">
                 <ul>
@@ -55,7 +57,7 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Usuario</th>
+                    <!-- <th>Usuario</th> -->
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>DNI</th>
@@ -64,22 +66,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>001</td>
-                    <td>Ludir</td>
-                    <td>Lucas</td>
-                    <td>cliente@gmail.com</td>
-                    <td>421131212</td>    
-                    <td class="acciones-botones">
-                        <button class="boton-editar">Editar</button>
-                        <button class="boton-eliminar">Eliminar</button>
-                    </td>
-                </tr>
+               
             </tbody>
         </table>
     </div>
 
-    <div id="modalEditar" class="modal" style="display: none;"> <div class="modal-contenido">
+    <div id="modalEditarCliente" class="modal" style="display: none;"> <div class="modal-contenido">
             <h3>Editar cliente</h3>
             <form id="formEditar">
                 <label for="editId">ID</label>
@@ -96,7 +88,7 @@
               
                 <div class="botones-modal">
                     <button type="submit">Guardar</button>
-                    <button type="button" onclick="cerrarModal()">Cancelar</button>
+                    <button type="button">Cancelar</button>
                 </div>
             </form>
         </div>
@@ -106,7 +98,7 @@
     <div class="modal-contenido">
         <h3 id="tituloModalEliminar">Confirmar Eliminación</h3>
         <p id="mensajeConfirmacionEliminar">
-            ¿Realmente deseas eliminar al cliente: <strong id="nombreProveedorEliminar">[Nombre del Cliente]</strong>?
+            ¿Realmente deseas eliminar al cliente: <strong id="nombreClienteEliminar">[Nombre del Cliente]</strong>?
         </p>
         <div class="botones-modal">
             <button type="button" id="botonConfirmarSi" class="boton-peligro">Sí, eliminar</button>

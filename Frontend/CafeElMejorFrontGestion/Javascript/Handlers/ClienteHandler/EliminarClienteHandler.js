@@ -1,4 +1,4 @@
-import { DeleteClienteId } from '../APIs/ClienteApi.js';
+import { DeleteClienteId } from '../../APIs/ClienteApi.js';
 
 export function configurarModalEliminar(fila, Cliente) {
     const modal = document.getElementById('modalConfirmarEliminar');

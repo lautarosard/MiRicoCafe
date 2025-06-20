@@ -256,7 +256,7 @@ table button.boton-eliminar:hover {
 
 #formEditar input[type="text"],
 #formEditar input[type="email"],
-#formEditar input[type="tel"] {
+#formEditar input[type="DNI"] {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
