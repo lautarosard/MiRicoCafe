@@ -1,14 +1,19 @@
-import { GetAll, CreateProveedor } from './APIs/ProveedorApi.js';
-import { crearFilaProveedor } from './Components/renderProveedor.js';
-import { configurarFormularioEditar } from './Handlers/EditarProveedorHandler.js';
+import { GetAll as GetAllProveedores, CreateProveedor } from './APIs/ProveedorApi.js';
+import { crearFilaProveedor } from './Components/ProveedorComponents/renderTablaProveedores.js';
+import { configurarFormularioEditar, configurarBotonCancelarEditar } from './Handlers/ProveedorHandler/EditarProveedorHandler.js';
+import { 
+    configurarBotonNuevoProveedor, 
+    configurarFormularioAgregar,
+    configurarBotonCancelarAgregar
+} from './Handlers/ProveedorHandler/AgregarProveedorHandler.js';
 
 async function cargarProveedores() {
     try {
         const cuerpoTabla = document.querySelector('.tabla-proveedores tbody');
         cuerpoTabla.innerHTML = ''; // Limpiar tabla
 
-        const proveedores = await GetAll();
-
+        const proveedores = await GetAllProveedores();
+        console.log("Proveedores:", proveedores);
         if (proveedores.length === 0) {
             const filaVacia = document.createElement('tr');
             filaVacia.innerHTML = '<td colspan="6">No hay proveedores disponibles</td>';
@@ -66,7 +71,19 @@ function configurarFormularioCreacion() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+     // 1. Carga la lista inicial de proveedores
+    cargarProveedores();
+    // 2. Configura los botones y formularios para la funcionalidad de "Agregar"
+    configurarBotonNuevoProveedor();
+
+    // Le pasamos 'cargarProveedores' para que pueda recargar la lista después de agregar.
+    configurarFormularioAgregar(cargarProveedores); 
+    configurarBotonCancelarAgregar();
+
+    // Configurar formularios
     configurarFormularioEditar();
     configurarFormularioCreacion();
-    cargarProveedores();
+    configurarBotonCancelarEditar();
+    
+    
 })
