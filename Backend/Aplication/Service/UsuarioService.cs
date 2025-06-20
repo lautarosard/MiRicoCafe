@@ -46,7 +46,7 @@ namespace Aplication.Service
                 IdUsuario = Usuario.Id,
                 Username = Usuario.Username,
                 PasswordHash = Usuario.PasswordHash,
-
+                Rol = Usuario.Rol,
 
 
             };
@@ -71,6 +71,7 @@ namespace Aplication.Service
 
                 Username = request.Username,
                 PasswordHash = request.PasswordHash,
+                Rol = "Usuario"
 
             };
 
@@ -119,6 +120,8 @@ namespace Aplication.Service
                 IdUsuario = Usuarios.Id,
                 Username = Usuarios.Username,
                 PasswordHash = Usuarios.PasswordHash,
+                Rol = Usuarios.Rol,
+
 
             }
 
