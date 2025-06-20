@@ -39,7 +39,7 @@
                 <h2>Lista de proveedores</h2>
             </div>
             <div>
-                <button class="boton-nuevo">Nuevo proveedor</button>
+                <button id="botonNuevoProveedor" class="boton-nuevo">Nuevo proveedor</button>
             </div>
         </div>
         
@@ -70,7 +70,10 @@
         </table>
     </div>
 
-    <div id="modalEditar" class="modal" style="display: none;"> <div class="modal-contenido">
+    
+    <!-- Modal para editar proveedor -->
+    <div id="modalEditar" class="modal" style="display: none;">
+        <div class="modal-contenido">
             <h3>Editar Proveedor</h3>
             <form id="formEditar">
                 <label for="editId" style="display: none;">ID</label>
@@ -106,16 +109,51 @@
     </div>
 
     <div id="modalConfirmarEliminar" class="modal" style="display: none;">
-    <div class="modal-contenido">
-        <h3 id="tituloModalEliminar">Confirmar Eliminación</h3>
-        <p id="mensajeConfirmacionEliminar">
-            ¿Realmente deseas eliminar al proveedor: <strong id="nombreProveedorEliminar">[Nombre del Proveedor]</strong>?
-        </p>
-        <div class="botones-modal">
-            <button type="button" id="botonConfirmarSi" class="boton-peligro">Sí, eliminar</button>
-            <button type="button" id="botonConfirmarCancelar" class="boton-secundario">Cancelar</button>
+        <div class="modal-contenido">
+            <h3 id="tituloModalEliminar">Confirmar Eliminación</h3>
+            <p id="mensajeConfirmacionEliminar">
+                ¿Realmente deseas eliminar al proveedor: <strong id="nombreProveedorEliminar">[Nombre del Proveedor]</strong>?
+            </p>
+            <div class="botones-modal">
+                <button type="button" id="botonConfirmarSi" class="boton-peligro">Sí, eliminar</button>
+                <button type="button" id="botonConfirmarCancelar" class="boton-secundario">Cancelar</button>
+            </div>
         </div>
     </div>
+
+    <!-- Modal para agregar proveedor -->
+    <div id="modalAgregar" class="modal" style="display: none;">
+        <div class="modal-contenido">
+            <h3>Agregar Proveedor</h3>
+            <form id="formAgregar">
+            <label for="addNombre">Nombre</label>
+            <input type="text" id="addNombre" name="addNombre" required>
+
+            <label for="addEmail">Email</label>
+            <input type="email" id="addEmail" name="addEmail" required>
+
+            <label for="addTelefono">Teléfono</label>
+            <input type="text" id="addTelefono" name="addTelefono" required>
+
+            <label for="addProvincia">Provincia</label>
+            <input type="text" id="addProvincia" name="addProvincia">
+
+            <label for="addLocalidad">Localidad</label>
+            <input type="text" id="addLocalidad" name="addLocalidad">
+
+            <label for="addDireccion">Dirección</label>
+            <input type="text" id="addDireccion" name="addDireccion">
+
+            <label for="addCUIT">CUIT</label>
+            <input type="text" id="addCUIT" name="addCUIT" required>
+
+            <div class="botones-modal">
+                <button type="submit">Agregar</button>
+                <button type="button" id="botonCancelarAgregar">Cancelar</button>
+            </div>
+            </form>
+        </div>
+</div>
 
 </div>
 </body>

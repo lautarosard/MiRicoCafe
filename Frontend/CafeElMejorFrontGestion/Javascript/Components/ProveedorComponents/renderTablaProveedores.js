@@ -2,6 +2,7 @@
 import { abrirModalEditarProveedor } from '../../Handlers/ProveedorHandler/EditarProveedorHandler.js';
 import { configurarModalEliminar } from '../../Handlers/ProveedorHandler/EliminarProveedorHandler.js';
 
+
 export function crearFilaProveedor(proveedor) {
     const fila = document.createElement('tr');
 
@@ -20,6 +21,11 @@ export function crearFilaProveedor(proveedor) {
         </td>
     `;
 
+    // Asignar eventos
+    fila.querySelector('.boton-editar').addEventListener('click', () => {
+        configurarFormularioAgregar(proveedor);
+    });
+    
     fila.querySelector('.boton-editar').addEventListener('click', () => {
         abrirModalEditarProveedor(proveedor);
     });
