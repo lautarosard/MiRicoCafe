@@ -16,3 +16,4 @@ obj/
 *.Publish.xml
 *.pubxml
 *.pdb
+*.dll

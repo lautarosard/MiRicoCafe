@@ -6,10 +6,15 @@ import {
     configurarFormularioAgregar,
     configurarBotonCancelarAgregar
 } from './../Handlers/ProveedorHandler/AgregarProveedorHandler.js';
+import { configurarBusquedaProveedor } from './../Handlers/ProveedorHandler/BuscarProveedoreHandler.js';
 
 async function cargarProveedores() {
     try {
         const cuerpoTabla = document.querySelector('.tabla-proveedores tbody');
+        if (!cuerpoTabla) {
+        console.error("No se encontró el cuerpo de la tabla de clientes");
+        return;
+        }
         cuerpoTabla.innerHTML = ''; // Limpiar tabla
 
         const proveedores = await GetAllProveedores();
@@ -85,4 +90,7 @@ export function iniciarPaginaProveedores() {
     configurarFormularioEditar();
     configurarFormularioCreacion();
     configurarBotonCancelarEditar();
+
+    //boton buscar 
+    configurarBusquedaProveedor();
 }
