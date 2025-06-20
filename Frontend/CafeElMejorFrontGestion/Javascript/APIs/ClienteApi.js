@@ -66,3 +66,16 @@ export async function UpdateCliente(id, ClienteActualizado) {
         throw error;
     }
 }
+
+
+// Buscar por dni 
+
+export async function GetByDni(dni) {
+    try {
+        const response = await axios.get(`${API_BASE}/Dni`);
+        return response.data;
+    } catch (error) {
+        console.error('Error al obtener Cliente por DNI:', error);
+        throw error;
+    }
+}
