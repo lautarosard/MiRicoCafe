@@ -49,3 +49,14 @@ export function abrirModalEditarProveedor(proveedor) {
 
     document.getElementById('modalEditar').style.display = 'block';
 }
+// Funcion para cerrar el modal
+export function configurarBotonCancelarEditar() {
+    const botonCancelar = document.getElementById('botonCancelarEditar');
+    const modal = document.getElementById('modalEditar');
+
+    if (botonCancelar && modal) {
+        botonCancelar.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    }
+}

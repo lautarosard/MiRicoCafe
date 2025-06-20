@@ -1,6 +1,6 @@
 import { GetAll, CreateProveedor } from './APIs/ProveedorApi.js';
 import { crearFilaProveedor } from './Components/ProveedorComponents/renderTablaProveedores.js';
-import { configurarFormularioEditar } from './Handlers/ProveedorHandler/EditarProveedorHandler.js';
+import { configurarFormularioEditar, configurarBotonCancelarEditar } from './Handlers/ProveedorHandler/EditarProveedorHandler.js';
 
 async function cargarProveedores() {
     try {
@@ -68,5 +68,6 @@ function configurarFormularioCreacion() {
 document.addEventListener('DOMContentLoaded', () => {
     configurarFormularioEditar();
     configurarFormularioCreacion();
+    configurarBotonCancelarEditar();
     cargarProveedores();
 })
