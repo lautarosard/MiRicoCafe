@@ -388,3 +388,40 @@ main {
             margin-top: 100px;
             text-align: left;
         }
+
+        /* --- Estilos para la Burbuja del Carrito --- */
+
+.carrito-icono-contenedor {
+    position: relative; /* Contexto para posicionar la burbuja */
+    display: inline-block; /* Asegura que el contenedor tome el tamaño del ícono */
+}
+
+.carrito-burbuja {
+    position: absolute;
+    top: -8px;      /* La sube un poco por encima del ícono */
+    right: -10px;   /* La mueve a la derecha del ícono */
+    
+    background-color: #ef4444; /* Rojo (puedes usar tu variable --color-boton-eliminar) */
+    color: #ffffff;            /* Texto blanco */
+    
+    width: 24px;
+    height: 24px;
+    border-radius: 50%; /* Para que sea un círculo perfecto */
+    
+    /* Centra el número dentro del círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 14px;
+    font-weight: bold;
+    
+    /* Transición para que aparezca y desaparezca suavemente */
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Estilo para ocultar la burbuja cuando el carrito está vacío */
+.carrito-burbuja.vacio {
+    transform: scale(0);
+}

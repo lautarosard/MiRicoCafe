@@ -6,8 +6,8 @@
 // --- 1. IMPORTACIONES DE MÓDULOS ---
 import CarritoAPI from '../APIs/CarritoApi.js';
 import { crearCardProductoCarrito } from '../Components/renderCarrito.js';
-import { configurarPaginaProductos } from '../Handlers/AgregarProductocarritoHandler.js';
-import { configurarPaginaCarrito } from '../Handlers/GestionarCarritoHandler.js';
+import { configurarPaginaProductos } from '../Handlers/AgregarProductoCarritoHandlers.js';
+import { configurarPaginaCarrito } from '../Handlers/GestionarCarritoHandlers.js';
 
 
 // --- 2. FUNCIONES DE RENDERIZADO Y UI ---
@@ -18,13 +18,22 @@ import { configurarPaginaCarrito } from '../Handlers/GestionarCarritoHandler.js'
  */
 async function actualizarBurbujaCarrito() {
     const contadorBurbuja = document.getElementById('carrito-contador-burbuja');
-    if (!contadorBurbuja) return;
+    
+    // PISTA DE DEPURACIÓN 1: ¿Encontramos el elemento HTML de la burbuja?
+    if (!contadorBurbuja) {
+        console.warn("ADVERTENCIA: No se encontró el elemento con id 'carrito-contador-burbuja' en el HTML. La burbuja no se puede actualizar.");
+        return;
+    }
 
     try {
         const productos = await CarritoAPI.get();
         const totalItems = productos.reduce((sum, producto) => sum + producto.quantity, 0);
         
+        // PISTA DE DEPURACIÓN 2: ¿Qué número estamos calculando?
+        console.log(`[Burbuja Carrito] Total de items calculados: ${totalItems}`);
+
         contadorBurbuja.textContent = totalItems;
+        
         if (totalItems === 0) {
             contadorBurbuja.classList.add('vacio');
         } else {
@@ -51,7 +60,6 @@ async function renderizarPaginaCarrito() {
     try {
         const productos = await CarritoAPI.get();
         
-        // Limpiar vista actual
         contenedorProductos.innerHTML = '';
 
         if (productos.length === 0) {
@@ -65,7 +73,6 @@ async function renderizarPaginaCarrito() {
             contenedorProductos.appendChild(fragment);
         }
 
-        // Actualizar el resumen de compra
         const totalItems = productos.reduce((sum, p) => sum + p.quantity, 0);
         const totalPrice = productos.reduce((sum, p) => sum + (p.price * p.quantity), 0);
 
@@ -73,7 +80,7 @@ async function renderizarPaginaCarrito() {
         if (subtotalResumenElem) subtotalResumenElem.textContent = `$${totalPrice.toFixed(2)}`;
         if (totalResumenElem) totalResumenElem.textContent = `$${totalPrice.toFixed(2)}`;
 
-        // Actualizar la burbuja por si acaso
+        // Actualizar la burbuja por si acaso, especialmente al cargar la página del carrito.
         actualizarBurbujaCarrito();
 
     } catch (error) {
@@ -90,18 +97,15 @@ async function renderizarPaginaCarrito() {
  * Se debe llamar desde el script principal de la aplicación (ej: main.js).
  */
 export function iniciarLogicaCarrito() {
-    // 1. Configura la página de productos (si estamos en ella) para que se puedan agregar items.
-    // Le pasamos 'actualizarBurbujaCarrito' como callback para que la burbuja se actualice al instante.
+    console.log("[Carrito] Iniciando lógica...");
+
+    // 1. Configura la página de productos (si estamos en ella).
     configurarPaginaProductos(actualizarBurbujaCarrito);
 
     // 2. Configura la página del carrito (si estamos en ella).
-    // Le pasamos 'renderizarPaginaCarrito' como callback. Cada vez que se elimina o actualiza
-    // un producto, el handler llamará a esta función para redibujar todo.
     configurarPaginaCarrito(renderizarPaginaCarrito);
 
     // 3. Renderizado inicial:
-    // Al cargar cualquier página, actualizamos la burbuja.
     actualizarBurbujaCarrito();
-    // Y si estamos en la página del carrito, la renderizamos por completo.
     renderizarPaginaCarrito();
 }
