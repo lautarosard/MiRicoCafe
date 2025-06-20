@@ -1,0 +1,1 @@
+import { GetByDni } from '../../APIs/ClienteApi.js';

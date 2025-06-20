@@ -20,8 +20,8 @@ namespace Aplication.Interfaces.IProveedor
         // Consultar
         Task<ProveedorResponse> ConsultarProveedor(int id);
         // Consultar por cuit
-        //Task<ProveedorResponse> ConsultarProveedorPorcuit(int cuit);
-        //Update proveedor (a verificar)
+        Task<ProveedorResponse> ConsultarProveedorCuit(string dni);
+
         Task<ProveedorResponse> UpdateProveedor(int id, ProveedorRequest proveedorRequest);
 
     }

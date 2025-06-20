@@ -13,5 +13,6 @@ namespace Aplication.Interfaces.ICliente
         Task RemoveCliente(Cliente cliente);
         Task UpdateCliente(Cliente cliente);
 
+
     }
 }

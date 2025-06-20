@@ -86,7 +86,7 @@ namespace Aplication.Service
                 CUIT = request.Cuit
 
             };
-            //_mapper.Map<Proveedor>(request);
+           
 
             await _command.InsertProveedores(proveedor);
             return new ProveedorResponse
@@ -257,9 +257,50 @@ namespace Aplication.Service
 
         }
 
-       
+
+        public async Task<ProveedorResponse> ConsultarProveedorCuit(string dni)
+        {
+
+            if (dni.Length > 8)
+            {
+
+                throw new RequieredParameterException("Error!cuit does not exist ");
+
+            }
+            var proveedor = await _query.GetByProveedorCuit(dni);
+            if (proveedor == null)
+            {
+
+                throw new RequieredParameterException("Error!proveedor does not exist ");
+
+            }
+
+
+            return new ProveedorResponse
+            {
+                IdProveedor = proveedor.Id,
+                Nombre = proveedor.Nombre,
+                Email = proveedor.Email,
+                Telefono = proveedor.Telefono,
+                Provincia = proveedor.Provincia,
+                Localidad = proveedor.Localidad,
+                Direccion = proveedor.Direccion,
+                Cuit = proveedor.CUIT
+
+
+            };
+        }
+
+
+
+
+
+
+
+
+
     }
-    
+
 }
 
 

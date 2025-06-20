@@ -132,5 +132,34 @@ namespace CafeElMejor.Controllers
             }
         }
 
+        [HttpGet("cuit")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetByProveedorCuit(string cuit)
+        {
+
+
+            try
+            {
+                var result = await _service.ConsultarProveedorCuit(cuit);
+                return new JsonResult(result);
+            }
+            catch (Aplication.Exceptions.InvalidateParameterException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (RequieredParameterException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "A mistake has occurred." });
+            }
+        }
+
+
+
+
     }
 }
