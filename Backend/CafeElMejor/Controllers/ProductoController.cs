@@ -51,7 +51,7 @@ namespace CafeElMejor.Controllers
             var result = await _service.GetAll();
             return new JsonResult(result);
         }
-        [HttpGet("Producto/{id}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetByProductoId(int id)
@@ -76,7 +76,7 @@ namespace CafeElMejor.Controllers
             }
         }
 
-        [HttpPut("Productoupdate/{id}")]
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdataProducto(int id, [FromBody] ProductoRequest requests)
@@ -103,7 +103,7 @@ namespace CafeElMejor.Controllers
             }
         }
        
-        [HttpDelete("Productodelete/{id}")]
+        [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> DeleteProductoId(int id)

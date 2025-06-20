@@ -51,7 +51,7 @@ namespace CafeElMejor.Controllers
             var result = await _service.GetAll();
             return new JsonResult(result);
         }
-        [HttpGet("Cliente/{id}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetByClienteId(int id)
@@ -77,7 +77,36 @@ namespace CafeElMejor.Controllers
             }
         }
 
-        [HttpPut("Clienteupdate/{id}")]
+        [HttpGet("Dni")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetByClienteDNI(int dni)
+        {
+
+
+            try
+            {
+                var result = await _service.ConsultarClienteDni(dni);
+                return new JsonResult(result);
+            }
+            catch (Aplication.Exceptions.InvalidateParameterException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (RequieredParameterException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "A mistake has occurred." });
+            }
+        }
+
+
+
+
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdataCliente(int id, [FromBody] ClienteRequest requests)
@@ -104,7 +133,7 @@ namespace CafeElMejor.Controllers
             }
         }
        
-        [HttpDelete("Clientedelete/{id}")]
+        [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> DeleteClienteId(int id)

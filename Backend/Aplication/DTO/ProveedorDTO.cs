@@ -16,7 +16,7 @@ namespace Aplication.DTO
         public int Telefono { get; set; }
         public string Provincia { get; set; }
         public string Localidad { get; set; }
-        public int Cuit { get; set; }
+        public string Cuit { get; set; }
 
     }
 }

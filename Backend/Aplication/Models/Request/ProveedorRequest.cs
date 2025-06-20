@@ -15,6 +15,6 @@ namespace Aplication.Models.Request
         public string Provincia { get; set; }
         public string Localidad { get; set; }
         public string Direccion {  get; set; }
-        public int Cuit { get; set; }
+        public string Cuit { get; set; }
     }
 }

@@ -80,8 +80,9 @@ namespace Infrastructure.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CUIT")
-                        .HasColumnType("int");
+                    b.Property<string>("CUIT")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("DireccionEmpresa")
                         .IsRequired()
@@ -171,8 +172,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("CUILCliente")
                         .HasColumnType("int");
 
-                    b.Property<int>("CUIT")
-                        .HasColumnType("int");
+                    b.Property<string>("CUIT")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("DireccionCliente")
                         .IsRequired()
@@ -227,8 +229,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("CUILCliente")
                         .HasColumnType("int");
 
-                    b.Property<int>("CUIT")
-                        .HasColumnType("int");
+                    b.Property<string>("CUIT")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("DireccionCliente")
                         .IsRequired()
@@ -352,8 +355,10 @@ namespace Infrastructure.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CUIT")
-                        .HasColumnType("int");
+                    b.Property<string>("CUIT")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("varchar(11)");
 
                     b.Property<string>("Direccion")
                         .IsRequired()

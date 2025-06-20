@@ -181,8 +181,44 @@ namespace Aplication.Service
 
             };
 
-
-
         }
+
+
+        public async Task<ClienteResponse> ConsultarClienteDni(int dni)
+        {
+            if (dni >= 4000000)
+            {
+
+                throw new RequieredParameterException("Error!Cliente does not exist ");
+
+            }
+
+
+            var cliente = await _query.GetByClienteDni(dni);
+            if (cliente == null)
+            {
+
+                throw new RequieredParameterException("Error!Cliente does not exist ");
+
+            }
+
+
+            return new ClienteResponse
+            {
+                IdCliente = cliente.Id,
+                Nombre = cliente.Nombre,
+                Email = cliente.Email,
+                Dni = cliente.Dni,
+
+
+
+            };
+        }
+
+
+
+
+
+
     }
 }

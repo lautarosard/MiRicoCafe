@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Productos - Gestion cafe el mejor</title>
-    <link rel="stylesheet" href="/CafeElMejorFrontGestion/CSS/styles.css" />
-    <link rel="stylesheet" href="/CafeElMejorFrontGestion/CSS/productos.css" />
-    <script type="module" src="/CafeElMejorFrontGestion/Javascript/viewProducts.js"></script>
+    <link rel="stylesheet" href="/Frontend/CafeElMejorFrontGestion/CSS/styles.css" />
+    <link rel="stylesheet" href="/Frontend/CafeElMejorFrontGestion/CSS/productos.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="/Frontend/CafeElMejorFrontGestion/Javascript/main.js"></script>
   </head>
 
   <body>
@@ -14,7 +15,7 @@
       <div class="conetenedor-navegacion">
         <a href="index.html" class="logo">
           <img
-            src="/CafeElMejorFrontGestion/img/logo-png.png"
+            src="/Frontend/CafeElMejorFrontGestion/img/logo.png"
             alt="[Logo]"
             class="logo-png"
             width="350"
@@ -36,132 +37,120 @@
               </ul>
             </li>
             <li class="boton-elegir-modo">
-                    <a href="/Inicio/index.html" class="boton">Salir del modo Admin</a>
+                    <a href="/Frontend/Inicio/index.html" class="boton">Salir del modo Admin</a>
             <li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <div class="contenedor">
-      <div class="cabecera-seccion">
-        <div class="titulo">
-          <h2>Lista de productos</h2>
+    <div class="contenedor-productos">
+        <div class="cabecera-seccion">
+            <div class="titulo-productos">
+                <h2>Lista de productos</h2>
+            </div>
+            <div>
+                <button id="botonNuevoProducto" class="boton-nuevo">Nuevo producto</button>
+            </div>
         </div>
-        <div>
-          <button class="nuevo">Nuevo Producto</button>
-        </div>
-      </div>
 
       <hr class="linea-divisoria" />
 
-      <div class="opciones-producto">
-        <input
-          type="search"
-          id="buscar"
-          name="buscar"
-          placeholder="Buscar productos..."
-          list="opciones"
-        />
-
-        <select id="opciones">
-          <option value="10">Leche Entera</option>
-          <option value="25">Leche Descremada</option>
-          <option value="50">Cafe en Grano</option>
-          <option value="100">Cafe en Saquito</option>
-        </select>
+      <div class="opciones-productos">
+            <input type="search" id="buscar" name="buscar" placeholder="Ingrese nombre del producto..." list="opciones">
+            <button class="boton-nuevo">Buscar</button>
       </div>
 
-      <table>
+      <table class="tabla-productos">
         <thead>
           <tr>
             <th>Imagen</th>
             <th>Código</th>
-            <th>Marca</th>
+            <th>Nombre</th>
+            <th>Categoria</th>
             <th>Descripción</th>
-            <th>Proveedor</th>
             <th>Stock</th>
-            <th>Fecha de Vencimiento</th>
-            <th>Precio de Compra</th>
+            <th>Precio</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td>000006</td>
-            <td>Cafe Royal</td>
-            <td>Café en grano 1Kg</td>
-            <td>Cafe Royal</td>
-            <td>20</td>
-            <td>26/10/2024</td>
-            <td>3000.00</td>
-            <td>
-              <button id="modalEliminar" class="boton-editar modal">
-                Editar
-              </button>
-              <button class="boton-eliminar">Eliminar</button>
-            </td>
-          </tr>
         </tbody>
       </table>
     </div>
 
-    <dialog id="dialogEliminar">
-      <form method="dialog">
-        <p>¿Estás seguro que querés eliminar este producto?</p>
-        <menu>
-          <button id="cancelarEliminar" value="cancel">Cancelar</button>
-          <button id="confirmarEliminar" value="confirm">Eliminar</button>
-        </menu>
-      </form>
-    </dialog>
-    <dialog id="dialogEditar">
-      <form id="formEditarProducto" method="dialog">
-        <h3>Editar Producto</h3>
-        <label>
-          Código:
-          <input type="text" name="codigo" id="editCodigo" readonly /> </label
-        ><br /><br />
-        <label>
-          Marca:
-          <input type="text" name="marca" id="editMarca" required /> </label
-        ><br /><br />
-        <label>
-          Descripción:
-          <input
-            type="text"
-            name="descripcion"
-            id="editDescripcion"
-            required
-          /> </label
-        ><br /><br />
-        <label>
-          Proveedor:
-          <input type="text" name="proveedor" id="editProveedor" /> </label
-        ><br /><br />
-        <label>
-          Stock:
-          <input type="number" name="stock" id="editStock" /> </label
-        ><br /><br />
-        <label>
-          Fecha de vencimiento:
-          <input type="date" name="fecha" id="editFecha" /> </label
-        ><br /><br />
-        <label>
-          Precio de compra:
-          <input
-            type="number"
-            name="precio"
-            id="editPrecio"
-            step="0.01"
-          /> </label
-        ><br /><br />
-        <menu>
-          <button type="reset">Cancelar</button>
-          <button type="submit">Guardar Cambios</button>
-        </menu>
-      </form>
-    </dialog>
+      <!-- Modal para editar producto -->
+      <div id="modalEditar" class="modal" style="display: none;">
+          <div class="modal-contenido">
+              <h3>Editar Producto</h3>
+              <form id="formEditar">
+                  <label for="editId" style="display: none;">ID</label>
+                  <input type="hidden" id="editId" name="editId" readonly>
+
+                  <label for="editNombre">Nombre</label>
+                  <input type="text" id="editNombre" name="editNombre" required>
+
+                  <label for="editCategoria">Categoria</label>
+                  <input type="text" id="editCategoria" name="editCategoria" required>
+
+                  <label for="editDescripcion">Descripcion</label>
+                  <input type="text" id="editDescripcion" name="editDescripcion" required>
+
+                  <label for="editStock">Stock</label>
+                  <input type="number" id="editStock" name="editStock" required>
+
+                  <label for="editPrecio">Precio</label>
+                  <input type="number" id="editPrecio" name="editPrecio" required>
+
+                  <div class="botones-modal">
+                      <button type="submit">Guardar</button>
+                      <button type="button"  id="botonCancelarEditar">Cancelar</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+
+      <div id="modalConfirmarEliminar" class="modal" style="display: none;">
+          <div class="modal-contenido">
+              <h3 id="tituloModalEliminar">Confirmar Eliminación</h3>
+              <p id="mensajeConfirmacionEliminar">
+                  ¿Realmente deseas eliminar el producto: <strong id="nombreProductoEliminar">[Nombre del Producto]</strong>?
+              </p>
+              <div class="botones-modal">
+                  <button type="button" id="botonConfirmarSi" class="boton-peligro">Sí, eliminar</button>
+                  <button type="button" id="botonConfirmarCancelar" class="boton-secundario">Cancelar</button>
+              </div>
+          </div>
+      </div>
+
+      <!-- Modal para agregar producto -->
+      <div id="modalAgregar" class="modal" style="display: none;">
+          <div class="modal-contenido">
+              <h3>Agregar Producto</h3>
+              <form id="formAgregar">
+              <label for="addNombre">Nombre</label>
+              <input type="text" id="addNombre" name="addNombre" required>
+
+              <label for="addCategoria">Categoria</label>
+              <input type="text" id="addCategoria" name="addCategoria" required>
+
+              <label for="addDescripcion">Descripcion</label>
+              <input type="text" id="addDescripcion" name="addDescripcion" required>
+
+              <label for="addStock">Stock</label>
+              <input type="number" id="addStock" name="addStock" required>
+
+              <label for="addPrecio">Precio</label>
+              <input type="number" id="addPrecio" name="addPrecio" required>
+
+              <div class="botones-modal">
+                  <button type="submit">Agregar</button>
+                  <button type="button" id="botonCancelarAgregar">Cancelar</button>
+              </div>
+              </form>
+          </div>
+  </div>
+
+  </div>
   </body>
 </html>

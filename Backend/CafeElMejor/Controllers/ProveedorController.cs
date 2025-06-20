@@ -52,7 +52,7 @@ namespace CafeElMejor.Controllers
             var result = await _service.GetAll();
             return new JsonResult(result);
         }
-        [HttpGet("Proveedor/{id}")]
+        [HttpGet("id/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetByProveedorId(int id)
@@ -78,10 +78,10 @@ namespace CafeElMejor.Controllers
             }
         }
 
-        [HttpPut("proveedorupdate/{id}")]
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdataProveedor(int id, [FromBody] ProveedorRequest requests)
+        public async Task<IActionResult> UpdateProveedor(int id, [FromBody] ProveedorRequest requests)
         {
 
             try
@@ -101,11 +101,12 @@ namespace CafeElMejor.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = "A mistake has occurred." });
+                Console.WriteLine("Error inesperado en UpdateProveedor: " + ex.Message);
+                return StatusCode(500, new { message = "A mistake has occurred.", detail = ex.Message });
             }
         }
        
-        [HttpDelete("Proveedordelete/{id}")]
+        [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> DeleteProveedorId(int id)
@@ -130,6 +131,35 @@ namespace CafeElMejor.Controllers
                 return BadRequest(new { message = "A mistake has occurred." });
             }
         }
+
+        [HttpGet("cuit/{cuit}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetByProveedorCuit(string cuit)
+        {
+
+
+            try
+            {
+                var result = await _service.ConsultarProveedorCuit(cuit);
+                return new JsonResult(result);
+            }
+            catch (Aplication.Exceptions.InvalidateParameterException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (RequieredParameterException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = "A mistake has occurred." });
+            }
+        }
+
+
+
 
     }
 }
