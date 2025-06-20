@@ -1,0 +1,232 @@
+/* --- ANULACIÓN DE ESTILOS GLOBALES PARA LA PÁGINA DEL CARRITO --- */
+/* Esto es necesario porque el 'main' global centra su contenido,
+   impidiendo que nuestro layout de dos columnas se expanda. 
+   Esta regla solo se aplica en la página del carrito. */
+main {
+    align-items: stretch !important; /* Permite que el contenedor del carrito se estire horizontalmente */
+}
+
+
+/* Estructura principal del contenedor del carrito */
+.contenedor-principal-carrito {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 30px;
+    width: 95%; /* Ocupa más ancho de la pantalla */
+    max-width: 1400px; /* Un poco más de espacio */
+    margin: 40px auto;
+    padding: 10px;
+    align-items: flex-start;
+}
+
+.columna-izquierda {
+    flex: 2; 
+    min-width: 320px;
+}
+
+.columna-derecha {
+    flex: 1;
+    min-width: 320px;
+    position: sticky; 
+    top: 20px;
+}
+
+/* Estilos para los paneles (ambas columnas) */
+.panel-carrito, .panel-resumen {
+    background-color: var(--color-fondo-input);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--color-borde-suave);
+}
+
+.panel-titulo {
+    color: var(--color-titulo-principal);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-align: left;
+    border-bottom: 1px solid var(--color-borde-suave);
+    padding-bottom: 15px;
+}
+
+/* Estilos específicos para la "Bolsa de compras" (izquierda) */
+#contenedor-productos-carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre productos */
+}
+
+.producto-card-carrito {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border-bottom: 1px solid #eee; /* Línea separadora más sutil */
+    padding-bottom: 20px;
+}
+
+.producto-card-carrito:last-child {
+    border-bottom: none; /* El último producto no necesita línea */
+}
+
+.producto-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Aseguramos texto a la izquierda */
+}
+
+.producto-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2em;
+    color: var(--color-texto-principal);
+}
+
+.producto-info p {
+    margin: 0 0 10px 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.producto-controles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cantidad-input {
+    width: 50px;
+    padding: 5px 8px;
+    border: 1px solid var(--color-borde-suave);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1em;
+}
+
+.cantidad-input::-webkit-outer-spin-button,
+.cantidad-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.producto-precio-subtotal {
+    margin-left: auto;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--color-titulo-principal);
+    text-align: right;
+    min-width: 90px;
+}
+
+.btn-eliminar-producto {
+    background: none;
+    border: none;
+    color: var(--color-boton-eliminar);
+    font-size: 1.5em; 
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.btn-eliminar-producto:hover {
+    color: var(--color-boton-eliminar-hover);
+    transform: scale(1.1);
+}
+
+/* Estilos para el Resumen de compra (derecha) */
+.linea-resumen, .linea-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 1em;
+    color: var(--color-texto-principal);
+    text-align: left;
+}
+
+.linea-total {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--color-titulo-principal);
+    border-top: 1px solid var(--color-borde-suave);
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.botones-accion {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-finalizar, .btn-continuar {
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-finalizar {
+    background-color: var(--color-accion-positiva);
+    color: var(--color-texto-boton-accion);
+    border: none;
+}
+
+.btn-finalizar:hover {
+    background-color: var(--color-accion-positiva-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-continuar {
+    background-color: transparent;
+    color: var(--color-boton-editar);
+    border: 2px solid var(--color-boton-editar);
+}
+
+.btn-continuar:hover {
+    background-color: var(--color-boton-editar);
+    color: var(--color-texto-boton-accion);
+}
+
+.btn-vaciar-carrito {
+    width: 100%;
+    margin-top: 15px;
+    background-color: transparent;
+    border: 1px solid var(--color-boton-eliminar);
+    color: var(--color-boton-eliminar);
+    padding: 8px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-vaciar-carrito:hover {
+    background-color: var(--color-boton-eliminar);
+    color: var(--color-texto-boton-accion);
+}
+
+/* Mensaje de carrito vacío */
+.carrito-vacio-mensaje {
+    text-align: center;
+    padding: 40px;
+    color: var(--color-texto-principal);
+    font-size: 1.1em;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 900px) {
+    .contenedor-principal-carrito {
+        flex-direction: column;
+        width: 90%;
+    }
+    .columna-derecha {
+        position: static; 
+    }
+}

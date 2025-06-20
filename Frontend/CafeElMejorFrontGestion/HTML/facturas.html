@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturas - Gestion cafe el mejor</title>
+    <link rel="stylesheet" href="/MiRicoCafe/Frontend/CafeElMejorFrontGestion/CSS/styles.css" />
+    <link rel="stylesheet" href="/MiRicoCafe/Frontend/CafeElMejorFrontGestion/CSS/facturas.css" />
+    <script type="module" src="/MiRicoCafe/Frontend/CafeElMejorFrontGestion/Javascript/facturas.js"></script>
+</head>
+<body>
+    <header class="sitio-header">
+    <div class="conetenedor-navegacion">
+        <a href="index.html" class="logo">
+        <img
+            src="/CafeElMejor Front/img/logo-png.png"
+            alt="[Logo]"
+            class="logo-png"
+            width="350"
+            height="200"
+        />
+        </a>
+        <nav class="menu-principal">
+        <ul>
+            <li><a href="proveedores.html">Proveedores</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="facturas.html">Facturas</a></li>
+
+            <li class="tiene-submenu">
+            <a href="nueva_orden.html">Compras</a>
+            <ul class="submenu">
+                <li><a href="nueva_orden.html">Nueva orden de compra</a></li>
+                <li>
+                <a href="listado_orden.html">Listado orden de compra</a>
+                </li>
+            </ul>
+            </li>
+            <li class="boton-elegir-modo">
+                    <a href="/Inicio/index.html" class="boton">Salir del modo Admin</a>
+            <li>
+        </ul>
+        </nav>
+    </div>
+    </header>
+
+    <div class="contenedor">
+    <div class="cabecera-seccion">
+        <div class="titulo">
+        <h2>Facturas</h2>
+        </div>
+        <div>
+        <button class="nuevo">Nueva Factura</button>
+        </div>
+    </div>
+
+    <hr class="linea-divisoria" />
+
+        <div class="opciones-facturas">
+            <input type="search" id="buscar" name="buscar" placeholder="Ingrese numero de factura..." list="opciones">
+            <button class="nuevo">Buscar</button>
+            </div>
+
+
+    <table class="tabla-facturas">
+        <thead>
+        <tr>
+            <th>Numero</th>
+            <th>Fecha de Emision</th>
+            <th>Cuit Cliente</th>
+            <th>Nombre Cliente</th>
+            <th>Importe</th>
+            <th>IVA</th>
+            <th>Total</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>001</td>
+            <td>22/05/2025</td>
+            <td>20-12345678-1</td>
+            <td>Cafe Oyambre</td>
+            <td>311500</td>
+            <td>311500</td>
+            <td>311500</td>
+            <td class="actions">
+                <button class="view" title="Ver">👁️</button>
+            </td>
+            
+
+        </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div id="modalNuevaFactura" class="modal-superposicion">
+    <div class="modal-contenido">
+        <span class="cerrar-modal" id="cerrarModalNueva">&times;</span>
+        <h3>Registrar Nueva Factura</h3>
+        <form id="formNuevaFactura">
+            <div class="campo-form">
+                <label for="nuevoNumero">Número de Factura:</label>
+                <input type="text" id="nuevoNumero" required>
+            </div>
+            <div class="campo-form">
+                <label for="nuevoFecha">Fecha de Emisión:</label>
+                <input type="date" id="nuevoFecha" required>
+            </div>
+            <div class="campo-form">
+                <label for="nuevoCuit">CUIT Cliente:</label>
+                <input type="text" id="nuevoCuit" required>
+            </div>
+            <div class="campo-form">
+                <label for="nuevoNombre">Nombre Cliente:</label>
+                <input type="text" id="nuevoNombre" required>
+            </div>
+            <div class="campo-form">
+                <label for="nuevoImporte">Importe (Neto):</label>
+                <input type="number" id="nuevoImporte" step="0.01" required>
+            </div>
+            <div class="campo-form">
+                <label for="nuevoIva">IVA (21%):</label>
+                <input type="number" id="nuevoIva" step="0.01" readonly>
+            </div>
+            <div class="campo-form">
+                <label for="nuevoTotal">Total:</label>
+                <input type="number" id="nuevoTotal" step="0.01" readonly>
+            </div>
+            <div class="botones-modal">
+                <button type="submit" class="boton-guardar">Guardar Factura</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="modalVerFactura" class="modal-superposicion">
+    <div class="modal-contenido">
+        <span class="cerrar-modal" id="cerrarModalVer">&times;</span>
+        <h3>Detalles de la Factura</h3>
+        <div id="detallesFacturaContenido">
+            </div>
+    </div>
+</div>
+</body>
+</html>
