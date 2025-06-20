@@ -21,7 +21,7 @@ export async function GetAll(){
 //Obtiene un proveedor por id
 export async function GetByProveedorId(id){
     try{
-        const response = await axios.get(`${API_BASE}/${id}`);
+        const response = await axios.get(`${API_BASE}/id/${id}`);
         return response.data;
         } catch (error){
             console.error('Error al obtener proveedores: ', error);
@@ -29,9 +29,9 @@ export async function GetByProveedorId(id){
         }
 }
 //Obtiene un proveedor por cuit
-export async function GetByProveedorCuit(id){
+export async function GetByProveedorCuit(cuit){
     try{
-        const response = await axios.get(`${API_BASE}/${id}`);
+        const response = await axios.get(`${API_BASE}/cuit/${cuit}`);
         return response.data;
         } catch (error){
             console.error('Error al obtener proveedores: ', error);

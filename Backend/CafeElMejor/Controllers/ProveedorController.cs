@@ -52,7 +52,7 @@ namespace CafeElMejor.Controllers
             var result = await _service.GetAll();
             return new JsonResult(result);
         }
-        [HttpGet("{id}")]
+        [HttpGet("id/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetByProveedorId(int id)
@@ -132,7 +132,7 @@ namespace CafeElMejor.Controllers
             }
         }
 
-        [HttpGet("cuit")]
+        [HttpGet("cuit/{cuit}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetByProveedorCuit(string cuit)

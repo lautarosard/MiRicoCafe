@@ -1,6 +1,7 @@
 // crearFilaProveedor.js
 import { abrirModalEditarProveedor } from '../../Handlers/ProveedorHandler/EditarProveedorHandler.js';
 import { configurarModalEliminar } from '../../Handlers/ProveedorHandler/EliminarProveedorHandler.js';
+import { configurarBusquedaProveedor } from '../../Handlers/ProveedorHandler/BuscarProveedoreHandler.js';
 
 
 export function crearFilaProveedor(proveedor) {
@@ -21,10 +22,13 @@ export function crearFilaProveedor(proveedor) {
         </td>
     `;
 
+    /*
     // Asignar eventos
     fila.querySelector('.boton-editar').addEventListener('click', () => {
         configurarFormularioAgregar(proveedor);
     });
+    */
+
     
     fila.querySelector('.boton-editar').addEventListener('click', () => {
         abrirModalEditarProveedor(proveedor);
