@@ -118,15 +118,10 @@ namespace Infrastructure.Data
                 entity.Property(n => n.Id).ValueGeneratedOnAdd();
                 entity.Property(n => n.Nombre).HasMaxLength(255).IsRequired();
                 entity.Property(e => e.Email).HasMaxLength(255).IsRequired();
-                entity.Property(e => e.CUIT).IsRequired();
+                entity.Property(e => e.CUIT).IsRequired().HasMaxLength(11);
                 entity.Property(e => e.Provincia).HasMaxLength(50).IsRequired();
                 entity.Property(e => e.Localidad).HasMaxLength(255).IsRequired();
                 entity.Property(e => e.Direccion).HasMaxLength(255).IsRequired();
-                new Proveedor { Id = 1, Email = "granoscafe@gmail.com", CUIT = 12314, Direccion = "Av. Calchaquí 6200", Localidad = "Florencio Varela", Nombre = "Coffe Club", OrdenDeCompra = null, Provincia = "Provincia de Buenos Aires", Telefono = 1234 };
-                new Proveedor { Id = 2, Email = "carlitos@gmail.com", CUIT = 12314, Direccion = "Siempreviva123", Localidad = "Sprinfild", Nombre = "homeroCafe", OrdenDeCompra = null, Provincia = "CAlifornia", Telefono = 1234 };
-                new Proveedor { Id = 3, Email = "carlitos@gmail.com", CUIT = 12314, Direccion = "Siempreviva123", Localidad = "Sprinfild", Nombre = "bartCafe", OrdenDeCompra = null, Provincia = "CAlifornia", Telefono = 1234 };
-                new Proveedor { Id = 4, Email = "carlitos@gmail.com", CUIT = 12314, Direccion = "Siempreviva123", Localidad = "Sprinfild", Nombre = "lisaCafe", OrdenDeCompra = null, Provincia = "CAlifornia", Telefono = 1234 };
-                new Proveedor { Id = 5, Email = "carlitos@gmail.com", CUIT = 12314, Direccion = "Siempreviva123", Localidad = "Sprinfild", Nombre = "MaggieCafe", OrdenDeCompra = null, Provincia = "CAlifornia", Telefono = 1234 };
             });
             //Usuario
             modelBuilder.Entity<Usuario>(entity =>

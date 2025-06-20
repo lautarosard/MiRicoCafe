@@ -66,3 +66,37 @@ C:\Users\lauta\OneDrive\Documentos\Facultad\IngSoft\Backend\Domain\obj\Debug\net
 C:\Users\lauta\OneDrive\Documentos\Facultad\IngSoft\Backend\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\lauta\OneDrive\Documentos\Facultad\IngSoft\Backend\Domain\obj\Debug\net8.0\Domain.genruntimeconfig.cache
 C:\Users\lauta\OneDrive\Documentos\Facultad\IngSoft\Backend\Domain\obj\Debug\net8.0\ref\Domain.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\Domain.exe
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\Domain.runtimeconfig.json
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\Domain.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\Domain.pdb
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\MercadoPago.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\System.Drawing.Common.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\System.Security.Permissions.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\System.Windows.Extensions.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\obj\Debug\net8.0\Domain.csproj.Up2Date
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\obj\Debug\net8.0\Domain.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\obj\Debug\net8.0\Domain.pdb
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\obj\Debug\net8.0\Domain.genruntimeconfig.cache
+C:\Users\lucas\Desktop\Proyecto de ing ultima\Backend\Domain\obj\Debug\net8.0\ref\Domain.dll

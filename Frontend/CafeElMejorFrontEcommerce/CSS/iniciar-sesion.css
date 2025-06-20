@@ -35,13 +35,12 @@ h2 {
 }
 
 /* Grupo de etiqueta e input */
-.form-group {
+.grupo {
     text-align: left;
     margin-bottom: 20px;
 }
 
-/* Etiqueta del campo (DNI) */
-.form-label {
+.grupo label {
     display: block;
     font-weight: bold;
     margin-bottom: 8px;
@@ -49,26 +48,14 @@ h2 {
     font-size: 16px;
 }
 
-/* Campo de entrada (DNI) */
-.form-input {
-    width: 100%;
-    padding: 12px 15px;
+.grupo input[type="text"],
+.grupo input[type="password"] {
+    width: calc(100% - 20px); 
+    padding: 12px 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 16px;
-    background-color: #F8F8DC; /* Color crema para el input */
-    box-sizing: border-box;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-input::placeholder {
-    color: #999;
-}
-
-.form-input:focus {
-    outline: none;
-    border-color: #4d3a2a; /* Color marrón oscuro al enfocar */
-    box-shadow: 0 0 0 3px rgba(77, 58, 42, 0.2); /* Sombra sutil al enfocar */
+    background-color: #F8F8DC;
 }
 
 /* ==== ESTILOS PARA BOTONES DEL FORMULARIO ==== */
@@ -76,19 +63,19 @@ h2 {
 /* Estilos base comunes para los botones del formulario */
 .boton-cancelar,      /* Botón/enlace "CANCELAR" */
 .boton-iniciarsesion {   /* Botón "CONFIRMAR" */
-    display: inline-block;
-    padding: 12px 20px; /* Ajustado para un mejor balance */
+    padding: 12px 0;       /* Quitamos padding horizontal para evitar desbordes */
+    flex: 1;                /* Que ocupen el mismo espacio */
+    min-width: 0;           /* Esto es crucial para que respeten el espacio del contenedor flex */
     border: none;
     border-radius: 50px;
-    cursor: pointer;
     font-size: 16px;
     font-weight: bold;
+    text-decoration: none;
     color: white;
-    background-color: #4d3a2a; /* Color base marrón oscuro */
-    text-decoration: none;   /* Importante para el <a> de "CANCELAR" */
     text-align: center;
+    cursor: pointer;
+    background-color: #4d3a2a;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    min-width: 120px; /* Ancho mínimo para que no se vean muy pequeños */
 }
 
 /* Efecto hover para los botones del formulario */
@@ -122,3 +109,20 @@ h2 {
 .boton-cancelar:hover {
     background-color: #ee5353;
 }
+
+/*.modal.oculto {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}*/

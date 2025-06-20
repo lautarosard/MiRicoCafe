@@ -4,17 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proveedores - Gestion cafe el mejor </title>
-    <link rel="stylesheet" href="/MiRicoCafe/Frontend/CafeElMejorFrontGestion/CSS/styles.css">
-    <link rel="stylesheet" href="/MiRicoCafe/Frontend/CafeElMejorFrontGestion/CSS/proveedores.css">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/MiRicoCafe/Frontend/CafeElMejorFrontGestion/Javascript/proveedores.js"></script>
+
 </head>
 
 <body>
     <header class="sitio-header">
         <div class="conetenedor-navegacion">
             <a href="index.html" class="logo">
-                <img src="/CafeElMejorFrontGestion/img/logo-png.png" alt="[Logo]" class="logo-png" width="350" height="200">
+                <img src="/Frontend/CafeElMejorFrontGestion/img/logo.png" alt="[Logo]" class="logo-png" width="350" height="200">
             </a>
             <nav class="menu-principal">
                 <ul>
@@ -40,7 +37,7 @@
                 <h2>Lista de proveedores</h2>
             </div>
             <div>
-                <button class="boton-nuevo">Nuevo proveedor</button>
+                <button id="botonNuevoProveedor" class="boton-nuevo">Nuevo proveedor</button>
             </div>
         </div>
         
@@ -48,8 +45,8 @@
 
         <div class="opciones-proveedores">
             <input type="search" id="buscar" name="buscar" placeholder="Ingrese nombre del proveedor..." list="opciones">
-            <button class="boton-nuevo">Buscar</button>
-            </div>
+            <button id="botonBuscar" class="boton-nuevo">Buscar</button>
+        </div>
 
         <table class="tabla-proveedores">
             <thead>
@@ -58,31 +55,27 @@
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Telefono</th>
+                    <th>Provincia</th>
+                    <th>Localidad</th>
+                    <th>Direccion</th>
                     <th>Cuit</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>001</td>
-                    <td>Proveedor 1</td>
-                    <td>proveedor@gmail.com</td>
-                    <td>1234-5678</td>
-                    <td>21-234353564645-8</td>    
-                    <td class="acciones-botones">
-                        <button class="boton-editar">Editar</button>
-                        <button class="boton-eliminar">Eliminar</button>
-                    </td>
-                </tr>
+                <!-- Aquí se insertan dinámicamente las filas -->
             </tbody>
         </table>
     </div>
 
-    <div id="modalEditar" class="modal" style="display: none;"> <div class="modal-contenido">
+    
+    <!-- Modal para editar proveedor -->
+    <div id="modalEditar" class="modal" style="display: none;">
+        <div class="modal-contenido">
             <h3>Editar Proveedor</h3>
             <form id="formEditar">
-                <label for="editId">ID</label>
-                <input type="text" id="editId" name="editId" readonly>
+                <label for="editId" style="display: none;">ID</label>
+                <input type="hidden" id="editId" name="editId" readonly>
 
                 <label for="editNombre">Nombre</label>
                 <input type="text" id="editNombre" name="editNombre" required>
@@ -92,29 +85,74 @@
 
                 <label for="editTelefono">Teléfono</label>
                 <input type="text" id="editTelefono" name="editTelefono" required>
+                
+                <label for="editTelefono">Provincia</label>
+                <input type="text" id="editProvincia" name="editProvincia" required>
+                
+                <label for="editTelefono">Localidad</label>
+                <input type="text" id="editLocalidad" name="editLocalidad" required>
+                
+                <label for="editTelefono">Direccion</label>
+                <input type="text" id="editDireccion" name="editDireccion" required>
 
                 <label for="editCUIT">CUIT</label>
                 <input type="text" id="editCUIT" name="editCUIT" required>
 
                 <div class="botones-modal">
                     <button type="submit">Guardar</button>
-                    <button type="button" onclick="cerrarModal()">Cancelar</button>
+                    <button type="button"  id="botonCancelarEditar">Cancelar</button>
                 </div>
             </form>
         </div>
     </div>
 
     <div id="modalConfirmarEliminar" class="modal" style="display: none;">
-    <div class="modal-contenido">
-        <h3 id="tituloModalEliminar">Confirmar Eliminación</h3>
-        <p id="mensajeConfirmacionEliminar">
-            ¿Realmente deseas eliminar al proveedor: <strong id="nombreProveedorEliminar">[Nombre del Proveedor]</strong>?
-        </p>
-        <div class="botones-modal">
-            <button type="button" id="botonConfirmarSi" class="boton-peligro">Sí, eliminar</button>
-            <button type="button" id="botonConfirmarCancelar" class="boton-secundario">Cancelar</button>
+        <div class="modal-contenido">
+            <h3 id="tituloModalEliminar">Confirmar Eliminación</h3>
+            <p id="mensajeConfirmacionEliminar">
+                ¿Realmente deseas eliminar al proveedor: <strong id="nombreProveedorEliminar">[Nombre del Proveedor]</strong>?
+            </p>
+            <div class="botones-modal">
+                <button type="button" id="botonConfirmarSi" class="boton-peligro">Sí, eliminar</button>
+                <button type="button" id="botonConfirmarCancelar" class="boton-secundario">Cancelar</button>
+            </div>
         </div>
     </div>
+
+    <!-- Modal para agregar proveedor -->
+    <div id="modalAgregar" class="modal" style="display: none;">
+        <div class="modal-contenido">
+            <h3>Agregar Proveedor</h3>
+            <form id="formAgregar">
+            <label for="addNombre">Nombre</label>
+            <input type="text" id="addNombre" name="addNombre" required>
+
+            <label for="addEmail">Email</label>
+            <input type="email" id="addEmail" name="addEmail" required>
+
+            <label for="addTelefono">Teléfono</label>
+            <input type="text" id="addTelefono" name="addTelefono" required>
+
+            <label for="addProvincia">Provincia</label>
+            <input type="text" id="addProvincia" name="addProvincia">
+
+            <label for="addLocalidad">Localidad</label>
+            <input type="text" id="addLocalidad" name="addLocalidad">
+
+            <label for="addDireccion">Dirección</label>
+            <input type="text" id="addDireccion" name="addDireccion">
+
+            <label for="addCUIT">CUIT</label>
+            <input type="text" id="addCUIT" name="addCUIT" required>
+
+            <div class="botones-modal">
+                <button type="submit">Agregar</button>
+                <button type="button" id="botonCancelarAgregar">Cancelar</button>
+            </div>
+            </form>
+        </div>
+</div>
+
 </div>
 </body>
 </html>

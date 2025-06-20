@@ -83,7 +83,7 @@ namespace Aplication.Service
 
                 throw new RequieredParameterException("Error! requiered Phone");
             }
-            if (request.CUIT == 0)
+            if (request.CUIT == "")
             {
 
                 throw new RequieredParameterException("Error! requiered Phone");

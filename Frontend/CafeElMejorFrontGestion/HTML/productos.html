@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Productos - Gestion cafe el mejor</title>
-    <link rel="stylesheet" href="/CafeElMejorFrontGestion/CSS/styles.css" />
-    <link rel="stylesheet" href="/CafeElMejorFrontGestion/CSS/productos.css" />
-    <script type="module" src="/CafeElMejorFrontGestion/Javascript/viewProducts.js"></script>
+    <link rel="stylesheet" href="/Frontend/CafeElMejorFrontGestion/CSS/styles.css" />
+    <link rel="stylesheet" href="/Frontend/CafeElMejorFrontGestion/CSS/productos.css" />
+    <script type="module" src="/Frontend/CafeElMejorFrontGestion/Javascript/viewProducts.js"></script>
   </head>
 
   <body>
@@ -14,7 +14,7 @@
       <div class="conetenedor-navegacion">
         <a href="index.html" class="logo">
           <img
-            src="/CafeElMejorFrontGestion/img/logo-png.png"
+            src="/Frontend/CafeElMejorFrontGestion/img/logo.png"
             alt="[Logo]"
             class="logo-png"
             width="350"
@@ -36,7 +36,7 @@
               </ul>
             </li>
             <li class="boton-elegir-modo">
-                    <a href="/Inicio/index.html" class="boton">Salir del modo Admin</a>
+                    <a href="/Frontend/Inicio/index.html" class="boton">Salir del modo Admin</a>
             <li>
           </ul>
         </nav>
@@ -49,7 +49,7 @@
           <h2>Lista de productos</h2>
         </div>
         <div>
-          <button class="nuevo">Nuevo Producto</button>
+          <button class="boton-nuevo">Nuevo Producto</button>
         </div>
       </div>
 
@@ -64,12 +64,9 @@
           list="opciones"
         />
 
-        <select id="opciones">
-          <option value="10">Leche Entera</option>
-          <option value="25">Leche Descremada</option>
-          <option value="50">Cafe en Grano</option>
-          <option value="100">Cafe en Saquito</option>
-        </select>
+            <div class="opciones">
+            <button class="boton-nuevo">Buscar</button>
+            </div>
       </div>
 
       <table>

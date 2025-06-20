@@ -1,6 +1,7 @@
 ﻿using Aplication.Interfaces.IProveedor;
 using Domain.Entities;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,9 +35,9 @@ namespace Infrastructure.Querys
             throw new NotImplementedException();
         }
 
-        //public async Task<Proveedor> GetByCuit(int id)
-        //{
-        //    return await _context.proveedores.FindAsync();
-        //}
+        public async Task<Proveedor> GetByProveedorCuit(string cuit)
+        {
+            return await _context.proveedores.FirstOrDefaultAsync(c => c.CUIT == cuit);
+        }
     }
 }

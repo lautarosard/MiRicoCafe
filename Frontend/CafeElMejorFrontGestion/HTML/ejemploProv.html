@@ -1,21 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Lista de Proveedores</title>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script type="module" src="../Javascript/main.js"></script>
-  <style>
-    .tarjeta-proveedor {
-      border: 1px solid #ccc;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Lista de Proveedores</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="../Javascript/main.js"></script>
+    <style>
+        .tarjeta-proveedor {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Proveedores</h1>
-  <div id="contenedor-proveedores"></div>
+
+    <h1>Proveedores</h1>
+
+    <!-- proveedor.html -->
+    <form id="form-proveedor">
+    <input type="text" id="nombre" placeholder="Nombre" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="text" id="telefono" placeholder="telefono" required />
+    <input type="text" id="provincia" placeholder="provincia" required />
+    <input type="text" id="localidad" placeholder="localidad" required />
+    <input type="text" id="direccion" placeholder="direccion" required />
+    <input type="text" id="cuit" placeholder="cuit" required />
+    <button type="submit">Crear Proveedor</button>
+    </form>
+
+    <div id="mensaje"></div>
+
+    <div id="contenedor-proveedores"></div>
+
+    <div id="modalEditar" class="modal" style="display: none;">
+        <div class="modal-contenido">
+            <h3>Editar Proveedor</h3>
+            <form id="formEditar">
+            
+                <input type="hidden" id="editId" name="editId">
+        
+                <label for="editNombre">Nombre</label>
+                <input type="text" id="editNombre" name="editNombre" required>
+
+                <label for="editEmail">Email</label>
+                <input type="email" id="editEmail" name="editEmail" required>
+
+                <label for="editTelefono">Teléfono</label>
+                <input type="text" id="editTelefono" name="editTelefono" required>
+
+                <label for="editProvincia">Provincia</label>
+                <input type="text" id="editProvincia" name="editProvincia" required>
+                
+                <label for="editLocalidad">Provincia</label>
+                <input type="text" id="editLocalidad" name="editProvincia" required>
+                
+                <label for="editDireccion">Provincia</label>
+                <input type="text" id="editDireccion" name="editProvincia" required>
+
+                <label for="editCUIT">CUIT</label>
+                <input type="text" id="editCUIT" name="editCUIT" required>
+
+                <div class="botones-modal">
+                    <button type="submit">Guardar</button>
+                    <button type="button" onclick="cerrarModalEditar()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+</div>
+
 </body>
 </html>

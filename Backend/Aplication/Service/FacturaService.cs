@@ -127,7 +127,7 @@ namespace Aplication.Service
             {
                 FechaEmision = DateTime.Now,
                 TelefonoEmpresa = 1131313232,
-                CUIT = 2041002466,
+                CUIT = "2041002466",
                 DireccionEmpresa = "Calle Falsa 123",
                 Detalles= ItemsDentroDeFacturas,                
                 Total = TotalDeFactura,

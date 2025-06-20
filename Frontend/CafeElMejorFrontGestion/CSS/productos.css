@@ -49,19 +49,18 @@ body {
     font-weight: 600;
 }
 
-button.nuevo {
-    background-color: var(--color-boton-nuevo);
-    color: var(--color-texto-boton-accion);
-    border: none;
-    padding: 12px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.95em;
-    font-weight: 500;
-    transition: background-color 0.2s ease;
+button.boton-nuevo {
+    background-color: var(--color-boton-nuevo); 
+    color: var(--color-texto-boton-accion); 
+    border: none; 
+    padding: 12px 20px; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-size: 0.95em; 
+    font-weight: 500; 
+    transition: background-color 0.2s ease; 
 }
-
-button.nuevo:hover {
+button.boton-nuevo:hover {
     background-color: var(--color-boton-nuevo-hover);
 }
 
