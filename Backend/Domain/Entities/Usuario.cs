@@ -12,6 +12,8 @@ namespace Domain.Entities
         public string Username { get; set; } = null!;
         public string PasswordHash { get; set; } = null!;
 
+        public string Rol { get; set; } // <-- Ej: "Admin" o "Cliente"
+
         // Relaciones opcionales con Cliente o Admin
         public int? ClienteId { get; set; }
         public Cliente? Cliente { get; set; }

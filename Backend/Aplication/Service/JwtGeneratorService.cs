@@ -27,7 +27,9 @@ namespace Aplication.Service
             var claims = new[]
             {
             new Claim(ClaimTypes.Name, usuario.Username),
-            new Claim("UsuarioId", usuario.Id.ToString())
+            new Claim("UsuarioId", usuario.Id.ToString()),
+            new Claim(ClaimTypes.Role, usuario.Rol) // Agregar el rol
+
         };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));
