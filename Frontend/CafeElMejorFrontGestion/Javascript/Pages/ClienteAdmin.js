@@ -87,7 +87,7 @@ function configurarFormularioCreacionCliente() {
 
 export function iniciarPaginaClientes() {
 
-   configurarFormularioEditarCliente();
+    configurarFormularioEditarCliente();
     configurarFormularioCreacionCliente();
     cargarCliente();
 }
