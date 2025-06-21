@@ -1,7 +1,7 @@
 
 import { GetAll as GetAllClientes, CreateCliente} from './../APIs/ClienteApi.js';
 import { crearFilaCliente} from './../Components/ClientesComponents/renderTablaClientes.js';
-import { configurarFormularioEditarCliente } from './../Handlers/ClienteHandler/EditarClienteHandler.js';
+import { configurarFormularioEditarCliente} from './../Handlers/ClienteHandler/EditarClienteHandler.js';
 import { GetByDni } from './../APIs/ClienteApi.js';
 
 async function cargarCliente() {

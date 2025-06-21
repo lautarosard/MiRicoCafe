@@ -47,6 +47,7 @@ namespace CafeElMejor.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+
         public async Task<IActionResult> GetAll()
         {
 
@@ -56,6 +57,8 @@ namespace CafeElMejor.Controllers
         [HttpGet("Factura/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+
+        
         public async Task<IActionResult> GetByFacturaId(int id)
         {
 

@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>clienteAdmin - Gestion cafe el mejor </title>
-    <link rel="stylesheet" href="/CafeElMejorFrontGestion/CSS/styles.css">
-    <link rel="stylesheet" href="/CafeElMejorFrontGestion/CSS/clienteAdmin.css">
+    <link rel="stylesheet" href="./../CSS/styles.css">
+    <link rel="stylesheet" href="./../CSS/clienteAdmin.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- <script src="/CafeElMejorFrontGestion/Javascript/clienteAdmin.js"></script> -->
-    <script type="module" src="/CafeElMejorFrontGestion/Javascript/main.js"></script>
+    <script type="module" src="/Frontend/CafeElMejorFrontGestion/Javascript/main.js"></script>
     
 </head>
 
@@ -16,7 +15,7 @@
     <header class="sitio-header">
         <div class="conetenedor-navegacion">
             <a href="index.html" class="logo">
-                <img src="/CafeElMejorFrontGestion/img/logo.png" alt="[Logo]" class="logo-png" width="350" height="200">
+                <img src="./../img/logo.png" alt="[Logo]" class="logo-png" width="350" height="200">
             </a>
             <nav class="menu-principal">
                 <ul>
@@ -30,7 +29,7 @@
                         </ul>
                     </li>
                     <li class="boton-elegir-modo">
-                        <a href="/Inicio/index.html" class="boton">Salir del modo Admin</a>
+                        <a href="./../../CafeElMejorFrontEcommerce/HTML/index.html" class="boton">Salir del modo gestion</a>
                     </li> </ul>
             </nav>
         </div>
@@ -40,9 +39,6 @@
         <div class="cabecera-seccion">
             <div class="titulo-clienteAdmin">
                 <h2>Lista de clientes</h2>
-            </div>
-            <div>
-                <button class="boton-nuevo">Nuevo cliente</button>
             </div>
         </div>
         
@@ -88,7 +84,7 @@
               
                 <div class="botones-modal">
                     <button type="submit">Guardar</button>
-                    <button type="button">Cancelar</button>
+                    <button type="button" id="botonConfirmarCancelar" class="boton-secundario">Cancelar</button>
                 </div>
             </form>
         </div>
@@ -102,7 +98,7 @@
         </p>
         <div class="botones-modal">
             <button type="button" id="botonConfirmarSi" class="boton-peligro">Sí, eliminar</button>
-            <button type="button" id="botonConfirmarCancelar" class="boton-secundario">Cancelar</button>
+            <button type="button" id="botonCancelarEliminar" class="boton-secundario">Cancelar</button>
         </div>
     </div>
 </div>

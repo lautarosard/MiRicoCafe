@@ -1,64 +1,59 @@
-// =================================================================
-// ARCHIVO 3: Handlers/AgregarProductoHandler.js
-// Responsabilidad: Manejar el clic de "Añadir al carrito".
-// =================================================================
-import CarritoAPI from './../APIs/Carrito.js';
 
-export function configurarPaginaProductos(alAgregarProductoCallback) {
-    const listProducts = document.querySelector('#listProducts');
-    if (!listProducts) return;
+import { AgregarItemAlCarrito, ObtenerCarrito } from './../APIs/Carrito.js';
+import { GetByProductoId, UpdateProducto } from './../APIs/ProductoApi.js';
 
-    listProducts.addEventListener('click', async (e) => {
-        if (e.target.classList.contains('btn-anadir-carrito')) {
-            try {
-                const productCard = e.target.closest('.producto-card');
+const CLIENTE_ID_TEMPORAL = 1;
 
-                if (!productCard) {
-                    console.error("Error de lógica: no se encontró el elemento padre '.producto-card'.", e.target);
-                    throw new Error("Estructura HTML del producto incorrecta.");
-                }
+export function configurarBotonesAgregarAlCarrito(actualizarBurbujaCarrito) {
+    document.addEventListener('click', async (e) => {
+        if (!e.target.classList.contains('btn-anadir-carrito')) return;
 
-                // Búsqueda robusta de cada elemento dentro de la tarjeta
-                const titleElement = productCard.querySelector('h2.producto-nombre');
-                const priceElement = productCard.querySelector('.producto-precio');
-                const imageElement = productCard.querySelector('img');
-                const quantityInput = productCard.querySelector('input[type="number"]');
+        const boton = e.target;
+        const idProducto = parseInt(boton.dataset.id, 10);
+        const card = boton.closest('.producto-card');
+        const inputCantidad = card.querySelector('input[type="number"]');
+        let cantidadSolicitada = parseInt(inputCantidad.value, 10);
 
-                if (!titleElement || !priceElement || !imageElement || !quantityInput) {
-                    console.error("Error de HTML: Falta un elemento esencial dentro de la tarjeta del producto.", {
-                        title: titleElement,
-                        price: priceElement,
-                        image: imageElement,
-                        input: quantityInput
-                    });
-                    throw new Error("Faltan datos en la tarjeta del producto.");
-                }
+        if (isNaN(cantidadSolicitada) || cantidadSolicitada < 1) {
+            alert("Cantidad inválida");
+            inputCantidad.value = 1;
+            return;
+        }
 
-                const quantityToAdd = parseInt(quantityInput.value, 10);
-                if (isNaN(quantityToAdd) || quantityToAdd <= 0) {
-                    alert('Por favor, ingresa una cantidad válida.');
-                    return;
-                }
+        try {
+            const producto = await GetByProductoId(idProducto);
+            const carrito = await ObtenerCarrito(CLIENTE_ID_TEMPORAL);
 
-                const productoAAgregar = {
-                    image: imageElement.src,
-                    title: titleElement.textContent,
-                    price: parseFloat(priceElement.textContent.replace('$', '')),
-                    id: parseInt(e.target.dataset.id, 10),
-                    quantity: quantityToAdd
-                };
+            const itemEnCarrito = carrito.find(p => p.id === idProducto);
+            const cantidadEnCarrito = itemEnCarrito ? itemEnCarrito.cantidad : 0;
+            const stockDisponible = producto.stock;
 
-                await CarritoAPI.add(productoAAgregar);
-                alert(`Se añadieron ${productoAAgregar.quantity} x ${productoAAgregar.title} al carrito.`);
-                
-                if (alAgregarProductoCallback) {
-                    alAgregarProductoCallback();
-                }
-
-            } catch (error) {
-                console.error("Error detallado al agregar producto:", error);
-                alert("No se pudo agregar el producto. Revisa la consola para más detalles.");
+            if (cantidadSolicitada > stockDisponible) {
+                alert(`Solo hay ${stockDisponible} unidades disponibles para agregar.`);
+                inputCantidad.value = stockDisponible;
+                return;
             }
+
+            await AgregarItemAlCarrito(CLIENTE_ID_TEMPORAL, idProducto, cantidadSolicitada);
+
+            const nuevoStock = producto.stock - cantidadSolicitada;
+            await UpdateProducto(idProducto, { ...producto, stock: nuevoStock });
+
+            alert(`Se agregó ${cantidadSolicitada} x ${producto.nombre} al carrito.`);
+
+            const stockElemento = card.querySelector('.producto-stock');
+            if (stockElemento) {
+                stockElemento.textContent = `Stock disponible: ${nuevoStock}`;
+                inputCantidad.max = nuevoStock;
+                if (nuevoStock <= 0) inputCantidad.disabled = true;
+
+            }
+
+            inputCantidad.value = 1;
+            if (actualizarBurbujaCarrito) actualizarBurbujaCarrito();
+        } catch (error) {
+            console.error("Error al agregar producto al carrito:", error);
+            alert("No se pudo agregar el producto al carrito.");
         }
     });
 }

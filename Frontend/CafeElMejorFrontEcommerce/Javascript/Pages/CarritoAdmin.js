@@ -1,53 +1,47 @@
-// =================================================================
-// ARCHIVO 5: pages/carrito-page.js
-// Responsabilidad: Orquestar todo.
-// =================================================================
-import CarritoAPI from './../APIs/Carrito.js';
-import { crearCardProductoCarrito } from './../Components/renderCarrito.js';
-// ----> INICIO DE LA CORRECCIÓN <----
-import { configurarPaginaProductos } from './../Handlers/AgregarProductoCarritoHandlers.js';
-import { configurarPaginaCarrito } from './../Handlers/GestionarCarritoHandlers.js';
-import {
-    AgregarItemAlCarrito,
-    ActualizarCantidadEnCarrito,
-    EliminarItemDelCarrito,
-    VaciarCarrito,
-    ObtenerCarrito
-} from './../APIs/Carrito.js';
 
-// ----> FIN DE LA CORRECCIÓN <----
+import { ObtenerCarrito } from './../APIs/Carrito.js';
+import { crearCardProductoCarrito } from './../Components/renderCarrito.js';
+import { configurarBotonesAgregarAlCarrito } from './../Handlers/AgregarProductoCarritoHandlers.js';
+import { configurarPaginaCarrito } from './../Handlers/GestionarCarritoHandlers.js';
 
 async function actualizarBurbujaCarrito() {
-    const contadorBurbuja = document.getElementById('carrito-contador-burbuja');
-    if (!contadorBurbuja) return;
-    const productos = await CarritoAPI.get();
-    const totalItems = productos.reduce((sum, producto) => sum + producto.quantity, 0);
-    contadorBurbuja.textContent = totalItems;
-    contadorBurbuja.classList.toggle('vacio', totalItems === 0);
+    const burbuja = document.getElementById('carrito-contador-burbuja');
+    if (!burbuja) return;
+    const productos = await ObtenerCarrito(1);
+    const total = productos.reduce((sum, p) => sum + p.cantidad, 0);
+    burbuja.textContent = total;
+    burbuja.classList.toggle('vacio', total === 0);
 }
 
 async function renderizarPaginaCarrito() {
-    const contenedorProductos = document.querySelector('#contenedor-productos-carrito');
-    if (!contenedorProductos) return;
-    const productos = await CarritoAPI.get();
-    contenedorProductos.innerHTML = '';
+    const contenedor = document.querySelector('#contenedor-productos-carrito');
+    if (!contenedor) return;
+    const productos = await ObtenerCarrito(1);
+
+    contenedor.innerHTML = '';
     if (productos.length === 0) {
-        contenedorProductos.innerHTML = '<p class="carrito-vacio-mensaje">Tu bolsa de compras está vacía.</p>';
+        contenedor.innerHTML = '<p class="carrito-vacio-mensaje">Tu carrito está vacío.</p>';
     } else {
         const fragment = document.createDocumentFragment();
-        productos.forEach(producto => fragment.appendChild(crearCardProductoCarrito(producto)));
-        contenedorProductos.appendChild(fragment);
+        productos.forEach(p => fragment.appendChild(crearCardProductoCarrito(p)));
+        contenedor.appendChild(fragment);
     }
-    const totalItems = productos.reduce((sum, p) => sum + p.quantity, 0);
-    const totalPrice = productos.reduce((sum, p) => sum + (p.price * p.quantity), 0);
+
+    const totalItems = productos.reduce((s, p) => s + p.cantidad, 0);
+    const totalPrice = productos.reduce((s, p) => s + (p.precio * p.cantidad), 0);
+
     document.querySelector('#cantidad-productos-resumen').textContent = totalItems;
     document.querySelector('#subtotal-resumen').textContent = `$${totalPrice.toFixed(2)}`;
     document.querySelector('#total-resumen').textContent = `$${totalPrice.toFixed(2)}`;
+
+
     actualizarBurbujaCarrito();
 }
 
 export function iniciarLogicaCarrito() {
-    configurarPaginaProductos(actualizarBurbujaCarrito);
+
+    configurarBotonesAgregarAlCarrito(actualizarBurbujaCarrito);
+
     configurarPaginaCarrito(renderizarPaginaCarrito);
     actualizarBurbujaCarrito();
     renderizarPaginaCarrito();

@@ -5,7 +5,7 @@
 
 // Importamos la función que manejará el evento de clic desde la capa de Handlers.
 // La crearemos en el próximo paso.
-import { abrirModalVerFactura } from '../Handlers/FacturaHandler.js';
+import { abrirModalVerFactura } from '../Handlers/FacturaHandler/ConsultarFacturaHandlers.js';
 
 /**
  * Formatea un número como moneda local (Peso Argentino).
