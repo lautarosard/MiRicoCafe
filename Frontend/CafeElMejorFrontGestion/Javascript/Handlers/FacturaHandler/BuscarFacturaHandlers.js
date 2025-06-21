@@ -1,50 +1,48 @@
-/**
- * Este handler gestiona la funcionalidad de búsqueda de facturas.
- */
-import { GetAllFacturas } from './../../APIs/FacturaApi.js';
 
-/**
- * Configura los eventos para el input de búsqueda y el botón "Buscar".
- * @param {Function} renderizarTablaCallback - La función que se usará para volver a dibujar la tabla con los resultados.
- */
+import { GetByFacturaId, GetAll } from './../../APIs/FacturaApi.js';
+import { crearFilaFactura } from './../../Components/FacturasComponents/renderFactura.js';
+
+
 export function configurarBusquedaFacturas(renderizarTablaCallback) {
-    const inputBuscar = document.getElementById('buscar');
+    const inputBuscar = document.getElementById('botonBuscar');
     const botonBuscar = document.querySelector('.opciones-facturas .nuevo');
+    const cuerpoTabla = document.querySelector('.tabla-facturas tbody');
 
-    if (!inputBuscar || !botonBuscar) {
+
+    if (!inputBuscar || !botonBuscar || !cuerpoTabla) {
         console.error("No se encontraron los elementos de búsqueda.");
         return;
     }
 
-    const realizarBusqueda = async () => {
-        const terminoBusqueda = inputBuscar.value.toLowerCase().trim();
-        
-        try {
-            // Siempre obtenemos los datos frescos para la búsqueda
-            const todasLasFacturas = await GetAllFacturas(); 
-            let facturasFiltradas;
-
-            if (terminoBusqueda === '') {
-                facturasFiltradas = todasLasFacturas; // Si no hay búsqueda, mostrar todo
-            } else {
-                facturasFiltradas = todasLasFacturas.filter(f => 
-                    f.numero.toLowerCase().includes(terminoBusqueda) ||
-                    f.nombreCliente.toLowerCase().includes(terminoBusqueda) ||
-                    f.cuitCliente.includes(terminoBusqueda)
-                );
+    botonBuscar.addEventListener('click', async () => {
+            const cuit = inputBuscar.value.trim();
+    
+             // Si está vacío, volver a cargar todos los proveedores
+            if (cuit === "") {
+                cuerpoTabla.innerHTML = ''; // limpiar tabla
+                const proveedores = await GetAll();
+                proveedores.forEach(p => {
+                    const fila = crearFilaFactura(p);
+                    cuerpoTabla.appendChild(fila);
+                });
+                return;
             }
-            // Llamamos a la función de renderizado que nos pasaron, con los datos filtrados.
-            renderizarTablaCallback(facturasFiltradas);
-        } catch (error) {
-            console.error("Error al realizar la búsqueda:", error);
-            alert("No se pudo completar la búsqueda.");
-        }
-    };
-
-    botonBuscar.addEventListener('click', realizarBusqueda);
-    inputBuscar.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-            realizarBusqueda();
-        }
-    });
+    
+            try {
+                const proveedor = await GetByFacturaId(cuit);
+    
+                cuerpoTabla.innerHTML = ''; // limpiar tabla
+    
+                if (proveedor) {
+                    const fila = crearFilaFactura(proveedor);
+                    cuerpoTabla.appendChild(fila);
+                } else {
+                    cuerpoTabla.innerHTML = '<tr><td colspan="9">No se encontró ningún proveedor con ese CUIT</td></tr>';
+                }
+    
+            } catch (error) {
+                cuerpoTabla.innerHTML = '<tr><td colspan="9">Error al buscar proveedor</td></tr>';
+                console.error(error);
+            }
+        });
 }

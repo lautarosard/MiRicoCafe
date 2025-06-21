@@ -1,13 +1,6 @@
-/**
- * Este archivo es el punto de entrada de la lógica para la página de facturas.
- * Se encarga de orquestar la carga de datos y la configuración de eventos.
- */
 
-// --- 1. IMPORTACIONES DE MÓDULOS ---
-// API: Para obtener los datos.
 import { GetAllFacturas } from './../APIs/FacturaApi.js';
 
-// Components: Para crear los elementos HTML.
 import { crearFilaFactura } from './../Components/FacturasComponents/renderFactura.js';
 
 // Handlers: Para manejar la interactividad del usuario.
