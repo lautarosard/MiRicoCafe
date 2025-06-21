@@ -388,3 +388,39 @@ main {
             margin-top: 100px;
             text-align: left;
         }
+
+        .carrito-icono-contenedor {
+    position: relative; /* Contexto para posicionar la burbuja */
+    display: inline-block; /* Asegura que el contenedor tome el tamaño del ícono */
+}
+
+.carrito-burbuja {
+    position: absolute;
+    top: -8px; /* Ajusta para subir la burbuja */
+    right: -10px; /* Ajusta para mover la burbuja a la derecha */
+    
+    background-color: var(--color-boton-eliminar); /* Rojo de tu paleta */
+    color: var(--color-texto-boton-accion); /* Blanco */
+    
+    width: 24px;
+    height: 24px;
+    border-radius: 50%; /* Para que sea un círculo perfecto */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 14px;
+    font-weight: bold;
+    
+    /*border: 2px solid var(--color-fondo-principal);  Borde del color de fondo para que parezca que "flota" */
+    
+    /* Transición para que aparezca y desaparezca suavemente */
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Estilo para ocultar la burbuja cuando el carrito está vacío */
+.carrito-burbuja.vacio {
+    transform: scale(0);
+}

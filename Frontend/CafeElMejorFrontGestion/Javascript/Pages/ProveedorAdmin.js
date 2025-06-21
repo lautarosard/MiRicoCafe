@@ -21,7 +21,7 @@ async function cargarProveedores() {
         console.log("Proveedores:", proveedores);
         if (proveedores.length === 0) {
             const filaVacia = document.createElement('tr');
-            filaVacia.innerHTML = '<td colspan="6">No hay proveedores disponibles</td>';
+            filaVacia.innerHTML = '<td colspan="9">No hay proveedores disponibles</td>';
             cuerpoTabla.appendChild(filaVacia);
             return;
         }
