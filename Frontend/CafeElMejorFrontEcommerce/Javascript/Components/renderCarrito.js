@@ -1,24 +1,12 @@
-/**
- * Este componente se encarga de crear el elemento HTML
- * para un solo producto dentro de la "bolsa de compras".
- */
-
-/**
- * Crea una tarjeta (card) HTML para un producto del carrito.
- * @param {object} producto - El objeto del producto con sus datos (id, title, price, quantity).
- * @returns {HTMLDivElement} Un elemento div que representa la tarjeta del producto.
- */
+// =================================================================
+// ARCHIVO 2: Components/RenderCarrito.js
+// Responsabilidad: Crear el HTML de un producto en el carrito.
+// =================================================================
 export function crearCardProductoCarrito(producto) {
     const subtotal = producto.price * producto.quantity;
-    
-    // Creamos el contenedor principal para la tarjeta del producto
     const cardElement = document.createElement('div');
     cardElement.classList.add('producto-card-carrito');
-    
-    // Asignamos un data-attribute con el ID del producto para facilitar su manejo futuro
     cardElement.dataset.productoId = producto.id;
-
-    // Usamos innerHTML para construir la estructura interna de la tarjeta
     cardElement.innerHTML = `
         <div class="producto-info">
             <h3>${producto.title}</h3>
@@ -35,8 +23,5 @@ export function crearCardProductoCarrito(producto) {
             &times;
         </button>
     `;
-
     return cardElement;
 }
-
-

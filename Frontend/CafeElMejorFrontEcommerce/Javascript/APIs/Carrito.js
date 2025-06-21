@@ -1,92 +1,96 @@
-/**
- * Este archivo simula una API para gestionar el carrito de compras,
- * preparándolo para una futura conexión a una base de datos real.
- * Los datos se guardan en memoria y se reinician al recargar la página.
- */
 
-// Simulación de nuestra "base de datos" en memoria para el carrito.
-// En un escenario real, esta variable no existiría en el frontend.
-let _carritoEnMemoria = [];
 
-// Simula la demora de una petición de red.
-const simularDemora = (ms = 100) => new Promise(resolve => setTimeout(resolve, ms));
+// TODO: Reemplaza esta URL por la dirección real de tu backend.
+const API_BASE = "https://localhost:7069/api/Carrito"; 
+
+// TODO: Este ID de cliente es temporal. Deberás obtenerlo dinámicamente
+// cuando implementes el inicio de sesión de usuarios.
+const CLIENTE_ID_TEMPORAL = 1;
 
 const CarritoAPI = {
     /**
-     * Obtiene todos los productos del carrito.
-     * En un futuro, haría una llamada a la API: GET /api/carrito
+     * Obtiene todos los productos del carrito para un cliente específico.
+     * Corresponde a: [HttpGet("{clienteId}")]
      * @returns {Promise<Array>} Una promesa que resuelve a un array de productos del carrito.
      */
     async get() {
-        await simularDemora();
-        // Devuelve una copia para evitar mutaciones directas del estado.
-        return [..._carritoEnMemoria];
+        try {
+            const response = await axios.get(`${API_BASE}/${CLIENTE_ID_TEMPORAL}`);
+            // El controller devuelve un CarritoResponse, los items están dentro de una propiedad.
+            // Ajusta 'items' si el nombre de la propiedad en tu CarritoResponse es diferente.
+            return response.data?.items || [];
+        } catch (error) {
+            console.error('Error al obtener el carrito:', error);
+            return []; // Devuelve un array vacío en caso de error para no romper la UI.
+        }
     },
 
     /**
-     * Agrega un producto al carrito.
-     * En un futuro, haría una llamada a la API: POST /api/carrito/agregar
-     * @param {object} productoAAgregar - El objeto del producto a agregar.
-     * @returns {Promise<Array>} El nuevo estado del carrito.
+     * Agrega un producto al carrito de un cliente.
+     * Corresponde a: [HttpPost("{clienteId}")]
+     * @param {object} productoAAgregar - Contiene los detalles del producto a agregar.
+     * @returns {Promise<void>}
      */
     async add(productoAAgregar) {
-        await simularDemora();
-        const productoExistente = _carritoEnMemoria.find(p => p.id === productoAAgregar.id);
-
-        if (productoExistente) {
-            productoExistente.quantity += productoAAgregar.quantity;
-        } else {
-            _carritoEnMemoria.push(productoAAgregar);
+        // El backend espera un objeto ItemCarritoRequest. Lo construimos aquí.
+        const requestBody = {
+            productoId: productoAAgregar.id,
+            cantidad: productoAAgregar.quantity
+        };
+        try {
+            await axios.post(`${API_BASE}/${CLIENTE_ID_TEMPORAL}`, requestBody);
+        } catch (error) {
+            console.error("Error al agregar item al carrito:", error.response?.data || error);
+            throw error; // Lanza el error para que el handler muestre una alerta.
         }
-        
-        // La API real devolvería el estado actualizado del carrito.
-        return [..._carritoEnMemoria];
     },
 
     /**
-     * Elimina un producto del carrito por su ID.
-     * En un futuro, haría una llamada a la API: DELETE /api/carrito/{productoId}
+     * Elimina un producto del carrito de un cliente.
+     * Corresponde a: [HttpDelete("{clienteId}/{productoId}")]
      * @param {number} productoId - El ID del producto a eliminar.
-     * @returns {Promise<Array>} El nuevo estado del carrito.
+     * @returns {Promise<void>}
      */
     async remove(productoId) {
-        await simularDemora();
-        _carritoEnMemoria = _carritoEnMemoria.filter(p => p.id !== productoId);
-        return [..._carritoEnMemoria];
+        try {
+            await axios.delete(`${API_BASE}/${CLIENTE_ID_TEMPORAL}/${productoId}`);
+        } catch (error) {
+            console.error('Error al eliminar item del carrito:', error.response?.data || error.message);
+            throw error;
+        }
     },
 
     /**
      * Actualiza la cantidad de un producto específico en el carrito.
-     * En un futuro, haría una llamada a la API: PUT /api/carrito/actualizar
+     * Corresponde a: [HttpPut("{clienteId}/{productoId}")]
      * @param {number} productoId - El ID del producto a actualizar.
      * @param {number} nuevaCantidad - La nueva cantidad.
-     * @returns {Promise<Array>} El nuevo estado del carrito.
+     * @returns {Promise<void>}
      */
     async updateQuantity(productoId, nuevaCantidad) {
-        await simularDemora();
-        const productoIndex = _carritoEnMemoria.findIndex(p => p.id === productoId);
-
-        if (productoIndex > -1) {
-            if (nuevaCantidad < 1) {
-                // Si la cantidad es 0 o menos, lo eliminamos.
-                _carritoEnMemoria.splice(productoIndex, 1);
-            } else {
-                _carritoEnMemoria[productoIndex].quantity = nuevaCantidad;
-            }
+        try {
+            // El backend espera la cantidad directamente en el cuerpo de la petición.
+            await axios.put(`${API_BASE}/${CLIENTE_ID_TEMPORAL}/${productoId}`, nuevaCantidad, {
+                headers: { 'Content-Type': 'application/json' }
+            });
+        } catch (error) {
+            console.error('Error al actualizar la cantidad:', error.response?.data || error);
+            throw error;
         }
-        
-        return [..._carritoEnMemoria];
     },
 
     /**
-     * Vacía completamente el carrito.
-     * En un futuro, haría una llamada a la API: DELETE /api/carrito/vaciar
-     * @returns {Promise<Array>} Un array vacío que representa el carrito limpio.
+     * Vacía completamente el carrito de un cliente.
+     * Corresponde a: [HttpDelete("{clienteId}")]
+     * @returns {Promise<void>}
      */
     async empty() {
-        await simularDemora();
-        _carritoEnMemoria = [];
-        return [..._carritoEnMemoria];
+        try {
+            await axios.delete(`${API_BASE}/${CLIENTE_ID_TEMPORAL}`);
+        } catch (error) {
+            console.error('Error al vaciar el carrito:', error.response?.data || error.message);
+            throw error;
+        }
     }
 };
 

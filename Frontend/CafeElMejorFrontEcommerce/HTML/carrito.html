@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito - Cafe El Mejor</title>
+
     <link rel="stylesheet" href="./../CSS/styles.css">
     <link rel="stylesheet" href="./../CSS/carrito.css">
     <!-- Axios debe ir antes de todo lo que lo use -->
@@ -39,8 +40,11 @@
                 </li>
             </ul>
         </div>
-        <a href="#"><img src="./../img/carrito.png" alt="Carrito" 
-            class="icon"></a>
+        <a href="carrito.html" class="carrito-icono-contenedor">
+            <img src="./../img/carrito.png" alt="Carrito" class="icon">
+            <span id="carrito-contador-burbuja" class="carrito-burbuja">0</span>
+        </a>
+
     </div>
     </div>
     
@@ -107,5 +111,6 @@
         <p>&copy; 2024 Café "El Mejor". Todos los derechos reservados.</p>
     </div>
     </footer>
+
 </body>
 </html>

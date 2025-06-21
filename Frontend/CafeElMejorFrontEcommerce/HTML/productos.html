@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../CSS/styles.css">
-    <link rel="stylesheet" href="./../CSS/carrito.css">
-    <link rel="stylesheet" href="./../CSS/productos.css">
+
+    <link rel="stylesheet" href="/MiRicoCafe/Frontend/CafeElMejorFrontEcommerce/CSS/styles.css">
+    <link rel="stylesheet" href="/MiRicoCafe/Frontend/CafeElMejorFrontEcommerce/CSS/productos.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="./../Javascript/main.js"></script>
 
     <title>Productos - Cafe El Mejor</title>
@@ -40,8 +41,12 @@
                 </li>
             </ul>
         </div>
-        <a href="./carrito.html"><img src="./../img/carrito.png" alt="Carrito" 
-            class="icon"></a>
+
+        <a href="carrito.html" class="carrito-icono-contenedor">
+            <img src="./../img/carrito.png" alt="Carrito" class="icon">
+            <span id="carrito-contador-burbuja" class="carrito-burbuja">0</span>
+        </a>
+
     </div>
     </div>
     
@@ -257,7 +262,6 @@
             <p>Diseñado con <i class="fas fa-heart"></i> por Grupo 4.</p>
         </div>
     </footer>
-
 
 </body>
 </html>
