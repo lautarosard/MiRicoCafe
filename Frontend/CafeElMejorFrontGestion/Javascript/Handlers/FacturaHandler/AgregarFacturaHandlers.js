@@ -1,7 +1,7 @@
 /**
  * Este handler gestiona toda la funcionalidad para agregar una nueva factura.
  */
-import { CreateFactura } from '../APIs/FacturaApi.js';
+import { CreateFactura } from './../../APIs/FacturaApi.js';
 
 /**
  * Configura el botón "Nueva Factura" para que abra el modal de registro.

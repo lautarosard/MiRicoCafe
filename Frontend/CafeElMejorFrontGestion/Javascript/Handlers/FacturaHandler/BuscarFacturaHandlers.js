@@ -1,7 +1,7 @@
 /**
  * Este handler gestiona la funcionalidad de búsqueda de facturas.
  */
-import { GetAllFacturas } from '../APIs/FacturaApi.js';
+import { GetAllFacturas } from './../../APIs/FacturaApi.js';
 
 /**
  * Configura los eventos para el input de búsqueda y el botón "Buscar".

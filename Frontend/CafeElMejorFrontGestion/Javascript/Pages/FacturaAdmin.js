@@ -5,15 +5,15 @@
 
 // --- 1. IMPORTACIONES DE MÓDULOS ---
 // API: Para obtener los datos.
-import { GetAllFacturas } from '../APIs/FacturaApi.js';
+import { GetAllFacturas } from './../APIs/FacturaApi.js';
 
 // Components: Para crear los elementos HTML.
-import { crearFilaFactura } from '../Components/crearFilaFactura.js';
+import { crearFilaFactura } from './../Components/FacturasComponents/renderFactura.js';
 
 // Handlers: Para manejar la interactividad del usuario.
-import { configurarBotonNuevaFactura, configurarFormularioAgregar, configurarCierreModalAgregar } from '../Handlers/AgregarFacturaHandler.js';
-import { configurarCierreModalVer } from '../Handlers/ConsultarFacturaHandler.js';
-import { configurarBusquedaFacturas } from '../Handlers/BuscarFacturaHandler.js';
+import { configurarBotonNuevaFactura, configurarFormularioAgregar, configurarCierreModalAgregar } from './../Handlers/FacturaHandler/AgregarFacturaHandler.js';
+import { configurarCierreModalVer } from './../Handlers/FacturaHandler/ConsultarFacturaHandlers.js';
+import { configurarBusquedaFacturas } from './../Handlers/FacturaHandler/BuscarFacturaHandler.js';
 
 
 // --- 2. FUNCIÓN PRINCIPAL DE RENDERIZADO ---
