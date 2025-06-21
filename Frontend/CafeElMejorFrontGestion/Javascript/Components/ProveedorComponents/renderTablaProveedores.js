@@ -1,7 +1,7 @@
 // crearFilaProveedor.js
-import { abrirModalEditarProveedor } from '../../Handlers/ProveedorHandler/EditarProveedorHandler.js';
-import { configurarModalEliminar } from '../../Handlers/ProveedorHandler/EliminarProveedorHandler.js';
-import { configurarBusquedaProveedor } from '../../Handlers/ProveedorHandler/BuscarProveedoreHandler.js';
+import { abrirModalEditarProveedor } from './../../Handlers/ProveedorHandler/EditarProveedorHandler.js';
+import { configurarModalEliminar } from './../../Handlers/ProveedorHandler/EliminarProveedorHandler.js';
+import { configurarBusquedaProveedor } from './../../Handlers/ProveedorHandler/BuscarProveedoreHandler.js';
 
 
 export function crearFilaProveedor(proveedor) {

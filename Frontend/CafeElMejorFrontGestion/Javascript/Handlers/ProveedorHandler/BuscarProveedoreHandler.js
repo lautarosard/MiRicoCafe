@@ -1,5 +1,5 @@
-import { GetByProveedorCuit, GetAll } from '../../APIs/ProveedorApi.js';
-import { crearFilaProveedor } from '../../Components/ProveedorComponents/renderTablaProveedores.js';
+import { GetByProveedorCuit, GetAll } from './../../APIs/ProveedorApi.js';
+import { crearFilaProveedor } from './../../Components/ProveedorComponents/renderTablaProveedores.js';
 
 
 export function configurarBusquedaProveedor(cargarProveedores) {

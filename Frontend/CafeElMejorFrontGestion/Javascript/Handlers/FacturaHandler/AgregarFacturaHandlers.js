@@ -1,6 +1,3 @@
-/**
- * Este handler gestiona toda la funcionalidad para agregar una nueva factura.
- */
 import { CreateFactura } from './../../APIs/FacturaApi.js';
 
 /**
@@ -19,11 +16,7 @@ export function configurarBotonNuevaFactura() {
     }
 }
 
-/**
- * Configura el formulario de nueva factura, incluyendo el cálculo automático
- * de IVA/Total y el envío de datos.
- * @param {Function} recargarFacturasCallback - Función que se llamará para refrescar la tabla después de agregar.
- */
+
 export function configurarFormularioAgregar(recargarFacturasCallback) {
     const form = document.getElementById('formNuevaFactura');
     const inputImporte = document.getElementById('nuevoImporte');

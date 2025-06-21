@@ -1,18 +1,6 @@
-/**
- * Este archivo contiene el componente encargado de crear una fila <tr>
- * para la tabla de facturas a partir de un objeto de datos de factura.
- */
+import { abrirModalVerFactura } from './../../Handlers/FacturaHandler/ConsultarFacturaHandlers.js';
 
-// Importamos la función que manejará el evento de clic desde la capa de Handlers.
-// La crearemos en el próximo paso.
-import { abrirModalVerFactura } from './../FacturasComponents/renderFactura.js';
 
-/**
- * Formatea un número como moneda local (Peso Argentino).
- * Es una función de utilidad puramente visual para el componente.
- * @param {number} numero - El número a formatear.
- * @returns {string} El número formateado como "$ 1.234,56".
- */
 const formatearMoneda = (numero) => {
     if (typeof numero !== 'number') {
         return '$ 0,00';
@@ -20,11 +8,7 @@ const formatearMoneda = (numero) => {
     return numero.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
 };
 
-/**
- * Crea un elemento <tr> (una fila de la tabla) para una factura específica.
- * @param {object} factura - El objeto de factura con todos sus datos.
- * @returns {HTMLTableRowElement} El elemento <tr> listo para ser insertado en el DOM.
- */
+
 export function crearFilaFactura(factura) {
     const fila = document.createElement('tr');
 

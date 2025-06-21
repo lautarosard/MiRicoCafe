@@ -1,28 +1,16 @@
-/**
- * Este archivo es el punto de entrada de la lógica para la página de facturas.
- * Se encarga de orquestar la carga de datos y la configuración de eventos.
- */
 
 // --- 1. IMPORTACIONES DE MÓDULOS ---
 // API: Para obtener los datos.
-import { GetAllFacturas } from './../APIs/FacturaApi.js';
+import { GetAll as GetAllFacturas} from './../APIs/FacturaApi.js';
 
 // Components: Para crear los elementos HTML.
 import { crearFilaFactura } from './../Components/FacturasComponents/renderFactura.js';
 
 // Handlers: Para manejar la interactividad del usuario.
-import { configurarBotonNuevaFactura, configurarFormularioAgregar, configurarCierreModalAgregar } from './../Handlers/FacturaHandler/AgregarFacturaHandler.js';
+import { configurarBotonNuevaFactura, configurarFormularioAgregar, configurarCierreModalAgregar } from './../Handlers/FacturaHandler/AgregarFacturaHandlers.js';
 import { configurarCierreModalVer } from './../Handlers/FacturaHandler/ConsultarFacturaHandlers.js';
-import { configurarBusquedaFacturas } from './../Handlers/FacturaHandler/BuscarFacturaHandler.js';
+import { configurarBusquedaFacturas } from './../Handlers/FacturaHandler/BuscarFacturaHandlers.js';
 
-
-// --- 2. FUNCIÓN PRINCIPAL DE RENDERIZADO ---
-
-/**
- * Obtiene las facturas desde la API y las muestra en la tabla.
- * Esta función es el corazón de la visualización de datos.
- * @param {Array<object>} [facturas] - Un array opcional de facturas ya filtradas para mostrar. Si no se provee, las busca desde la API.
- */
 async function renderizarFacturasEnTabla(facturas) {
     const tablaBody = document.querySelector('.tabla-facturas tbody');
     if (!tablaBody) {

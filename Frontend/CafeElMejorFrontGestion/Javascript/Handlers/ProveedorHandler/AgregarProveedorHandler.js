@@ -1,5 +1,5 @@
 // Handlers/AgregarProveedorHandler.js
-import { CreateProveedor } from '../../APIs/ProveedorApi.js';
+import { CreateProveedor } from './../../APIs/ProveedorApi.js';
 
 export function configurarFormularioAgregar(cargarProveedores) {
     console.log("configurarFormularioAgregar cargado");
