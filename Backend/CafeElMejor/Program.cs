@@ -1,25 +1,26 @@
+using Aplication.Interfaces.IAdministrador;
+using Aplication.Interfaces.IAuth;
+using Aplication.Interfaces.ICliente;
+using Aplication.Interfaces.ICobranza;
+using Aplication.Interfaces.IFactura;
+using Aplication.Interfaces.IItemCarrito;
+using Aplication.Interfaces.IJwtGenerator;
+using Aplication.Interfaces.IMercadoPago;
+using Aplication.Interfaces.INC;
+using Aplication.Interfaces.IND;
+using Aplication.Interfaces.IOC;
+using Aplication.Interfaces.IProducto;
+using Aplication.Interfaces.IProveedor;
+using Aplication.Interfaces.IQR;
+using Aplication.Interfaces.IUsuario;
+using Aplication.Service;
+using Domain.Entities;
+using Infrastructure;
+using Infrastructure.Command;
+using Infrastructure.Data;
+using Infrastructure.Querys;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Infrastructure;
-using Infrastructure.Data;
-using Aplication.Interfaces.IProveedor;
-using Infrastructure.Command;
-using Aplication.Service;
-using Infrastructure.Querys;
-using Aplication.Interfaces.IProducto;
-using Aplication.Interfaces.IOC;
-using Aplication.Interfaces.IND;
-using Aplication.Interfaces.INC;
-using Aplication.Interfaces.IFactura;
-using Aplication.Interfaces.ICobranza;
-using Aplication.Interfaces.ICliente;
-using Aplication.Interfaces.IQR;
-using Aplication.Interfaces.IAuth;
-using Aplication.Interfaces.IUsuario;
-using Aplication.Interfaces.IJwtGenerator;
-using Aplication.Interfaces.IAdministrador;
-using Aplication.Interfaces.IItemCarrito;
-using Aplication.Interfaces.IMercadoPago;
 
 namespace CafeElMejor
 {
@@ -148,7 +149,6 @@ namespace CafeElMejor
                 });
                 app.UseRouting();
             }
-
 
 
             // Configure the HTTP request pipeline.
