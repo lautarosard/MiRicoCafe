@@ -1,5 +1,5 @@
 // EditarProveedorHandler.js
-import { UpdateProducto } from '../../APIs/ProductoApi.js';
+import { UpdateProducto } from './../../APIs/ProductoApi.js';
 
 export function configurarFormularioEditar() {
     const formEditar = document.getElementById("formEditar");

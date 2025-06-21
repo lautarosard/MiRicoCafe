@@ -1,61 +1,97 @@
-/**
- * Este handler gestiona todas las interacciones dentro de la página del carrito:
- * - Actualizar cantidad
- * - Eliminar un producto
- * - Vaciar el carrito
- */
-import CarritoAPI from '../APIs/CarritoApi.js';
+// =================================================================
+// ARCHIVO 4: Handlers/GestionarCarritoHandler.js
+// Responsabilidad: Manejar acciones dentro de la página del carrito.
+// =================================================================
+import CarritoAPI from './../APIs/Carrito.js';
+import { GetByProductoId, UpdateProducto } from './../APIs/ProductoApi.js';
 
-/**
- * Configura los event listeners para la página del carrito.
- * @param {Function} onCarritoChange - Callback que se ejecuta cada vez que el carrito cambia, para poder re-renderizar la vista.
- */
 export function configurarPaginaCarrito(onCarritoChange) {
     const contenedorProductos = document.querySelector('#contenedor-productos-carrito');
     const botonVaciar = document.querySelector('#emptyCart');
+    if (!contenedorProductos) return;
 
-    if (!contenedorProductos) {
-        // No estamos en la página del carrito, no hacemos nada.
-        return;
-    }
-
-    // Usamos delegación de eventos para manejar clics y cambios dentro del contenedor.
+    // Eliminar producto del carrito
     contenedorProductos.addEventListener('click', async (e) => {
-        // --- Eliminar un producto ---
         if (e.target.classList.contains('btn-eliminar-producto')) {
             const productoId = parseInt(e.target.dataset.id, 10);
             try {
+                const producto = await GetByProductoId(productoId);
+                const carrito = await CarritoAPI.get();
+                const itemCarrito = carrito.find(p => p.id === productoId);
+
+                if (itemCarrito) {
+                    const nuevoStock = producto.stock + itemCarrito.quantity;
+                    await UpdateProducto(productoId, { ...producto, stock: nuevoStock });
+                }
+
                 await CarritoAPI.remove(productoId);
-                onCarritoChange(); // Llama al callback para actualizar la vista
+                onCarritoChange();
+
             } catch (error) {
-                console.error("Error al eliminar producto:", error);
+                console.error("Error al eliminar producto del carrito:", error);
                 alert("No se pudo eliminar el producto.");
             }
         }
     });
 
+    // Cambiar cantidad desde input
     contenedorProductos.addEventListener('change', async (e) => {
-        // --- Actualizar cantidad de un producto ---
         if (e.target.classList.contains('cantidad-input')) {
             const productoId = parseInt(e.target.dataset.id, 10);
-            const nuevaCantidad = parseInt(e.target.value, 10);
+            let nuevaCantidad = parseInt(e.target.value, 10);
+
+            if (isNaN(nuevaCantidad) || nuevaCantidad < 1) {
+                alert("Cantidad inválida.");
+                onCarritoChange();
+                return;
+            }
+
             try {
+                const producto = await GetByProductoId(productoId);
+                const carrito = await CarritoAPI.get();
+                const itemCarrito = carrito.find(p => p.id === productoId);
+
+                if (!itemCarrito) {
+                    alert("Producto no encontrado en el carrito.");
+                    onCarritoChange();
+                    return;
+                }
+
+                const cantidadActual = itemCarrito.quantity;
+                const stockDisponible = producto.stock + cantidadActual;
+
+                if (nuevaCantidad > stockDisponible) {
+                    alert(`Solo hay ${stockDisponible} unidades disponibles.`);
+                    nuevaCantidad = stockDisponible;
+                    e.target.value = nuevaCantidad;
+                }
+
+                const nuevoStock = stockDisponible - nuevaCantidad;
+                await UpdateProducto(productoId, { ...producto, stock: nuevoStock });
+
                 await CarritoAPI.updateQuantity(productoId, nuevaCantidad);
-                onCarritoChange(); // Llama al callback para actualizar la vista
+                onCarritoChange();
+
             } catch (error) {
-                console.error("Error al actualizar la cantidad:", error);
-                alert("No se pudo actualizar la cantidad del producto.");
+                console.error("Error al actualizar cantidad en el carrito:", error);
+                alert("No se pudo actualizar la cantidad.");
             }
         }
     });
 
-    // --- Vaciar todo el carrito ---
+    // Vaciar carrito completo
     if (botonVaciar) {
         botonVaciar.addEventListener('click', async () => {
-            if (confirm('¿Estás seguro de que quieres vaciar todo el carrito?')) {
+            if (confirm('¿Estás seguro que quieres vaciar el carrito?')) {
                 try {
+                    const carrito = await CarritoAPI.get();
+                    for (const item of carrito) {
+                        const producto = await GetByProductoId(item.id);
+                        const nuevoStock = producto.stock + item.quantity;
+                        await UpdateProducto(item.id, { ...producto, stock: nuevoStock });
+                    }
                     await CarritoAPI.empty();
-                    onCarritoChange(); // Llama al callback para actualizar la vista
+                    onCarritoChange();
                 } catch (error) {
                     console.error("Error al vaciar el carrito:", error);
                     alert("No se pudo vaciar el carrito.");
