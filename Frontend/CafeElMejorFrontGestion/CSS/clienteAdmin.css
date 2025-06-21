@@ -302,60 +302,133 @@ table button.boton-eliminar:hover {
 
 
 
-/* Estilos para el mensaje de confirmación específico */
-#modalConfirmarEliminar .modal-contenido h3 {
-    margin-top: 0;
-    color: var(--color-secundario); /* O el color que prefieras para el título */
+
+/*
+|--------------------------------------------------------------------------
+| ESTILOS UNIFICADOS PARA TODOS LOS MODALES
+|--------------------------------------------------------------------------
+| Esta es la única sección que necesitas para controlar todos los modales.
+| Funciona aplicando la clase ".modal" a tus divs de modal en el HTML.
+*/
+
+.modal {
+    display: none;                      /* 1. Inicia oculto. JS lo cambia a 'flex' para mostrarlo. */
+    position: fixed;                    /* 2. Se posiciona relativo a la ventana del navegador. */
+    z-index: 1000;                      /* 3. Se asegura que esté por encima de todos los demás elementos. */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);  /* 4. Fondo oscuro semi-transparente. */
+    
+    /* 5. Usa Flexbox para centrar el .modal-contenido perfectamente. */
+    justify-content: center; 
+    align-items: center; 
 }
 
+.modal-contenido {
+    background-color: #fff; 
+    padding: 30px; 
+    border-radius: 8px; 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25); 
+    position: relative; 
+    width: 90%; 
+    max-width: 500px; 
+    text-align: left; 
+    animation: modal-aparecer 0.2s ease-out forwards;
+}
+
+@keyframes modal-aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.cerrar-modal {
+    color: #aaa; 
+    position: absolute; 
+    top: 10px; 
+    right: 15px; 
+    font-size: 28px; 
+    font-weight: bold; 
+    cursor: pointer; 
+}
+.cerrar-modal:hover,
+.cerrar-modal:focus {
+    color: black; 
+}
+
+/* --- Contenido Específico de cada Modal --- */
+
+/* Formulario de Edición/Agregar */
+#formEditar label,
+#formAgregar label {
+    display: block; 
+    margin-top: 15px; 
+    font-weight: bold; 
+}
+#formEditar input,
+#formAgregar input {
+    width: 100%; 
+    padding: 8px; 
+    margin-top: 5px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+}
+#formEditar button,
+#formAgregar .acciones-botones-modal {
+    margin-top: 20px; 
+    text-align: right; /* Alinea los botones a la derecha */
+}
+
+/* Modal de Confirmación de Eliminación */
+#modalConfirmarEliminar .modal-contenido {
+    text-align: center; 
+}
+#modalConfirmarEliminar h3 {
+    margin-top: 0; 
+    color: var(--color-secundario); 
+}
 #mensajeConfirmacionEliminar {
-    font-size: 1.1em;
-    margin-bottom: 25px;
-    line-height: 1.6;
+    font-size: 1.1em; 
+    margin-bottom: 25px; 
+    line-height: 1.6; 
 }
-
-#nombreclienteAdminEliminar {
-    color: var(--color-boton-eliminar); /* Destaca el nombre del proveedor en rojo */
-    font-weight: bold;
+#nombreProductoEliminar {
+    color: var(--color-boton-eliminar); 
+    font-weight: bold; 
 }
-
-/* Estilo general para botones dentro del modal (si no lo tienes ya) */
+#modalConfirmarEliminar .botones-modal {
+    display: flex; 
+    justify-content: center; 
+    gap: 15px; 
+}
 #modalConfirmarEliminar .botones-modal button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 0.95em;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-weight: 500; 
+    font-size: 0.95em; 
+    transition: background-color 0.2s ease, transform 0.1s ease; 
 }
-
-/* Botón de Peligro (Sí, eliminar) */
 .boton-peligro {
-    background-color: var(--color-boton-eliminar); /* Rojo */
-    color: var(--color-texto-boton-accion); /* Texto blanco */
+    background-color: var(--color-boton-eliminar); 
+    color: var(--color-texto-boton-accion); 
 }
-
 .boton-peligro:hover {
-    background-color: var(--color-boton-eliminar-hover); /* Rojo más oscuro */
+    background-color: var(--color-boton-eliminar-hover); 
 }
-
-.boton-peligro:active {
-    background-color: #b91c1c; /* Rojo aún más oscuro */
-    transform: translateY(1px);
-}
-
-/* Botón Secundario (Cancelar) */
 .boton-secundario {
-    background-color: #6c757d; /* Gris */
-    color: white;
+    background-color: #6c757d; 
+    color: white; 
 }
-
 .boton-secundario:hover {
-    background-color: #5a6268; /* Gris más oscuro */
-}
-
-.boton-secundario:active {
-    background-color: #495057;
-    transform: translateY(1px);
+    background-color: #5a6268; 
 }

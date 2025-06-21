@@ -4,7 +4,7 @@ export function configurarModalEliminar(fila, Cliente) {
     const modal = document.getElementById('modalConfirmarEliminar');
     const nombreSpan = document.getElementById('nombreClienteEliminar');
     const botonSi = document.getElementById('botonConfirmarSi');
-    const botonCancelar = document.getElementById('botonConfirmarCancelar');
+    const botonCancelar = document.getElementById('botonCancelarEliminar'); // ← corregido
 
     if (!modal || !nombreSpan || !botonSi || !botonCancelar) return;
 

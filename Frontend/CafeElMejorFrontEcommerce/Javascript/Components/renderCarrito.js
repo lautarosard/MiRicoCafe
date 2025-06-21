@@ -1,7 +1,6 @@
-// =================================================================
-// ARCHIVO 2: Components/RenderCarrito.js
-// Responsabilidad: Crear el HTML de un producto en el carrito.
-// =================================================================
+// ============================
+// ARCHIVO: Components/RenderCarrito.js
+// ============================
 
 export function crearCardProductoCarrito(producto) {
     const price = parseFloat(producto.precio);
