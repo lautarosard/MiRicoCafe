@@ -18,7 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
         iniciarPaginaProveedores();
     }
 
+
     if (rutaActual.includes("facturas.html")) {
         iniciarPaginaFacturas();
     }
+
 });
