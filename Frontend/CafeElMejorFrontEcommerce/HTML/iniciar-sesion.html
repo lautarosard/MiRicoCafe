@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="./../CSS/iniciar-sesion.css">
     <title>Iniciar Sesion - Cafe el Mejor</title>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+
 </head>
 <body>
     <header class="sitio-header">
     <div class="conetenedor-navegacion">
         <a href="index.html" class="logo">
-
+            <img src="./../img/logo-png.png" alt="[Logo]" class="logo-png" width="350" height="200">
         </a>
         <nav class="menu-principal">
             <ul>
@@ -28,7 +31,6 @@
         </div>
         <div class="acciones_user">
 
-                class="icon"></a>
             <ul class="submenu">
                 <li><a href="iniciar-sesion.html">Iniciar sesion</a>
                 </li>
@@ -38,7 +40,27 @@
             </ul>
         </div>
 
-            class="icon"></a>
+            
+        <div class="acciones_user">
+            <div class="dropdown-usuario"> <a href="#" class="user-icon-trigger">
+                <img src="./../img/persona.png" alt="Persona" class="icon"></a>
+                <ul class="submenu">
+                    <li><a href="iniciar-sesion.html">Iniciar sesion</a>
+                    </li>
+                    <li>
+                        <a href="registrarse.html">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <a href="carrito.html" class="carrito-icono-contenedor">
+            <img src="./../img/carrito.png" alt="Carrito" class="icon">
+            <span id="carrito-contador-burbuja" class="carrito-burbuja">0</span>
+            </a>
+        </div>
+
+
     </div>
     </div>
     
@@ -63,8 +85,7 @@
                 </form>
             </div>
         </div>
-
     </main>
-        
+
 </body>
 </html>

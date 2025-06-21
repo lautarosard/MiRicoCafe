@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../CSS/styles.css">
     <link rel="stylesheet" href="./../CSS/registrarse.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
     <title>Registrar Cliente - Cafe el Mejor</title>
     </head>
 <body>
     <header class="sitio-header">
     <div class="conetenedor-navegacion">
         <a href="index.html" class="logo">
-
+            <img src="./../img/logo-png.png" alt="[Logo]" class="logo-png" width="350" height="200">
         </a>
         <nav class="menu-principal">
             <ul>
@@ -27,7 +30,7 @@
         </div>
         <div class="acciones_user">
 
-                class="icon"></a>
+                
             <ul class="submenu">
                 <li><a href="iniciar-sesion.html">Iniciar sesion</a>
                 </li>
@@ -37,9 +40,24 @@
             </ul>
         </div>
 
-            class="icon"></a>
-    </div>
-    </div>
+    <div class="acciones_user">
+            <div class="dropdown-usuario"> <a href="#" class="user-icon-trigger">
+                <img src="./../img/persona.png" alt="Persona" class="icon"></a>
+                <ul class="submenu">
+                    <li><a href="iniciar-sesion.html">Iniciar sesion</a>
+                    </li>
+                    <li>
+                        <a href="registrarse.html">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <a href="carrito.html" class="carrito-icono-contenedor">
+            <img src="./../img/carrito.png" alt="Carrito" class="icon">
+            <span id="carrito-contador-burbuja" class="carrito-burbuja">0</span>
+            </a>
+        </div>
     
     </header>
     <main>
@@ -53,8 +71,8 @@
                 </div>
 
                 <div class="grupo">
-                    <label for="contraseña">CONTRASEÑA</label>
-                    <input type="password" id="contraseña" name="contraseña" placeholder="Ingrese su contraseña">
+                    <label for="contrasena">CONTRASEÑA</label>
+                    <input type="password" id="contraseña" name="contrasena" placeholder="Ingrese su contraseña">
                 </div>
 
                 <div class="grupo">
