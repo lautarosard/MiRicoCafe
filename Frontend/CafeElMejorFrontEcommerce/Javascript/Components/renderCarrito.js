@@ -1,3 +1,4 @@
+
 // ============================
 // ARCHIVO: Components/RenderCarrito.js
 // ============================
@@ -12,6 +13,7 @@ export function crearCardProductoCarrito(producto) {
     cardElement.dataset.productoId = producto.id;
 
     cardElement.innerHTML = ` 
+
         <div class="producto-info">
             <h3>${producto.nombre}</h3>
             <p>Precio unitario: $${isNaN(price) ? '0.00' : price.toFixed(2)}</p>
@@ -37,6 +39,5 @@ export function crearCardProductoCarrito(producto) {
             &times;
         </button>
     `;
-
     return cardElement;
 }

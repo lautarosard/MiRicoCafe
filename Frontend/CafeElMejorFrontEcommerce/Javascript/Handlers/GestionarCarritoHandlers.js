@@ -1,7 +1,9 @@
+
 import { ObtenerCarrito, ActualizarCantidadEnCarrito, EliminarItemDelCarrito, VaciarCarrito } from './../APIs/Carrito.js';
 import { GetByProductoId, UpdateProducto } from './../APIs/ProductoApi.js';
 
 const CLIENTE_ID_TEMPORAL = 1;
+
 
 export function configurarPaginaCarrito(onCarritoChange) {
     const contenedorProductos = document.querySelector('#contenedor-productos-carrito');
@@ -11,6 +13,7 @@ export function configurarPaginaCarrito(onCarritoChange) {
     contenedorProductos.addEventListener('click', async (e) => {
         if (e.target.classList.contains('btn-eliminar-producto')) {
             const productoId = parseInt(e.target.dataset.id, 10);
+
             try {
                 const producto = await GetByProductoId(productoId);
                 const carrito = await ObtenerCarrito(CLIENTE_ID_TEMPORAL);
@@ -26,12 +29,14 @@ export function configurarPaginaCarrito(onCarritoChange) {
             } catch (error) {
                 console.error("Error al eliminar producto:", error);
             }
+
         }
     });
 
     contenedorProductos.addEventListener('change', async (e) => {
         if (e.target.classList.contains('cantidad-input')) {
             const productoId = parseInt(e.target.dataset.id, 10);
+
             let nuevaCantidad = parseInt(e.target.value, 10);
             if (isNaN(nuevaCantidad) || nuevaCantidad < 1) {
                 alert("Cantidad inválida.");
@@ -63,11 +68,13 @@ export function configurarPaginaCarrito(onCarritoChange) {
             } catch (error) {
                 console.error("Error al actualizar cantidad:", error);
             }
+
         }
     });
 
     if (botonVaciar) {
         botonVaciar.addEventListener('click', async () => {
+
             if (!confirm('¿Vaciar el carrito?')) return;
 
             try {
@@ -81,6 +88,7 @@ export function configurarPaginaCarrito(onCarritoChange) {
                 onCarritoChange();
             } catch (error) {
                 console.error("Error al vaciar carrito:", error);
+
             }
         });
     }

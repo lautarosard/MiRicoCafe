@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Frontend/CafeElMejorFrontEcommerce/CSS/styles.css">
-    <link rel="stylesheet" href="/Frontend/CafeElMejorFrontEcommerce/CSS/productos.css">
+
+
+    <link rel="stylesheet" href="/MiRicoCafe/Frontend/CafeElMejorFrontEcommerce/CSS/styles.css">
+    <link rel="stylesheet" href="/MiRicoCafe/Frontend/CafeElMejorFrontEcommerce/CSS/productos.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="./../Javascript/main.js"></script>
     <title>Productos - Cafe El Mejor</title>
 </head>
 <body>
@@ -13,7 +16,9 @@
     <header class="sitio-header">
     <div class="conetenedor-navegacion">
         <a href="index.html" class="logo">
-            <img src="/Frontend/CafeElMejorFrontEcommerce/img/logo-png.png" alt="[Logo]" class="logo-png" width="350" height="200">
+
+            <img src="./../img/logo-png.png" alt="[Logo]" class="logo-png" width="350" height="200">
+
         </a>
         <nav class="menu-principal">
             <ul>
@@ -24,11 +29,13 @@
         </nav>
     </div>
     <div class="grupo-acciones-usuario">
-        <div class="contenedor-salir-cliente"> <li class="boton-elegir-modo"> <a href="/Frontend/Inicio/index.html" class="boton">SALIR DEL MODO CLIENTE</a>
+
+        <div class="contenedor-salir-cliente"> <li class="boton-elegir-modo"> <a href="./index.html" class="boton">SALIR DEL MODO CLIENTE</a>
             </li>
         </div>
         <div class="acciones_user">
-        <div class="dropdown-usuario"> <a href="#" class="user-icon-trigger"><img src="/Frontend/CafeElMejorFrontEcommerce/img/persona.png" alt="Persona"
+        <div class="dropdown-usuario"> <a href="#" class="user-icon-trigger"><img src="./../img/persona.png" alt="Persona"
+
                 class="icon"></a>
             <ul class="submenu">
                 <li><a href="iniciar-sesion.html">Iniciar sesion</a>
@@ -38,8 +45,13 @@
                 </li>
             </ul>
         </div>
-        <a href="/Frontend/CafeElMejorFrontEcommerce/HTML/carrito.html"><img src="/Frontend/CafeElMejorFrontEcommerce/img/carrito.png" alt="Carrito" 
-            class="icon"></a>
+
+
+        <a href="carrito.html" class="carrito-icono-contenedor">
+            <img src="./../img/carrito.png" alt="Carrito" class="icon">
+            <span id="carrito-contador-burbuja" class="carrito-burbuja">0</span>
+        </a>
+
     </div>
     </div>
     
@@ -48,8 +60,7 @@
     <main>
         <h1 class="productos-titulo">PRODUCTOS</h1>
         <section class="productos-grid" id="listProducts">
-            <!-- Acá se insertarán los productos automáticamente -->
-        </section>
+
     </main>
 
     <footer class="sitio-footer" id="miFooter">
@@ -85,7 +96,6 @@
             <p>Diseñado con <i class="fas fa-heart"></i> por Grupo 4.</p>
         </div>
     </footer>
-    <script type="module" src="/Frontend/CafeElMejorFrontEcommerce/JavaScript/main.js"></script>
 
 
 </body>

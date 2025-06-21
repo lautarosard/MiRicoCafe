@@ -1,3 +1,4 @@
+
 // ============================
 // ARCHIVO: main.js (o index.js)
 // ============================
@@ -24,3 +25,4 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarProductos();        // Cargar productos y renderizarlos
     iniciarLogicaCarrito();   // Configurar carrito y botones
 });
+

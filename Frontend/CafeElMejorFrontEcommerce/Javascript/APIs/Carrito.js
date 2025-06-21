@@ -1,9 +1,11 @@
+
 // TODO: Reemplaza esta URL por la dirección real de tu backend.
 const API_BASE = "https://localhost:7069/api/Carrito"; 
 
 // TODO: Este ID de cliente es temporal. Deberás obtenerlo dinámicamente
 // cuando implementes el inicio de sesión de usuarios.
 const CLIENTE_ID_TEMPORAL = 1;
+
 
 export async function ObtenerCarrito(clienteId) {
     try {

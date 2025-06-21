@@ -1,7 +1,9 @@
 ﻿using Aplication.Interfaces.IAuth;
 using Aplication.Interfaces.ICliente;
+using Aplication.Interfaces.IUsuario;
 using Aplication.Models.Request;
 using Aplication.Service;
+using Domain.Entities;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,10 +14,12 @@ namespace CafeElMejor.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService  _service;
+        private readonly IUsuarioService _usuarioService;
 
-        public AuthController(IAuthService service)
+        public AuthController(IAuthService service, IUsuarioService usuarioService)
         {
             _service = service;
+            _usuarioService = usuarioService;
         }
 
         [HttpPost("login")]
@@ -60,5 +64,21 @@ namespace CafeElMejor.Controllers
                 return BadRequest(new { Message = ex.Message });
             }
         }
+        /*
+        //borrar
+        [HttpPost("register-admin")]
+        public async Task<IActionResult> RegisterAdmin()
+        {
+            
+            var admin = new UsuarioRequest
+            {
+                Username = "admin",
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword("contraseña"),
+                Rol = "Admin"
+            };
+
+            await _usuarioService.CreateUsuario(admin);
+            return Ok("Usuario administrador creado");
+        }*/
     }
 }

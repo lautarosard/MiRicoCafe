@@ -1,3 +1,4 @@
+
 import { ObtenerCarrito } from './../APIs/Carrito.js';
 import { crearCardProductoCarrito } from './../Components/renderCarrito.js';
 import { configurarBotonesAgregarAlCarrito } from './../Handlers/AgregarProductoCarritoHandlers.js';
@@ -33,11 +34,14 @@ async function renderizarPaginaCarrito() {
     document.querySelector('#subtotal-resumen').textContent = `$${totalPrice.toFixed(2)}`;
     document.querySelector('#total-resumen').textContent = `$${totalPrice.toFixed(2)}`;
 
+
     actualizarBurbujaCarrito();
 }
 
 export function iniciarLogicaCarrito() {
+
     configurarBotonesAgregarAlCarrito(actualizarBurbujaCarrito);
+
     configurarPaginaCarrito(renderizarPaginaCarrito);
     actualizarBurbujaCarrito();
     renderizarPaginaCarrito();

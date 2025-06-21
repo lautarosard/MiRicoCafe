@@ -1,3 +1,4 @@
+
 import { AgregarItemAlCarrito, ObtenerCarrito } from './../APIs/Carrito.js';
 import { GetByProductoId, UpdateProducto } from './../APIs/ProductoApi.js';
 
@@ -45,6 +46,7 @@ export function configurarBotonesAgregarAlCarrito(actualizarBurbujaCarrito) {
                 stockElemento.textContent = `Stock disponible: ${nuevoStock}`;
                 inputCantidad.max = nuevoStock;
                 if (nuevoStock <= 0) inputCantidad.disabled = true;
+
             }
 
             inputCantidad.value = 1;
