@@ -7,6 +7,14 @@ import { crearCardProductoCarrito } from './../Components/renderCarrito.js';
 // ----> INICIO DE LA CORRECCIÓN <----
 import { configurarPaginaProductos } from './../Handlers/AgregarProductoCarritoHandlers.js';
 import { configurarPaginaCarrito } from './../Handlers/GestionarCarritoHandlers.js';
+import {
+    AgregarItemAlCarrito,
+    ActualizarCantidadEnCarrito,
+    EliminarItemDelCarrito,
+    VaciarCarrito,
+    ObtenerCarrito
+} from './../APIs/Carrito.js';
+
 // ----> FIN DE LA CORRECCIÓN <----
 
 async function actualizarBurbujaCarrito() {
