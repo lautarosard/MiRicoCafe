@@ -261,7 +261,7 @@ namespace Aplication.Service
         public async Task<ProveedorResponse> ConsultarProveedorCuit(string dni)
         {
 
-            if (dni.Length > 8)
+            if (dni.Length < 10)
             {
 
                 throw new RequieredParameterException("Error!cuit does not exist ");
