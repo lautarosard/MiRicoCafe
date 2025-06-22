@@ -1,22 +1,10 @@
-/**
- * Este handler gestiona la funcionalidad para consultar/ver el detalle de una factura.
- */
 
-/**
- * Formatea un número como moneda local (Peso Argentino).
- * @param {number} numero - El número a formatear.
- * @returns {string} El número formateado.
- */
 const formatearMoneda = (numero) => {
     if (typeof numero !== 'number') return '$ 0,00';
     return numero.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
 };
 
-/**
- * Abre el modal de "Ver Factura" y lo llena con los datos de la factura seleccionada.
- * Esta función es llamada desde el componente `crearFilaFactura`.
- * @param {object} factura - El objeto de la factura cuyos detalles se mostrarán.
- */
+
 export function abrirModalVerFactura(factura) {
     const modal = document.getElementById('modalVerFactura');
     const contenido = document.getElementById('detallesFacturaContenido');
@@ -38,9 +26,7 @@ export function abrirModalVerFactura(factura) {
     }
 }
 
-/**
- * Configura el botón de cierre (la 'X') del modal de ver detalles.
- */
+
 export function configurarCierreModalVer() {
     const botonCerrar = document.getElementById('cerrarModalVer');
     const modal = document.getElementById('modalVerFactura');
