@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (rutaActual.includes("carrito.html")) {
+       
         iniciarLogicaCarrito(); // ← CAMBIO IMPORTANTE
     }
 
