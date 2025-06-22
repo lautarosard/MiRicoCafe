@@ -5,9 +5,10 @@ import { configurarBotonesAgregarAlCarrito } from './../Handlers/AgregarProducto
 import { configurarPaginaCarrito } from './../Handlers/GestionarCarritoHandlers.js';
 
 async function actualizarBurbujaCarrito() {
+    const clienteId = localStorage.getItem('clienteId');
     const burbuja = document.getElementById('carrito-contador-burbuja');
     if (!burbuja) return;
-    const productosCarrito = await ObtenerCarrito(1);
+    const productosCarrito = await ObtenerCarrito(clienteId);
     const productos = productosCarrito.productos || []; // <- acceso correcto
     const total = productos.reduce((sum, p) => sum + p.cantidad, 0);
     burbuja.textContent = total;
@@ -16,10 +17,11 @@ async function actualizarBurbujaCarrito() {
 
 async function renderizarPaginaCarrito() {
     const contenedor = document.querySelector('#contenedor-productos-carrito');
+    const clienteId = localStorage.getItem('clienteId');
     if (!contenedor) return;
 
     // Obtener el carrito completo
-    const carrito = await ObtenerCarrito(1);
+    const carrito = await ObtenerCarrito(clienteId);
 
     // Accedemos a la propiedad 'productos' del carrito, o dejamos array vacío si no existe
     const productos = carrito?.items || [];

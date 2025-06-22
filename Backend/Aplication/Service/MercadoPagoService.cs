@@ -20,9 +20,10 @@ namespace Aplication.Service
         private readonly IConfiguration _config;
         private readonly IProductoService _productoService;
 
-        public MercadoPagoService(IConfiguration config)
+        public MercadoPagoService(IConfiguration config, IProductoService productoService)
         {
             _config = config;
+            _productoService = productoService;
         }
 
         public async Task<string> CrearPreferenciaAsync(PagoRequest request)
@@ -33,8 +34,19 @@ namespace Aplication.Service
 
             foreach (var item in request.MPProductos)
             {
+                Console.WriteLine($"El producto es este {item.ProductoId}");
                 var producto = await _productoService.ConsultarProducto(item.ProductoId);
 
+                if (producto == null)
+                {
+                    throw new Exception($"No se encontró el producto con ID {item.ProductoId}");
+                }
+                if (producto == null)
+                {
+                    // Omitir o loguear el producto inválido
+                    Console.WriteLine($"El producto que intentaste fue este {item}");
+                    continue;
+                }
                 items.Add(new PreferenceItemRequest
                 {
                     Title = producto.Nombre, // Nombre desde BD

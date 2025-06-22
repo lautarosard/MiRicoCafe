@@ -13,9 +13,9 @@ export async function procesarPago() {
         throw new Error("Tu carrito está vacío");
     }
 
-    const mpProductos = carrito.map(item => ({
-        productoId: productos.productoId,
-        cantidad: productos.cantidad
+    const mpProductos = productos.map(item => ({
+        productoId: item.productoId,
+        cantidad: item.cantidad
     }));
 
     const pagoRequest = {
@@ -24,5 +24,6 @@ export async function procesarPago() {
     };
 
     const { url } = await CrearPreferencia(pagoRequest);
+    console.log("URL de pago:", url);
     return url;
 }
