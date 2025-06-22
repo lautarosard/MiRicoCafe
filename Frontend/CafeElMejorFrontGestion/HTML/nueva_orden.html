@@ -36,68 +36,110 @@
 
 
 <main>
-    <div class="container">
-        <div class="main-content">
-            <div class="form-section proveedor-section">
-                <h3 class="section-title">Proveedor</h3>
-                <div class="proveedor-inputs">
-                    <div class="form-group">
-                        <label for="nombre-contacto">Nombre del Proveedor</label>
-                        <input type="text" id="nombre-contacto" name="nombre-contacto">
-                    </div>
+           <div class="contenedor-orden">
+            <div class="cabecera-seccion">
+                <div class="titulo">
+                    <h2>Nueva Orden de Compra</h2>
                 </div>
             </div>
 
-            <div class="form-section productos-section">
-                <h3 class="section-title">Productos</h3>
-                <div class="form-group">
-                    <label for="buscar-producto" class="sr-only">Buscar Producto</label>
-                    <input type="text" id="buscar-producto" name="buscar-producto" placeholder="Buscar Producto...">
+            <hr class="linea-divisoria">
+
+            <!-- SECCIÓN 1: DATOS DEL PROVEEDOR, FECHA Y BOTÓN AGREGAR -->
+            <section class="panel-principal">
+                <div class="campo-formulario">
+                    <label for="selector-proveedor">Nombre del Proveedor</label>
+                    <select id="selector-proveedor" name="proveedor">
+                        <option value="" disabled selected>Seleccione un proveedor...</option>
+                        <!-- Opciones de proveedores se cargarán con JS -->
+                    </select>
                 </div>
-                <div class="productos-tabla">
-                    <div class="tabla-header">
-                        <div>Producto</div>
-                        <div>Cantidad</div>
-                        <div>Precio</div>
-                        <div>Total</div>
-                    </div>
-                    <div class="tabla-row empty-row">
-                        <div>-</div>
-                        <div>-</div>
-                        <div>-</div>
-                        <div>-</div>
+                <div class="campo-formulario">
+                    <label for="fecha-orden">Fecha de Orden</label>
+                    <input type="date" id="fecha-orden" name="fecha">
+                </div>
+                <div class="area-boton-agregar">
+                    <button id="btn-abrir-modal-productos" class="boton-accion">
+                        + Nuevo Producto
+                    </button>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: LISTA DE PRODUCTOS EN LA ORDEN -->
+            <section class="panel-lista-productos">
+                <div class="contenedor-tabla">
+                    <table class="tabla-orden-compra">
+                        <thead>
+                            <tr>
+                                <th>Nombre del Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unit.</th>
+                                <th>Subtotal</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpo-tabla-orden">
+                            <!-- Las filas de productos se generarán aquí con JavaScript -->
+                        </tbody>
+                    </table>
+                    <div id="mensaje-tabla-vacia" class="mensaje-vacio">
+                        Aún no has agregado productos a la orden.
                     </div>
                 </div>
-            </div>
+            </section>
+            
+            <!-- SECCIÓN 3: TOTALES Y ACCIÓN FINAL -->
+            <section class="panel-final-orden">
+                <div class="resumen-totales">
+                    <div class="linea-total">
+                        <span>Subtotal</span>
+                        <span id="subtotal-orden">$0.00</span>
+                    </div>
+                    <div class="linea-total">
+                        <span>IVA (21%)</span>
+                        <span id="iva-orden">$0.00</span>
+                    </div>
+                    <div class="linea-total grande">
+                        <span>Total</span>
+                        <span id="total-orden">$0.00</span>
+                    </div>
+                </div>
+                <div class="area-registro">
+                    <button id="btn-registrar-orden" class="boton-registrar">Registrar Orden</button>
+                </div>
+            </section>
         </div>
+    </main>
 
-        <div class="sidebar">
-            <div class="form-section fecha-section">
-                <h3 class="section-title">Fecha</h3>
-                <div class="form-group">
-                    <label for="fecha-factura" class="sr-only">Fecha Factura</label>
-                    <input type="date" id="fecha-factura" name="fecha-factura" placeholder="dd/mm/aaaa">
-                </div>
+    <!-- ======================================================= -->
+    <!-- MODAL PARA SELECCIONAR PRODUCTOS (inicialmente oculto) -->
+    <!-- ======================================================= -->
+    <div id="modal-seleccionar-producto" class="modal">
+        <div class="modal-contenido grande">
+            <span class="cerrar-modal" id="cerrar-modal-productos">&times;</span>
+            <h3>Seleccionar Producto</h3>
+            <div class="opciones-busqueda-modal">
+                <input type="search" id="buscar-producto-modal" placeholder="Buscar por nombre o código...">
             </div>
-
-            <div class="form-section detalle-section">
-                <h3 class="section-title">Detalle</h3>
-                <div class="detalle-item">
-                    <span>Sub Total - $</span>
-                    <span></span> </div>
-                <div class="detalle-item">
-                    <span>IVA (21%) - $</span>
-                    <span></span> </div>
-                <div class="detalle-item total-final">
-                    <span>Total - $</span>
-                    <span></span> </div>
+            <div class="contenedor-tabla-modal">
+                <table class="tabla-seleccion-productos">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Stock</th>
+                            <th>Precio</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-tabla-productos-modal">
+                        <!-- Los productos disponibles se cargarán aquí desde la BD con JS -->
+                    </tbody>
+                </table>
             </div>
-
-            <button type="submit" class="btn-registrar">Registrar</button>
         </div>
     </div>
-    
-</main>
 
 <footer>
 
