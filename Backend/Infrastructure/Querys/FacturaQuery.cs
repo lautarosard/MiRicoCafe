@@ -19,9 +19,12 @@ namespace Infrastructure.Querys
             _context = context;
         }
 
-        public List<Factura> GetFacturaQuery()
+        public  List<Factura> GetFacturaQuery()
         {
-            return _context.facturas.ToList();
+            return  _context.facturas.Include(oc => oc.Cliente)
+                .Include(oc => oc.Detalles)
+                .ThenInclude(item => item.Producto)
+                .ToList();
         }
 
         public async Task<Factura> GetById(int id)
@@ -30,7 +33,10 @@ namespace Infrastructure.Querys
             //   .Include(p => p.)
 
 
-            return await _context.facturas.FindAsync(id);
+            return await _context.facturas.Include(f => f.Cliente)         // Incluye los datos del Cliente
+                         .Include(f => f.Detalles)        // Incluye la colección de Detalles de la factura
+                            .ThenInclude(d => d.Producto) // Luego, dentro de Detalles, incluye el Producto
+                         .FirstOrDefaultAsync(f => f.Id == id);
         }
     }
 }

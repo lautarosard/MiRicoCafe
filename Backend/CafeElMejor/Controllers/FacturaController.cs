@@ -54,7 +54,7 @@ namespace CafeElMejor.Controllers
             var result = await _service.GetAll();
             return new JsonResult(result);
         }
-        [HttpGet("Factura/{id}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
 
