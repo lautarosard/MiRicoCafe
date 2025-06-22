@@ -1,38 +1,41 @@
 const API_BASE = "https://localhost:7069/api/OC";
 
-//Obtiene todos las OrdenDeCompra
-export async function GetAll(){
-    try{
+
+// Obtiene todas las Ordenes de Compra
+export async function GetAll() {
+    try {
         const response = await axios.get(API_BASE);
-        // Verifica que response.data existe y es un array
+
         if (!response.data || !Array.isArray(response.data)) {
             console.warn('La respuesta no contiene un array válido:', response);
             return [];
         }
-        
+
         return response.data;
-    } catch (error){
-        console.error('Error al obtener Orden de compra: ', error);
+    } catch (error) {
+        console.error('Error al obtener Ordenes de compra:', error);
+
         return [];
     }
 }
 
-//Obtiene un OC por id
-export async function GetByOrdenDeCompraId(id){
-    try{
-        const response = await axios.get(`${API_BASE}/${id}`);
+
+// Obtiene una Orden de Compra por ID
+export async function GetByOrdenDeCompraId(id) {
+    try {
+        const response = await axios.get(`${API_BASE}/OrdenDeCompra/${id}`);
         return response.data;
-        } catch (error){
-            console.error('Error al obtener Orden de compra: ', error);
-            throw error;
-        }
+    } catch (error) {
+        console.error(`Error al obtener Orden de compra ID ${id}:`, error);
+        throw error;
+    }
 }
 
-//Crea un Orden de compra
-export async function CreateOrdenDeCompra(OC) {
+// Crea una Orden de Compra
+export async function CreateOrdenDeCompra(orden) {
     try {
-        //axios.post(URL, DATOS_A_ENVIAR)
-        const response = await axios.post(API_BASE, OC);
+        const response = await axios.post(API_BASE, orden);
+
         return response.data;
     } catch (error) {
         console.error("Error al crear Orden de compra:", error.response?.data || error);
@@ -40,21 +43,25 @@ export async function CreateOrdenDeCompra(OC) {
     }
 }
 
-//Elimina un Orden de compra
+
+// Elimina una Orden de Compra
 export async function DeleteOrdenDeCompraId(id) {
     try {
-        const response = await axios.delete(`${API_BASE}/${id}`);
+        const response = await axios.delete(`${API_BASE}/OrdenDeCompradelete/${id}`);
         return response.data;
     } catch (error) {
-        console.error('Error al eliminar Orden de compra:', error.response?.data || error.message);
+        console.error(`Error al eliminar Orden de compra ID ${id}:`, error.response?.data || error.message);
+
         throw error;
     }
 }
 
-//Updatea un Cliente
-export async function UpdateOrdenDeCompra(id, OrdenDeCompraActualizado) {
+
+// Actualiza una Orden de Compra
+export async function UpdateOrdenDeCompra(id, ordenActualizada) {
     try {
-        const response = await axios.put(`${API_BASE}/${id}`, OrdenDeCompraActualizado, {
+        const response = await axios.put(`${API_BASE}/OrdenDeCompraupdate/${id}`, ordenActualizada, {
+
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -62,7 +69,20 @@ export async function UpdateOrdenDeCompra(id, OrdenDeCompraActualizado) {
 
         return response.data;
     } catch (error) {
-        console.error("Error al updatear al Orden De Compra:", error);
+        console.error(`Error al actualizar Orden de compra ID ${id}:`, error);
+
+        throw error;
+    }
+}
+
+
+// Elimina un producto de una orden de compra
+export async function BorrarProductoDeOrden(idOrden, idProducto) {
+    try {
+        const response = await axios.put(`${API_BASE}/BorrarItem/${idOrden}?idProducto=${idProducto}`);
+        return response.data;
+    } catch (error) {
+        console.error(`Error al borrar producto ${idProducto} de orden ${idOrden}:`, error);
         throw error;
     }
 }

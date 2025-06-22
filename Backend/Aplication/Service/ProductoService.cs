@@ -64,12 +64,13 @@ namespace Aplication.Service
             }
             var producto = new Domain.Entities.Producto()
             {
-                
+
                 Nombre = request.Nombre,
                 Categoria = request.Categoria,
                 Descripcion = request.Descripcion,
                 Precio = request.Precio,
                 Stock = request.Stock,
+                ItemsOrdenDeCompra = new List<ItemOrdenDeCompra>()
             };
 
             await _command.InsertProducto(producto);

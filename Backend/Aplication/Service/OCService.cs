@@ -48,27 +48,29 @@ namespace Aplication.Service
                 throw new RequieredParameterException("Error!OrdenDeCompra does not exist ");
 
             }
-            /*var ListProductos = OrdenDeCompra.Productos != null ? OrdenDeCompra.Productos.Select(ListProductos => new ProductoResponse
-            {
-                
-                Categoria= ListProductos.Categoria,
-                Descripcion= ListProductos.Descripcion,
-                Nombre= ListProductos.Nombre,
-                Precio= ListProductos.Precio,
-                Stock= ListProductos.Stock,
 
-            }).ToList() : new List<ProductoResponse>();
-            */
+
+
+
+            var ListProductos = OrdenDeCompra.DetalleOrdenDeCompra != null ? OrdenDeCompra.DetalleOrdenDeCompra.Select(ListProductos => new ItemOCResponse
+            {
+                Id = ListProductos.Id,
+                Cantidad = ListProductos.Cantidad,
+                IdOrdenDeCompra = ListProductos.IdOrdenDeCompra,
+                PrecioUnitario = ListProductos.PrecioUnitario,
+                ProductoId = ListProductos.ProductoId,
+
+            }).ToList() : new List<ItemOCResponse>();
+
             return new OCResponse
             {
                 IdOrdenDeCompra = OrdenDeCompra.Id,
-                Cantidad = OrdenDeCompra.Cantidad,
-                Detalle = OrdenDeCompra.Detalle,
                 Fecha = OrdenDeCompra.Fecha,
-                Importe = OrdenDeCompra.Importe,
-                PUnitario = OrdenDeCompra.PUnitario,
                 Total = OrdenDeCompra.Total,
-                //Productos = ListProductos,
+                Detalles=ListProductos,
+                //Cantidad = OrdenDeCompra.Cantidad,
+                //Importe = OrdenDeCompra.Importe,
+                //PUnitario = OrdenDeCompra.PUnitario,
 
                 Proveedor = OrdenDeCompra.Proveedor != null ? new ProveedorResponse 
                 {
@@ -88,50 +90,79 @@ namespace Aplication.Service
 
         public async Task<OCResponse> CreateOrdenDeCompra(OCRequest request)
         {
-            if (string.IsNullOrEmpty(request.Detalle))
+            
+            if (request.IdProveedor < 0)
             {
 
-                throw new RequieredParameterException("Error! requiered name");
+                throw new RequieredParameterException("Error! requiered Id valido");
             }
-            if (request.Cantidad == 0)
-            {
 
-                throw new RequieredParameterException("Error! requiered Phone");
-            }
-            if (request.IdProveedor > 0)
-            {
+            List<ItemOrdenDeCompra> ListaDeItems = new List<ItemOrdenDeCompra>();
+            int total = 0;
+            var itemConcretoProvisorio = new ItemOrdenDeCompra();
 
-                throw new RequieredParameterException("Error! requiered Phone");
+
+            foreach (ItemOCRequest itemOrdenDe in request.Detalles)
+            {
+                Producto producto = await productoQuery.GetById(itemOrdenDe.ProductoId);
+
+               
+                var itemConcreto = new ItemOrdenDeCompra
+                {
+                    //Id = 0,
+                    ProductoId = itemOrdenDe.ProductoId,
+                    PrecioUnitario = producto.Precio,
+                    Cantidad = itemOrdenDe.Cantidad,
+                    //Producto = producto
+                };
+
+                int precioIntermedio = (int)itemConcreto.PrecioUnitario * itemConcreto.Cantidad;
+                total += precioIntermedio;
+                //itemConcreto.Id = 0;
+                //itemConcretoProvisorio = itemConcreto;
+
+                ListaDeItems.Add(itemConcreto);
             }
+
+
+
 
             var proveedor = await proveedorQuery.GetById(request.IdProveedor);
 
-
             var OrdenDeCompra = new Domain.Entities.OrdenDeCompra()
             {
-                
-                Cantidad= request.Cantidad,
-                Detalle= request.Detalle,
+             
                 Fecha= request.Fecha,
-                Importe= request.Importe,
-                //Productos=new List<Producto>(),
-                IdProveedor= request.IdProveedor,
+                DetalleOrdenDeCompra=ListaDeItems,
+                IdProveedor = request.IdProveedor,
                 Proveedor= proveedor,
-                PUnitario= request.PUnitario,
-                Total= request.Total,
-               
+                Total= total,
+                //Cantidad= request.Cantidad,
+                //Importe= request.Importe,
+                //PUnitario= request.PUnitario,
+
 
             };
 
             await _command.InsertOrdenDeCompra(OrdenDeCompra);
             return new OCResponse
             {
-                Cantidad = request.Cantidad,
-                Detalle = request.Detalle,
+         
                 Fecha = request.Fecha,
-                Importe = request.Importe,
-                PUnitario = request.PUnitario,
-                Total = request.Total,
+                Total = total,
+                //Cantidad = request.Cantidad,
+                //Importe = request.Importe,
+                //PUnitario = request.PUnitario,
+                Detalles = OrdenDeCompra.DetalleOrdenDeCompra != null ? OrdenDeCompra.DetalleOrdenDeCompra.Select(ListProductos => new ItemOCResponse
+                {
+                    Id = ListProductos.Id,
+                    Cantidad = ListProductos.Cantidad,
+                    IdOrdenDeCompra = ListProductos.IdOrdenDeCompra,
+                    PrecioUnitario = ListProductos.PrecioUnitario,
+                    ProductoId = ListProductos.ProductoId,
+
+                }).ToList() : new List<ItemOCResponse>(),
+
                 Proveedor = OrdenDeCompra.Proveedor != null ? new ProveedorResponse
                 {
                     IdProveedor = proveedor.Id,
@@ -158,32 +189,32 @@ namespace Aplication.Service
                 throw new RequieredParameterException("Error!OrdenDeCompra does not exist ");
 
             }
+            var Detalles = OrdenDeCompra.DetalleOrdenDeCompra != null ? OrdenDeCompra.DetalleOrdenDeCompra.Select(ListProductos => new ItemOCResponse
+            {
+                Id = ListProductos.Id,
+                Cantidad = ListProductos.Cantidad,
+                IdOrdenDeCompra = ListProductos.IdOrdenDeCompra,
+                PrecioUnitario = ListProductos.PrecioUnitario,
+                ProductoId = ListProductos.ProductoId,
+
+            }).ToList() : new List<ItemOCResponse>();
+
             await _command.RemoveOrdenDeCompra(OrdenDeCompra);
 
-            /*
-            var ListProductos = OrdenDeCompra.Productos != null ? OrdenDeCompra.Productos.Select(ListProductos => new ProductoResponse
-            {
-
-                Categoria = ListProductos.Categoria,
-                Descripcion = ListProductos.Descripcion,
-                Nombre = ListProductos.Nombre,
-                Precio = ListProductos.Precio,
-                Stock = ListProductos.Stock,
-            }).ToList() : new List<ProductoResponse>();
-
-            */
+           
 
             return new OCResponse
             {
-                Cantidad = OrdenDeCompra.Cantidad,
-                Detalle = OrdenDeCompra.Detalle,
+
                 Fecha = OrdenDeCompra.Fecha,
-                Importe = OrdenDeCompra.Importe,
-                //Productos= ListProductos,
-                PUnitario = OrdenDeCompra.PUnitario,
                 Total = OrdenDeCompra.Total,
                 IdOrdenDeCompra= OrdenDeCompra.Id,
-                Proveedor= OrdenDeCompra.Proveedor != null ? new ProveedorResponse
+                Detalles= Detalles,
+                //Cantidad = OrdenDeCompra.Cantidad,
+                //Importe = OrdenDeCompra.Importe,
+                //PUnitario = OrdenDeCompra.PUnitario,
+
+                Proveedor = OrdenDeCompra.Proveedor != null ? new ProveedorResponse
                 {
                     IdProveedor = OrdenDeCompra.Proveedor.Id,
                     Cuit = OrdenDeCompra.Proveedor.CUIT,
@@ -202,30 +233,29 @@ namespace Aplication.Service
         {
             var OrdenDeCompra = _query.GetOrdenDeCompraQuery();
 
-           
-
             return OrdenDeCompra.Select(OrdenDeCompra => new OCResponse
             {
 
-                
-                Cantidad = OrdenDeCompra.Cantidad,
-                Detalle = OrdenDeCompra.Detalle,
                 Fecha = OrdenDeCompra.Fecha,
-                Importe = OrdenDeCompra.Importe,
-                PUnitario = OrdenDeCompra.PUnitario,
                 Total = OrdenDeCompra.Total,
                 IdOrdenDeCompra = OrdenDeCompra.Id,
-                /*
-                Productos = OrdenDeCompra.Productos != null ? OrdenDeCompra.Productos.Select(ListProductos => new ProductoResponse
-                    {
-                    Categoria = ListProductos.Categoria,
-                    Descripcion = ListProductos.Descripcion,
-                    Nombre = ListProductos.Nombre,
-                    Precio = ListProductos.Precio,
-                    Stock = ListProductos.Stock,
-                    }).ToList() : new List<ProductoResponse>(),
-                */
-                Proveedor= OrdenDeCompra.Proveedor != null ? new ProveedorResponse
+                //Cantidad = OrdenDeCompra.Cantidad,
+                //Importe = OrdenDeCompra.Importe,
+                //PUnitario = OrdenDeCompra.PUnitario,
+                
+
+                Detalles = OrdenDeCompra.DetalleOrdenDeCompra != null ? OrdenDeCompra.DetalleOrdenDeCompra.Select(ListProductos => new ItemOCResponse
+                {
+                    Id = ListProductos.Id,
+                    Cantidad = ListProductos.Cantidad,
+                    IdOrdenDeCompra = ListProductos.IdOrdenDeCompra,
+                    PrecioUnitario = ListProductos.PrecioUnitario,
+                    ProductoId = ListProductos.ProductoId,
+
+                }).ToList() : new List<ItemOCResponse>(),
+
+
+                Proveedor = OrdenDeCompra.Proveedor != null ? new ProveedorResponse
                 {
                     IdProveedor = OrdenDeCompra.Proveedor.Id,
                     Cuit = OrdenDeCompra.Proveedor.CUIT,
@@ -244,17 +274,17 @@ namespace Aplication.Service
 
         public async Task<OCResponse> UpdateOrdenDeCompra(int id, OCRequest request)
         {
-            if (string.IsNullOrEmpty(request.Detalle))
-            {
+            //if (string.IsNullOrEmpty(request.Detalle))
+            //{
 
-                throw new RequieredParameterException("Error! requiered name");
-            }
-            if (request.Cantidad == 0)
-            {
+            //    throw new RequieredParameterException("Error! requiered name");
+            //}
+            //if (request.Cantidad == 0)
+            //{
 
-                throw new RequieredParameterException("Error! requiered Phone");
-            }
-            if (request.IdProveedor > 0)
+            //    throw new RequieredParameterException("Error! requiered Phone");
+            //}
+            if (request.IdProveedor < 0)
             {
 
                 throw new RequieredParameterException("Error! requiered Phone");
@@ -266,44 +296,64 @@ namespace Aplication.Service
                 throw new RequieredParameterException("Error!OrdenDeCompra does not exist ");
 
             }
+            //BLoque de Foreach
+            List<ItemOrdenDeCompra> ListaDeItems = new List<ItemOrdenDeCompra>();
+            int total = 0;
+            foreach (ItemOCRequest itemOrdenDe in request.Detalles)
+            {
+                var itemConcreto = new ItemOrdenDeCompra();
+                Producto producto = await productoQuery.GetById(itemOrdenDe.ProductoId);
 
+                itemConcreto.ProductoId = itemOrdenDe.ProductoId;
+                itemConcreto.PrecioUnitario = producto.Precio;
+                itemConcreto.Producto = producto;
+                itemConcreto.Cantidad = itemOrdenDe.Cantidad;
+
+                int precioIntermedio = (int)itemConcreto.PrecioUnitario * itemConcreto.Cantidad;
+                total += precioIntermedio;
+
+                ListaDeItems.Add(itemConcreto);
+
+
+            }
+            // termina bloque
+            
 
             var OrdenDeCompra = await _query.GetById(id);
 
 
-            OrdenDeCompra.Cantidad = request.Cantidad;
-            OrdenDeCompra.Detalle = request.Detalle;
             OrdenDeCompra.Fecha = request.Fecha;
-            OrdenDeCompra.Importe = request.Importe;
-            OrdenDeCompra.PUnitario = request.PUnitario;
-            OrdenDeCompra.Total = request.Total;
+            OrdenDeCompra.DetalleOrdenDeCompra = ListaDeItems;
+            OrdenDeCompra.Total = total;
             OrdenDeCompra.IdProveedor = request.IdProveedor;
             OrdenDeCompra.Proveedor=proveedor;
+            //OrdenDeCompra.Cantidad = request.Cantidad;
+            //OrdenDeCompra.Importe = request.Importe;
+            //OrdenDeCompra.PUnitario = request.PUnitario;
             
 
             await _command.UpdateOrdenDeCompra(OrdenDeCompra);
-            /*
-            var ListProductos = OrdenDeCompra.Productos != null ? OrdenDeCompra.Productos.Select(ListProductos => new ProductoResponse
+            //Bloque de la lista de oc
+            var Detalles = OrdenDeCompra.DetalleOrdenDeCompra != null ? OrdenDeCompra.DetalleOrdenDeCompra.Select(ListProductos => new ItemOCResponse
             {
+                Id = ListProductos.Id,
+                Cantidad = ListProductos.Cantidad,
+                IdOrdenDeCompra = ListProductos.IdOrdenDeCompra,
+                PrecioUnitario = ListProductos.PrecioUnitario,
+                ProductoId = ListProductos.ProductoId,
 
-                Categoria = ListProductos.Categoria,
-                Descripcion = ListProductos.Descripcion,
-                Nombre = ListProductos.Nombre,
-                Precio = ListProductos.Precio,
-                Stock = ListProductos.Stock,
-            }).ToList() : new List<ProductoResponse>();
-
-            */
+            }).ToList() : new List<ItemOCResponse>();
+            //termina bloque 
 
             return new OCResponse
             {
-                Cantidad = OrdenDeCompra.Cantidad,
-                Detalle = OrdenDeCompra.Detalle,
+                
                 Fecha = OrdenDeCompra.Fecha,
-                Importe = OrdenDeCompra.Importe,
-                PUnitario = OrdenDeCompra.PUnitario,
                 Total = OrdenDeCompra.Total,
-                //Productos= ListProductos,
+                Detalles= Detalles,
+                //Cantidad = OrdenDeCompra.Cantidad,
+                //Importe = OrdenDeCompra.Importe,
+                //PUnitario = OrdenDeCompra.PUnitario,
                 Proveedor = OrdenDeCompra.Proveedor != null ? new ProveedorResponse
                 {
                     IdProveedor = OrdenDeCompra.Proveedor.Id,
@@ -322,98 +372,13 @@ namespace Aplication.Service
         }
 
 
-        public async Task<OCResponse> UpdateProductoINOC(int id, int IdProducto, int Cantidad)
-        {
-            //Valida
-            if (IdProducto > 0)
-            {
-
-                throw new RequieredParameterException("Error! requiered Phone");
-            }
-            if (Cantidad >= 0)
-            {
-
-                throw new RequieredParameterException("Error! requiered Phone");
-            }
-
-
-            //Busca Por ID
-
-            var OrdenDeCompra = await _query.GetById(id);
-            var producto = await productoQuery.GetById(IdProducto);
-
-
-            //Valida
-            if (producto == null)
-            {
-                throw new NotImplementedException("Project not found");
-            }
-
-            if (OrdenDeCompra == null)
-            {
-                throw new NotImplementedException("Project not found");
-            }
-
-
-            //Modifica
-            producto.Stock = Cantidad;
-
-            //OrdenDeCompra.Productos.Add(producto);
-
-            OrdenDeCompra.Total += (float)producto.Precio * Cantidad;
-
-            await _command.UpdateOrdenDeCompra(OrdenDeCompra);
-
-
-            //Lista de productos response 
-            /*
-            var ListProductos = OrdenDeCompra.Productos != null ? OrdenDeCompra.Productos.Select(ListProductos => new ProductoResponse
-            {
-
-                Categoria = ListProductos.Categoria,
-                Descripcion = ListProductos.Descripcion,
-                Nombre = ListProductos.Nombre,
-                Precio = ListProductos.Precio,
-                Stock = ListProductos.Stock,
-            }).ToList() : new List<ProductoResponse>();
-
-            */
-          
-
-            return new OCResponse
-            {
-                Cantidad = IdProducto,
-                Detalle = OrdenDeCompra.Detalle,
-                Fecha = OrdenDeCompra.Fecha,
-                IdOrdenDeCompra = OrdenDeCompra.Id,
-                Importe = OrdenDeCompra.Importe,
-                //Productos = ListProductos,
-                Total = OrdenDeCompra.Total,
-                PUnitario = OrdenDeCompra.PUnitario,
-                Proveedor = OrdenDeCompra.Proveedor != null ? new ProveedorResponse
-                {
-                    IdProveedor = OrdenDeCompra.Proveedor.Id,
-                    Cuit = OrdenDeCompra.Proveedor.CUIT,
-                    Direccion = OrdenDeCompra.Proveedor.Direccion,
-                    Email = OrdenDeCompra.Proveedor.Email,
-                    Localidad = OrdenDeCompra.Proveedor.Localidad,
-                    Nombre = OrdenDeCompra.Proveedor.Nombre,
-                    Provincia = OrdenDeCompra.Proveedor.Provincia,
-                    Telefono = OrdenDeCompra.Proveedor.Telefono,
-                } : null,
-                
-            };
-
-        }
-
-
         public async Task<OCResponse> RemoveProductoINOC(int id, int IdProducto)
         {
             //Valida
-            if (IdProducto > 0)
+            if (IdProducto < 0)
             {
 
-                throw new RequieredParameterException("Error! requiered Phone");
+                throw new RequieredParameterException("Error! requiered Id existente");
             }
           
 
@@ -435,53 +400,48 @@ namespace Aplication.Service
                 throw new NotImplementedException("Project not found");
             }
 
-            /*
+            
             //Buscar Dentro de la lista
-            foreach (var producto1 in OrdenDeCompra.Productos)
+            foreach (var producto1 in OrdenDeCompra.DetalleOrdenDeCompra)
             {
+                var itemOc = producto1;
 
-                if (producto1.Id == IdProducto)
+                if (producto1.Producto.Id == IdProducto)
                 {
-                    OrdenDeCompra.Total -= (float)producto1.Precio * producto1.Stock;
+                    OrdenDeCompra.Total -= (float)producto1.PrecioUnitario * producto1.Cantidad;
 
-                    OrdenDeCompra.Productos.Remove(producto1);
+                    OrdenDeCompra.DetalleOrdenDeCompra.Remove(producto1);
 
                 }
                 else {
-                        throw new NotImplementedException("Project not found");
+                        throw new NotImplementedException("No se econtro item");
 
                 }
             
             }
-            */
+            
             await _command.UpdateOrdenDeCompra(OrdenDeCompra);
 
 
-            //Lista de productos response 
-            /*
-            var ListProductos = OrdenDeCompra.Productos != null ? OrdenDeCompra.Productos.Select(ListProductos => new ProductoResponse
+            var Detalles = OrdenDeCompra.DetalleOrdenDeCompra != null ? OrdenDeCompra.DetalleOrdenDeCompra.Select(ListProductos => new ItemOCResponse
             {
+                Id = ListProductos.Id,
+                Cantidad = ListProductos.Cantidad,
+                IdOrdenDeCompra = ListProductos.IdOrdenDeCompra,
+                PrecioUnitario = ListProductos.PrecioUnitario,
+                ProductoId = ListProductos.ProductoId,
 
-                Categoria = ListProductos.Categoria,
-                Descripcion = ListProductos.Descripcion,
-                Nombre = ListProductos.Nombre,
-                Precio = ListProductos.Precio,
-                Stock = ListProductos.Stock,
-            }).ToList() : new List<ProductoResponse>();
-
-            */
-
+            }).ToList() : new List<ItemOCResponse>();
 
             return new OCResponse
             {
                 Cantidad = IdProducto,
-                Detalle = OrdenDeCompra.Detalle,
+                Detalles = Detalles,
                 Fecha = OrdenDeCompra.Fecha,
                 IdOrdenDeCompra = OrdenDeCompra.Id,
-                Importe = OrdenDeCompra.Importe,
-                //Productos = ListProductos,
                 Total = OrdenDeCompra.Total,
-                PUnitario = OrdenDeCompra.PUnitario,
+                //Importe = OrdenDeCompra.Importe,
+                //PUnitario = OrdenDeCompra.PUnitario,
                 Proveedor = OrdenDeCompra.Proveedor != null ? new ProveedorResponse
                 {
                     IdProveedor = OrdenDeCompra.Proveedor.Id,
@@ -497,18 +457,6 @@ namespace Aplication.Service
             };
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
     }
 }
