@@ -7,7 +7,7 @@ export const AuthAdmin = {
             const response = await Login(usuario, password);
             console.log("Login exitoso:", response);
             localStorage.setItem("token", response.token); // Guardar el JWT
-            localStorage.setItem("usuarioId", response.usuarioId);
+            localStorage.setItem("usuarioId", response.clienteId);
             localStorage.setItem("username", response.username);
             return response;
         } catch (error) {

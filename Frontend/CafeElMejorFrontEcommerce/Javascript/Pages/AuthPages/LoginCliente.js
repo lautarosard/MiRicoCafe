@@ -1,88 +1,108 @@
 import { AuthAdmin } from './AuthAdmin.js';
 
 export function iniciarPaginaLogin() {
-    // 1. Verificación de elementos del DOM de forma segura
-    const formLogin = document.getElementById('formLogin');
-    const errorElement = document.getElementById('errorLogin');
-    const usuarioInput = document.getElementById('usuario');
-    const passwordInput = document.getElementById('password');
+    // 1. Selección segura de elementos con mensajes descriptivos
+    const selectElement = (id) => {
+        const element = document.getElementById(id);
+        if (!element) console.error(`Elemento #${id} no encontrado en el DOM`);
+        return element;
+    };
+
+    const formLogin = selectElement('formLogin');
+    const errorElement = selectElement('errorLogin');
+    const usuarioInput = selectElement('usuario');
+    const passwordInput = selectElement('password');
     const submitBtn = formLogin?.querySelector('button[type="submit"]');
 
-    // 2. Validación completa de elementos
+    // 2. Validación mejorada de elementos
     if (!formLogin || !errorElement || !usuarioInput || !passwordInput || !submitBtn) {
-        console.error('Error: Elementos del formulario no encontrados. Verifica los IDs en tu HTML:',
-            {
-                formLogin: !!formLogin,
-                errorElement: !!errorElement,
-                usuarioInput: !!usuarioInput,
-                passwordInput: !!passwordInput,
-                submitBtn: !!submitBtn
-            }
-        );
+        console.error('Elementos faltantes:', {
+            formLogin: !!formLogin,
+            errorElement: !!errorElement,
+            usuarioInput: !!usuarioInput,
+            passwordInput: !!passwordInput,
+            submitBtn: !!submitBtn
+        });
         return;
     }
 
-    // 3. Manejador de submit mejorado
+    // 3. Función para mostrar errores
+    const mostrarError = (mensaje, duration = 5000) => {
+        errorElement.textContent = mensaje;
+        errorElement.style.display = 'block';
+        setTimeout(() => {
+            errorElement.style.display = 'none';
+        }, duration);
+    };
+
+    // 4. Manejador de submit optimizado
     formLogin.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // 4. Validación de campos
-        if (!usuarioInput.value.trim() || !passwordInput.value.trim()) {
-            mostrarError("Todos los campos son obligatorios");
+        const usuario = usuarioInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        // Validación mejorada con mensajes específicos
+        if (!usuario && !password) {
+            mostrarError('Usuario y contraseña son requeridos');
+            return;
+        }
+        if (!usuario) {
+            mostrarError('El campo Usuario es requerido');
+            usuarioInput.focus();
+            return;
+        }
+        if (!password) {
+            mostrarError('El campo Contraseña es requerido');
+            passwordInput.focus();
             return;
         }
 
         try {
-            // 5. Estado de carga
+            // Estado de carga
             submitBtn.disabled = true;
             submitBtn.textContent = 'Iniciando sesión...';
 
-            // 6. Intento de login
-            await AuthAdmin.loginCliente(usuarioInput.value, passwordInput.value);
+            // Intento de login
+            const response = await AuthAdmin.loginCliente(usuario, password);
             
-            /*// 7. Redirección exitosa
-            window.location.href = '/Frontend/CafeElMejorFrontEcommerce/HTML/productos.html';
-            */
+            // Verificación de respuesta
+            if (!response?.token) {
+                throw new Error('Respuesta inválida del servidor');
+            }
+
+
         } catch (error) {
-            // 8. Manejo detallado de errores
-            manejarErrorLogin(error);
+            // Manejo detallado de errores
+            let mensajeError = 'Error al iniciar sesión';
+            
+            if (error.response) {
+                // Error de la API
+                if (error.response.data?.errors) {
+                    mensajeError = Object.values(error.response.data.errors)
+                        .flat()
+                        .join(', ');
+                } else if (error.response.data?.title) {
+                    mensajeError = error.response.data.title;
+                } else if (error.response.status === 401) {
+                    mensajeError = 'Credenciales incorrectas';
+                }
+            } else if (error.message) {
+                // Error de red u otro
+                mensajeError = error.message;
+            }
+            
+            mostrarError(mensajeError);
+            passwordInput.value = '';
+            passwordInput.focus();
+            
         } finally {
-            // 9. Restaurar estado del botón
+            // Restaurar estado del botón
             submitBtn.disabled = false;
             submitBtn.textContent = 'Iniciar sesión';
         }
     });
 
-    // 10. Función para mostrar errores
-    const mostrarError = (mensaje) => {
-        errorElement.textContent = mensaje;
-        errorElement.style.display = 'block';
-        setTimeout(() => errorElement.style.display = 'none', 5000);
-    };
-
-    // 11. Función para manejar errores
-    const manejarErrorLogin = (error) => {
-        let mensaje = "Error en el login";
-        
-        if (error.response) {
-            switch (error.response.status) {
-                case 400: mensaje = "Datos inválidos"; break;
-                case 401: mensaje = "Credenciales incorrectas"; break;
-                case 500: mensaje = "Error del servidor"; break;
-                default: mensaje = `Error ${error.response.status}`;
-            }
-            
-            // Si el backend devuelve mensajes personalizados
-            if (error.response.data?.message) {
-                mensaje = error.response.data.message;
-            }
-        }
-        
-        mostrarError(mensaje);
-    };
-
-    // 12. Redirección si ya está autenticado
-    /* if (AuthAdmin.estaAutenticado()) {
-        window.location.href = '/Frontend/CafeElMejorFrontEcommerce/HTML/productos.html';
-    }*/
+    // 5. Auto-foco en el primer campo al cargar
+    usuarioInput.focus();
 }
