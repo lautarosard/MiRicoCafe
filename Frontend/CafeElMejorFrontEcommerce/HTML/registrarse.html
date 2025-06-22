@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="./../CSS/styles.css">
     <link rel="stylesheet" href="./../CSS/registrarse.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-
+    <!-- Reemplázalas con esto -->
+    <script type="module" src="./../Javascript/main.js"></script>
     <title>Registrar Cliente - Cafe el Mejor</title>
     </head>
 <body>
@@ -64,36 +64,36 @@
         <div class="contenedor">
             <div class="formato">
                 <h1>REGISTRAR CLIENTE</h1>
-                <form action="#" method="POST">
-                <div class="grupo">
-                    <label for="usuario">USUARIO</label>
-                    <input type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario">
-                </div>
+                <form method="POST" id="formRegistro">
+                    <div class="grupo">
+                        <label for="usuario">USUARIO</label>
+                        <input type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario">
+                    </div>
 
-                <div class="grupo">
-                    <label for="contrasena">CONTRASEÑA</label>
-                    <input type="password" id="contraseña" name="contrasena" placeholder="Ingrese su contraseña">
-                </div>
+                    <div class="grupo">
+                        <label for="contrasena">CONTRASEÑA</label>
+                        <input type="password" id="password" name="contrasena" placeholder="Ingrese su contraseña">
+                    </div>
 
-                <div class="grupo">
-                    <label for="nombre">NOMBRE</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">
-                </div>
+                    <div class="grupo">
+                        <label for="nombre">NOMBRE</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">
+                    </div>
 
-                <div class="grupo">
-                    <label for="dni">DNI</label>
-                    <input type="text" id="dni" name="dni" placeholder="Ingrese su DNI">
-                </div>
+                    <div class="grupo">
+                        <label for="dni">DNI</label>
+                        <input type="text" id="dni" name="dni" placeholder="Ingrese su DNI">
+                    </div>
 
-                <div class="grupo">
-                    <label for="mail">MAIL</label>
-                    <input type="email" id="mail" name="mail" placeholder="Ingrese su mail">
-                </div>
+                    <div class="grupo">
+                        <label for="mail">MAIL</label>
+                        <input type="email" id="mail" name="mail" placeholder="Ingrese su mail">
+                    </div>
 
-                <div class="button">
-                    <a href="index.html" class="boton-cancelar">CANCELAR</a>
-                    <button type="submit" class="registrar">REGISTRAR</button>
-                </div>
+                    <div class="button">
+                        <a href="index.html" class="boton-cancelar">CANCELAR</a>
+                        <button type="submit" class="registrar">REGISTRAR</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -101,6 +101,12 @@
         <div id="modal" class="modal oculto">
             <div class="contenido">
                 <p>¡Has sido registrado con éxito!</p>
+                <button id="cerrar-modal">Cerrar</button>
+            </div>
+        </div>
+        <div class="modal oculto" id="errorRegistro">
+            <div class="contenido">
+                <p>¡Error al Registrarse!</p>
                 <button id="cerrar-modal">Cerrar</button>
             </div>
         </div>

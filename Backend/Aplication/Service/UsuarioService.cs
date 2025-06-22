@@ -70,8 +70,7 @@ namespace Aplication.Service
             {
 
                 Username = request.Username,
-                PasswordHash = request.PasswordHash,
-                Rol = "Usuario"
+                PasswordHash = request.PasswordHash
 
             };
 
