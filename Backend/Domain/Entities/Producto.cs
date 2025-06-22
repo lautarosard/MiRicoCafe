@@ -17,7 +17,7 @@ namespace Domain.Entities
 
 
         //FK -ItemOrdenDeCompra 1-1
-        public ItemOrdenDeCompra ocItem { get; set; }
+        public ICollection<ItemOrdenDeCompra> ItemsOrdenDeCompra { get; set; } = new List<ItemOrdenDeCompra>();
         //FK -FacturaItem 1-1
         public FacturaItem facturaItem { get; set; }
 

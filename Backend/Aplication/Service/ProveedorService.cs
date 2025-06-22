@@ -83,7 +83,8 @@ namespace Aplication.Service
                 Provincia = request.Provincia,
                 Localidad = request.Localidad,
                 Direccion = request.Direccion,
-                CUIT = request.Cuit
+                CUIT = request.Cuit,
+                OrdenesDeCompra=new List<OrdenDeCompra>()
 
             };
            

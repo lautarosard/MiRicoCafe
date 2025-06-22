@@ -9,7 +9,7 @@ namespace Domain.Entities
     public class ItemOrdenDeCompra
     {
 
-        public int Id { get; set; }
+        public int Id; // { get; set; }
 
         //FK OrdenDeCompra 1-X
         public int IdOrdenDeCompra { get; set; }

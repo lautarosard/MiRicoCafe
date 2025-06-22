@@ -9,7 +9,7 @@ namespace Aplication.Models.Request
 {
     public class ItemOCRequest
     {
-        public int Id { get; set; }
+
 
         //FK OrdenDeCompra 1-X
         public int IdOrdenDeCompra { get; set; }

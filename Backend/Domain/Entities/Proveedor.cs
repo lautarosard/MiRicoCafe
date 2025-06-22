@@ -20,6 +20,6 @@ namespace Domain.Entities
         public string CUIT {  get; set; }
 
         //FK - Orden de compra 1-1
-        public OrdenDeCompra OrdenDeCompra { get; set; }
+        public ICollection<OrdenDeCompra> OrdenesDeCompra { get; set; }
     }
 }
