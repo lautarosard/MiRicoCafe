@@ -1,19 +1,18 @@
+const API_BASE = "https://localhost:7069/api/Carrito";
 
-// TODO: Reemplaza esta URL por la dirección real de tu backend.
-const API_BASE = "https://localhost:7069/api/Carrito"; 
-
-// TODO: Este ID de cliente es temporal. Deberás obtenerlo dinámicamente
-// cuando implementes el inicio de sesión de usuarios.
-const CLIENTE_ID_TEMPORAL = 1;
 
 
 export async function ObtenerCarrito(clienteId) {
+    if (!clienteId) {
+        return []; // No hay sesión → no hay carrito
+    }
+
     try {
-        const response = await axios.get(`${API_BASE}/Factura/${clienteId}`);
+        const response = await axios.get(`${API_BASE}/${clienteId}`);
         return response.data;
     } catch (error) {
-        console.error(`Error al obtener la factura ${clienteId}:`, error);
-        throw error; // Lanzamos el error para que el handler pueda capturarlo.
+        console.error("Error al obtener carrito:", error);
+        return [];
     }
 }
 
@@ -33,9 +32,7 @@ export async function AgregarItemAlCarrito(clienteId, productoId, cantidad) {
 export async function ActualizarCantidadEnCarrito(clienteId, productoId, cantidad) {
     try {
         const response = await axios.put(`${API_BASE}/${clienteId}/${productoId}`, cantidad, {
-            headers: {
-                "Content-Type": "application/json"
-            }
+            headers: { "Content-Type": "application/json" }
         });
         return response.data;
     } catch (error) {
@@ -46,10 +43,10 @@ export async function ActualizarCantidadEnCarrito(clienteId, productoId, cantida
 
 export async function EliminarItemDelCarrito(clienteId, productoId) {
     try {
-        const response = await axios.delete(`${API_BASE}/${clienteId}/${productoId}`);
+        const response = await axios.delete(`https://localhost:7069/api/Carrito/${clienteId}/${productoId}`);
         return response.data;
     } catch (error) {
-        console.error("Error al eliminar producto del carrito:", error);
+        console.error('Error al eliminar item del carrito:', error);
         throw error;
     }
 }
