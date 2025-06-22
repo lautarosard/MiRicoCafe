@@ -7,7 +7,7 @@ export const AuthAdmin = {
             const response = await Login(usuario, password);
             console.log("Login exitoso:", response);
             localStorage.setItem("token", response.token); // Guardar el JWT
-            localStorage.setItem("usuarioId", response.clienteId);
+            localStorage.setItem("clienteId", response.clienteId);
             localStorage.setItem("username", response.username);
             return response;
         } catch (error) {
@@ -29,7 +29,7 @@ export const AuthAdmin = {
     // Añade este método a tu objeto AuthAdmin
     cerrarSesion() {
         localStorage.removeItem("token");
-        localStorage.removeItem("usuarioId");
+        localStorage.removeItem("clienteId");
         localStorage.removeItem("username");
         
     },

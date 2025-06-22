@@ -13,7 +13,7 @@ export function iniciarPaginaRegistro() {
 
         // Obtener valores del formulario
         const username = document.getElementById('usuario').value;
-        const password = document.getElementById('contraseña').value;
+        const password = document.getElementById('password').value;
         const nombre = document.getElementById('nombre').value;
         const dni = document.getElementById('dni').value;
         const email = document.getElementById('mail').value;
