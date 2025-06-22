@@ -95,10 +95,28 @@ namespace Infrastructure.Data
                 entity.HasKey(s => s.Id);
                 entity.Property(n => n.Id).ValueGeneratedOnAdd();
                 entity.Property(n => n.Fecha).IsRequired();
-                entity.Property(e => e.Cantidad).IsRequired();
                 entity.Property(e => e.Total).IsRequired();
 
             });
+            modelBuilder.Entity<ItemOrdenDeCompra>(entity =>
+            {
+                // Definimos la clave primaria (aunque ya lo hicimos con [Key])
+                entity.HasKey(e => e.Id);
+
+                // Relación con OrdenDeCompra (Muchos a 1)
+                entity.HasOne(item => item.ordenDeCompra)
+                      .WithMany(oc => oc.DetalleOrdenDeCompra) // Una OC tiene muchos detalles
+                      .HasForeignKey(item => item.IdOrdenDeCompra) // La FK es IdOrdenDeCompra
+                      .OnDelete(DeleteBehavior.Cascade); // Opcional: si borras una OC, se borran sus ítems.
+
+                // Relación con Producto (Muchos a 1)
+                entity.HasOne(item => item.Producto)
+                      .WithMany(p => p.ItemsOrdenDeCompra) // Un producto puede estar en muchos ítems
+                      .HasForeignKey(item => item.ProductoId) // La FK es ProductoId
+                      .OnDelete(DeleteBehavior.Restrict); // No permitir borrar un producto si está en una OC.
+            });
+
+
             //Producto
             modelBuilder.Entity<Producto>(entity =>
             {
@@ -144,14 +162,14 @@ namespace Infrastructure.Data
             .HasOne<Cliente>(s => s.Cliente)
             .WithMany(g => g.Facturas)
             .HasForeignKey(s => s.IdCliente);
-            
 
-            //Relacion 1-1 OrdenDeCompra-Proveedor
-            modelBuilder.Entity<Proveedor>()
-            .HasOne<OrdenDeCompra>(s => s.OrdenDeCompra)
-            .WithOne(ad => ad.Proveedor)
-            .HasForeignKey<OrdenDeCompra>(ad => ad.IdProveedor);
+            modelBuilder.Entity<OrdenDeCompra>()
+            .HasOne(o => o.Proveedor)
+            .WithMany(p => p.OrdenesDeCompra)
+            .HasForeignKey(o => o.IdProveedor)
+            .HasConstraintName("FK_ordenDeCompras_proveedores");
 
+           
             //Relacion 1-1 Cliente-Usuario
             modelBuilder.Entity<Cliente>()
             .HasOne<Usuario>(s => s.Usuario)
@@ -184,11 +202,7 @@ namespace Infrastructure.Data
                 .HasForeignKey(fi => fi.FacturaId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            //Relacion 1-1 Producto-ItemOrdenDeCompra
-            modelBuilder.Entity<Producto>()
-            .HasOne<ItemOrdenDeCompra>(s => s.ocItem)
-            .WithOne(ad => ad.Producto)
-            .HasForeignKey<ItemOrdenDeCompra>(ad => ad.ProductoId); //Revisar si esta bien
+         
 
             //Relacion 1-x Producto-FacturaItem
             modelBuilder.Entity<ItemOrdenDeCompra>()

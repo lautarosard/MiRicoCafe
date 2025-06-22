@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CafeElMejor.Controllers
 {
-    public class CarritoController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CarritoController : ControllerBase
     {
         private readonly IItemCarritoService _carritoService;
 
