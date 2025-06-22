@@ -9,6 +9,7 @@ namespace Domain.Entities
     public class FacturaItem
     {
         public int Id { get; set; }
+        public string Name { get; set; }
 
         //FK -Fatura 1-X
         public int FacturaId { get; set; }

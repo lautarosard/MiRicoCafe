@@ -58,7 +58,8 @@ namespace Aplication.Service
 
             var DetallesProductos = factura.Detalles != null ? factura.Detalles.Select(FacturaItem => new FacturaItemResponse
             {Id = FacturaItem.Id,
-            Cantidad= FacturaItem.Cantidad,
+            Name= FacturaItem.Name,
+            Cantidad = FacturaItem.Cantidad,
             FacturaId= factura.Id,
             PrecioUnitario= FacturaItem.PrecioUnitario,
             ProductoId= FacturaItem.ProductoId,
@@ -87,10 +88,7 @@ namespace Aplication.Service
                    Email=factura.Cliente.Email,
                    Nombre= factura.Cliente.Nombre
                 } : null,
-                
-               
-
-
+             
             };
         }
 
@@ -134,6 +132,7 @@ namespace Aplication.Service
                 // Crear ítem con datos reales de BD
                 var facturaItem = new FacturaItem
                 {
+                    Name=producto.Nombre,
                     FacturaId = factura.Id,
                     ProductoId = producto.Id,
                     Producto = producto, // Relación opcional
@@ -161,7 +160,9 @@ namespace Aplication.Service
                 Estado = factura.Estado,
                 Detalles = factura.Detalles?.Select(det => new FacturaItemResponse
                 {
+                   
                     Id = det.Id,
+                    Name = det.Name,
                     Cantidad = det.Cantidad,
                     FacturaId = factura.Id,
                     PrecioUnitario = det.PrecioUnitario,
@@ -198,6 +199,7 @@ namespace Aplication.Service
                 Detalles = factura.Detalles != null ? factura.Detalles.Select(FacturaItem => new FacturaItemResponse
                 {
                     Id = FacturaItem.Id,
+                    Name= FacturaItem.Name,
                     Cantidad = FacturaItem.Cantidad,
                     FacturaId = factura.Id,
                     PrecioUnitario = FacturaItem.PrecioUnitario,

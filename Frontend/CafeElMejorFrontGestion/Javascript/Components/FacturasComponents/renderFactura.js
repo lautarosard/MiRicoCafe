@@ -1,38 +1,37 @@
 import { abrirModalVerFactura } from './../../Handlers/FacturaHandler/ConsultarFacturaHandlers.js';
 
-
 const formatearMoneda = (numero) => {
-    if (typeof numero !== 'number') {
-        return '$ 0,00';
-    }
+    if (typeof numero !== 'number' || isNaN(numero)) return '$ 0,00';
     return numero.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
 };
 
+const formatearFecha = (fechaString) => {
+    if (!fechaString) return 'Fecha inválida';
+    const fecha = new Date(fechaString);
+    if (isNaN(fecha.getTime())) return 'Fecha inválida';
+    return fecha.toLocaleDateString('es-AR');
+};
 
 export function crearFilaFactura(factura) {
     const fila = document.createElement('tr');
-
-    // Usamos un template string para construir el HTML interno de la fila.
+    
+    // --- CORRECCIÓN ---
     fila.innerHTML = `
-        <td>${factura.numero}</td>
-        <td>${new Date(factura.fecha + 'T00:00:00').toLocaleDateString('es-AR')}</td>
-        <td>${factura.cuitCliente}</td>
-        <td>${factura.nombreCliente}</td>
-        <td>${formatearMoneda(factura.importe)}</td>
-        <td>${formatearMoneda(factura.iva)}</td>
+        <td>${factura.idFactura || 'N/A'}</td>
+        <td>${formatearFecha(factura.fechaEmision)}</td>
+        <td>${factura.cliente ? factura.cliente.idCliente : 'N/A'}</td>
+        <td>${factura.cuit || 'N/A'}</td>
         <td>${formatearMoneda(factura.total)}</td>
         <td class="actions">
-            <button class="view" title="Ver" data-numero="${factura.numero}">👁️</button>
+            <button class="view" title="Ver Detalle" data-id-factura="${factura.idFactura || ''}">👁️</button>
         </td>
     `;
 
-    // Buscamos el botón "Ver" DENTRO de la fila que acabamos de crear.
-    const botonVer = fila.querySelector('.view');
 
-    // Le asignamos el evento de clic.
-    // La lógica de QUÉ HACER se delega a la función del Handler.
+    const botonVer = fila.querySelector('.view');
     botonVer.addEventListener('click', () => {
-        abrirModalVerFactura(factura);
+        // Se sigue pasando el ID para que el handler busque la info completa.
+        abrirModalVerFactura(factura.idFactura);
     });
 
     return fila;

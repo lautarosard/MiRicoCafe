@@ -10,6 +10,7 @@ namespace Aplication.Models.Response
     {
         public int Id { get; set; }
 
+        public string Name { get; set; }
         //FK -Fatura 1-X
         public int FacturaId { get; set; }
 
