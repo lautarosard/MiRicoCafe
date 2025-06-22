@@ -73,27 +73,28 @@ namespace Aplication.Service
 
                 throw new InvalidateParameterException("Error! email Invalidate");
             }
+
             if (request.TelefonoEmpresa == 0)
             {
 
-                throw new RequieredParameterException("Error! requiered Phone");
+                throw new RequieredParameterException("Error! requiered PhoneEnterprise");
             }
 
             if (request.CUILCliente == 0)
             {
 
-                throw new RequieredParameterException("Error! requiered Phone");
+                throw new RequieredParameterException("Error! requiered CUILCliente");
             }
             if (request.CUIT == "")
             {
 
-                throw new RequieredParameterException("Error! requiered Phone");
+                throw new RequieredParameterException("Error! requiered CUIT");
             }
 
             if (request.FechaVencimiento > request.FechaEmision)
             {
 
-                throw new RequieredParameterException("Error! requiered Phone");
+                throw new RequieredParameterException("Error! requiered FechaVencimiento");
             }
             var NotaDeCredito = new Domain.Entities.NotaDeCredito()
             {

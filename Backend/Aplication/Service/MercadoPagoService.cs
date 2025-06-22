@@ -1,4 +1,5 @@
 ﻿using Aplication.Interfaces.IMercadoPago;
+using Aplication.Interfaces.IProducto;
 using Aplication.Models.Request;
 using MercadoPago.Client.Preference;
 using MercadoPago.Config;
@@ -17,6 +18,7 @@ namespace Aplication.Service
     public class MercadoPagoService : IMercadoPagoService
     {
         private readonly IConfiguration _config;
+        private readonly IProductoService _productoService;
 
         public MercadoPagoService(IConfiguration config)
         {
@@ -25,26 +27,31 @@ namespace Aplication.Service
 
         public async Task<string> CrearPreferenciaAsync(PagoRequest request)
         {
-            // Inicializar el SDK una vez (idealmente debería estar en el startup o constructor de un singleton)
             MercadoPagoConfig.AccessToken = _config["MercadoPago:AccessToken"];
 
-            // Mapear tus productos (si es uno solo, usás uno; si hay varios, cambiás esto)
-            var items = request.MPProductos.Select(p => new PreferenceItemRequest
+            var items = new List<PreferenceItemRequest>();
+
+            foreach (var item in request.MPProductos)
             {
-                Title = p.Titulo,
-                Quantity = p.Cantidad,
-                CurrencyId = p.Moneda,
-                UnitPrice = p.Precio
-            }).ToList();
+                var producto = await _productoService.ConsultarProducto(item.ProductoId);
+
+                items.Add(new PreferenceItemRequest
+                {
+                    Title = producto.Nombre, // Nombre desde BD
+                    Quantity = item.Cantidad,
+                    CurrencyId = "ARS", // Moneda fija o desde BD si varía
+                    UnitPrice = producto.Precio // Precio desde BD
+                });
+            }
 
             var preferenciaRequest = new PreferenceRequest
             {
                 Items = items,
                 BackUrls = new PreferenceBackUrlsRequest
                 {
-                    Success = "https://localhost:7069/pago/exito",
-                    Failure = "https://localhost:7069/pago/fallo",
-                    Pending = "https://localhost:7069/pago/pendiente"
+                    Success = "https://tudominio.com/pago/exito",
+                    Failure = "https://tudominio.com/pago/fallo",
+                    Pending = "https://tudominio.com/pago/pendiente"
                 },
                 AutoReturn = "approved"
             };
@@ -52,7 +59,7 @@ namespace Aplication.Service
             var client = new PreferenceClient();
             Preference preference = await client.CreateAsync(preferenciaRequest);
 
-            return preference.InitPoint; // URL del checkout de Mercado Pago
+            return preference.InitPoint;
         }
 
     }

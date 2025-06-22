@@ -51,7 +51,8 @@ namespace Aplication.Service
             {
                 Username = request.Username,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password),
-                ClienteId = cliente.Id
+                ClienteId = cliente.Id,
+                Rol = "Cliente"
             };
 
             await _usuarioCommand.InsertUsuario(usuario);

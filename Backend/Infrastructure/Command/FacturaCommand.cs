@@ -19,11 +19,12 @@ namespace Infrastructure.Command
             _context = context;
         }
 
-        public async Task InsertFactura(Factura factura)
+        public async Task<Factura> InsertFactura(Factura factura)
         {
             _context.Add(factura);
 
             await _context.SaveChangesAsync();
+            return factura;
         }
 
         public async Task RemoveFactura(Factura factura)
