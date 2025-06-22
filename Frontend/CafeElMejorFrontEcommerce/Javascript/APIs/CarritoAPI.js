@@ -9,7 +9,7 @@ const CLIENTE_ID_TEMPORAL = 1;
 
 export async function ObtenerCarrito(clienteId) {
     try {
-        const response = await axios.get(`${API_BASE}/Factura/${clienteId}`);
+        const response = await axios.get(`${API_BASE}/${clienteId}`);
         return response.data;
     } catch (error) {
         console.error(`Error al obtener la factura ${clienteId}:`, error);

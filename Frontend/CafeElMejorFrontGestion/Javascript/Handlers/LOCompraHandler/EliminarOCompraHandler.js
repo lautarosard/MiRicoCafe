@@ -1,4 +1,5 @@
 
+
 import {DeleteOrdenDeCompraId as DeleteOrdenById} from './../../APIs/OCompraApi.js';
 
 export function configurarModalEliminarOrden(fila, orden) {
@@ -24,6 +25,7 @@ export function configurarModalEliminarOrden(fila, orden) {
             modal.style.display = 'none';
         } catch (error) {
             alert("Error al eliminar la orden de compra.");
+
             console.error(error);
         }
     };
@@ -32,3 +34,4 @@ export function configurarModalEliminarOrden(fila, orden) {
         modal.style.display = 'none';
     };
 }
+

@@ -1,3 +1,4 @@
+
 import { CreateOrdenDeCompra as CreateOrdenCompra } from './../../APIs/OCompraApi.js';
 import { crearFilaProductoEnOrden } from './../../Components/OCComponents/renderTablaOC.js';
 
@@ -114,4 +115,5 @@ export function configurarBotonRegistrar() {
             alert("No se pudo registrar la orden de compra.");
         }
     });
+
 }

@@ -26,7 +26,19 @@ namespace Infrastructure.Command
 
         public async Task InsertOrdenDeCompra(OrdenDeCompra occ)
         {
-            _context.Add(occ);
+            if (occ.Proveedor != null)
+            {
+                _context.Attach(occ.Proveedor);
+            }
+
+            foreach (var item in occ.DetalleOrdenDeCompra)
+            {
+                if (item.Producto != null)
+                {
+                    _context.Attach(item.Producto);
+                }
+            }
+            await _context.ordenDeCompras.AddAsync(occ);
 
             await _context.SaveChangesAsync();
         }

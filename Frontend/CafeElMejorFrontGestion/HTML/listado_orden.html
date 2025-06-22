@@ -37,11 +37,13 @@
 
 </header>
     
-<main>
+
+
         <div class="contenedor-listado">
             <div class="cabecera-seccion">
                 <div class="titulo">
                     <h2>Lista de Ordenes de Compra</h2>
+
                 </div>
             </div>
 
@@ -57,44 +59,28 @@
                         <span class="icono-buscar"></span> Buscar
                     </button>
                 </div>
-            </section>
 
-            <!-- Tabla con el Listado de Órdenes -->
-            <section class="panel-tabla">
-                <div class="contenedor-tabla">
-                    <table class="tabla-ordenes">
-                        <thead>
-                            <tr>
-                                <th>Fecha Registro</th>
-                                <th>Nro. de Orden</th>
-                                <th>Proveedor</th>
-                                <th>Monto Total</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="cuerpo-tabla-ordenes">
-                            <!-- Fila de ejemplo. El JS las generará dinámicamente -->
-                            <tr>
-                                <td>22/05/2025</td>
-                                <td>OC-00015</td>
-                                <td>Café Oyambre S.A.</td>
-                                <td>$311.500,00</td>
-                                <td class="acciones">
-                                    <button class="boton-accion-tabla ver">Ver</button>
-                                    <button class="boton-accion-tabla editar">Editar</button>
-                                    <button class="boton-accion-tabla eliminar">Eliminar</button>
-                                </td>
-                                </td>
-                            </tr>
-                            <!-- Más filas se agregarán aquí -->
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+            </form>
+        </section>
+
+    <div class="contenedor-tabla"> 
+        <table class="tabla-productos">
+            <thead>
+                <tr>
+                    <th>Fecha Registro</th>
+                    <th>Nro. de Orden</th>
+                    <th>Proveedor</th>
+                    <th>Monto Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
         </div>
-    </main>
-
-    
+    </div>
+   
 <div id="modalVerOC" class="modal-superposicion">
     <div class="modal-contenido">
         <span class="cerrar-modal" id="cerrarModalVer">&times;</span>
@@ -104,11 +90,14 @@
     </div>
 </div>
 
+
     <div id="modalConfirmarEliminar" class="modal" style="display: none;">
         <div class="modal-contenido">
             <h3 id="tituloModalEliminar">Confirmar Eliminación</h3>
             <p id="mensajeConfirmacionEliminar">
+
                 Realmente deseas eliminar la orden de compras: <strong id="idOCEliminar">[id OC]</strong>?
+
             </p>
             <div class="botones-modal">
                 <button type="button" id="botonConfirmarSi" class="boton-peligro">Sí, eliminar</button>
@@ -117,7 +106,19 @@
         </div>
     </div>
 
+
 <!-- Modal para editar Orden de compra -->
+=======
+    
+<div id="modalVerOC" class="modal-superposicion">
+    <div class="modal-contenido">
+        <span class="cerrar-modal" id="cerrarModalVer">&times;</span>
+        <h3>Detalles de la Orden de Compra</h3>
+        <div id="detallesOCContenido">
+            </div>
+    </div>
+</div>
+
 
 
     <div id="modalEditarOrden" class="modal">

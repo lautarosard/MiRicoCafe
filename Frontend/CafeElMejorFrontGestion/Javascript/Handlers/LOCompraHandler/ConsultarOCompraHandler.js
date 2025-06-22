@@ -1,3 +1,4 @@
+
 import { GetByOrdenDeCompraId as GetOrdenById } from './../../APIs/OCompraApi.js';
 
 // Función para formatear moneda, útil para la visualización.
@@ -45,6 +46,7 @@ export async function abrirModalVerOrden(orden) {
 /**
  * Configura el botón de cierre (la 'X') del modal de ver detalles.
  */
+
 export function configurarCierreModalVer() {
     const botonCerrar = document.getElementById('cerrarModalVer');
     const modal = document.getElementById('modalVerOC');
