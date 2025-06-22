@@ -16,6 +16,8 @@ namespace Domain.Entities
         public int Stock { get; set; }
 
 
+        //FK -ItemOrdenDeCompra 1-1
+        public ItemOrdenDeCompra ocItem { get; set; }
         //FK -FacturaItem 1-1
         public FacturaItem facturaItem { get; set; }
 

@@ -11,7 +11,6 @@ namespace Domain.Entities
         public int Id {  get; set; }
         public DateTime Fecha { get; set; }
         public int Cantidad { get; set; }
-        public string Detalle { get; set; }
         public float PUnitario { get; set; }
         public float Importe { get; set; }
         public float Total { get; set; }
@@ -20,8 +19,8 @@ namespace Domain.Entities
         public Proveedor Proveedor { get; set; }
         public int IdProveedor { get; set; }
 
-        /*productos 1- X
-        public ICollection<Producto> Productos { get; set; }
-        */
+        //productos 1- X
+        public ICollection<ItemOrdenDeCompra> DetalleOrdenDeCompra { get; set; }
+        
     }
 }

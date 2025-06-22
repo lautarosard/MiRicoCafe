@@ -91,7 +91,6 @@ namespace Infrastructure.Data
                 entity.Property(n => n.Id).ValueGeneratedOnAdd();
                 entity.Property(n => n.Fecha).IsRequired();
                 entity.Property(e => e.Cantidad).IsRequired();
-                entity.Property(e => e.Detalle).HasMaxLength(255).IsRequired();
                 entity.Property(e => e.Total).IsRequired();
 
             });
@@ -218,6 +217,19 @@ namespace Infrastructure.Data
             .HasOne(ic => ic.Factura)
             .WithMany(p => p.Detalles)
             .HasForeignKey(ic => ic.Id); //Revisar si esta bien 
+
+            //Relacion 1-1 Producto-ItemOrdenDeCompra
+            modelBuilder.Entity<Producto>()
+            .HasOne<ItemOrdenDeCompra>(s => s.ocItem)
+            .WithOne(ad => ad.Producto)
+            .HasForeignKey<ItemOrdenDeCompra>(ad => ad.ProductoId); //Revisar si esta bien
+
+            //Relacion 1-x Producto-FacturaItem
+            modelBuilder.Entity<ItemOrdenDeCompra>()
+            .HasOne(ic => ic.ordenDeCompra)
+            .WithMany(p => p.DetalleOrdenDeCompra)
+            .HasForeignKey(ic => ic.Id); //Revisar si esta bien 
+
 
         }
 
