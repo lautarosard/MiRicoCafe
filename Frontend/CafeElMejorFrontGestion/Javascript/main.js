@@ -1,8 +1,10 @@
 import { iniciarPaginaProveedores } from './Pages/ProveedorAdmin.js';
 import { iniciarPaginaProductos } from './Pages/ProductoAdmin.js';
 import { iniciarPaginaClientes } from './Pages/ClienteAdmin.js';
+
 import { iniciarPaginaFacturas } from './Pages/FacturaAdmin.js';
 import { iniciarPaginaLOCompra } from './Pages/OCompraAdmin.js';
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const rutaActual = window.location.pathname;
@@ -19,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         iniciarPaginaProveedores();
     }
 
+
     if (rutaActual.includes("listado_orden.html")) {
         iniciarPaginaLOCompra();
     }
@@ -26,4 +29,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (rutaActual.includes("facturas.html")) {
         iniciarPaginaFacturas();
     }
+
 });

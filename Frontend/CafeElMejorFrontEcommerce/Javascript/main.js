@@ -1,28 +1,23 @@
-
-// ============================
-// ARCHIVO: main.js (o index.js)
-// ============================
-
-import { GetAll } from './APIs/ProductoApi.js';
-import { renderCartaProductoPorCategoria } from './Components/ProductoComponents/renderCartaProductos.js';
-import { iniciarLogicaCarrito } from './Pages/CarritoAdmin.js';
-
-async function cargarProductos() {
-    try {
-        const productos = await GetAll();
-
-        console.log("Productos recibidos:", productos);
-
-        productos.forEach(producto => {
-            renderCartaProductoPorCategoria(producto);
-        });
-    } catch (error) {
-        console.error("Error al cargar productos:", error);
-    }
-}
+import { iniciarPaginaRegistro } from './Pages/AuthPages/RegistroCliente.js';
+import { iniciarPaginaLogin } from './Pages/AuthPages/LoginCliente.js';
+import { iniciarCerrarSesion } from './Handlers/AuthHandler/CerrarSesion.js';
+import { iniciarPaginaProductos} from './Pages/ProductoAdmin.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    cargarProductos();        // Cargar productos y renderizarlos
-    iniciarLogicaCarrito();   // Configurar carrito y botones
+    const rutaActual = window.location.pathname;
+    if(rutaActual.includes("registrarse.html")){
+        iniciarPaginaRegistro();
+    }
+
+    if(rutaActual.includes("productos.html")){
+        iniciarPaginaProductos();
+    }
+    
+    if(rutaActual.includes("iniciar-sesion.html")){
+        iniciarPaginaLogin();
+        iniciarCerrarSesion();
+    }
+    
 });
+
 

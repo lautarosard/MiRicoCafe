@@ -64,7 +64,7 @@ namespace CafeElMejor.Controllers
                 return BadRequest(new { Message = ex.Message });
             }
         }
-        /*
+        
         //borrar
         [HttpPost("register-admin")]
         public async Task<IActionResult> RegisterAdmin()
@@ -73,12 +73,12 @@ namespace CafeElMejor.Controllers
             var admin = new UsuarioRequest
             {
                 Username = "admin",
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword("contraseña"),
-                Rol = "Admin"
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword("contraseña")
             };
 
             await _usuarioService.CreateUsuario(admin);
             return Ok("Usuario administrador creado");
-        }*/
+        }
+        
     }
 }

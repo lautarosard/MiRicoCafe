@@ -9,7 +9,7 @@ namespace Aplication.Interfaces.IFactura
 {
     public interface IFacturaCommand
     {
-        Task InsertFactura(Factura factura);
+        Task<Factura> InsertFactura(Factura factura);
         Task RemoveFactura(Factura factura);
         Task UpdateFactura(Factura factura);
     }

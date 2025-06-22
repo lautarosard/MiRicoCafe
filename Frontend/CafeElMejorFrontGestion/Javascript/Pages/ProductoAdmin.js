@@ -6,6 +6,7 @@ import {
     configurarFormularioAgregar,
     configurarBotonCancelarAgregar
 } from './../Handlers/ProductoHandler/AgregarProductoHandler.js';
+import { configurarBusquedaProducto } from './../Handlers/ProductoHandler/BuscarProductoHandler.js';
 
 async function cargarProductos() {
     try {
@@ -75,7 +76,7 @@ export function iniciarPaginaProductos() {
     // 2. Configura los botones y formularios para la funcionalidad de "Agregar"
     configurarBotonNuevoProducto();
 
-    // Le pasamos 'cargarProveedores' para que pueda recargar la lista después de agregar.
+    // Le pasamos 'cargarProveedores' para que pueda recargar la lista despuÃ©s de agregar.
     configurarFormularioAgregar(cargarProductos); 
     configurarBotonCancelarAgregar();
 
@@ -83,4 +84,8 @@ export function iniciarPaginaProductos() {
     configurarFormularioEditar();
     configurarFormularioCreacion();
     configurarBotonCancelarEditar();
+
+    
+    //boton buscar 
+    configurarBusquedaProducto();
 }

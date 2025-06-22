@@ -16,10 +16,14 @@ namespace Domain.Entities
         public int Stock { get; set; }
 
 
+
         //FK -ItemOrdenDeCompra 1-1
         public ICollection<ItemOrdenDeCompra> ItemsOrdenDeCompra { get; set; } = new List<ItemOrdenDeCompra>();
-        //FK -FacturaItem 1-1
-        public FacturaItem facturaItem { get; set; }
+
+
+        //FK -FacturaItem 1-x
+        public ICollection<FacturaItem> FacturaItems { get; set; } = new List<FacturaItem>();
+
 
 
         //Fk -carrito

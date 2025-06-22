@@ -6,15 +6,15 @@
     <title>Facturas - Gestion cafe el mejor</title>
     <link rel="stylesheet" href="./../CSS/styles.css" />
     <link rel="stylesheet" href="./../CSS/facturas.css" />
-    <script type="module" src="./../Javascript/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.2/dist/axios.min.js"></script>
+    <script type="module" src="./../Javascript/main.js"></script>
 </head>
 <body>
     <header class="sitio-header">
     <div class="conetenedor-navegacion">
         <a href="index.html" class="logo">
         <img
-            src="/CafeElMejor Front/img/logo-png.png"
+            src="./../img/logo.png"
             alt="[Logo]"
             class="logo-png"
             width="350"
@@ -24,6 +24,7 @@
         <nav class="menu-principal">
         <ul>
             <li><a href="proveedores.html">Proveedores</a></li>
+            <li><a href="clienteAdmin.html">Clientes</a></li>
             <li><a href="productos.html">Productos</a></li>
             <li><a href="facturas.html">Facturas</a></li>
 
@@ -37,7 +38,7 @@
             </ul>
             </li>
             <li class="boton-elegir-modo">
-                    <a href="/Inicio/index.html" class="boton">Salir del modo Admin</a>
+                <a href="./../../CafeElMejorFrontEcommerce/HTML/index.html" class="boton">Salir del modo gestion</a>
             <li>
         </ul>
         </nav>
@@ -58,7 +59,7 @@
 
         <div class="opciones-facturas">
             <input type="search" id="buscar" name="buscar" placeholder="Ingrese numero de factura..." list="opciones">
-            <button class="nuevo">Buscar</button>
+            <button id="botonBuscar" class="boton-nuevo">Buscar</button>
             </div>
 
 
@@ -77,13 +78,6 @@
         </thead>
         <tbody>
         <tr>
-            <td>001</td>
-            <td>22/05/2025</td>
-            <td>20-12345678-1</td>
-            <td>Cafe Oyambre</td>
-            <td>311500</td>
-            <td>311500</td>
-            <td>311500</td>
             <td class="actions">
                 <button class="view" title="Ver">VER</button>
             </td>

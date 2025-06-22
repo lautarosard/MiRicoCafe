@@ -12,11 +12,12 @@
 <header class="sitio-header">
     <div class="conetenedor-navegacion">
         <a href="index.html" class="logo">
-            <img src="/CafeElMejorFrontGestion/img/logo-png.png" alt="[Logo]" class="logo-png" width="350" height="200">
+            <img src="./../img/logo.png" alt="[Logo]" class="logo-png" width="350" height="200">
         </a>
         <nav class="menu-principal">
             <ul>
                 <li><a href="proveedores.html">Proveedores</a></li>
+                <li><a href="clienteAdmin.html">Clientes</a></li>
                 <li><a href="productos.html">Productos</a></li>
                 <li><a href="facturas.html">Facturas</a></li>
                 <li class="tiene-submenu"> <a href="nueva_orden.html">Compras</a>
@@ -25,7 +26,7 @@
                     </ul>
                 </li>
                 <li class="boton-elegir-modo">
-                    <a href="/Inicio/index.html" class="boton">Salir del modo Admin</a>
+                    <a href="./../../CafeElMejorFrontEcommerce/HTML/index.html" class="boton">Salir del modo gestion</a>
                 <li>
             </ul>
         </nav>
@@ -33,38 +34,29 @@
 
 </header>
     
-    <div class="contenedor-principal"> <section class="seccion-filtros">
-        <header class="barra-cabecera">
-        Lista de Ordenes de Compra
-    </header>
-            <form class="controles-filtros">
-                <div class="grupo-filtro">
-                    <label for="buscar-por">Buscar por</label>
-                    <select id="buscar-por" name="buscar_por">
-                        <option value="fechas" selected>Fechas</option>
-                        <option value="proveedor">Proveedor</option>
-                        <option value="nro_orden">Nro. de Orden</option>
-                    </select>
-                </div>
 
-                <div class="grupo-filtro">
-                    <label for="fecha-inicio">Fecha Inicio</label>
-                    <input type="date" id="fecha-inicio" name="fecha_inicio" placeholder="DD/MM/AAAA">
-                </div>
 
-                <div class="grupo-filtro">
-                    <label for="fecha-fin">Fecha Fin</label>
-                    <input type="date" id="fecha-fin" name="fecha_fin" placeholder="DD/MM/AAAA">
-                </div>
+        <div class="contenedor-listado">
+            <div class="cabecera-seccion">
+                <div class="titulo">
+                    <h2>Lista de Ordenes de Compra</h2>
 
-                <div class="grupo-filtro grupo-filtro-boton">
-                    <button type="submit" class="boton-buscar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                        </svg>
-                        Buscar
+                </div>
+            </div>
+
+            <hr class="linea-divisoria">
+
+            <!-- Panel de Búsqueda y Filtros -->
+            <section class="panel-busqueda">
+                <div class="campo-filtro input-principal">
+                    <input type="search" id="termino-busqueda" placeholder="Ingrese numero de orden.">
+                </div>
+                <div class="campo-filtro">
+                    <button id="btn-buscar" class="boton-buscar">
+                        <span class="icono-buscar"></span> Buscar
                     </button>
                 </div>
+
             </form>
         </section>
 
@@ -99,6 +91,7 @@
             </div>
         </div>
     </div>
+
 
     
 <div id="modalVerOC" class="modal-superposicion">

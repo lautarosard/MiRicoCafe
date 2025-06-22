@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Aplication.Models.Request
 {
-    public class PagoRequest
+    public class FacturaProductoRequest
     {
-        public int ClienteId { get; set; }
-        public List<ProductoMPRequest> MPProductos { get; set; } = new();
-
+        public int ProductoId { get; set; }
+        public int Cantidad { get; set; }
     }
 }

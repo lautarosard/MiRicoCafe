@@ -110,9 +110,7 @@ namespace Aplication.Service
                 FacturaItemDentroDeLista.PrecioUnitario = Producto.Precio;
                 
                 ProductoMPRequestDeLista.ProductoId = item.ProductoId;
-                ProductoMPRequestDeLista.Titulo=Producto.Nombre;
                 ProductoMPRequestDeLista.Cantidad=item.Cantidad;
-                ProductoMPRequestDeLista.Precio=Producto.Precio;
                 //Agregamos a la lista
                 ListaDeFacturaItemRequest.Add(FacturaItemDentroDeLista);
                 ListaDeProductoMPRequest.Add(ProductoMPRequestDeLista);

@@ -29,7 +29,7 @@ namespace CafeElMejor.Controllers
         }
 
         //GET por ID
-        [HttpGet("Usuario/{id}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetByUsuarioId(int id)
@@ -56,7 +56,7 @@ namespace CafeElMejor.Controllers
         }
 
         //Eliminar Usuario by ID
-        [HttpDelete("UsuarioDelete/{id}")]
+        [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> DeleteUsuarioId(int id)

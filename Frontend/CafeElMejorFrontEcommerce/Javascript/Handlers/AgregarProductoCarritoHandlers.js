@@ -34,7 +34,7 @@ export function configurarBotonesAgregarAlCarrito(actualizarBurbujaCarrito) {
                 return;
             }
 
-            await AgregarItemAlCarrito(CLIENTE_ID_TEMPORAL, idProducto, cantidadSolicitada);
+            await AgregarItemAlCarrito(localStorage.getItem("usuarioId"), idProducto, cantidadSolicitada);
 
             const nuevoStock = producto.stock - cantidadSolicitada;
             await UpdateProducto(idProducto, { ...producto, stock: nuevoStock });

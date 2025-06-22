@@ -1,5 +1,5 @@
 import { GetAll as GetAllProductos, CreateProducto } from './../APIs/ProductoApi.js';
-import { crearFilaProducto } from '../Components/ProductoComponents/renderCartaProductos.js';
+import { renderCartaProductoPorCategoria } from './../Components/ProductoComponents/renderCartaProductos.js';
 import { configurarFormularioEditar, configurarBotonCancelarEditar } from './../Handlers/ProductoHandler/EditarProductoHandler.js';
 import { 
     configurarBotonNuevoProducto, 
@@ -23,7 +23,7 @@ async function cargarProductos() {
 
         const fragment = document.createDocumentFragment();
         productos.forEach(producto => {
-            const fila = crearFilaProducto(producto);
+            const fila = renderCartaProductoPorCategoria(producto);
             fragment.appendChild(fila);
         });
 

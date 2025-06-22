@@ -12,399 +12,187 @@
     --color-accion-positiva: #70a05f; /* Un verde que armoniza con la paleta marrón/amarillo */
     --color-accion-positiva-hover: #5a834b; /* Hover para el botón de acción */
 }
+/* --- Estilos Generales para la página de Nueva Orden --- */
+.contenedor-orden {
+    width: 90%;
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 25px 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+.cabecera-seccion .titulo h2 {
     margin: 0;
-    background-color: var(--color-fondo-principal); /* Aplicar color de fondo principal al body */
-    color: var(--color-texto-principal);
-    line-height: 1.65; /* Ligeramente más interlineado para legibilidad */
-    font-size: 17px; /* Aumentar el tamaño de fuente base para que todo sea un poco más grande */
+    font-size: 1.8em;
+    color: var(--color-secundario);
 }
 
-.container {
-    display: flex;
-    gap: 30px; /* Aumentar espacio entre main y sidebar */
-    width: 90%; /* Hacer que el contenedor ocupe el 90% del ancho de la ventana */
-    max-width: 1450px; /* Limitar el ancho máximo para pantallas muy grandes */
-    margin: 35px auto; /* Margen vertical y centrado horizontal */
-    padding: 35px;    /* Aumentar padding del contenedor general */
-    background-color: #ffffff; /* Mantener blanco para el contenido principal, contrasta bien con el fondo amarillo */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08); /* Sombra un poco más pronunciada */
-    border-radius: 12px; /* Bordes más redondeados */
+hr.linea-divisoria {
+    border: none;
+    height: 1px;
+    background-color: var(--color-borde-suave);
+    margin: 20px 0 25px 0;
 }
 
-.main-content {
-    flex: 2.8; /* Ajustar proporción para dar más espacio al contenido principal */
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+/* --- Panel Principal (Proveedor, Fecha, Botón) --- */
+.panel-principal {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    align-items: flex-end;
+    margin-bottom: 30px;
 }
 
-.sidebar {
-    flex: 1.2; /* Proporción para la barra lateral */
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.form-section {
-    background-color: #ffffff; /* Mantener blanco para claridad dentro del contenedor */
-    padding: 30px; /* Aumentar padding interno */
-    border-radius: 8px;
-    border: 1px solid var(--color-borde-suave);
-}
-
-.section-title {
-    background-color: var(--color-secundario); /* Usar color secundario (marrón) */
-    color: var(--color-texto-sobre-secundario); /* Texto blanco sobre marrón */
-    padding: 16px 30px; /* Ajustar padding */
-    margin: -30px -30px 30px -30px; /* Para que ocupe el ancho y pegue arriba */
-    border-radius: 8px 8px 0 0;
-    font-size: 1.3em; /* Más grande y destacado */
-    font-weight: 600;
-    letter-spacing: 0.5px; /* Un poco de espacio entre letras */
-}
-
-.form-group {
-    margin-bottom: 24px; /* Más espacio entre campos */
-}
-
-.form-group label {
+.campo-formulario label {
     display: block;
-    margin-bottom: 10px; /* Espacio entre label e input */
-    font-size: 0.9em; /* Relativo al nuevo font-size base (aprox 15px) */
-    color: var(--color-secundario); /* Labels con el color secundario (marrón) */
+    margin-bottom: 8px;
     font-weight: 500;
 }
 
-input[type="text"],
-select {
+.campo-formulario select,
+.campo-formulario input[type="date"] {
     width: 100%;
-    padding: 15px 18px; /* Padding más generoso */
-    border: 1px solid var(--color-borde-suave);
-    border-radius: 6px; /* Bordes ligeramente más redondeados */
-    box-sizing: border-box;
-    font-size: 0.95em; /* Tamaño de fuente para inputs (aprox 16px) */
-    background-color: var(--color-fondo-input);
-    color: var(--color-texto-principal);
-    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-input[type="text"]:focus,
-select:focus {
-    border-color: var(--color-secundario); /* Borde marrón al enfocar */
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(141, 108, 69, 0.25); /* Sombra de foco con el marrón (ajustar alfa si es necesario) */
-    background-color: #fff;
-}
-
-input[type="text"]::placeholder {
-    color: #a18a70; /* Placeholder coordinado con la paleta marrón */
-}
-
-
-/*Para fecha*/
-
-input[type="date"],
-select {
-    width: 100%;
-    padding: 15px 18px; /* Padding más generoso */
-    border: 1px solid var(--color-borde-suave);
-    border-radius: 6px; /* Bordes ligeramente más redondeados */
-    box-sizing: border-box;
-    font-size: 0.95em; /* Tamaño de fuente para inputs (aprox 16px) */
-    background-color: var(--color-fondo-input);
-    color: var(--color-texto-principal);
-    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-input[type="date"]:focus,
-select:focus {
-    border-color: var(--color-secundario); /* Borde marrón al enfocar */
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(141, 108, 69, 0.25); /* Sombra de foco con el marrón (ajustar alfa si es necesario) */
-    background-color: #fff;
-}
-
-input[type="date"]::placeholder {
-    color: #a18a70; /* Placeholder coordinado con la paleta marrón */
-}
-
-
-/* Sección Proveedor */
-.proveedor-section .proveedor-inputs {
-    display: flex;
-    gap: 25px; /* Espacio entre inputs de proveedor */
-}
-
-/* Sección Productos */
-.productos-section #buscar-producto {
-    margin-bottom: 25px; /* Más espacio debajo del buscador */
-}
-
-.productos-tabla {
-    width: 100%;
+    padding: 12px;
     border: 1px solid var(--color-borde-suave);
     border-radius: 6px;
-    font-size: 0.95em; /* Tamaño de fuente para la tabla */
-    overflow: hidden; /* Para que el border-radius afecte a la cabecera/filas */
+    font-size: 1em;
+    box-sizing: border-box;
 }
 
-.tabla-header {
-    background-color: var(--color-cabecera-tabla);
-    font-weight: 600;
-    color: var(--color-secundario); /* Texto marrón para la cabecera */
-    border-bottom: 2px solid var(--color-borde-suave);
+.area-boton-agregar {
+    text-align: right;
 }
 
-.tabla-header div, .tabla-row div {
-    padding: 15px 12px; /* Aumentar padding de celdas */
-}
-
-.tabla-header div:first-child, .tabla-row div:first-child { flex-grow: 2.5; } /* Producto más ancho */
-.tabla-header div:nth-child(2), .tabla-row div:nth-child(2) { flex-grow: 1; text-align: center; } /* Cantidad */
-.tabla-header div:nth-child(3), .tabla-row div:nth-child(3) { flex-grow: 1.2; text-align: right; } /* Precio */
-.tabla-header div:nth-child(4), .tabla-row div:nth-child(4) { flex-grow: 1.2; text-align: right; } /* Total */
-
-.tabla-header div:not(:last-child),
-.tabla-row div:not(:last-child) {
-    border-right: 1px solid var(--color-borde-suave); /* Línea divisoria coordinada */
-}
-
-.tabla-row {
-    background-color: #fff;
-    border-bottom: 1px solid var(--color-borde-suave);
-}
-.tabla-row:last-child {
-    border-bottom: none;
-}
-.tabla-row:nth-child(even) {
-    background-color: var(--color-fila-alterna-tabla);
-}
-.tabla-row:hover {
-    background-color: var(--color-hover-tabla);
-}
-
-.tabla-row.empty-row {
-    color: #a18a70; /* Texto para fila vacía */
-    font-style: italic;
-    background-color: var(--color-fila-alterna-tabla);
-}
-.tabla-row.empty-row div {
-    text-align: center !important;
-}
-
-/* Sección Detalle */
-.detalle-section .detalle-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 14px 5px; /* Ajustar padding, especialmente el horizontal si es necesario */
-    border-bottom: 1px solid #f7eed9; /* Borde más suave coordinado */
-    font-size: 0.95em;
-}
-.detalle-section .detalle-item:last-child {
-    border-bottom: none;
-}
-.detalle-section .total-final {
-    font-weight: bold;
-    font-size: 1.15em; /* Total un poco más grande */
-    padding-top: 20px;
-    margin-top: 15px;
-    color: var(--color-secundario); /* Total en color marrón */
-    border-top: 2px solid var(--color-secundario);
-}
-.detalle-section .detalle-item span:first-child {
-    color: #7a6047; /* Un tono del marrón para las etiquetas del detalle */
-}
-.detalle-section .detalle-item span:last-child {
-    color: var(--color-texto-principal);
-    font-weight: 600; /* Valores un poco más destacados */
-}
-.detalle-section .total-final span:last-child {
-    font-weight: bold;
-}
-
-/* Botón Registrar */
-.btn-registrar {
-    background-color: var(--color-accion-positiva); /* Botón con color de acción verde */
-    color: var(--color-texto-sobre-secundario); /* Texto blanco */
+.boton-accion {
+    padding: 12px 25px;
+    background-color: var(--color-boton-nuevo);
+    color: var(--color-texto-boton-accion);
     border: none;
-    padding: 18px 25px; /* Padding generoso para el botón */
     border-radius: 6px;
     cursor: pointer;
-    font-size: 1.15em; /* Botón más grande */
-    font-weight: bold;
-    width: 100%;
-    text-align: center;
-    margin-top: auto;
-    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
-    letter-spacing: 0.5px;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+.boton-accion:hover {
+    background-color: var(--color-boton-nuevo-hover);
 }
 
-.btn-registrar:hover {
-    background-color: var(--color-accion-positiva-hover); /* Verde más oscuro al pasar el mouse */
-    transform: translateY(-2px); /* Efecto de elevación un poco más notorio */
-}
-.btn-registrar:active {
-    transform: translateY(0px);
+/* --- Panel y Tabla de Productos en la Orden --- */
+.panel-lista-productos {
+    margin-bottom: 40px; /* Mayor separación con los totales */
 }
 
-/* Ajustes para pantallas más pequeñas */
-@media (max-width: 1200px) { /* Ajuste para cuando el 90% empieza a ser menor que el max-width */
-    .container {
-        width: 95%;
-    }
-}
-
-@media (max-width: 992px) {
-    .container {
-        flex-direction: column;
-        width: 95%;
-        margin: 25px auto;
-        padding: 25px;
-    }
-    body {
-        font-size: 16px; /* Reducir tamaño base en tablet */
-    }
-    .section-title { font-size: 1.2em; }
-    .btn-registrar { font-size: 1.1em; padding: 16px 20px; }
-}
-
-@media (max-width: 768px) {
-    .container {
-        margin: 20px auto;
-        padding: 20px 15px; /* Menos padding horizontal en móvil */
-        gap: 25px;
-        width: 98%; /* Casi todo el ancho */
-    }
-    body {
-        font-size: 15px; /* Reducir más el tamaño base en móvil */
-    }
-    .form-section {
-        padding: 25px 20px;
-    }
-    .section-title {
-        padding: 14px 20px;
-        margin: -25px -20px 25px -20px;
-        font-size: 1.15em;
-    }
-    .proveedor-section .proveedor-inputs {
-        flex-direction: column;
-        gap: 0;
-    }
-    .proveedor-section .proveedor-inputs .form-group {
-        margin-bottom: 20px;
-    }
-
-    .tabla-row { /* La transformación a "tarjeta" ya estaba definida */
-        padding: 15px 10px; /* Ajustar padding de la tarjeta de la fila */
-    }
-    .tabla-row div::before {
-        color: var(--color-secundario); /* Asegurar que los data-labels usan el color secundario */
-    }
-    .btn-registrar { font-size: 1.05em; padding: 15px 18px; }
-    input[type="text"], select { padding: 14px 15px; }
-}
-
-
-
-
-
-
-
-
-
-.productos-tabla {
-    width: 100%;
+/* --- INICIO DE LA CORRECCIÓN --- */
+.contenedor-tabla {
+    max-height: 400px;  /* Altura máxima para la tabla */
+    overflow-y: auto;   /* Barra de scroll vertical SOLO si es necesario */
     border: 1px solid var(--color-borde-suave);
-    border-radius: 6px;
-    font-size: 0.95em;
-    overflow: hidden; /* Mantenido, es bueno para que el border-radius afecte a los hijos */
-    background-color: var(--color-fila-alterna-tabla); /* Fondo base para la tabla si las filas no lo cubren */
+    border-radius: 8px;
+    background-color: #fff;
 }
+/* --- FIN DE LA CORRECCIÓN --- */
 
-.tabla-header,
-.tabla-row {
-    display: flex;
-    width: 100%; /* Asegura que la fila ocupe todo el ancho */
-    box-sizing: border-box; /* Buena práctica para los contenedores de fila también */
+.tabla-orden-compra {
+    width: 100%;
+    border-collapse: collapse;
 }
-
-.tabla-header {
+.tabla-orden-compra th {
     background-color: var(--color-cabecera-tabla);
+    padding: 12px 15px;
+    text-align: left;
     font-weight: 600;
     color: var(--color-secundario);
-    border-bottom: 2px solid var(--color-borde-suave);
+    position: sticky; /* Encabezados fijos al hacer scroll */
+    top: 0;
+    z-index: 10;
 }
-
-.tabla-row {
-    background-color: #fff; /* Fondo para filas impares */
-    border-bottom: 1px solid var(--color-borde-suave);
+.tabla-orden-compra td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: middle;
 }
-
-.tabla-row:last-child {
-    border-bottom: none; /* Sin borde inferior para la última fila */
+.input-cantidad {
+    width: 80px;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid var(--color-borde-suave);
+    border-radius: 4px;
 }
-
-.tabla-row:nth-child(even) { /* Estilo para filas pares */
-    background-color: var(--color-fila-alterna-tabla);
-}
-
-.tabla-row.empty-row {
-    color: #a18a70;
-    font-style: italic;
-    /* El fondo será determinado por :nth-child(even) o el base de .tabla-row */
-}
-.tabla-row.empty-row div { /* Si la fila vacía tiene múltiples celdas con '-' */
-     justify-content: center; /* Centra el '-' si la celda es más ancha */
-}
-
-
-/* Estilos para las celdas individuales (divs dentro de .tabla-header y .tabla-row) */
-.tabla-header div,
-.tabla-row div {
-    padding: 15px 12px;
-    box-sizing: border-box; /* ¡CRUCIAL PARA EL LAYOUT FLEX CON PADDING! */
-    /* flex-shrink: 0; */ /* Evita que las celdas se encojan si el contenido es grande, opcional */
-}
-
-/* --- Definición de columnas (asegúrate que el HTML tenga 4 divs en header y row) --- */
-
-/* 1. Columna Producto */
-.tabla-header div:nth-child(1),
-.tabla-row div:nth-child(1) {
-    flex-grow: 2.5; /* Le da más peso para que sea más ancha */
-    flex-basis: 0;  /* Importante para que flex-grow funcione como se espera */
-    text-align: left;
-}
-
-/* 2. Columna Cantidad */
-.tabla-header div:nth-child(2),
-.tabla-row div:nth-child(2) {
-    flex-grow: 1;
-    flex-basis: 0;
+td.acciones {
     text-align: center;
 }
-
-/* 3. Columna Precio */
-.tabla-header div:nth-child(3),
-.tabla-row div:nth-child(3) {
-    flex-grow: 1.2;
-    flex-basis: 0;
-    text-align: right;
+.boton-eliminar-item {
+    background: none; border: none; font-size: 1.5em; color: var(--color-boton-eliminar); cursor: pointer;
+}
+.mensaje-vacio {
+    text-align: center; padding: 40px; color: #777;
 }
 
-/* 4. Columna Total */
-.tabla-header div:nth-child(4),
-.tabla-row div:nth-child(4) {
-    flex-grow: 1.2;
-    flex-basis: 0;
-    text-align: right;
+/* --- Panel Final y Totales --- */
+.panel-final-orden {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px; /* Mayor espacio entre totales y botón */
+    margin-top: 40px;
+}
+.resumen-totales {
+    width: 100%; max-width: 450px; padding: 20px; border: 1px solid var(--color-borde-suave); border-radius: 8px;
+}
+.linea-total {
+    display: flex; justify-content: space-between; padding: 12px 0; font-size: 1.1em;
+}
+.linea-total:not(:last-child) {
+    border-bottom: 1px dashed var(--color-borde-suave);
+}
+.linea-total.grande {
+    font-size: 1.4em; font-weight: bold; color: var(--color-secundario);
+}
+.area-registro {
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+.boton-registrar {
+    width: 100%;
+    padding: 15px 40px; font-size: 1.1em; font-weight: bold; background-color: var(--color-accion-positiva); color: var(--color-texto-boton-accion); border: none; border-radius: 8px; cursor: pointer;
 }
 
-/* (Opcional) Si quieres líneas divisorias verticales entre columnas: */
-.tabla-header div:not(:last-child),
-.tabla-row div:not(:last-child) {
-    border-right: 1px solid var(--color-borde-suave);
+/* --- Estilos para el Modal de Selección de Productos --- */
+.modal {
+    display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center;
+}
+.modal-contenido {
+    background-color: #fff; padding: 25px; border-radius: 8px; width: 90%; position: relative;
+}
+.modal-contenido.grande {
+    max-width: 900px;
+}
+.cerrar-modal {
+    position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer;
+}
+.modal-contenido h3 {
+    margin-top: 0; color: var(--color-secundario);
+}
+.opciones-busqueda-modal input {
+    width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid var(--color-borde-suave); border-radius: 6px; box-sizing: border-box;
+}
+.contenedor-tabla-modal {
+    max-height: 50vh; overflow-y: auto;
+}
+.tabla-seleccion-productos {
+    width: 100%; border-collapse: collapse;
+}
+.tabla-seleccion-productos th, .tabla-seleccion-productos td {
+    padding: 10px; border-bottom: 1px solid #eee; text-align: left;
+}
+.tabla-seleccion-productos th {
+    background-color: var(--color-fila-alterna-tabla);
+}
+.boton-agregar-item {
+    background-color: var(--color-boton-nuevo); color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;
 }
