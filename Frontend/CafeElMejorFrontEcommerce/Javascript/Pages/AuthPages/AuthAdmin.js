@@ -7,7 +7,7 @@ export const AuthAdmin = {
         try {
             const response = await Login(usuario, password);
             localStorage.setItem("token", response.token);         // Guardar el JWT
-            localStorage.setItem("clienteId", response.usuarioId); // Guardar ID del cliente
+            localStorage.setItem("clienteId", response.clienteId); // Guardar ID del cliente
             localStorage.setItem("username", response.username);   // Guardar nombre de usuario
             return response;
         } catch (error) {
@@ -42,7 +42,7 @@ export const AuthAdmin = {
         localStorage.removeItem("username");
 
         // Redireccionar (opcional)
-        window.location.href = "login.html"; // Cambiá esto por la ruta correcta si querés
+        //window.location.href = "login.html"; // Cambiá esto por la ruta correcta si querés
     },
 
     estaAutenticado() {
