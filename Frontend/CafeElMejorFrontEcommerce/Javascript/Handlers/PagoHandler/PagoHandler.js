@@ -1,7 +1,8 @@
-import { ObtenerCarritoPorCliente } from './../../APIs/CarritoApi.js';
+import { ObtenerCarrito as ObtenerCarritoPorCliente } from './../../APIs/CarritoApi.js';
 import { CrearPreferencia } from './../../APIs/MercadoPagoApi.js';
 
 export async function procesarPago() {
+    console.log("Procesando pago...");
     const clienteId = parseInt(localStorage.getItem('clienteId'));
     if (!clienteId) throw new Error("Cliente no autenticado");
 

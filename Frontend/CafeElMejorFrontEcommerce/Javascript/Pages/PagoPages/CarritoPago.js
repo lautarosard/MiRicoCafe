@@ -1,8 +1,9 @@
 // carritoPago.js
 
-import { procesarPago } from './../../Handlers/Pago/PagoHandler.js';
+import { procesarPago } from './../../Handlers/PagoHandler/PagoHandler.js';
 
 export function iniciarPagoCarrito() {
+    console.log('Entraste a iniciarPagoCarrito');
     const botonFinalizar = document.getElementById('btnfinalizarCompra');
 
     if (!botonFinalizar) {
@@ -12,6 +13,7 @@ export function iniciarPagoCarrito() {
 
     botonFinalizar.addEventListener('click', async () => {
         try {
+            console.log('Hiciste click en el botón de finalizar compra');
             const url = await procesarPago();
             window.location.href = url;
         } catch (error) {
