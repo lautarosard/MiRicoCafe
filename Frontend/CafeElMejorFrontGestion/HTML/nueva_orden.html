@@ -98,13 +98,36 @@
     
 </main>
 
-<footer>
-
-</footer>
-
+    <!-- ======================================================= -->
+    <!-- MODAL PARA SELECCIONAR PRODUCTOS (inicialmente oculto) -->
+    <!-- ======================================================= -->
+    <div id="modal-seleccionar-producto" class="modal">
+        <div class="modal-contenido grande">
+            <span class="cerrar-modal" id="cerrar-modal-productos">&times;</span>
+            <h3>Seleccionar Producto</h3>
+            <div class="opciones-busqueda-modal">
+                <input type="search" id="buscar-producto-modal" placeholder="Buscar por nombre o código...">
+            </div>
+            <div class="contenedor-tabla-modal">
+                <table class="tabla-seleccion-productos">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Stock</th>
+                            <th>Precio</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-tabla-productos-modal">
+                        <!-- Los productos disponibles se cargarán aquí desde la BD con JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 </body>
-
-
 
 </html>

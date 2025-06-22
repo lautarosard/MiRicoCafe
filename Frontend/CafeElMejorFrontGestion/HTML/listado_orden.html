@@ -35,7 +35,7 @@
     
     <div class="contenedor-principal"> <section class="seccion-filtros">
         <header class="barra-cabecera">
-        Lista de Órdenes de Compra
+        Lista de Ordenes de Compra
     </header>
             <form class="controles-filtros">
                 <div class="grupo-filtro">
@@ -69,7 +69,7 @@
         </section>
 
     <div class="contenedor-tabla"> 
-        <table>
+        <table class="tabla-productos">
             <thead>
                 <tr>
                     <th>Fecha Registro</th>
@@ -80,33 +80,35 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>22/05/2025</td>
-                        <td>000015</td>
-                        <td>Cafe Oyambre</td>
-                        <td>311500</td>
-                        <td class="actions">
-                            <button class="view" title="Ver">👁️</button>
-                            <button class="edit" title="Editar">✏️</button>
-                            <button class="delete" title="Eliminar">🗑️</button>
-                    </td>
-                </tr>
+                
             </tbody>
         </table>
-
-
-
         </div>
     </div>
+
+
+    <div id="modalConfirmarEliminar" class="modal" style="display: none;">
+        <div class="modal-contenido">
+            <h3 id="tituloModalEliminar">Confirmar Eliminación</h3>
+            <p id="mensajeConfirmacionEliminar">
+                ¿Realmente deseas eliminar la orden de compra: <strong id="nombreProductoEliminar">[Nombre del Producto]</strong>?
+            </p>
+            <div class="botones-modal">
+                <button type="button" id="botonConfirmarSi" class="boton-peligro">Sí, eliminar</button>
+                <button type="button" id="botonConfirmarCancelar" class="boton-secundario">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
     
-
-
-
-
-<footer>
-
-</footer>
-
+<div id="modalVerOC" class="modal-superposicion">
+    <div class="modal-contenido">
+        <span class="cerrar-modal" id="cerrarModalVer">&times;</span>
+        <h3>Detalles de la Orden de Compra</h3>
+        <div id="detallesOCContenido">
+            </div>
+    </div>
+</div>
 
 </body>
 
