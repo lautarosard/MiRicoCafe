@@ -1,81 +1,119 @@
-import { CreateOrdenDeCompra } from './../../APIs/OCompraApi.js';
+
+import { CreateOrdenDeCompra as CreateOrdenCompra } from './../../APIs/OCompraApi.js';
+import { crearFilaProductoEnOrden } from './../../Components/OCComponents/renderTablaOC.js';
+
+// Guardamos los productos de la orden actual en un array en memoria.
+let productosEnOrden = [];
 
 /**
- * Configura el botón "Nueva Factura" para que abra el modal de registro.
+ * Recalcula y actualiza los totales (Subtotal, IVA, Total) en la página.
  */
-export function configurarBotonNuevaOrdendeCompra() {
-    const boton = document.querySelector('.cabecera-seccion .nuevo');
-    const modal = document.getElementById('modalNuevaFactura');
+function actualizarTotales() {
+    const subtotal = productosEnOrden.reduce((sum, p) => sum + (p.precio * p.cantidad), 0);
+    const iva = subtotal * 0.21;
+    const total = subtotal + iva;
 
-    if (boton && modal) {
-        boton.addEventListener('click', () => {
-            modal.style.display = 'flex';
-        });
+    document.getElementById('subtotal-orden').textContent = subtotal.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+    document.getElementById('iva-orden').textContent = iva.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+    document.getElementById('total-orden').textContent = total.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+}
+
+/**
+ * Dibuja la tabla principal con los productos que están en la orden.
+ */
+function renderizarTablaOrden() {
+    const cuerpoTabla = document.getElementById('cuerpo-tabla-orden');
+    const mensajeVacio = document.getElementById('mensaje-tabla-vacia');
+    cuerpoTabla.innerHTML = '';
+
+    if (productosEnOrden.length === 0) {
+        mensajeVacio.style.display = 'block';
     } else {
-        console.error("No se encontró el botón 'Nueva Factura' o el modal correspondiente.");
+        mensajeVacio.style.display = 'none';
+        const fragment = document.createDocumentFragment();
+        productosEnOrden.forEach(p => fragment.appendChild(crearFilaProductoEnOrden(p)));
+        cuerpoTabla.appendChild(fragment);
     }
+    actualizarTotales();
 }
 
 
-export function configurarFormularioAgregar(recargarFacturasCallback) {
-    const form = document.getElementById('formNuevaFactura');
-    const inputImporte = document.getElementById('nuevoImporte');
-    const inputIva = document.getElementById('nuevoIva');
-    const inputTotal = document.getElementById('nuevoTotal');
-    const modal = document.getElementById('modalNuevaFactura');
+export function agregarProductoAOrden(producto) {
+    const yaExiste = productosEnOrden.find(p => p.idProducto === producto.idProducto);
 
-    if (!form || !inputImporte || !inputIva || !inputTotal || !modal) {
-        console.error("Faltan elementos en el formulario de nueva factura.");
-        return;
+    if (yaExiste) {
+        alert(`El producto "${producto.nombre}" ya está en la orden.`);
+    } else {
+        productosEnOrden.push(producto);
+        renderizarTablaOrden();
     }
+}
 
-    // Cálculo automático de IVA y Total
-    inputImporte.addEventListener('input', () => {
-        const importe = parseFloat(inputImporte.value) || 0;
-        const iva = importe * 0.21;
-        const total = importe + iva;
-        inputIva.value = iva.toFixed(2);
-        inputTotal.value = total.toFixed(2);
+/**
+ * Configura los eventos de la tabla principal (cambiar cantidad, eliminar item).
+ */
+export function configurarTablaPrincipal() {
+    const cuerpoTabla = document.getElementById('cuerpo-tabla-orden');
+    cuerpoTabla.addEventListener('change', (e) => {
+        if (e.target.classList.contains('input-cantidad')) {
+            const id = parseInt(e.target.closest('tr').dataset.idProducto, 10);
+            const nuevaCantidad = parseInt(e.target.value, 10);
+            
+            const producto = productosEnOrden.find(p => p.idProducto === id);
+            if (producto) producto.cantidad = nuevaCantidad;
+            
+            renderizarTablaOrden();
+        }
     });
 
-    // Envío del formulario
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const nuevaFactura = {
-            numero: document.getElementById('nuevoNumero').value,
-            fecha: document.getElementById('nuevoFecha').value,
-            cuitCliente: document.getElementById('nuevoCuit').value,
-            nombreCliente: document.getElementById('nuevoNombre').value,
-            importe: parseFloat(inputImporte.value),
-            iva: parseFloat(inputIva.value),
-            total: parseFloat(inputTotal.value)
-        };
-
-        try {
-            await CreateFactura(nuevaFactura);
-            alert("Factura agregada con éxito.");
-            modal.style.display = "none";
-            form.reset();
-            if (recargarFacturasCallback) {
-                recargarFacturasCallback(); // Llama a la función para recargar y mostrar los datos actualizados.
-            }
-        } catch (error) {
-            alert("Error al agregar la factura.");
-            console.error("Error en CreateFactura:", error);
+    cuerpoTabla.addEventListener('click', (e) => {
+        if (e.target.classList.contains('boton-eliminar-item')) {
+            const id = parseInt(e.target.closest('tr').dataset.idProducto, 10);
+            productosEnOrden = productosEnOrden.filter(p => p.idProducto !== id);
+            renderizarTablaOrden();
         }
     });
 }
 
 /**
- * Configura el botón de cierre (la 'X') del modal de agregar.
+ * Configura el botón final "Registrar Orden".
  */
-export function configurarCierreModalAgregar() {
-    const botonCerrar = document.getElementById('cerrarModalNueva');
-    const modal = document.getElementById('modalNuevaFactura');
+export function configurarBotonRegistrar() {
+    const botonRegistrar = document.getElementById('btn-registrar-orden');
+    botonRegistrar.addEventListener('click', async () => {
+        const idProveedor = document.getElementById('selector-proveedor').value;
+        const fecha = document.getElementById('fecha-orden').value;
 
-    if (botonCerrar && modal) {
-        botonCerrar.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-    }
+        if (!idProveedor) {
+            alert("Por favor, seleccione un proveedor.");
+            return;
+        }
+        if (productosEnOrden.length === 0) {
+            alert("Debe agregar al menos un producto a la orden.");
+            return;
+        }
+
+        const ordenParaEnviar = {
+            idProveedor: parseInt(idProveedor, 10),
+            fechaRegistro: fecha,
+            detalle: productosEnOrden.map(p => ({
+                idProducto: p.idProducto,
+                cantidad: p.cantidad,
+                precio: p.precio
+            }))
+        };
+        
+        try {
+            await CreateOrdenCompra(ordenParaEnviar);
+            alert("¡Orden de compra registrada con éxito!");
+            // Limpiar todo para una nueva orden
+            productosEnOrden = [];
+            document.getElementById('selector-proveedor').value = '';
+            renderizarTablaOrden();
+        } catch(error) {
+            console.error("Error al registrar la orden:", error);
+            alert("No se pudo registrar la orden de compra.");
+        }
+    });
+
 }

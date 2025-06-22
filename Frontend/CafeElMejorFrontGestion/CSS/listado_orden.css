@@ -22,7 +22,6 @@
     --color-barra-cabecera-texto: #ffffff;
 }
 /* --- Estilos Generales para la página de Listado de Órdenes --- */
-/* --- Estilos Generales para la página de Listado de Órdenes --- */
 .contenedor-listado {
     /* CORRECCIÓN 1: Contenedor más grande */
     width: 95%;
@@ -116,7 +115,7 @@ hr.linea-divisoria {
 .tabla-ordenes th {
     background-color: var(--color-cabecera-tabla);
     padding: 12px 15px;
-    text-align: center;
+    text-align: left;
     font-weight: 600;
     color: var(--color-secundario);
     border-bottom: 2px solid var(--color-borde-suave);
@@ -137,7 +136,7 @@ hr.linea-divisoria {
 }
 
 td.acciones {
-    display: left;
+    display: flex;
     gap: 8px;
     justify-content: flex-start; /* Alinea los botones al inicio de la celda */
 }
@@ -174,4 +173,99 @@ td.acciones {
 }
 .boton-accion-tabla.eliminar:hover { 
     background-color: var(--color-boton-eliminar-hover); 
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| ESTILOS PARA EL MODAL DE EDICIÓN
+|--------------------------------------------------------------------------
+*/
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-contenido-grande {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+    position: relative;
+    width: 95%;
+    max-width: 1200px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-contenido-grande h3 {
+    margin-top: 0;
+    color: var(--color-secundario);
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+.cerrar-modal:hover {
+    color: #333;
+}
+
+/* Estilos para el contenido del modal (reutilizando clases de nueva_orden.css) */
+.panel-principal-modal {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.contenedor-tabla-modal {
+    flex-grow: 1; /* Permite que la tabla ocupe el espacio disponible */
+    overflow-y: auto; /* Scroll si hay muchos productos */
+    min-height: 200px; /* Altura mínima para que no se colapse */
+    border: 1px solid var(--color-borde-suave);
+    border-radius: 8px;
+}
+
+.tabla-orden-compra-modal {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-orden-compra-modal th {
+    background-color: var(--color-cabecera-tabla);
+    padding: 12px;
+    text-align: left;
+    position: sticky; /* Encabezados fijos dentro del scroll del modal */
+    top: 0;
+}
+
+.tabla-orden-compra-modal td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.panel-final-orden-modal {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    gap: 30px;
+    align-items: center;
 }

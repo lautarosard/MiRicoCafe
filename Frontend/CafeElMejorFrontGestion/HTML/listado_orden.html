@@ -6,6 +6,9 @@
     <title> Listado Ordenes de Compra - Gestion cafe el mejor </title>
     <link rel="stylesheet" href="./../CSS/styles.css">
     <link rel="stylesheet" href="./../CSS/listado_orden.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="./../Javascript/main.js"></script>
+
 </head>
 <body>
 
@@ -77,13 +80,24 @@
         </table>
         </div>
     </div>
+   
+<div id="modalVerOC" class="modal-superposicion">
+    <div class="modal-contenido">
+        <span class="cerrar-modal" id="cerrarModalVer">&times;</span>
+        <h3>Detalles de la Orden de compras</h3>
+        <div id="detallesOCContenido">
+            </div>
+    </div>
+</div>
 
 
     <div id="modalConfirmarEliminar" class="modal" style="display: none;">
         <div class="modal-contenido">
             <h3 id="tituloModalEliminar">Confirmar Eliminación</h3>
             <p id="mensajeConfirmacionEliminar">
-                ¿Realmente deseas eliminar la orden de compra: <strong id="nombreProductoEliminar">[Nombre del Producto]</strong>?
+
+                Realmente deseas eliminar la orden de compras: <strong id="idOCEliminar">[id OC]</strong>?
+
             </p>
             <div class="botones-modal">
                 <button type="button" id="botonConfirmarSi" class="boton-peligro">Sí, eliminar</button>
@@ -93,6 +107,8 @@
     </div>
 
 
+<!-- Modal para editar Orden de compra -->
+=======
     
 <div id="modalVerOC" class="modal-superposicion">
     <div class="modal-contenido">
@@ -103,8 +119,70 @@
     </div>
 </div>
 
+
+
+    <div id="modalEditarOrden" class="modal">
+        <div class="modal-contenido-grande">
+            <span class="cerrar-modal" id="cerrarModalEditarOrden">&times;</span>
+            <h3>Editar Orden de Compra <span id="numeroOrdenEditada"></span></h3>
+            
+            <hr class="linea-divisoria">
+
+            <section class="panel-principal-modal">
+                <div class="campo-formulario">
+                    <label for="selector-proveedor-edit">Nombre del Proveedor</label>
+                    <select id="selector-proveedor-edit" name="proveedor-edit" disabled>
+                        </select>
+                </div>
+                <div class="campo-formulario">
+                    <label for="fecha-orden-edit">Fecha de Orden</label>
+                    <input type="date" id="fecha-orden-edit" name="fecha-edit">
+                </div>
+                <div class="area-boton-agregar">
+                    <button id="btn-abrir-modal-productos-edit" class="boton-accion">
+                        + Agregar Producto
+                    </button>
+                </div>
+            </section>
+
+            <section class="panel-lista-productos-modal">
+                <div class="contenedor-tabla-modal">
+                    <table class="tabla-orden-compra-modal">
+                        <thead>
+                            <tr>
+                                <th>Nombre del Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unit.</th>
+                                <th>Subtotal</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpo-tabla-orden-edit">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <section class="panel-final-orden-modal">
+                <div class="resumen-totales">
+                    <div class="linea-total">
+                        <span>Subtotal</span>
+                        <span id="subtotal-orden-edit">$0.00</span>
+                    </div>
+                    <div class="linea-total">
+                        <span>IVA (21%)</span>
+                        <span id="iva-orden-edit">$0.00</span>
+                    </div>
+                    <div class="linea-total grande">
+                        <span>Total</span>
+                        <span id="total-orden-edit">$0.00</span>
+                    </div>
+                </div>
+                <div class="area-registro">
+                    <button id="btn-guardar-cambios" class="boton-registrar">Guardar Cambios</button>
+                </div>
+            </section>
+        </div>
+    </div>
 </body>
-
-
-
 </html>
