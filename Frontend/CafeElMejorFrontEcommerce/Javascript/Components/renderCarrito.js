@@ -5,7 +5,7 @@ export function crearCardProductoCarrito(producto) {
 
     const cardElement = document.createElement('div');
     cardElement.classList.add('producto-card-carrito');
-    cardElement.dataset.productoId = producto.idProducto; // usa producto.idProducto aquí
+    cardElement.dataset.productoId = producto.productoId; // usa productoId correctamente
 
     cardElement.innerHTML = ` 
         <div class="producto-info">
@@ -18,7 +18,7 @@ export function crearCardProductoCarrito(producto) {
                     value="${isNaN(quantity) ? 1 : quantity}" 
                     min="1" 
                     class="cantidad-input" 
-                    data-id="${producto.idProducto}"
+                    data-id="${producto.productoId}" 
                 >
             </div>
         </div>
@@ -28,8 +28,8 @@ export function crearCardProductoCarrito(producto) {
         <button 
             class="btn-eliminar-producto" 
             title="Eliminar Producto" 
-            data-id="${producto.idProducto}" <!-- muy importante -->
-        >
+            data-id="${producto.productoId}" <!-- correcto -->
+        
             &times;
         </button>
     `;
