@@ -11,11 +11,7 @@ import { configurarBusquedaFacturas } from './../Handlers/FacturaHandler/BuscarF
 
 // --- 2. FUNCIÓN PRINCIPAL DE RENDERIZADO ---
 
-/**
- * Obtiene las facturas desde la API y las muestra en la tabla.
- * Esta función es el corazón de la visualización de datos.
- * @param {Array<object>} [facturas] - Un array opcional de facturas ya filtradas para mostrar. Si no se provee, las busca desde la API.
- */
+
 async function renderizarFacturasEnTabla(facturas) {
     const tablaBody = document.querySelector('.tabla-facturas tbody');
     if (!tablaBody) {
