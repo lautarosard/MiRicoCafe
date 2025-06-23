@@ -19,7 +19,8 @@ export function configurarFormularioAgregar(cargarProductos) {
         categoria: document.getElementById('addCategoria').value,
         descripcion: document.getElementById('addDescripcion').value,
         stock: document.getElementById('addStock').value,
-        precio: document.getElementById('addPrecio').value
+        precio: document.getElementById('addPrecio').value,
+        imagenUrl: document.getElementById('addUrl').value
     };
 
     try {

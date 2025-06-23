@@ -3,6 +3,7 @@ export function renderCartaProductoPorCategoria(producto) {
     card.classList.add('producto-card');
 
     card.innerHTML = `
+        <img class="producto-imagen" src="${producto.imagenUrl}" alt="${producto.nombre}">
         <h2 class="producto-nombre">${producto.nombre.toUpperCase()}</h2>
         <p class="producto-precio">$${producto.precio}</p>
         <p class="producto-stock">Stock disponible: ${producto.stock}</p>
