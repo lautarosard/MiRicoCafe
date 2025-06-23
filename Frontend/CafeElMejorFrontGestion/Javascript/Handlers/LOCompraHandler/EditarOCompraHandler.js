@@ -4,7 +4,7 @@ import { GetByOrdenDeCompraId as GetOrdenById, UpdateOrdenDeCompra as UpdateOrde
  * Handler para toda la funcionalidad de edición de una orden de compra.
  */
 
-import { crearFilaProductoEnOrden } from './../../Components/renderProductoenOrden.js';
+import { crearFilaProductoEnOrden } from './../../Components/OCComponents/renderProductoenOrden.js';
 
 // Variable para mantener el ID de la orden que se está editando.
 let idOrdenActual = null;

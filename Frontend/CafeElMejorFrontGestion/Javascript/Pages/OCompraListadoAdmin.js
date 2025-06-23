@@ -1,5 +1,5 @@
 
-import { GetAll as GetAllOrdenes } from './../../APIs/OCompraApi.js';
+import { GetAll as GetAllOrdenes } from './../APIs/OCompraApi.js';
 
 // Component: Para crear las filas de la tabla. 
 import { crearFilaOrdenCompra } from './../Components/OCListadoComponents/renderTablaListadoOC.js';
@@ -7,7 +7,7 @@ import { crearFilaOrdenCompra } from './../Components/OCListadoComponents/render
 // Handlers: Para la lógica de los botones y modales.
 import { configurarBusqueda } from './../Handlers/LOCompraHandler/BuscarOCompraHandler.js';
 import { configurarCierreModalVer } from './../Handlers/LOCompraHandler/ConsultarOCompraHandler.js';
-import { configurarFormularioEditar, configurarCierreModalEditar } from './../Handlers/LOCompraHandler/EditarOCompraHandler.js';
+import { configurarModalEdicion, configurarCierreModalEditar } from './../Handlers/LOCompraHandler/EditarOCompraHandler.js';
 
 
 // --- 2. FUNCIÓN PRINCIPAL DE RENDERIZADO ---
@@ -58,7 +58,7 @@ export function iniciarPaginaListadoOrdenes() {
 
     // 3. Configura el formulario para guardar los cambios del modo edición.
     // Le pasamos 'cargarOrdenes' para que refresque la lista después de guardar.
-    configurarFormularioEditar(cargarOrdenes);
+    configurarModalEdicion(cargarOrdenes);
 
     // 4. Realiza la carga inicial de todas las órdenes al abrir la página.
     cargarOrdenes();

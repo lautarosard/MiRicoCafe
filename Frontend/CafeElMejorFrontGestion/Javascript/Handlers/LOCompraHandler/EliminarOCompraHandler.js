@@ -1,5 +1,3 @@
-
-
 import {DeleteOrdenDeCompraId as DeleteOrdenById} from './../../APIs/OCompraApi.js';
 
 export function configurarModalEliminarOrden(fila, orden) {
