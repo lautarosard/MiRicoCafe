@@ -66,7 +66,7 @@ export function iniciarPaginaLogin() {
 
             // Intento de login
             const response = await AuthAdmin.loginCliente(usuario, password);
-            
+            localStorage.setItem("Rol", response.rol);             // Guardar rol
             // Verificación de respuesta
             if (!response?.token) {
                 throw new Error('Respuesta inválida del servidor');
@@ -78,7 +78,7 @@ export function iniciarPaginaLogin() {
 
             // 2. Avisamos al usuario y redirigimos
             alert('¡Inicio de sesión exitoso!');
-            window.location.href = 'index.html'; // O a la página de perfil, etc.
+           // window.location.href = 'index.html'; // O a la página de perfil, etc.
 
 
         } catch (error) {

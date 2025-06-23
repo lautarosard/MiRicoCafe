@@ -75,14 +75,4 @@ export async function UpdateOrdenDeCompra(id, ordenActualizada) {
 }
 
 
-// // Elimina un producto de una orden de compra
-// export async function BorrarProductoDeOrden(idOrden, idProducto) {
-//     try {
-//         const response = await axios.put(`${API_BASE}/${idOrden}?idProducto=${idProducto}`);
-//         return response.data;
-//     } catch (error) {
-//         console.error(`Error al borrar producto ${idProducto} de orden ${idOrden}:`, error);
-//         throw error;
-//     }
-// }
 

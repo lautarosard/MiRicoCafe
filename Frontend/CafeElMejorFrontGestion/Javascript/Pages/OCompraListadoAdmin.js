@@ -10,6 +10,7 @@ import { configurarCierreModalVer } from './../Handlers/LOCompraHandler/Consulta
 import { configurarModalEdicion, configurarCierreModalEditar } from './../Handlers/LOCompraHandler/EditarOCompraHandler.js';
 
 
+
 // --- 2. FUNCIÓN PRINCIPAL DE RENDERIZADO ---
 
 async function cargarOrdenes(ordenes = null) {

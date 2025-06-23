@@ -126,7 +126,7 @@ namespace Infrastructure.Command
                     return; // O podrías lanzar excepción
 
                 // Devolver stock
-                item.Producto.Stock += item.Cantidad;
+                //item.Producto.Stock += item.Cantidad;
 
                 // Eliminar ítem
                 _context.itemCarritos.Remove(item);

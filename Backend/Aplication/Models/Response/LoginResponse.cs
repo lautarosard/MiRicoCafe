@@ -11,6 +11,7 @@ namespace Aplication.Models.Request
         public string Token { get; set; }
         public int? ClienteId { get; set; } = null!;
         public string Username { get; set; } = null!;
+        public string Rol { get; set; }
 
     }
 }

@@ -1,6 +1,3 @@
-/**
- * Handler para la funcionalidad de consultar (ver) los detalles de una orden de compra.
- */
 
 // 1. IMPORTACIONES NECESARIAS
 import { GetByOrdenDeCompraId as GetOrdenById } from './../../APIs/OCompraApi.js';
@@ -12,11 +9,7 @@ function formatearMoneda(numero) {
     return numero.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
 }
 
-/**
- * Abre el modal para ver los detalles de una orden de compra,
- * cargando la información completa desde la API para evitar errores.
- * @param {object} ordenResumen - El objeto de orden resumido que viene de la fila de la tabla.
- */
+
 export async function abrirModalVerOrden(ordenResumen) {
     
     // --- INICIO DE LA CORRECCIÓN ---

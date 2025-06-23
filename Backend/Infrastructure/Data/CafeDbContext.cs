@@ -113,7 +113,7 @@ namespace Infrastructure.Data
                 entity.HasOne(item => item.Producto)
                       .WithMany(p => p.ItemsOrdenDeCompra) // Un producto puede estar en muchos ítems
                       .HasForeignKey(item => item.ProductoId) // La FK es ProductoId
-                      .OnDelete(DeleteBehavior.Restrict); // No permitir borrar un producto si está en una OC.
+                      .OnDelete(DeleteBehavior.Cascade); // No permitir borrar un producto si está en una OC.
             });
 
 
@@ -194,7 +194,7 @@ namespace Infrastructure.Data
             .HasOne(fi => fi.Producto)
             .WithMany(p => p.FacturaItems)  
             .HasForeignKey(fi => fi.ProductoId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Cascade);
 
             // Relación Factura-FacturaItem (corregida)
             modelBuilder.Entity<FacturaItem>()

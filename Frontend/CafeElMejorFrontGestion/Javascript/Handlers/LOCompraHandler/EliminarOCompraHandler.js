@@ -1,4 +1,4 @@
-import {DeleteOrdenDeCompraId as DeleteOrdenById} from './../../APIs/OCompraApi.js';
+import { DeleteOrdenDeCompraId } from './../../APIs/OCompraApi.js';
 
 export function configurarModalEliminarOrden(fila, orden) {
     const modal = document.getElementById('modalConfirmarEliminar');
@@ -18,7 +18,7 @@ export function configurarModalEliminarOrden(fila, orden) {
     // Se usa '.onclick' para reemplazar cualquier listener anterior y evitar múltiples eliminaciones.
     botonSi.onclick = async () => {
         try {
-            await DeleteOrdenById(orden.idOrdenDeCompra); // Llama a la API para eliminar.
+            await DeleteOrdenDeCompraId(orden.idOrdenDeCompra); // Llama a la API para eliminar.
             fila.remove(); // Elimina la fila del DOM si la API tuvo éxito.
             modal.style.display = 'none';
         } catch (error) {

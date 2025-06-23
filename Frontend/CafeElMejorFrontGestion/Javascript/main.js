@@ -6,6 +6,10 @@ import { iniciarPaginaListadoOrdenes } from './Pages/OCompraListadoAdmin.js';
 import { iniciarPaginaNuevaOrden } from './Pages/OCompraAdmin.js';
 import { iniciarPaginaFacturas } from './Pages/FacturaAdmin.js';
 
+//import { iniciarCerrarSesion } from './Handlers/AuthHandler/CerrarSesion.js';
+import { iniciarCerrarSesion } from './Handlers/IndexHandler.js';
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const rutaActual = window.location.pathname;
@@ -32,6 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (rutaActual.includes("nueva_orden.html")) {
         iniciarPaginaNuevaOrden();
+    }
+    if(rutaActual.includes("registrarse.html")){
+ //           iniciarPaginaRegistro();
+        }
+        
+    if(rutaActual.includes("index.html")){
+            iniciarCerrarSesion();
     }
 /*
     if (rutaActual.includes("listado_orden.html")) {

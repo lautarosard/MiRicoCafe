@@ -72,7 +72,8 @@ namespace Aplication.Service
             {
                 Token = token,
                 ClienteId = usuario.ClienteId,
-                Username = usuario.Username
+                Username = usuario.Username,
+                Rol = usuario.Rol
             };
         }
 

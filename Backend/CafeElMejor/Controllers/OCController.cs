@@ -54,7 +54,7 @@ namespace CafeElMejor.Controllers
             var result = await _service.GetAll();
             return new JsonResult(result);
         }
-        [HttpGet("OrdenDeCompra/{id}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetByOrdenDeCompraId(int id)
@@ -79,7 +79,7 @@ namespace CafeElMejor.Controllers
             }
         }
 
-        [HttpPut("OrdenDeCompraupdate/{id}")]
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdataOrdenDeCompra(int id, [FromBody] OCRequest requests)
@@ -106,7 +106,7 @@ namespace CafeElMejor.Controllers
             }
         }
 
-        [HttpDelete("OrdenDeCompradelete/{id}")]
+        [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> DeleteOrdenDeCompraId(int id)

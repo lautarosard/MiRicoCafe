@@ -62,12 +62,12 @@ namespace Aplication.Service
                 BackUrls = new PreferenceBackUrlsRequest
                 {
 
-                    Success = "https://www.google.com",
-                    Failure = "https://www.google.com",
-                    Pending = "https://www.google.com"
+                    Success = "http://localhost:5500/CafeElMejorFrontEcommerce/HTML/productos.html",
+                    Failure = "http://localhost:5500/CafeElMejorFrontEcommerce/HTML/productos.html",
+                    Pending = "http://localhost:5500/CafeElMejorFrontEcommerce/HTML/productos.html"
 
                 },
-                AutoReturn = "approved"
+                //AutoReturn = "approved"
             };
 
             var client = new PreferenceClient();

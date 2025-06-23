@@ -33,6 +33,7 @@ namespace CafeElMejor.Controllers
             try
             {
                 var response = await _service.LoginAsync(request.Usuario, request.Password);
+                
                 return Ok(response);
             }
             catch (Exception ex)
@@ -73,7 +74,8 @@ namespace CafeElMejor.Controllers
             var admin = new UsuarioRequest
             {
                 Username = "admin",
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword("contraseña")
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword("contraseña"),
+                //Rol = "Admin" //Borra esto para admin
             };
 
             await _usuarioService.CreateUsuario(admin);
