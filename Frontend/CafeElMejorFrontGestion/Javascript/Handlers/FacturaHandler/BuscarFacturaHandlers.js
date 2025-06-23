@@ -3,8 +3,8 @@ import { crearFilaFactura } from './../../Components/FacturasComponents/renderFa
 
 
 export function configurarBusquedaFacturas(renderizarTablaCallback) {
-    const inputBuscar = document.getElementById('Buscar');
-    const botonBuscar = document.querySelector('botonBuscar');
+    const inputBuscar = document.getElementById('buscar');
+    const botonBuscar = document.getElementById('botonBuscar');
     const cuerpoTabla = document.querySelector('.tabla-facturas tbody');
 
 
@@ -36,11 +36,11 @@ export function configurarBusquedaFacturas(renderizarTablaCallback) {
                     const fila = crearFilaFactura(factura);
                     cuerpoTabla.appendChild(fila);
                 } else {
-                    cuerpoTabla.innerHTML = '<tr><td colspan="9">No se encontró ningún proveedor con ese CUIT</td></tr>';
+                    cuerpoTabla.innerHTML = '<tr><td colspan="9">No se encontró ninguna factura con ese ID</td></tr>';
                 }
 
             } catch (error) {
-                cuerpoTabla.innerHTML = '<tr><td colspan="9">Error al buscar proveedor</td></tr>';
+                cuerpoTabla.innerHTML = '<tr><td colspan="9">Error al buscar factura</td></tr>';
                 console.error(error);
             }
         });

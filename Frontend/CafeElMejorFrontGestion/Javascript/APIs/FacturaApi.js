@@ -19,7 +19,7 @@ export async function GetAll(){
 //Obtiene un Producto por id
 export async function GetByFacturaId(id){
     try{
-        const response = await axios.get(`${API_BASE}/Factura/${id}`);
+        const response = await axios.get(`${API_BASE}/${id}`);
         return response.data;
         } catch (error){
             console.error('Error al obtener facturas: ', error);
