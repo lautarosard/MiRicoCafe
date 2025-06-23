@@ -61,9 +61,9 @@ namespace Aplication.Service
                 Items = items,
                 BackUrls = new PreferenceBackUrlsRequest
                 {
-                    Success = "https://tudominio.com/pago/exito",
-                    Failure = "https://tudominio.com/pago/fallo",
-                    Pending = "https://tudominio.com/pago/pendiente"
+                    Success = "https://www.google.com",
+                    Failure = "https://www.google.com",
+                    Pending = "https://www.google.com"
                 },
                 AutoReturn = "approved"
             };
@@ -71,7 +71,7 @@ namespace Aplication.Service
             var client = new PreferenceClient();
             Preference preference = await client.CreateAsync(preferenciaRequest);
 
-            return preference.InitPoint;
+            return preference.SandboxInitPoint;
         }
 
     }
