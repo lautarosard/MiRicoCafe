@@ -40,10 +40,7 @@ function renderizarTablaOrden() {
     actualizarTotales();
 }
 
-/**
- * Agrega un producto a la lista de la orden actual y refresca la tabla.
- * @param {object} producto - El producto seleccionado en el modal.
- */
+
 export function agregarProductoAOrden(producto) {
     const yaExiste = productosEnOrden.find(p => p.idProducto === producto.idProducto);
 
@@ -114,7 +111,7 @@ export function configurarBotonRegistrar() {
         const ordenParaEnviar = {
             idProveedor: parseInt(idProveedor, 10),
             fechaRegistro: fecha, // El backend espera 'fechaRegistro'
-            detalle: productosEnOrden.map(p => ({
+            Detalles: productosEnOrden.map(p => ({
                 productoId: p.idProducto,        // El backend espera 'productoId'
                 cantidad: parseInt(p.cantidad, 10),
                 precioUnitario: p.precio         // El backend espera 'precioUnitario'
