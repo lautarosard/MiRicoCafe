@@ -50,30 +50,40 @@
         <div class="titulo">
         <h2>Facturas</h2>
         </div>
-        
+        <div>
+        <button class="nuevo">Nueva Factura</button>
+        </div>
     </div>
 
     <hr class="linea-divisoria" />
 
         <div class="opciones-facturas">
             <input type="search" id="buscar" name="buscar" placeholder="Ingrese numero de factura..." list="opciones">
-            <div><button id="botonBuscar" class="nuevo">Buscar</button> </div>
+            <button id="botonBuscar" class="boton-nuevo">Buscar</button>
             </div>
 
 
     <table class="tabla-facturas">
-    <thead>
-    <tr>
-        <th>Número</th>
-        <th>Fecha de Emisión</th>
-        <th>ID Cliente</th>
-        <th>CUIT Cliente</th>
-        <th>Total</th>
-        <th>Acciones</th>
-    </tr>
-</thead>
+        <thead>
+        <tr>
+            <th>Numero</th>
+            <th>Fecha de Emision</th>
+            <th>Cuit Cliente</th>
+            <th>Nombre Cliente</th>
+            <th>Importe</th>
+            <th>IVA</th>
+            <th>Total</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
         <tbody>
-    
+        <tr>
+            <td class="actions">
+                <button class="view" title="Ver">VER</button>
+            </td>
+            
+
+        </tr>
         </tbody>
     </table>
     </div>
@@ -126,6 +136,5 @@
             </div>
     </div>
 </div>
-
 </body>
 </html>

@@ -1,6 +1,7 @@
 export function crearFilaProductoEnModal(producto) {
     const fila = document.createElement('tr');
 
+    fila.dataset.producto = JSON.stringify(producto);
     fila.innerHTML = `
         <td>${producto.idProducto}</td>
         <td>${producto.nombre}</td>

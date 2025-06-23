@@ -1,4 +1,3 @@
-
 import { GetAll } from './../../APIs/ProveedorApi.js'; 
 
 // Asumimos que tienes este componente que crea un <option>.
@@ -37,7 +36,7 @@ export async function cargarProveedoresEnSelector() {
 }
 
 /**
- * Configura la fecha de la orden para que no se pueda seleccionar un día anterior al actual.
+ * Configura la fecha de la orden para que no se pueda seleccionar un dÃa anterior al actual.
  */
 export function configurarFechaMinima() {
     const inputFecha = document.getElementById('fecha-orden');

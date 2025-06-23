@@ -12,7 +12,7 @@ namespace Aplication.Models.Request
 
 
         //FK OrdenDeCompra 1-X
-        public int IdOrdenDeCompra { get; set; }
+        //public int? IdOrdenDeCompra { get; set; } //Es lo que pieso
         //public OrdenDeCompra ordenDeCompra { get; set; } = null!;
 
         //FK producto 1-1

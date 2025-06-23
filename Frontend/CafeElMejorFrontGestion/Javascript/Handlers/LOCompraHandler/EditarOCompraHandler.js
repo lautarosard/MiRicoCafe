@@ -1,4 +1,3 @@
-
 import { GetByOrdenDeCompraId as GetOrdenById, UpdateOrdenDeCompra as UpdateOrden } from './../../APIs/OCompraApi.js';
 /**
  * Handler para toda la funcionalidad de edición de una orden de compra.
@@ -42,7 +41,7 @@ function recalcularTotalesModal() {
 
 export async function abrirModalEditarOrden(orden) {
     const modal = document.getElementById('modalEditarOrden');
-    idOrdenActual = orden.idOrden; // Guardamos el ID de la orden actual.
+    idOrdenActual = orden.idOrdenDeCompra; // Guardamos el ID de la orden actual.
 
     if (!modal) return;
 
@@ -118,7 +117,7 @@ export function configurarModalEdicion(recargarOrdenesCallback) {
 
         // 2. Construir el objeto para la API
         const datosParaEnviar = {
-            idOrdenDeCompra: idOrdenActual,
+            //idOrdenDeCompra: idOrdenActual,
             fechaRegistro: fechaActualizada,
             detalle: detalleActualizado
         };

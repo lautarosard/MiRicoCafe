@@ -1,7 +1,8 @@
 
-import { CreateOrdenDeCompra as CreateOrdenCompra } from './../../APIs/OCompraApi.js';
+import { CreateOrdenDeCompra as CreateOrdenDeCompra } from './../../APIs/OCompraApi.js';
 import { crearFilaProductoEnOrden } from './../../Components/OCComponents/renderTablaOC.js';
 
+// Guardamos los productos de la orden actual en un array en memoria.
 // Guardamos los productos de la orden actual en un array en memoria.
 let productosEnOrden = [];
 
@@ -13,9 +14,11 @@ function actualizarTotales() {
     const iva = subtotal * 0.21;
     const total = subtotal + iva;
 
-    document.getElementById('subtotal-orden').textContent = subtotal.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
-    document.getElementById('iva-orden').textContent = iva.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
-    document.getElementById('total-orden').textContent = total.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+    const formatear = (num) => num.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+
+    document.getElementById('subtotal-orden').textContent = formatear(subtotal);
+    document.getElementById('iva-orden').textContent = formatear(iva);
+    document.getElementById('total-orden').textContent = formatear(total);
 }
 
 /**
@@ -43,10 +46,19 @@ export function agregarProductoAOrden(producto) {
 
     if (yaExiste) {
         alert(`El producto "${producto.nombre}" ya está en la orden.`);
-    } else {
-        productosEnOrden.push(producto);
-        renderizarTablaOrden();
+        return;
     }
+
+    // --- CORRECCIÓN 1: Guardamos un objeto simple, solo con lo que necesitamos. ---
+    const productoParaOrden = {
+        idProducto: producto.idProducto,
+        nombre: producto.nombre,
+        precio: producto.precio,
+        cantidad: 1 // La cantidad inicial siempre es 1.
+    };
+    
+    productosEnOrden.push(productoParaOrden);
+    renderizarTablaOrden();
 }
 
 /**
@@ -60,9 +72,11 @@ export function configurarTablaPrincipal() {
             const nuevaCantidad = parseInt(e.target.value, 10);
             
             const producto = productosEnOrden.find(p => p.idProducto === id);
-            if (producto) producto.cantidad = nuevaCantidad;
+            if (producto) {
+                producto.cantidad = nuevaCantidad >= 1 ? nuevaCantidad : 1; // La cantidad no puede ser menor a 1
+            }
             
-            renderizarTablaOrden();
+            renderizarTablaOrden(); // Redibuja la tabla para actualizar subtotales
         }
     });
 
@@ -93,27 +107,31 @@ export function configurarBotonRegistrar() {
             return;
         }
 
+        // --- CORRECCIÓN 2: Construimos el objeto para la API con la estructura exacta. ---
         const ordenParaEnviar = {
             idProveedor: parseInt(idProveedor, 10),
-            fechaRegistro: fecha,
-            detalle: productosEnOrden.map(p => ({
-                idProducto: p.idProducto,
-                cantidad: p.cantidad,
-                precio: p.precio
+            fechaRegistro: fecha, // El backend espera 'fechaRegistro'
+            Detalles: productosEnOrden.map(p => ({
+                productoId: p.idProducto,        // El backend espera 'productoId'
+                cantidad: parseInt(p.cantidad, 10),
+                precioUnitario: p.precio         // El backend espera 'precioUnitario'
             }))
         };
         
+        console.log("Enviando a la API:", ordenParaEnviar);
+
         try {
-            await CreateOrdenCompra(ordenParaEnviar);
+            await CreateOrdenDeCompra(ordenParaEnviar);
             alert("¡Orden de compra registrada con éxito!");
             // Limpiar todo para una nueva orden
             productosEnOrden = [];
             document.getElementById('selector-proveedor').value = '';
+            document.getElementById('fecha-orden').value = new Date().toISOString().split('T')[0];
             renderizarTablaOrden();
         } catch(error) {
             console.error("Error al registrar la orden:", error);
-            alert("No se pudo registrar la orden de compra.");
+            const errorMsg = error.response?.data?.title || "No se pudo registrar la orden de compra.";
+            alert(`Error: ${errorMsg}`);
         }
     });
-
 }

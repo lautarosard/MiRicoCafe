@@ -269,3 +269,269 @@ td.acciones {
     gap: 30px;
     align-items: center;
 }
+
+
+/*
+|--------------------------------------------------------------------------
+| CSS MEJORADO PARA EL MODAL DE 'VER ORDEN' (#modalVerOrden)
+|--------------------------------------------------------------------------
+*/
+
+/* --- Estilos para la cabecera del Modal --- */
+#modalVerOrden .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-borde-suave);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+#modalVerOrden .modal-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: var(--color-secundario);
+}
+
+#modalVerOrden .modal-header h2 span {
+    font-weight: 700;
+    color: var(--color-texto-principal);
+}
+
+#modalVerOrden .modal-cerrar-boton {
+    border: none;
+    background: none;
+    font-size: 2.5em;
+    line-height: 1;
+    color: #aaa;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+#modalVerOrden .modal-cerrar-boton:hover {
+    color: #333;
+}
+
+
+/* --- Estilos para el cuerpo del Modal --- */
+#modalVerOrden .modal-body {
+    padding-top: 10px;
+}
+
+/* Contenedor de los datos principales (Fecha, Proveedor, Total) */
+#modalVerOrden .orden-datos-generales {
+    display: flex;
+    justify-content: space-between; /* Espacia los items uniformemente */
+    flex-wrap: wrap; /* Permite que se apilen en pantallas pequeñas */
+    gap: 20px; /* Espacio entre los items */
+    margin-bottom: 25px;
+}
+
+/* Cada bloque de dato individual */
+#modalVerOrden .dato-item {
+    background-color: var(--color-fila-alterna-tabla);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--color-secundario);
+    flex-grow: 1; /* Permite que los items crezcan y ocupen el espacio */
+    min-width: 200px; /* Ancho mínimo antes de que se apilen */
+}
+
+#modalVerOrden .dato-item strong {
+    display: block;
+    font-size: 0.9em;
+    color: var(--color-secundario);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+#modalVerOrden .dato-item span {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--color-texto-principal);
+}
+
+/* Estilo para el Monto Total, para que destaque */
+#modalVerOrden .dato-item .monto-total {
+    color: var(--color-boton-nuevo); /* Un color verde para destacar */
+    font-size: 1.3em;
+}
+
+/* Título de la sección de productos */
+#modalVerOrden .modal-body h4 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: var(--color-secundario);
+    border-bottom: 1px solid var(--color-borde-suave);
+    padding-bottom: 10px;
+}
+
+/* Tabla de productos (reutilizando y mejorando estilos) */
+#modalVerOrden .tabla-estilizada {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#modalVerOrden .tabla-estilizada th {
+    background-color: var(--color-cabecera-tabla);
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-secundario);
+    border-bottom: 2px solid var(--color-borde-suave);
+}
+
+#modalVerOrden .tabla-estilizada td {
+    padding: 15px;
+    border-bottom: 1px solid #e9e9e9;
+    vertical-align: middle;
+}
+
+/* Alineación para números en la tabla */
+#modalVerOrden .tabla-estilizada th:nth-child(2),
+#modalVerOrden .tabla-estilizada td:nth-child(2) {
+    text-align: center;
+}
+
+#modalVerOrden .tabla-estilizada th:nth-child(3),
+#modalVerOrden .tabla-estilizada td:nth-child(3),
+#modalVerOrden .tabla-estilizada th:nth-child(4),
+#modalVerOrden .tabla-estilizada td:nth-child(4) {
+    text-align: right;
+}
+
+/* ===================================================================== */
+/* == CSS MEJORADO PARA EL MODAL DE CONFIRMACIÓN DE ELIMINACIÓN      == */
+/* ===================================================================== */
+
+/* Contenedor principal del modal (el fondo oscuro) */
+#modalConfirmarEliminar.modal {
+    display: none; /* Se muestra con JS cambiando a 'flex' */
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(77, 58, 42, 0.65); /* Marrón oscuro semitransparente de tu paleta */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    backdrop-filter: blur(4px); /* Efecto de desenfoque para el fondo */
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* El cuadro de diálogo del modal */
+#modalConfirmarEliminar .modal-contenido {
+    background-color: var(--color-fondo-input, #fffdf0);
+    padding: 30px;
+    border: 1px solid var(--color-borde-suave, #d1ba9a);
+    width: 100%;
+    max-width: 480px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    transform: scale(0.95);
+    opacity: 0;
+    animation: aparecerModal 0.3s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Animación para la aparición del modal */
+@keyframes aparecerModal {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Icono de advertencia generado con CSS */
+#modalConfirmarEliminar .modal-contenido::before {
+    content: '!';
+    display: block;
+    width: 60px;
+    height: 60px;
+    line-height: 55px;
+    border-radius: 50%;
+    background-color: var(--color-boton-eliminar, #ef4444);
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    margin: -65px auto 20px auto; /* Lo posiciona mitad dentro, mitad fuera */
+    border: 5px solid var(--color-fondo-input, #fffdf0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del modal */
+#modalConfirmarEliminar #tituloModalEliminar {
+    color: var(--color-texto-principal, #4d3a2a);
+    font-size: 1.7em;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Mensaje de confirmación */
+#modalConfirmarEliminar #mensajeConfirmacionEliminar {
+    font-size: 1.1em;
+    color: var(--color-secundario, #8d6c45);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* ID de la orden a eliminar */
+#modalConfirmarEliminar #mensajeConfirmacionEliminar #idOCEliminar {
+    font-weight: 700;
+    color: var(--color-boton-eliminar-hover, #dc2626);
+    background-color: rgba(239, 68, 68, 0.1);
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+/* Contenedor de los botones */
+#modalConfirmarEliminar .botones-modal {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Estilo base para los botones del modal */
+#modalConfirmarEliminar .botones-modal button {
+    padding: 12px 25px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    flex-grow: 1;
+    max-width: 180px;
+}
+
+/* Botón de confirmación (Sí, eliminar) */
+#modalConfirmarEliminar .botones-modal .boton-peligro {
+    background-color: var(--color-boton-eliminar, #ef4444);
+    color: var(--color-texto-boton-accion, #ffffff);
+}
+
+#modalConfirmarEliminar .botones-modal .boton-peligro:hover {
+    background-color: var(--color-boton-eliminar-hover, #dc2626);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+/* Botón para cancelar */
+#modalConfirmarEliminar .botones-modal .boton-secundario {
+    background-color: #fff;
+    color: var(--color-secundario, #8d6c45);
+    border-color: var(--color-borde-suave, #d1ba9a);
+}
+
+#modalConfirmarEliminar .botones-modal .boton-secundario:hover {
+    background-color: var(--color-fila-alterna-tabla, #fefaf0);
+    border-color: var(--color-secundario, #8d6c45);
+    transform: translateY(-3px);
+}
