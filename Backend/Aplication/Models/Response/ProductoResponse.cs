@@ -14,5 +14,7 @@ namespace Aplication.Models.Response
         public string Categoria { get; set; }
         public string Descripcion {  get; set; }
         public int Stock { get; set; }
+
+        public string ImagenUrl { get; set; }
     }
 }

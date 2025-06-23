@@ -46,6 +46,7 @@ namespace Aplication.Service
                 Descripcion = producto.Descripcion,
                 Precio = producto.Precio,
                 Stock = producto.Stock,
+                ImagenUrl = producto.ImagenUrl,
 
             };
         }
@@ -64,13 +65,14 @@ namespace Aplication.Service
             }
             var producto = new Domain.Entities.Producto()
             {
-
+                ImagenUrl = request.imagenUrl,
                 Nombre = request.Nombre,
                 Categoria = request.Categoria,
                 Descripcion = request.Descripcion,
                 Precio = request.Precio,
                 Stock = request.Stock,
                 ItemsOrdenDeCompra = new List<ItemOrdenDeCompra>()
+                
             };
 
             await _command.InsertProducto(producto);
@@ -82,7 +84,7 @@ namespace Aplication.Service
                 Descripcion = producto.Descripcion,
                 Precio = producto.Precio,
                 Stock = producto.Stock,
-
+                ImagenUrl = producto.ImagenUrl,
 
             };
         }
@@ -107,7 +109,7 @@ namespace Aplication.Service
                 Descripcion = producto.Descripcion,
                 Precio = producto.Precio,
                 Stock = producto.Stock,
-
+                ImagenUrl = producto.ImagenUrl,
 
             };
         }
@@ -124,7 +126,7 @@ namespace Aplication.Service
                 Descripcion = producto.Descripcion,
                 Precio = producto.Precio,
                 Stock = producto.Stock,
-
+                ImagenUrl = producto.ImagenUrl,
             }
 
 
@@ -148,6 +150,7 @@ namespace Aplication.Service
 
             var producto = await _query.GetById(id);
 
+            producto.ImagenUrl= request.imagenUrl;
             producto.Nombre = request.Nombre;
             producto.Categoria = request.Categoria;
             producto.Descripcion = request.Descripcion;
@@ -164,7 +167,7 @@ namespace Aplication.Service
                 Descripcion = producto.Descripcion,
                 Precio = producto.Precio,
                 Stock = producto.Stock,
-
+                ImagenUrl = producto.ImagenUrl,
 
             };
 

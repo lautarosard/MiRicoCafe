@@ -15,6 +15,8 @@ namespace Domain.Entities
         public string Descripcion { get; set; }
         public int Stock { get; set; }
 
+        public string ImagenUrl { get; set; }
+
 
 
         //FK -ItemOrdenDeCompra 1-1
