@@ -1,44 +1,48 @@
-import { GetByOrdenDeCompraId as GetOrdenByNumero, GetAll as GetAllOrdenes } from './../../APIs/OCompraApi.js';
+import { GetByOrdenDeCompraId, GetAll } from './../../APIs/OCompraApi.js';
+import { crearFilaOrdenCompra } from './../../Components/OCListadoComponents/renderTablaListadoOC.js';
 
 
-export function configurarBusqueda(renderizarTablaCallback) {
-    const inputBusqueda = document.getElementById('termino-busqueda');
+export function configurarBusquedaOrdenes(cargarOrdenes) {
     const botonBuscar = document.getElementById('btn-buscar');
+    const inputBuscar = document.getElementById('termino-busqueda');
+    const cuerpoTabla = document.querySelector('.tabla-ordenes tbody');
 
-    if (!inputBusqueda || !botonBuscar) {
-        console.error("No se encontraron los elementos de búsqueda en el HTML.");
+    if (!botonBuscar || !inputBuscar || !cuerpoTabla) {
+        console.error("Faltan elementos para la búsqueda de producto");
         return;
     }
 
-    const ejecutarBusqueda = async () => {
-        const termino = inputBusqueda.value.trim();
-        let resultados = [];
+    // Buscar por CUIT al hacer click
+    botonBuscar.addEventListener('click', async () => {
+        const idOrdenDeCompra = inputBuscar.value.trim();
+
+         // Si está vacío, volver a cargar todos los productos
+        if (idOrdenDeCompra === "") {
+            cuerpoTabla.innerHTML = ''; // limpiar tabla
+            const ordenes = await GetAll();
+            ordenes.forEach(p => {
+                const fila = crearFilaProducto(idOrdenDeCompra);
+                cuerpoTabla.appendChild(fila);
+            });
+            return;
+        }
 
         try {
-            if (termino === "") {
-                // Si la búsqueda está vacía, obtenemos todas las órdenes.
-                resultados = await GetAllOrdenes();
+            const producto = await GetByOrdenDeCompraId(idOrdenDeCompra);
+
+            cuerpoTabla.innerHTML = ''; // limpiar tabla
+
+            if (producto) {
+                const fila = crearFilaOrdenCompra(producto);
+                cuerpoTabla.appendChild(fila);
             } else {
-                // Si hay un término, buscamos por ese número de orden.
-                const ordenEncontrada = await GetOrdenByNumero(termino);
-                resultados = ordenEncontrada ? [ordenEncontrada] : []; // La tabla espera un array.
+                cuerpoTabla.innerHTML = '<tr><td colspan="9">No se encontró ningún producto con ese ID</td></tr>';
             }
-            
-            // Llamamos a la función que nos pasaron para que dibuje la tabla con los resultados.
-            renderizarTablaCallback(resultados);
 
         } catch (error) {
-            console.error(`Error al buscar la orden "${termino}":`, error);
-            alert("Error al realizar la búsqueda.");
-            // Opcional: limpiar la tabla en caso de error.
-            renderizarTablaCallback([]);
-        }
-    };
-
-    botonBuscar.addEventListener('click', ejecutarBusqueda);
-    inputBusqueda.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-            ejecutarBusqueda();
+            cuerpoTabla.innerHTML = '<tr><td colspan="9">Error al buscar producto</td></tr>';
+            console.error(error);
         }
     });
+
 }

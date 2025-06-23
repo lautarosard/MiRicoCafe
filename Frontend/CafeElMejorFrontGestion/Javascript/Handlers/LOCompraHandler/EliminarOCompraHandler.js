@@ -12,13 +12,13 @@ export function configurarModalEliminarOrden(fila, orden) {
     }
 
     // Personaliza el mensaje del modal.
-    idSpan.textContent = orden.numeroOrden; // Muestra el número de orden.
+    idSpan.textContent = orden.idOrdenDeCompra; // Muestra el número de orden.
     modal.style.display = 'flex';
 
     // Se usa '.onclick' para reemplazar cualquier listener anterior y evitar múltiples eliminaciones.
     botonSi.onclick = async () => {
         try {
-            await DeleteOrdenById(orden.idOrden); // Llama a la API para eliminar.
+            await DeleteOrdenById(orden.idOrdenDeCompra); // Llama a la API para eliminar.
             fila.remove(); // Elimina la fila del DOM si la API tuvo éxito.
             modal.style.display = 'none';
         } catch (error) {

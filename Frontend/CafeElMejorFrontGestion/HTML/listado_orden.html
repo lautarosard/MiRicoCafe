@@ -11,34 +11,31 @@
 
 </head>
 <body>
-
-<header class="sitio-header">
-    <div class="conetenedor-navegacion">
-        <a href="index.html" class="logo">
-            <img src="./../img/logo.png" alt="[Logo]" class="logo-png" width="350" height="200">
-        </a>
-        <nav class="menu-principal">
-            <ul>
-                <li><a href="proveedores.html">Proveedores</a></li>
-                <li><a href="clienteAdmin.html">Clientes</a></li>
-                <li><a href="productos.html">Productos</a></li>
-                <li><a href="facturas.html">Facturas</a></li>
-                <li class="tiene-submenu"> <a href="nueva_orden.html">Compras</a>
-                    <ul class="submenu"> <li><a href="nueva_orden.html">Nueva orden de compra</a></li>
-                        <li><a href="listado_orden.html">Listado orden de compra</a></li>
+        <header class="sitio-header">
+            <div class="conetenedor-navegacion">
+                <a href="index.html" class="logo">
+                    <img src="./../img/logo.png" alt="[Logo]" class="logo-png" width="350" height="200">
+                </a>
+                <nav class="menu-principal">
+                    <ul>
+                        <li><a href="proveedores.html">Proveedores</a></li>
+                        <li><a href="clienteAdmin.html">Clientes</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="facturas.html">Facturas</a></li>
+                        <li class="tiene-submenu"> <a href="nueva_orden.html">Compras</a>
+                            <ul class="submenu"> <li><a href="nueva_orden.html">Nueva orden de compra</a></li>
+                                <li><a href="listado_orden.html">Listado orden de compra</a></li>
+                            </ul>
+                        </li>
+                        <li class="boton-elegir-modo">
+                            <a href="./../../CafeElMejorFrontEcommerce/HTML/index.html" class="boton">Salir del modo gestion</a>
+                        <li>
                     </ul>
-                </li>
-                <li class="boton-elegir-modo">
-                    <a href="./../../CafeElMejorFrontEcommerce/HTML/index.html" class="boton">Salir del modo gestion</a>
-                <li>
-            </ul>
-        </nav>
-    </div>
+                </nav>
+            </div>
 
-</header>
+        </header>
     
-
-
         <div class="contenedor-listado">
             <div class="cabecera-seccion">
                 <div class="titulo">
@@ -52,7 +49,7 @@
             <!-- Panel de Búsqueda y Filtros -->
             <section class="panel-busqueda">
                 <div class="campo-filtro input-principal">
-                    <input type="search" id="termino-busqueda" placeholder="Ingrese numero de orden.">
+                    <input type="search" id="termino-busqueda" placeholder="Ingrese numero de orden...">
                 </div>
                 <div class="campo-filtro">
                     <button id="btn-buscar" class="boton-buscar">
@@ -64,7 +61,7 @@
         </section>
 
     <div class="contenedor-tabla"> 
-        <table class="tabla-productos">
+        <table class="tabla-ordenes">
             <thead>
                 <tr>
                     <th>Fecha Registro</th>
@@ -80,42 +77,74 @@
         </table>
         </div>
     </div>
-   
-<div id="modalVerOC" class="modal-superposicion">
+
+    <!--<div id="modalVerOC" class="modal-superposicion">
     <div class="modal-contenido">
         <span class="cerrar-modal" id="cerrarModalVer">&times;</span>
         <h3>Detalles de la Orden de compras</h3>
-        <div id="detallesOCContenido">
-            </div>
+        <div id="detallesOCContenido"> -->
+</div>
     </div>
 </div>
 
 
-    <div id="modalConfirmarEliminar" class="modal" style="display: none;">
-        <div class="modal-contenido">
-            <h3 id="tituloModalEliminar">Confirmar Eliminación</h3>
-            <p id="mensajeConfirmacionEliminar">
-
-                Realmente deseas eliminar la orden de compras: <strong id="idOCEliminar">[id OC]</strong>?
-
-            </p>
-            <div class="botones-modal">
-                <button type="button" id="botonConfirmarSi" class="boton-peligro">Sí, eliminar</button>
-                <button type="button" id="botonConfirmarCancelar" class="boton-secundario">Cancelar</button>
-            </div>
+<div id="modalConfirmarEliminar" class="modal" style="display: none;">
+    <div class="modal-contenido">
+        <h3 id="tituloModalEliminar">Confirmar Eliminación</h3>
+        <p id="mensajeConfirmacionEliminar">
+            ¿Realmente deseas eliminar la orden de compra: <strong id="idOCEliminar">[id OC]</strong>?
+        </p>
+        <div class="botones-modal">
+            <button type="button" id="botonConfirmarSi" class="boton-peligro">Sí, eliminar</button>
+            <button type="button" id="botonConfirmarCancelar" class="boton-secundario">Cancelar</button>
         </div>
     </div>
-
+</div>
 
 <!-- Modal para editar Orden de compra -->
-=======
+
     
-<div id="modalVerOC" class="modal-superposicion">
-    <div class="modal-contenido">
-        <span class="cerrar-modal" id="cerrarModalVer">&times;</span>
-        <h3>Detalles de la Orden de Compra</h3>
-        <div id="detallesOCContenido">
+<div id="modalVerOrden" class="modal" style="display: none;">
+    <div class="modal-contenido-grande">
+        <div class="modal-header">
+            <h2>Detalles de la Orden de Compra #<span id="numeroOrdenVer"></span></h2>
+            <button id="cerrarModalVerOrden" class="modal-cerrar-boton">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="orden-datos-generales">
+                <div class="dato-item">
+                    <strong>Fecha de Registro:</strong>
+                    <span id="fechaOrdenVer">--/--/----</span>
+                </div>
+                <div class="dato-item">
+                    <strong>Proveedor:</strong>
+                    <span id="proveedorOrdenVer">Cargando...</span>
+                </div>
+                <div class="dato-item">
+                    <strong>Monto Total:</strong>
+                    <span id="totalOrdenVer" class="monto-total">Cargando...</span>
+                </div>
             </div>
+
+            <hr>
+            <h4>Productos Incluidos</h4>
+            
+            <div class="tabla-contenedor-modal">
+                <table class="tabla-estilizada">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th style="text-align:center;">Cantidad</th>
+                            <th style="text-align:right;">Precio Unitario</th>
+                            <th style="text-align:right;">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-tabla-ver-detalles">
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

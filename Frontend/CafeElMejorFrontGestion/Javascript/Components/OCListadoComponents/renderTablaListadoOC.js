@@ -17,10 +17,10 @@ export function crearFilaOrdenCompra(orden) {
     // Usamos un template string para construir el HTML interno de la fila.
     // Asumimos que el objeto 'orden' tiene propiedades como: fechaRegistro, numeroOrden, proveedorNombre, y montoTotal.
     fila.innerHTML = `
-        <td>${new Date(orden.fechaRegistro).toLocaleDateString('es-AR')}</td>
-        <td>${orden.numeroOrden}</td>
-        <td>${orden.proveedorNombre}</td>
-        <td>${formatearMoneda(orden.montoTotal)}</td>
+        <td>${new Date(orden.fecha).toLocaleDateString('es-AR')}</td>
+        <td>${orden.idOrdenDeCompra}</td>
+        <td>${orden.proveedor.nombre}</td>
+        <td>${formatearMoneda(orden.total)}</td>
         <td class="acciones">
             <button class="boton-accion-tabla ver">Ver</button>
             <button class="boton-accion-tabla editar">Editar</button>
