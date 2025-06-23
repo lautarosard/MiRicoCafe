@@ -5,7 +5,7 @@ import { GetAll as GetAllOrdenes } from './../APIs/OCompraApi.js';
 import { crearFilaOrdenCompra } from './../Components/OCListadoComponents/renderTablaListadoOC.js';
 
 // Handlers: Para la lógica de los botones y modales.
-import { configurarBusqueda } from './../Handlers/LOCompraHandler/BuscarOCompraHandler.js';
+import { configurarBusquedaOrdenes } from './../Handlers/LOCompraHandler/BuscarOCompraHandler.js';
 import { configurarCierreModalVer } from './../Handlers/LOCompraHandler/ConsultarOCompraHandler.js';
 import { configurarModalEdicion, configurarCierreModalEditar } from './../Handlers/LOCompraHandler/EditarOCompraHandler.js';
 
@@ -50,7 +50,7 @@ async function cargarOrdenes(ordenes = null) {
 export function iniciarPaginaListadoOrdenes() {
     // 1. Configura la búsqueda. Le pasamos 'cargarOrdenes' como callback
     // para que el buscador pueda redibujar la tabla con los resultados filtrados.
-    configurarBusqueda(cargarOrdenes);
+    configurarBusquedaOrdenes(cargarOrdenes);
 
     // 2. Configura los botones de cierre de los modales.
     configurarCierreModalVer();
