@@ -1,7 +1,7 @@
 
 import { abrirModalVerOrden } from './../../Handlers/LOCompraHandler/ConsultarOCompraHandler.js';
-import { abrirModalEditarOrden } from '../Handlers/LOCompraHandler/EditarOCompraHandler.js';
-import { configurarModalEliminarOrden } from '../Handlers/LOCompraHandler/EliminarOCompraHandler.js';
+import { abrirModalEditarOrden } from './../../Handlers/LOCompraHandler/EditarOCompraHandler.js';
+import { configurarModalEliminarOrden } from './../../Handlers/LOCompraHandler/EliminarOCompraHandler.js';
 
 
 function formatearMoneda(numero) {

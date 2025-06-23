@@ -13,5 +13,6 @@ namespace Aplication.Models.Request
         public string Categoria { get; set; }
         public string Descripcion { get; set; }
         public int Stock { get; set; }
+        public string imagenUrl { get; set; }
     }
 }

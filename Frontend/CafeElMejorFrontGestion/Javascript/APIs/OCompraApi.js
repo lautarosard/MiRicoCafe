@@ -19,11 +19,10 @@ export async function GetAll() {
     }
 }
 
-
 // Obtiene una Orden de Compra por ID
 export async function GetByOrdenDeCompraId(id) {
     try {
-        const response = await axios.get(`${API_BASE}/OrdenDeCompra/${id}`);
+        const response = await axios.get(`${API_BASE}/${id}`);
         return response.data;
     } catch (error) {
         console.error(`Error al obtener Orden de compra ID ${id}:`, error);
@@ -47,7 +46,7 @@ export async function CreateOrdenDeCompra(orden) {
 // Elimina una Orden de Compra
 export async function DeleteOrdenDeCompraId(id) {
     try {
-        const response = await axios.delete(`${API_BASE}/OrdenDeCompradelete/${id}`);
+        const response = await axios.delete(`${API_BASE}/${id}`);
         return response.data;
     } catch (error) {
         console.error(`Error al eliminar Orden de compra ID ${id}:`, error.response?.data || error.message);
@@ -60,7 +59,7 @@ export async function DeleteOrdenDeCompraId(id) {
 // Actualiza una Orden de Compra
 export async function UpdateOrdenDeCompra(id, ordenActualizada) {
     try {
-        const response = await axios.put(`${API_BASE}/OrdenDeCompraupdate/${id}`, ordenActualizada, {
+        const response = await axios.put(`${API_BASE}/${id}`, ordenActualizada, {
 
             headers: {
                 'Content-Type': 'application/json'
@@ -76,14 +75,14 @@ export async function UpdateOrdenDeCompra(id, ordenActualizada) {
 }
 
 
-// Elimina un producto de una orden de compra
-export async function BorrarProductoDeOrden(idOrden, idProducto) {
-    try {
-        const response = await axios.put(`${API_BASE}/BorrarItem/${idOrden}?idProducto=${idProducto}`);
-        return response.data;
-    } catch (error) {
-        console.error(`Error al borrar producto ${idProducto} de orden ${idOrden}:`, error);
-        throw error;
-    }
-}
+// // Elimina un producto de una orden de compra
+// export async function BorrarProductoDeOrden(idOrden, idProducto) {
+//     try {
+//         const response = await axios.put(`${API_BASE}/${idOrden}?idProducto=${idProducto}`);
+//         return response.data;
+//     } catch (error) {
+//         console.error(`Error al borrar producto ${idProducto} de orden ${idOrden}:`, error);
+//         throw error;
+//     }
+// }
 

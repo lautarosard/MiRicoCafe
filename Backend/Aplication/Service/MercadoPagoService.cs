@@ -61,9 +61,11 @@ namespace Aplication.Service
                 Items = items,
                 BackUrls = new PreferenceBackUrlsRequest
                 {
+
                     Success = "https://www.google.com",
                     Failure = "https://www.google.com",
                     Pending = "https://www.google.com"
+
                 },
                 AutoReturn = "approved"
             };
