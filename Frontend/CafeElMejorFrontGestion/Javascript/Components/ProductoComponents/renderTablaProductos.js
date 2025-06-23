@@ -7,7 +7,7 @@ export function crearFilaProducto(producto) {
     const fila = document.createElement('tr');
 
     fila.innerHTML = `
-        <td></td>
+        <td><img src="${producto.imagenUrl}" alt="${producto.nombre}"></td>
         <td>${producto.idProducto}</td>
         <td>${producto.nombre}</td>
         <td>${producto.categoria}</td>
