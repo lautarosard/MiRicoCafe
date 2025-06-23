@@ -38,7 +38,9 @@ namespace CafeElMejor.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = $"A mistake has occurred. {ex}" });
+
+                return BadRequest(new { message = $"A mistake has occurred.{ex}" });
+
             }
 
 

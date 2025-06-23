@@ -26,10 +26,10 @@ namespace Infrastructure.Command
 
         public async Task InsertOrdenDeCompra(OrdenDeCompra occ)
         {
-            if (occ.Proveedor != null)
-            {
-                _context.Attach(occ.Proveedor);
-            }
+            //if (occ.Proveedor != null)
+            //{
+            //    _context.Attach(occ.Proveedor);
+            //}
 
             foreach (var item in occ.DetalleOrdenDeCompra)
             {
