@@ -1,8 +1,50 @@
 [
   {
+    "ContainingType": "CafeElMejor.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aplication.Models.Request.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CafeElMejor.Controllers.AuthController",
+    "Method": "RegisterAdmin",
+    "RelativePath": "api/Auth/register-admin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CafeElMejor.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/Auth/register-cliente",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aplication.Models.Request.RegistroClienteRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CafeElMejor.Controllers.CarritoController",
     "Method": "ObtenerCarrito",
-    "RelativePath": "{clienteId}",
+    "RelativePath": "api/Carrito/{clienteId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -28,7 +70,7 @@
   {
     "ContainingType": "CafeElMejor.Controllers.CarritoController",
     "Method": "AgregarItem",
-    "RelativePath": "{clienteId}",
+    "RelativePath": "api/Carrito/{clienteId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -39,14 +81,9 @@
         "IsRequired": true
       },
       {
-        "Name": "ProductoId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Cantidad",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "Name": "request",
+        "Type": "Aplication.Models.Request.ItemCarritoRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -54,7 +91,7 @@
   {
     "ContainingType": "CafeElMejor.Controllers.CarritoController",
     "Method": "VaciarCarrito",
-    "RelativePath": "{clienteId}",
+    "RelativePath": "api/Carrito/{clienteId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -70,7 +107,7 @@
   {
     "ContainingType": "CafeElMejor.Controllers.CarritoController",
     "Method": "ActualizarCantidad",
-    "RelativePath": "{clienteId}/{productoId}",
+    "RelativePath": "api/Carrito/{clienteId}/{productoId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -96,7 +133,7 @@
   {
     "ContainingType": "CafeElMejor.Controllers.CarritoController",
     "Method": "EliminarItem",
-    "RelativePath": "{clienteId}/{productoId}",
+    "RelativePath": "api/Carrito/{clienteId}/{productoId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -109,38 +146,6 @@
       {
         "Name": "productoId",
         "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CafeElMejor.Controllers.AuthController",
-    "Method": "Login",
-    "RelativePath": "api/Auth/login",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "Aplication.Models.Request.LoginRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CafeElMejor.Controllers.AuthController",
-    "Method": "Register",
-    "RelativePath": "api/Auth/register-cliente",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "Aplication.Models.Request.RegistroClienteRequest",
         "IsRequired": true
       }
     ],
@@ -975,7 +980,7 @@
   {
     "ContainingType": "CafeElMejor.Controllers.ProductoController",
     "Method": "GetByProductoId",
-    "RelativePath": "api/Producto/Producto/{id}",
+    "RelativePath": "api/Producto/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1005,15 +1010,20 @@
   },
   {
     "ContainingType": "CafeElMejor.Controllers.ProductoController",
-    "Method": "DeleteProductoId",
-    "RelativePath": "api/Producto/Productodelete/{id}",
-    "HttpMethod": "DELETE",
+    "Method": "UpdataProducto",
+    "RelativePath": "api/Producto/{id}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "requests",
+        "Type": "Aplication.Models.Request.ProductoRequest",
         "IsRequired": true
       }
     ],
@@ -1036,20 +1046,15 @@
   },
   {
     "ContainingType": "CafeElMejor.Controllers.ProductoController",
-    "Method": "UpdataProducto",
-    "RelativePath": "api/Producto/Productoupdate/{id}",
-    "HttpMethod": "PUT",
+    "Method": "DeleteProductoId",
+    "RelativePath": "api/Producto/{id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "requests",
-        "Type": "Aplication.Models.Request.ProductoRequest",
         "IsRequired": true
       }
     ],
@@ -1109,37 +1114,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      }
-    ]
-  },
-  {
-    "ContainingType": "CafeElMejor.Controllers.ProveedorController",
-    "Method": "GetByProveedorId",
-    "RelativePath": "api/Proveedor/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": [
       {
         "Type": "System.Void",
@@ -1227,7 +1201,7 @@
   {
     "ContainingType": "CafeElMejor.Controllers.ProveedorController",
     "Method": "GetByProveedorCuit",
-    "RelativePath": "api/Proveedor/cuit",
+    "RelativePath": "api/Proveedor/cuit/{cuit}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1235,7 +1209,38 @@
       {
         "Name": "cuit",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "CafeElMejor.Controllers.ProveedorController",
+    "Method": "GetByProveedorId",
+    "RelativePath": "api/Proveedor/id/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -1299,7 +1304,7 @@
   {
     "ContainingType": "CafeElMejor.Controllers.UsuarioController",
     "Method": "GetByUsuarioId",
-    "RelativePath": "api/Usuario/Usuario/{id}",
+    "RelativePath": "api/Usuario/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1330,7 +1335,7 @@
   {
     "ContainingType": "CafeElMejor.Controllers.UsuarioController",
     "Method": "DeleteUsuarioId",
-    "RelativePath": "api/Usuario/UsuarioDelete/{id}",
+    "RelativePath": "api/Usuario/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

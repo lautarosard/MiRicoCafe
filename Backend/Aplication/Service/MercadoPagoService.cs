@@ -20,9 +20,10 @@ namespace Aplication.Service
         private readonly IConfiguration _config;
         private readonly IProductoService _productoService;
 
-        public MercadoPagoService(IConfiguration config)
+        public MercadoPagoService(IConfiguration config, IProductoService productoService)
         {
             _config = config;
+            _productoService = productoService;
         }
 
         public async Task<string> CrearPreferenciaAsync(PagoRequest request)
@@ -33,8 +34,19 @@ namespace Aplication.Service
 
             foreach (var item in request.MPProductos)
             {
+                Console.WriteLine($"El producto es este {item.ProductoId}");
                 var producto = await _productoService.ConsultarProducto(item.ProductoId);
 
+                if (producto == null)
+                {
+                    throw new Exception($"No se encontró el producto con ID {item.ProductoId}");
+                }
+                if (producto == null)
+                {
+                    // Omitir o loguear el producto inválido
+                    Console.WriteLine($"El producto que intentaste fue este {item}");
+                    continue;
+                }
                 items.Add(new PreferenceItemRequest
                 {
                     Title = producto.Nombre, // Nombre desde BD
@@ -49,9 +61,11 @@ namespace Aplication.Service
                 Items = items,
                 BackUrls = new PreferenceBackUrlsRequest
                 {
-                    Success = "http://localhost/Frontend/CafeElMejorFrontEcommerce/HTML/index.html",
-                    Failure = "https://tudominio.com/pago/fallo",
-                    Pending = "https://tudominio.com/pago/pendiente"
+
+                    Success = "https://www.google.com",
+                    Failure = "https://www.google.com",
+                    Pending = "https://www.google.com"
+
                 },
                 AutoReturn = "approved"
             };
@@ -59,7 +73,7 @@ namespace Aplication.Service
             var client = new PreferenceClient();
             Preference preference = await client.CreateAsync(preferenciaRequest);
 
-            return preference.InitPoint;
+            return preference.SandboxInitPoint;
         }
 
     }

@@ -1,71 +1,47 @@
-import { GetAll as GetAllOC, CreateOrdenDeCompra } from './../APIs/OCompraApi.js';
-import { crearFilaOC } from './../Components/LOCComponents/renderListadoOC.js';
 
-async function cargarProductos() {
-    try {
-        const cuerpoTabla = document.querySelector('.tabla-productos tbody');
-        cuerpoTabla.innerHTML = ''; // Limpiar tabla--
+// --- 1. IMPORTACIONES DE MÓDULOS ---
+// Handlers para la lógica de proveedores en la página.
+import {
+    cargarProveedoresEnSelector,
+    configurarFechaMinima
+} from './../Handlers/OCompraHandler/AgregarProvedorOCHandler.js';
 
-        const Ordenes = await GetAllOC();
-        console.log("Ordenes:", Ordenes);
-        if (Ordenes.length === 0) {
-            const filaVacia = document.createElement('tr');
-            filaVacia.innerHTML = '<td colspan="6">No hay Ordenes de Compra disponibles</td>';
-            cuerpoTabla.appendChild(filaVacia);
-            return;
-        }
+// Handlers para la lógica del modal de selección de productos.
+import {
+    configurarBotonAbrirModalProductos,
+    configurarCierreModalProductos,
+    configurarBusquedaEnModal,
+    configurarAgregarProductoDesdeModal
+} from './../Handlers/OCompraHandler/AgregarProductoOCHandler.js';
 
-        const fragment = document.createDocumentFragment();
-        Ordenes.forEach(OrdenDeCompra => {
-            const fila = crearFilaOC(OrdenDeCompra);
-            fragment.appendChild(fila);
-        });
+// Handlers para la lógica de la tabla principal de la orden y el registro final.
+import {
+    agregarProductoAOrden,
+    configurarTablaPrincipal,
+    configurarBotonRegistrar
+} from './../Handlers/OCompraHandler/AgregarOCompraHandler.js';
 
-        cuerpoTabla.appendChild(fragment);
 
-    } catch (error) {
-        console.error('Error en cargarOrdenes:', error);
+// --- 2. FUNCIÓN DE INICIALIZACIÓN DE LA PÁGINA ---
+export function iniciarPaginaNuevaOrden() {
+    
+    // Configura la lógica inicial del formulario principal (proveedores y fecha).
+    configurarFechaMinima();
+    cargarProveedoresEnSelector();
 
-        const cuerpoTabla = document.querySelector('.tabla-productos tbody');
-        const filaError = document.createElement('tr');
-        filaError.innerHTML = '<td colspan="6">Error al cargar las ordenes</td>';
-        cuerpoTabla.appendChild(filaError);
-    }
+    // Configura toda la interactividad del modal para seleccionar productos.
+    // Le pasamos 'agregarProductoAOrden' como la acción a realizar cuando se selecciona un producto.
+    configurarBotonAbrirModalProductos();
+    configurarCierreModalProductos();
+    configurarBusquedaEnModal();
+    configurarAgregarProductoDesdeModal(agregarProductoAOrden);
+
+    // Configura la interactividad de la tabla principal de la orden (cambiar cantidad, eliminar).
+    configurarTablaPrincipal();
+
+    // Configura el botón final para registrar la orden de compra.
+    configurarBotonRegistrar();
+
+    console.log("Página de Nueva Orden de Compra inicializada correctamente.");
 }
 
-function configurarFormularioCreacion() {
-    const form = document.getElementById('form-producto');
-    const mensaje = document.getElementById('mensaje');
-
-    if (!form) return;
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const proveedor = {
-            fecha: document.getElementById('addFecha').value,
-            idOrdenDeCompra: document.getElementById('addidOrdenDeCompra').value,
-            proveedor: document.getElementById('addProveedor').value,
-            total: document.getElementById('addTotal').value,
-        };
-
-        try {
-            const creado = await CreateOC(oc);
-            mensaje.textContent = `OC creado con ID: ${creado.idOrdenDeCompra}`;
-            form.reset();
-            cargarProductos(); // recargar lista
-        } catch (error) {
-            mensaje.textContent = "Error al crear OC.";
-            console.error(error);
-        }
-    });
-}
-
-export function iniciarPaginaLOCompra() {
-
-     // 1. Carga la lista inicial de proveedores
-    cargarProductos();
-
-    // Le pasamos 'cargarProveedores' para que pueda recargar la lista después de agregar.
-    configurarFormularioAgregar(cargarProductos); 
-}

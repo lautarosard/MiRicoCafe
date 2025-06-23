@@ -68,7 +68,19 @@
         }
       }
     },
-    "/{clienteId}": {
+    "/api/Auth/register-admin": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Carrito/{clienteId}": {
       "get": {
         "tags": [
           "Carrito"
@@ -120,24 +132,27 @@
               "type": "integer",
               "format": "int32"
             }
-          },
-          {
-            "name": "ProductoId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Cantidad",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemCarritoRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemCarritoRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemCarritoRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -166,7 +181,7 @@
         }
       }
     },
-    "/{clienteId}/{productoId}": {
+    "/api/Carrito/{clienteId}/{productoId}": {
       "put": {
         "tags": [
           "Carrito"
@@ -1459,7 +1474,7 @@
         }
       }
     },
-    "/api/Producto/Producto/{id}": {
+    "/api/Producto/{id}": {
       "get": {
         "tags": [
           "Producto"
@@ -1500,9 +1515,7 @@
             }
           }
         }
-      }
-    },
-    "/api/Producto/Productoupdate/{id}": {
+      },
       "put": {
         "tags": [
           "Producto"
@@ -1562,9 +1575,7 @@
             }
           }
         }
-      }
-    },
-    "/api/Producto/Productodelete/{id}": {
+      },
       "delete": {
         "tags": [
           "Producto"
@@ -1688,7 +1699,7 @@
         }
       }
     },
-    "/api/Proveedor/{id}": {
+    "/api/Proveedor/id/{id}": {
       "get": {
         "tags": [
           "Proveedor"
@@ -1729,7 +1740,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Proveedor/{id}": {
       "put": {
         "tags": [
           "Proveedor"
@@ -1832,7 +1845,7 @@
         }
       }
     },
-    "/api/Proveedor/cuit": {
+    "/api/Proveedor/cuit/{cuit}": {
       "get": {
         "tags": [
           "Proveedor"
@@ -1840,7 +1853,8 @@
         "parameters": [
           {
             "name": "cuit",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -1926,7 +1940,7 @@
         }
       }
     },
-    "/api/Usuario/Usuario/{id}": {
+    "/api/Usuario/{id}": {
       "get": {
         "tags": [
           "Usuario"
@@ -1967,9 +1981,7 @@
             }
           }
         }
-      }
-    },
-    "/api/Usuario/UsuarioDelete/{id}": {
+      },
       "delete": {
         "tags": [
           "Usuario"
@@ -2071,6 +2083,20 @@
           "fecha": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemCarritoRequest": {
+        "type": "object",
+        "properties": {
+          "productoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cantidad": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -2320,21 +2346,9 @@
             "type": "integer",
             "format": "int32"
           },
-          "titulo": {
-            "type": "string",
-            "nullable": true
-          },
-          "precio": {
-            "type": "number",
-            "format": "double"
-          },
           "cantidad": {
             "type": "integer",
             "format": "int32"
-          },
-          "moneda": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false

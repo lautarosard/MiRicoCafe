@@ -1,28 +1,9 @@
-const categoriaContenedores = new Map();
-
 export function renderCartaProductoPorCategoria(producto) {
-    const contenedorGeneral = document.getElementById('listProducts');
-    if (!contenedorGeneral) return;
-
-    let contenedorCategoria = categoriaContenedores.get(producto.categoria);
-
-    if (!contenedorCategoria) {
-        const titulo = document.createElement('h2');
-        titulo.classList.add('productos-subtitulo');
-        titulo.textContent = producto.categoria.toUpperCase();
-        contenedorGeneral.appendChild(titulo);
-
-        contenedorCategoria = document.createElement('div');
-        contenedorCategoria.classList.add('contenedor-categoria');
-        contenedorGeneral.appendChild(contenedorCategoria);
-
-        categoriaContenedores.set(producto.categoria, contenedorCategoria);
-    }
-
     const card = document.createElement('article');
     card.classList.add('producto-card');
 
     card.innerHTML = `
+        <img class="producto-imagen" src="${producto.imagenUrl}" alt="${producto.nombre}">
         <h2 class="producto-nombre">${producto.nombre.toUpperCase()}</h2>
         <p class="producto-precio">$${producto.precio}</p>
         <p class="producto-stock">Stock disponible: ${producto.stock}</p>
@@ -32,5 +13,5 @@ export function renderCartaProductoPorCategoria(producto) {
         <button class="btn-anadir-carrito" data-id="${producto.idProducto}">AÑADIR AL CARRITO</button>
     `;
 
-    contenedorCategoria.appendChild(card);
+    return card;  // <-- Devuelvo el nodo creado
 }

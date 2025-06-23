@@ -113,7 +113,10 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.FacturaItem", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Cantidad")
                         .HasColumnType("int");
@@ -129,8 +132,9 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductoId")
-                        .IsUnique();
+                    b.HasIndex("FacturaId");
+
+                    b.HasIndex("ProductoId");
 
                     b.ToTable("FacturaItem");
                 });
@@ -409,6 +413,10 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("Rol")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -437,14 +445,14 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Entities.Factura", "Factura")
                         .WithMany("Detalles")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("FacturaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.Producto", "Producto")
-                        .WithOne("facturaItem")
-                        .HasForeignKey("Domain.Entities.FacturaItem", "ProductoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithMany("FacturaItems")
+                        .HasForeignKey("ProductoId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Factura");
@@ -508,10 +516,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Producto", b =>
                 {
-                    b.Navigation("ItemsEnCarrito");
+                    b.Navigation("FacturaItems");
 
-                    b.Navigation("facturaItem")
-                        .IsRequired();
+                    b.Navigation("ItemsEnCarrito");
                 });
 
             modelBuilder.Entity("Domain.Entities.Proveedor", b =>

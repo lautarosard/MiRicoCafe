@@ -50,19 +50,19 @@
         <div class="titulo">
         <h2>Facturas</h2>
         </div>
-        
+
     </div>
 
     <hr class="linea-divisoria" />
 
         <div class="opciones-facturas">
             <input type="search" id="buscar" name="buscar" placeholder="Ingrese numero de factura..." list="opciones">
-            <div><button id="botonBuscar" class="nuevo">Buscar</button> </div>
+            <button id="botonBuscar" class="boton-nuevo">Buscar</button>
             </div>
 
 
     <table class="tabla-facturas">
-    <thead>
+        <thead>
     <tr>
         <th>Número</th>
         <th>Fecha de Emisión</th>
@@ -72,13 +72,18 @@
         <th>Acciones</th>
     </tr>
 </thead>
-        <tbody>
-    
+        <tr>
+            <td class="actions">
+                <button class="view" title="Ver">VER</button>
+            </td>
+            
+
+        </tr>
         </tbody>
     </table>
     </div>
 
-    <div id="modalNuevaFactura" class="modal-superposicion">
+<!--     <div id="modalNuevaFactura" class="modal-superposicion">
     <div class="modal-contenido">
         <span class="cerrar-modal" id="cerrarModalNueva">&times;</span>
         <h3>Registrar Nueva Factura</h3>
@@ -116,7 +121,7 @@
             </div>
         </form>
     </div>
-</div>
+</div> -->
 
 <div id="modalVerFactura" class="modal-superposicion">
     <div class="modal-contenido">
@@ -126,6 +131,5 @@
             </div>
     </div>
 </div>
-
 </body>
 </html>

@@ -1,8 +1,3 @@
-
-// ============================
-// ARCHIVO: Components/RenderCarrito.js
-// ============================
-
 export function crearCardProductoCarrito(producto) {
     const price = parseFloat(producto.precio);
     const quantity = parseInt(producto.cantidad);
@@ -10,10 +5,9 @@ export function crearCardProductoCarrito(producto) {
 
     const cardElement = document.createElement('div');
     cardElement.classList.add('producto-card-carrito');
-    cardElement.dataset.productoId = producto.id;
+    cardElement.dataset.productoId = producto.productoId; // usa productoId correctamente
 
     cardElement.innerHTML = ` 
-
         <div class="producto-info">
             <h3>${producto.nombre}</h3>
             <p>Precio unitario: $${isNaN(price) ? '0.00' : price.toFixed(2)}</p>
@@ -24,7 +18,7 @@ export function crearCardProductoCarrito(producto) {
                     value="${isNaN(quantity) ? 1 : quantity}" 
                     min="1" 
                     class="cantidad-input" 
-                    data-id="${producto.id}"
+                    data-id="${producto.productoId}" 
                 >
             </div>
         </div>
@@ -34,8 +28,8 @@ export function crearCardProductoCarrito(producto) {
         <button 
             class="btn-eliminar-producto" 
             title="Eliminar Producto" 
-            data-id="${producto.id}"
-        >
+            data-id="${producto.productoId}" <!-- correcto -->
+        
             &times;
         </button>
     `;

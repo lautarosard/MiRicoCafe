@@ -19,6 +19,7 @@ async function renderizarFacturasEnTabla(facturas) {
     tablaBody.innerHTML = '';
 
     if (facturasParaMostrar.length === 0) {
+        // --- CORRECCIÓN: Se ajusta el colspan al nuevo número de columnas ---
         tablaBody.innerHTML = '<tr><td colspan="6">No hay facturas para mostrar.</td></tr>';
         return;
     }
@@ -29,12 +30,11 @@ async function renderizarFacturasEnTabla(facturas) {
 }
 
 export function iniciarPaginaFacturas() {
-    // Se reactivan los handlers para agregar
     configurarBotonNuevaFactura();
     configurarFormularioAgregar(renderizarFacturasEnTabla);
     configurarCierreModalAgregar();
-
     configurarCierreModalVer();
     configurarBusquedaFacturas(renderizarFacturasEnTabla);
     renderizarFacturasEnTabla();
 }
+

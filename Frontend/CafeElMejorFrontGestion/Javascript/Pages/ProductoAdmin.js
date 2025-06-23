@@ -17,7 +17,7 @@ async function cargarProductos() {
         console.log("Productos:", productos);
         if (productos.length === 0) {
             const filaVacia = document.createElement('tr');
-            filaVacia.innerHTML = '<td colspan="6">No hay productos disponibles</td>';
+            filaVacia.innerHTML = '<td colspan="8">No hay productos disponibles</td>';
             cuerpoTabla.appendChild(filaVacia);
             return;
         }

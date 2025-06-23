@@ -20,7 +20,9 @@ export function configurarFormularioEditar() {
             categoria: document.getElementById('editCategoria').value,
             descripcion: document.getElementById('editDescripcion').value,
             stock: document.getElementById('editStock').value,
-            precio: document.getElementById('editPrecio').value
+            precio: document.getElementById('editPrecio').value,
+            imagenUrl: document.getElementById('editUrl').value,
+
     };
 
         try {
@@ -42,6 +44,7 @@ export function abrirModalEditarProducto(producto) {
     document.getElementById('editDescripcion').value = producto.descripcion;
     document.getElementById('editStock').value = producto.stock;
     document.getElementById('editPrecio').value = producto.precio;
+    document.getElementById('editUrl').value = producto.imagenUrl;
 
     document.getElementById('modalEditar').style.display = 'flex';
 }

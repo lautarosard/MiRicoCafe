@@ -1,41 +1,24 @@
-import { CrearPreferencia } from './../../APIs/MercadoPagoApi.js'; // ajustá la ruta según tu estructura
+// carritoPago.js
 
-document.getElementById('btnfinalizarCompra').addEventListener('click', async () => {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+import { procesarPago } from './../../Handlers/PagoHandler/PagoHandler.js';
 
-    if (carrito.length === 0) {
-        alert("Tu carrito está vacío.");
+export function iniciarPagoCarrito() {
+    console.log('Entraste a iniciarPagoCarrito');
+    const botonFinalizar = document.getElementById('btnfinalizarCompra');
+
+    if (!botonFinalizar) {
+        console.error('Botón de finalizar compra no encontrado');
         return;
     }
 
-    const clienteId = localStorage.getItem('clienteId'); // o el ID guardado en el token si lo tenés
-
-    if (!clienteId) {
-        alert("Debes iniciar sesión para continuar con el pago.");
-        return;
-    }
-
-    // Armar el objeto PagoRequest (como espera el backend)
-    const dto = {
-        clienteId: parseInt(clienteId),
-        productos: carrito.map(item => ({
-            productoId: item.id,
-            cantidad: item.cantidad,
-            precio: item.precio
-        }))
-    };
-
-    try {
-        const respuesta = await CrearPreferencia(dto);
-        
-        if (respuesta?.url) {
-            // Redirigir a Mercado Pago
-            window.location.href = respuesta.url;
-        } else {
-            alert("No se pudo obtener la URL de pago.");
+    botonFinalizar.addEventListener('click', async () => {
+        try {
+            console.log('Hiciste click en el botón de finalizar compra');
+            const url = await procesarPago();
+            window.location.href = url;
+        } catch (error) {
+            console.error('Error al procesar el pago:', error);
+            alert(error.message || 'Ocurrió un error al procesar el pago.');
         }
-    } catch (error) {
-        console.error("Error al crear preferencia:", error);
-        alert("Hubo un error al iniciar el pago. Intenta nuevamente.");
-    }
-});
+    });
+}

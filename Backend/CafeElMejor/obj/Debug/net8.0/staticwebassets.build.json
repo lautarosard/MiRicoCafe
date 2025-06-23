@@ -1,12 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "ZS4DwfSk3v/GMrmP/bs58vn7GlhsmbSA0aK0mWUh/Pk=",
-  "Source": "CafeElMejor",
-  "BasePath": "_content/CafeElMejor",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
-}
+{"Version":1,"Hash":"ZS4DwfSk3v/GMrmP/bs58vn7GlhsmbSA0aK0mWUh/Pk=","Source":"CafeElMejor","BasePath":"_content/CafeElMejor","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

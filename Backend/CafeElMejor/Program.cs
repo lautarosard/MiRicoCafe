@@ -47,7 +47,7 @@ namespace CafeElMejor
             // 2. Configuración de base de datos
             builder.Services.AddDbContext<CafeDbContext>(options =>
             options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-            ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
+            ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))).EnableSensitiveDataLogging());
             
             //INYECCIONES
             //builder Proveedor

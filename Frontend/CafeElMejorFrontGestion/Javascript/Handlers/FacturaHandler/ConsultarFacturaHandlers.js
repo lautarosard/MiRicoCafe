@@ -1,7 +1,5 @@
 import { GetByFacturaId as GetByFacturaIdAPI } from './../../APIs/FacturaApi.js';
 
-
-
 const formatearMonedaModal = (numero) => {
     if (typeof numero !== 'number' || isNaN(numero)) return '$ 0,00';
     return numero.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
@@ -13,12 +11,11 @@ const formatearFechaModal = (fechaString) => {
     return fecha.toLocaleDateString('es-AR');
 };
 
-
 const crearHtmlDetalles = (detalles) => {
     if (!Array.isArray(detalles) || detalles.length === 0) {
-        return '<p>No hay detalles para esta factura.</p>';
+        return '<p>No hay detalles de productos para esta factura.</p>';
     }
-    // Se crea una mini-tabla para los detalles.
+    
     let tablaHtml = `
         <table class="tabla-detalles-modal">
             <thead>
@@ -32,12 +29,7 @@ const crearHtmlDetalles = (detalles) => {
             <tbody>
     `;
     detalles.forEach(item => {
-        // --- INICIO DE LA CORRECCIÓN FINAL ---
-        // Código "a prueba de balas": Intenta leer el nombre de varias formas posibles.
-        // 1. Intenta `item.name` (como en tu clase C#).
-        // 2. Si no existe, intenta `item.producto.nombre` (un posible objeto anidado).
-        // 3. Si ninguno existe, muestra el mensaje por defecto.
-        const nombreProducto = item.name || 'Producto no especificado';
+        const nombreProducto = item.producto ? item.producto.nombre : (item.name || 'Producto no especificado');
         const subtotalItem = item.cantidad * item.precioUnitario;
 
         tablaHtml += `
@@ -48,7 +40,6 @@ const crearHtmlDetalles = (detalles) => {
                 <td>${formatearMonedaModal(subtotalItem)}</td>
             </tr>
         `;
-        // --- FIN DE LA CORRECCIÓN FINAL ---
     });
     tablaHtml += '</tbody></table>';
     return tablaHtml;
@@ -65,8 +56,6 @@ export async function abrirModalVerFactura(idFactura) {
     try {
         const factura = await GetByFacturaIdAPI(idFactura);
         
-        // --- CORRECCIÓN ---
-        // Se construye el contenido del modal con los datos generales y la tabla de detalles.
         contenido.innerHTML = `
             <div class="detalle-info-general">
                 <p><strong>Número de Factura:</strong> ${factura.idFactura}</p>

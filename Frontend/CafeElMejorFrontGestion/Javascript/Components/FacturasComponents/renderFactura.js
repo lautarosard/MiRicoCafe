@@ -1,5 +1,6 @@
 import { abrirModalVerFactura } from './../../Handlers/FacturaHandler/ConsultarFacturaHandlers.js';
 
+
 const formatearMoneda = (numero) => {
     if (typeof numero !== 'number' || isNaN(numero)) return '$ 0,00';
     return numero.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
@@ -15,7 +16,7 @@ const formatearFecha = (fechaString) => {
 export function crearFilaFactura(factura) {
     const fila = document.createElement('tr');
     
-    // --- CORRECCIÓN ---
+    // CORRECCIÓN: La fila ahora solo muestra las 6 columnas solicitadas.
     fila.innerHTML = `
         <td>${factura.idFactura || 'N/A'}</td>
         <td>${formatearFecha(factura.fechaEmision)}</td>
@@ -26,7 +27,6 @@ export function crearFilaFactura(factura) {
             <button class="view" title="Ver Detalle" data-id-factura="${factura.idFactura || ''}">👁️</button>
         </td>
     `;
-
 
     const botonVer = fila.querySelector('.view');
     botonVer.addEventListener('click', () => {

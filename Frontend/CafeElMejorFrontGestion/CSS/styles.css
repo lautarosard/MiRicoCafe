@@ -234,3 +234,9 @@ main {
 .menu-principal li.tiene-submenu:hover > a {
     background-color: rgba(255, 255, 255, 0.05);
 }
+
+.img-tablota {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px; /* opcional, para bordes redondeados */

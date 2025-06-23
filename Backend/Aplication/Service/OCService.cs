@@ -110,8 +110,10 @@ namespace Aplication.Service
                 var itemConcreto = new ItemOrdenDeCompra
                 {
                     //Id = 0,
+
                    
                     ProductoId = itemOrdenDe.ProductoId,
+
                     PrecioUnitario = producto.Precio,
                     Cantidad = itemOrdenDe.Cantidad,
                     Producto = producto
@@ -126,9 +128,6 @@ namespace Aplication.Service
                 ListaDeItems.Add(itemConcreto);
             }
 
-
-
-
             var proveedor = await proveedorQuery.GetById(request.IdProveedor);
 
             var OrdenDeCompra = new Domain.Entities.OrdenDeCompra()
@@ -137,8 +136,8 @@ namespace Aplication.Service
                 Fecha= DateTime.Now,
                 DetalleOrdenDeCompra=ListaDeItems,
                 IdProveedor = request.IdProveedor,
-                Proveedor= proveedor,
-                Total= total,
+            //    Proveedor= proveedor,
+                Total= total
                 //Cantidad= request.Cantidad,
                 //Importe= request.Importe,
                 //PUnitario= request.PUnitario,
