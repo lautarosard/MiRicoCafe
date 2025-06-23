@@ -7,6 +7,7 @@ import { iniciarPagoCarrito } from './Pages/PagoPages/CarritoPago.js';
 
 import { iniciarPaginaProductosCliente } from './Pages/ProductoCliente.js';
 import { iniciarLogicaCarrito } from './Pages/CarritoAdmin.js';
+import { actualizarUIAutenticacion } from './Components/uiUpdater.js';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (rutaActual.includes("carrito.html")) {
-       
+    
         iniciarLogicaCarrito(); // ← CAMBIO IMPORTANTE
     }
 
@@ -33,6 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if(rutaActual.includes("carrito.html")){
         iniciarPagoCarrito();
     }
+    
+    
+        actualizarUIAutenticacion();
+    
+
+    
 });
 
 

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../CSS/styles.css">
     <link rel="stylesheet" href="./../CSS/historia.css">
+    <link rel="stylesheet" href="./../CSS/iniciar-sesion.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="./../Javascript/main.js"></script>
 
     <title>Historia - Cafe El Mejor</title>
 </head>
@@ -25,28 +28,24 @@
         </nav>
     </div>
     <div class="grupo-acciones-usuario">
-         <div class="contenedor-salir-cliente"> <li class="boton-elegir-modo"> <a href="./../../Inicio/index.html" class="boton"</a></a>
+        <div class="contenedor-salir-cliente"> <li class="boton-elegir-modo"> <a href="./index.html" class="boton"></a>
             </li>
         </div>
         <div class="acciones_user">
-        <div class="dropdown-usuario"> <a href="#" class="user-icon-trigger"><img src="./../img/persona.png" alt="Persona"
-                class="icon"></a>
-            <ul class="submenu">
-                <li><a href="iniciar-sesion.html">Iniciar sesion</a>
-                </li>
-                <li>
-                    <a href="registrarse.html">Registrarse</a>
-                </li>
-            </ul>
+            <div class="dropdown-usuario">
+                <a href="#" class="user-icon-trigger">
+                    <img src="./../img/persona.png" alt="Persona" class="icon">
+                </a>
+                <ul class="submenu" id="user-dropdown-menu">
+                    </ul>
+            </div>
+            <a href="carrito.html" class="carrito-icono-contenedor">
+                <img src="./../img/carrito.png" alt="Carrito" class="icon">
+
+            </a>
         </div>
-        <a href="carrito.html" class="carrito-icono-contenedor">
-            <img src="./../img/carrito.png" alt="Carrito" class="icon">
-            <span id="carrito-contador-burbuja" class="carrito-burbuja">0</span>
-        </a>
     </div>
-    </div>
-    
-    </header>
+</header>
 
 
     <main>

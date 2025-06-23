@@ -42,7 +42,7 @@ export const AuthAdmin = {
         localStorage.removeItem("username");
 
         // Redireccionar (opcional)
-        window.location.href = "login.html"; // Cambiá esto por la ruta correcta si querés
+        window.location.href = "login.html"; // Cambiá esto por la ruta correcta si querés (den)
     },
 
     estaAutenticado() {

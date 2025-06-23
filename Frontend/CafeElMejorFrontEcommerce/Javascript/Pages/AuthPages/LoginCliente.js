@@ -1,4 +1,5 @@
 import { AuthAdmin } from './AuthAdmin.js';
+import { actualizarUIAutenticacion } from './../../Components/uiUpdater.js';
 
 export function iniciarPaginaLogin() {
     // 1. Selección segura de elementos con mensajes descriptivos
@@ -70,6 +71,14 @@ export function iniciarPaginaLogin() {
             if (!response?.token) {
                 throw new Error('Respuesta inválida del servidor');
             }
+
+            // --- ¡AQUÍ ESTÁ LA MAGIA! ---
+            // 1. Actualizamos la UI inmediatamente
+            actualizarUIAutenticacion();
+
+            // 2. Avisamos al usuario y redirigimos
+            alert('¡Inicio de sesión exitoso!');
+            window.location.href = 'index.html'; // O a la página de perfil, etc.
 
 
         } catch (error) {
