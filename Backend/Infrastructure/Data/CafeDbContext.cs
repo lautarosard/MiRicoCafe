@@ -101,7 +101,7 @@ namespace Infrastructure.Data
             modelBuilder.Entity<ItemOrdenDeCompra>(entity =>
             {
                 // Definimos la clave primaria (aunque ya lo hicimos con [Key])
-                entity.HasKey(e => e.Id);
+                entity.HasKey(e => e.Id) ;
 
                 // Relación con OrdenDeCompra (Muchos a 1)
                 entity.HasOne(item => item.ordenDeCompra)
@@ -205,11 +205,11 @@ namespace Infrastructure.Data
 
          
 
-            //Relacion 1-x Producto-FacturaItem
-            modelBuilder.Entity<ItemOrdenDeCompra>()
-            .HasOne(ic => ic.ordenDeCompra)
-            .WithMany(p => p.DetalleOrdenDeCompra)
-            .HasForeignKey(ic => ic.Id); //Revisar si esta bien 
+            ////Relacion 1-x Producto-FacturaItem
+            //modelBuilder.Entity<ItemOrdenDeCompra>()
+            //.HasOne(ic => ic.ordenDeCompra)
+            //.WithMany(p => p.DetalleOrdenDeCompra)
+            //.HasForeignKey(ic => ic.Id); //Revisar si esta bien 
 
 
         }

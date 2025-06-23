@@ -110,10 +110,12 @@ namespace Aplication.Service
                 var itemConcreto = new ItemOrdenDeCompra
                 {
                     //Id = 0,
+                   
                     ProductoId = itemOrdenDe.ProductoId,
                     PrecioUnitario = producto.Precio,
                     Cantidad = itemOrdenDe.Cantidad,
-                    //Producto = producto
+                    Producto = producto
+                    
                 };
 
                 int precioIntermedio = (int)itemConcreto.PrecioUnitario * itemConcreto.Cantidad;
@@ -132,7 +134,7 @@ namespace Aplication.Service
             var OrdenDeCompra = new Domain.Entities.OrdenDeCompra()
             {
              
-                Fecha= request.Fecha,
+                Fecha= DateTime.Now,
                 DetalleOrdenDeCompra=ListaDeItems,
                 IdProveedor = request.IdProveedor,
                 Proveedor= proveedor,
@@ -148,7 +150,7 @@ namespace Aplication.Service
             return new OCResponse
             {
          
-                Fecha = request.Fecha,
+                Fecha = DateTime.Now,
                 Total = total,
                 //Cantidad = request.Cantidad,
                 //Importe = request.Importe,
@@ -322,7 +324,7 @@ namespace Aplication.Service
             var OrdenDeCompra = await _query.GetById(id);
 
 
-            OrdenDeCompra.Fecha = request.Fecha;
+         
             OrdenDeCompra.DetalleOrdenDeCompra = ListaDeItems;
             OrdenDeCompra.Total = total;
             OrdenDeCompra.IdProveedor = request.IdProveedor;
@@ -435,7 +437,7 @@ namespace Aplication.Service
 
             return new OCResponse
             {
-                Cantidad = IdProducto,
+                //Cantidad = IdProducto,
                 Detalles = Detalles,
                 Fecha = OrdenDeCompra.Fecha,
                 IdOrdenDeCompra = OrdenDeCompra.Id,

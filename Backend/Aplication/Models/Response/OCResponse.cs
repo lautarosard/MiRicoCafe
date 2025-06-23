@@ -11,7 +11,7 @@ namespace Aplication.Models.Response
     {
         public int IdOrdenDeCompra {  get; set; }
         public DateTime Fecha { get; set; }
-        public int Cantidad { get; set; }
+        //public int Cantidad { get; set; }
         public float Total { get; set; }
         
         //public float PUnitario { get; set; }

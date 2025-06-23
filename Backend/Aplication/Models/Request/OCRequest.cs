@@ -9,7 +9,7 @@ namespace Aplication.Models.Request
 {
     public class OCRequest
     {
-        public DateTime Fecha { get; set; }
+        //public DateTime Fecha { get; set; }
         //public int Cantidad { get; set; }
         //public float PUnitario { get; set; }
         //public float Importe { get; set; }
