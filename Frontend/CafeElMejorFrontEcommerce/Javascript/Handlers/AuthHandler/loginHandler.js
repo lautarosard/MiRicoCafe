@@ -16,3 +16,4 @@ document.getElementById('formLogin').addEventListener('submit', async (e) => {
         alert("Error en login: " + (error.response?.data?.message || "Intente nuevamente."));
     }
 });
+
