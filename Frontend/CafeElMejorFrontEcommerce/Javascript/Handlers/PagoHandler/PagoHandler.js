@@ -1,5 +1,6 @@
 import { ObtenerCarrito as ObtenerCarritoPorCliente } from './../../APIs/CarritoApi.js';
 import { CrearPreferencia } from './../../APIs/MercadoPagoApi.js';
+import { VaciarCarrito } from './../../APIs/CarritoApi.js';
 
 export async function procesarPago() {
     console.log("Procesando pago...");
@@ -25,5 +26,14 @@ export async function procesarPago() {
 
     const { url } = await CrearPreferencia(pagoRequest);
     console.log("URL de pago:", url);
+
+    // VACIAR carrito antes de redirigir
+    try {
+        await VaciarCarrito(clienteId);
+        console.log("Carrito vaciado después del pago.");
+    } catch (error) {
+        console.warn("No se pudo vaciar el carrito después del pago.", error);
+    }
+
     return url;
 }
