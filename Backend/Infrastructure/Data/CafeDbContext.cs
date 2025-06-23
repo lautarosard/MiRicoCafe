@@ -127,7 +127,8 @@ namespace Infrastructure.Data
                 entity.Property(e => e.Categoria).IsRequired();
                 entity.Property(e => e.Descripcion).HasMaxLength(255);
                 entity.Property(e => e.Stock).IsRequired();
-               
+                entity.Property(p => p.ImagenUrl).IsRequired(false);
+
             });
             //Proveedor
             modelBuilder.Entity<Proveedor>(entity =>
