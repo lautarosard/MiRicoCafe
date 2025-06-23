@@ -61,7 +61,7 @@ namespace Aplication.Service
                 Items = items,
                 BackUrls = new PreferenceBackUrlsRequest
                 {
-                    Success = "https://tudominio.com/pago/exito",
+                    Success = "http://localhost/Frontend/CafeElMejorFrontEcommerce/HTML/index.html",
                     Failure = "https://tudominio.com/pago/fallo",
                     Pending = "https://tudominio.com/pago/pendiente"
                 },
